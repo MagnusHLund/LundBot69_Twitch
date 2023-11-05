@@ -1,4 +1,5 @@
 require('dotenv').config()
+const commands = require('./CommandHandler')
 
 const tmi = require('tmi.js')
 
@@ -26,9 +27,5 @@ console.log("Bot has started!");
 client.on('message', (channel, tags, message, self) => {
   if (self) return; // Ignore messages from the bot itself
 
-  switch (message.toLocaleLowerCase()) {
-    case `!hello`:
-      client.say(channel, `Hello, ${tags['username']}! How are you today?`);
-      break;
-  }
+  commands.handleCommand(channel, tags, message, self, client);
 });

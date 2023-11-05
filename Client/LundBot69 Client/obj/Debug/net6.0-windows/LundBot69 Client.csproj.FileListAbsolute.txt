@@ -1,0 +1,33 @@
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.csproj.AssemblyReference.cache
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client_MarkupCompile.cache
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.g.resources
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.AssemblyInfoInputs.cache
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.AssemblyInfo.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.csproj.CoreCompileInputs.cache
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.exe
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.deps.json
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.runtimeconfig.json
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.pdb
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\refint\LundBot69 Client.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.pdb
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.genruntimeconfig.cache
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\ref\LundBot69 Client.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client_Content.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Images\BanSong.png
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Images\BanUser.png
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Images\NextSong.png
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Images\Pause.png
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Images\Resume.png
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Commands.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\SrBanned.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\SrDefault.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client_MarkupCompile.lref
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Commands.baml
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\SrBanned.baml
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\SrDefault.baml

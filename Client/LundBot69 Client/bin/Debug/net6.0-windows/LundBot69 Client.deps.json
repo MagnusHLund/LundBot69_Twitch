@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "LundBot69 Client/1.0.0": {
+        "runtime": {
+          "LundBot69 Client.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LundBot69 Client/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
