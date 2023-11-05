@@ -1,0 +1,39 @@
+﻿<Window x:Class="LundBot69_Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        ResizeMode="NoResize"
+        Title="LundBot Login" Height="600" Width="400">
+    <!--    
+            Required fields:
+            Commands (opens additional window to show each command) Should be able to enable/disable commands
+            Music player (skip, previous, pause buttons, with a slider, total time left and song name. Should be able to add songs)
+            Gambling! Usernames and point scores. A leaderboard, basically.
+    -->
+    <Window.Resources>
+        <SolidColorBrush x:Key="MyBlue" Color="#0390fc" />
+        <SolidColorBrush x:Key="MyOrange" Color="#eb9834" />
+        <SolidColorBrush x:Key="BlueColor">#0390fc</SolidColorBrush>
+        <SolidColorBrush x:Key="OrangeColor">#eb9834</SolidColorBrush>
+        <Color x:Key="ColorBlue">#0390fc</Color>
+        <Color x:Key="ColorOrange">#eb9834</Color>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="White" Offset="0.0" />
+                <GradientStop Color="White" Offset="0.09" />
+                <GradientStop Color="{StaticResource ColorBlue}" Offset="0.11" />
+                <GradientStop Color="{StaticResource ColorBlue}" Offset="0.39" />
+                <GradientStop Color="{StaticResource ColorOrange}" Offset="0.41" />
+                <GradientStop Color="{StaticResource ColorOrange}" Offset="0.59" />
+                <GradientStop Color="{StaticResource ColorBlue}" Offset="0.61" />
+                <GradientStop Color="{StaticResource ColorBlue}" Offset="0.89" />
+                <GradientStop Color="White" Offset="0.91" />
+                <GradientStop Color="White" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <TextBox Margin="10, 230, 10, 300" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20" x:Name="Password"></TextBox>
+        <Button Margin="100, 310, 100, 220" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Top" Click="SignInButton">Sign in!</Button>
+    </Grid>
+</Window>

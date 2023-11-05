@@ -1,6 +1,4 @@
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.csproj.AssemblyReference.cache
-C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MainWindow.baml
-C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client_MarkupCompile.cache
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.g.resources
@@ -31,3 +29,26 @@ C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\n
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Commands.baml
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\SrBanned.baml
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\SrDefault.baml
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Main.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Main.baml
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Login.baml
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Login.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.dll.config
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Google.Protobuf.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\MySql.Data.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\System.Text.Json.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\ZstdSharp.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\krbcc64.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.csproj.CopyComplete
