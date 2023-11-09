@@ -13,7 +13,7 @@ namespace LundBot69_Client.Classes.Model
     {
         internal async void Login(string password1)
         {
-			string apiUrl = "https://lunddatabase.magnuslund.com:3420/api/login"; // Replace with your API URL
+			string apiUrl = "https://lundbotapi.magnuslund.com:443/api/login"; // Replace with your API URL
 			string password = "your_password"; // Replace with the password you want to check
 
 			var httpClient = new HttpClient();

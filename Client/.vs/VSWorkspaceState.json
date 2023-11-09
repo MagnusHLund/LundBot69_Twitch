@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\LundBot69 Client"
+    "\\LundBot69 Client",
+    "\\LundBot69 Client\\Classes",
+    "\\LundBot69 Client\\Classes\\Model"
   ],
-  "SelectedNode": "\\LundBot69 Client\\MainWindow.xaml",
+  "SelectedNode": "\\LundBot69 Client\\Classes\\Model\\Database.cs",
   "PreviewInSolutionExplorer": false
 }

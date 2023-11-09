@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: './Bot/.env' });
 const commands = require('./CommandHandler')
 
 const tmi = require('tmi.js')

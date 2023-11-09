@@ -129,3 +129,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 Client/LundBot69 Client/App.config
+API/Database.js
