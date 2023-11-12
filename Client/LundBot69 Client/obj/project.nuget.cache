@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "A8DE4Pv3/SqYj1M9PvJRv4bAVbBwi9bE0G6Gsuzdmtt7YPZatUnYTr4OkgF0tUz52/6pdvKDmwtkUR4igE/Xqg==",
+  "dgSpecHash": "h50VZDRQF4Nwm3azmrpkcWcDLV2BwvV93Awj+doExCMPYQUd82GIZ369l7tbN14JILzUnY/aC3DGIF4d8Tfckg==",
   "success": true,
   "projectFilePath": "C:\\Users\\magnu\\source\\repos\\LundBot69_Twitch\\Client\\LundBot69 Client\\LundBot69 Client.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\magnu\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\magnu\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\magnu\\.nuget\\packages\\mysql.data\\8.2.0\\mysql.data.8.2.0.nupkg.sha512",
+    "C:\\Users\\magnu\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\magnu\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\magnu\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",
     "C:\\Users\\magnu\\.nuget\\packages\\system.diagnostics.diagnosticsource\\7.0.2\\system.diagnostics.diagnosticsource.7.0.2.nupkg.sha512",

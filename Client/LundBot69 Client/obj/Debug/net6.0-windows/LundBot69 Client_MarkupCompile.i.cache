@@ -1,7 +1,7 @@
 ﻿LundBot69 Client
 1.0.0.0
 
-winexe
+exe
 C#
 .cs
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\
@@ -11,10 +11,10 @@ false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\App.xaml
 5-30619880
-5-60229284
-12-1553419705
-202-470361737
+61851260858
+13-1843553669
+20362919517
 Commands.xaml;Login.xaml;Main.xaml;SrBanned.xaml;SrDefault.xaml;
 
-False
+True
 

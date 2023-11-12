@@ -18,11 +18,10 @@ using System.IO;
 
 namespace LundBot69_Client
 {
-	
+
 	public partial class MainWindow : Window
 	{
-		static string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\MagnusLund\LundBot69\");
-		string filePath = path + @"Login.txt";
+		LocalSaves local = new LocalSaves();
 
 		public MainWindow()
 		{
@@ -33,48 +32,54 @@ namespace LundBot69_Client
 
 		private void FileHandling()
 		{
-			// Creates file and directory if file does not exist
-			if (!File.Exists(filePath))
-			{
-				Directory.CreateDirectory(path);
-				File.Create(filePath).Close();
-			}
+			local.CreateSaveFile();
 
-			string password;
+			string inviteCode = local.ReadLogin();
 
-			using (StreamReader sr = new StreamReader(filePath))
+			if (inviteCode.Length > 0)
 			{
-				password = sr.ReadToEnd().Trim();
-			}
-
-			if(password.Length > 0)
-			{
-				Login(password);
+				Login(inviteCode);
 			}
 		}
 
-		private void Login(string password)
+		private async void Login(string inviteCode)
 		{
+			SignIn.IsEnabled = false;
+
 			try
 			{
 				Database database = new Database();
-				LocalSaves local = new LocalSaves();
 
-				database.Login(password);
+				if (await database.Login(inviteCode))
+				{
+					local.SaveLogin(inviteCode);
 
-				local.SaveLogin(password, filePath);
+					Main dashboard = new Main();
+					dashboard.Show();
 
-				Close();
+					Close();
+				}
+				else
+				{
+					DisplayErrorMessage("Invalid login!");
+				}
 			}
-			catch 
+			catch
 			{
-				// Display error as label
+				DisplayErrorMessage("Connection issue!");
 			}
 		}
 
 		private void SignInButton(object sender, RoutedEventArgs e)
 		{
-			Login(Password.Text);
+			Login(InviteCode.Text);
+		}
+
+		private void DisplayErrorMessage(string error)
+		{
+			ErrorMessage.Visibility = Visibility.Visible;
+			ErrorMessage.Text = error;
+			SignIn.IsEnabled = true;
 		}
 	}
 }

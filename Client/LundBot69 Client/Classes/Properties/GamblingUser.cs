@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace LundBot69_Client.Classes.Properties
 {
     public class GamblingUser
     {
-		public string Username { get; set; }
-		public int Points { get; set; }
+		public string twitchUsername { get; set; }
+		public int points { get; set; }
 	}
 }

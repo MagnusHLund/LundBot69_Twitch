@@ -10,6 +10,7 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/bansong.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/banuser.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/lundbot69_icon.ico")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/nextsong.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pause.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/resume.png")]

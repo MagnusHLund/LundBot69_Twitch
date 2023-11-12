@@ -32,8 +32,9 @@
                 <GradientStop Color="White" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
-
-        <TextBox Margin="10, 230, 10, 300" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20" x:Name="Password"></TextBox>
-        <Button Margin="100, 310, 100, 220" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Top" Click="SignInButton">Sign in!</Button>
+        <TextBlock Margin="0, 150, 0, 370" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Write your invite code</TextBlock>
+        <TextBox Margin="10, 230, 10, 300" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20" x:Name="InviteCode"></TextBox>
+        <Button Margin="100, 310, 100, 220" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Top" Click="SignInButton" Name="SignIn">Sign in!</Button>
+        <TextBlock Margin="0, 400, 0, 100" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Name="ErrorMessage" Foreground="Red" Visibility="Hidden"></TextBlock>
     </Grid>
 </Window>

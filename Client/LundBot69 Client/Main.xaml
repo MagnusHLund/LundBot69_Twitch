@@ -45,56 +45,66 @@
             <RowDefinition Height="60"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Button Margin="10" Grid.Row="0" ToolTip="Shows all commands, opens new window">
+        <Button Margin="10" Grid.Row="0" ToolTip="Shows all commands, opens new window" Click="CommandsButton">
             Commands
         </Button>
 
         <Grid Grid.Row="1" Margin="10" Background="Gray">
-            <CheckBox Margin="10">Enable song request</CheckBox>
-            <Button Margin="300,10, 10, 150" ToolTip="Add default songs, opens new window" HorizontalAlignment="Left">Add song</Button>
+            <CheckBox Margin="10,10,227,150" Checked="SongRequestCheck" Name="SongRequestCheckbox">Enable song request</CheckBox>
+            <Button Margin="245,10, 10, 150" ToolTip="Add default songs, opens new window" HorizontalAlignment="Left" Click="DefaultSongsButton">Show defualt songs</Button>
             <Label Content="Song title" Foreground="White" Margin="0,25,0,125" HorizontalAlignment="Center" FontWeight="Bold" />
-            <Slider Margin="75, 60, 75, 100" ></Slider>
-            <Label Content="0:00" Margin="0, 55, 275, 100" HorizontalAlignment="Center"/>
-            <Label Content="0:00" Margin="275, 55, 0, 100" HorizontalAlignment="Center"/>
-            <Button Margin="0, 75, 50, 80" ToolTip="Ban this song" HorizontalAlignment="Center">
+            <Slider Margin="75,55,75,105" ></Slider>
+            <Label Content="0:00" Margin="34,52,0,102" HorizontalAlignment="Left"/>
+            <Label Content="0:00" Margin="312,52,0,102" HorizontalAlignment="Left"/>
+            <Button Margin="0, 75, 50, 80" ToolTip="Ban this song" HorizontalAlignment="Center" Click="BanSongButton">
                 <Image Source="Images/BanSong.png" />
             </Button>
-            <Button Margin="50, 75, 0, 80" ToolTip="next song" HorizontalAlignment="Center">
+            <Button Margin="50, 75, 0, 80" ToolTip="next song" HorizontalAlignment="Center" Click="NextSongButton">
                 <Image Source="Images/NextSong.png" />
             </Button>
-            <Button Margin="0, 75, 0, 80" ToolTip="Pause/Resume song" HorizontalAlignment="Center">
+            <Button Margin="0, 75, 0, 80" ToolTip="Pause/Resume song" HorizontalAlignment="Center" Click="PauseResumeButton">
                 <Image Source="Images/Pause.png" />
+            </Button>
+            <Button Margin="40,132,0, 22" ToolTip="Ban the person that submitted the current song" HorizontalAlignment="Left" Click="BanUserButton">
+                <Image Source="Images/BanUser.png" />
             </Button>
             <Label Margin="0, 110, 0, 0" HorizontalAlignment="Center" FontWeight="Bold">requested by</Label>
             <Label Margin="0, 130, 0, 20" HorizontalAlignment="Center">Username</Label>
-            <Button Margin="300,145,0,10" ToolTip="Unban songs/users, opens new window" HorizontalAlignment="Left">Unban</Button>
+            <Button Margin="300,145,0,10" ToolTip="Unban songs/users, opens new window" HorizontalAlignment="Left" Click="UnbanButton">Unban</Button>
         </Grid>
 
         <Grid Grid.Row="2" Margin="10" Background="Gray">
 
-            <CheckBox Grid.Row="0" Margin="10, 10, 240, 35">Enable gambling</CheckBox>
+            <CheckBox Grid.Row="0" Margin="10,10,240,79" Checked="GamblingCheck" Name="GamblingCheckbox">Enable gambling</CheckBox>
             <Grid Name="GamblingDiv">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBox Margin="10, 30, 100, 10"></TextBox>
-                <Button Margin="270, 30, 10, 10">Search</Button>
+                <TextBox Margin="10, 30, 100, 10" Name="GamblerSearch"></TextBox>
+                <Button Margin="270, 30, 10, 10" Click="SearchButton">Search</Button>
 
-                <ListView Grid.Row="1" Margin="10" Background="Gray" ItemsSource="{Binding Users}">
+                <ListView Grid.Row="1" Margin="10" Background="Gray" ItemsSource="{Binding Users}" Name="test" Loaded="ListView_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Username" Width="230">
+                            <GridViewColumn Header="Username">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Text="{Binding Username}" />
+                                        <TextBox Text="{Binding twitchUsername}" IsReadOnly="True" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Points" Width="104">
+                            <GridViewColumn Header="Points">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Text="{Binding Points}" />
+                                        <TextBox Text="{Binding points}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Buttons">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Apply" Click="ApplyButton" Tag="{Binding}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -104,7 +114,7 @@
             </Grid>
         </Grid>
 
-        <Button Margin="10" Grid.Row="3" ToolTip="Shows all commands, opens new window">
+        <Button Margin="10" Grid.Row="3" ToolTip="Shows all commands, opens new window" Click="DisableBotButton" Name="DisableOrEnableLundBot">
             Disable LundBot69
         </Button>
     </Grid>
