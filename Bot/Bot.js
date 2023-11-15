@@ -3,7 +3,7 @@ const commands = require('./CommandHandler')
 
 const tmi = require('tmi.js')
 
-const channels = ['Magnessdk', 'MrWuus']
+const channels = ['Magnessdk', 'MrWuus', 'TheRealFightingLime1']
 
 console.log("Bot is starting...")
 

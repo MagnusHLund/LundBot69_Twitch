@@ -55,17 +55,17 @@ namespace LundBot69_Client
 		{
 			Settings settings = await database.RetrieveSettings(inviteCode);
 
-			if(settings.botEnabled == 0)
+			if (settings.botEnabled == 0)
 			{
 				DisableOrEnableLundBot.Content = "Enable Lundbot69";
 			}
 
-			if(settings.gamblingEnabled == 1)
+			if (settings.gamblingEnabled == 1)
 			{
 				GamblingCheckbox.IsChecked = true;
 			}
 
-			if(settings.songRequestEnabled == 1)
+			if (settings.songRequestsEnabled == 1)
 			{
 				SongRequestCheckbox.IsChecked = true;
 			}
@@ -133,14 +133,23 @@ namespace LundBot69_Client
 
 		}
 
-		private void DisableBotButton(object sender, RoutedEventArgs e)
+		private void NextSongButton(object sender, RoutedEventArgs e)
 		{
 
 		}
 
-		private void NextSongButton(object sender, RoutedEventArgs e)
+		private void DisableOrEnableLundBotButton(object sender, RoutedEventArgs e)
 		{
+			if (DisableOrEnableLundBot.Content == "Enable Lundbot69")
+			{
+				DisableOrEnableLundBot.Content = "Disable Lundbot69";
+			}
+			else
+			{
+				DisableOrEnableLundBot.Content = "Enable Lundbot69";
+			}
 
+			UpdateSettings(sender, e);
 		}
 
 		private void ApplyButton(object sender, RoutedEventArgs e)
@@ -151,18 +160,28 @@ namespace LundBot69_Client
 				int points = gambler.points;
 
 				database.UpdateGamblingPoints(username, points, inviteCode);
-            }
+			}
 		}
-
-		private void SongRequestCheck(object sender, RoutedEventArgs e)
+		private async void UpdateSettings(object sender, RoutedEventArgs e)
 		{
+			DisableOrEnableLundBot.IsEnabled = false;
+			SongRequestCheckbox.IsEnabled = false;
+			GamblingCheckbox.IsEnabled = false;
 
-		}
+			int botEnabled = DisableOrEnableLundBot.Content == "Enable Lundbot69" ? 0 : 1;
+			int srEnabled = (bool)SongRequestCheckbox.IsChecked ? 1 : 0;
+			int gamblingEnabled = (bool)GamblingCheckbox.IsChecked ? 1 : 0;
 
-		private void GamblingCheck(object sender, RoutedEventArgs e)
-		{
+			if (botEnabled != null && srEnabled != null && gamblingEnabled != null)
+			{
+				await database.UpdateSettings(inviteCode, botEnabled, srEnabled, gamblingEnabled);
+			}
 
+			DisableOrEnableLundBot.IsEnabled = true;
+			SongRequestCheckbox.IsEnabled = true;
+			GamblingCheckbox.IsEnabled = true;
+
+			//GetAllSettings();
 		}
 	}
-
 }

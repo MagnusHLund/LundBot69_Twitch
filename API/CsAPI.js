@@ -361,56 +361,86 @@ router.post('/api/getBannedAccounts', (req, res) => {
 
 router.post('/api/ensureSettings', (req, res) => {
     const { inviteCode } = req.body;
-  
+
     // Get CreatorID based on InviteCode
     const getCreatorIdQuery = 'SELECT CreatorID FROM creators WHERE InviteCode = ? LIMIT 1';
     db.query(getCreatorIdQuery, [inviteCode], (error, results) => {
-      if (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-        return;
-      }
-  
-      if (results.length === 0) {
-        res.status(404).json({ error: 'Creator not found for the given InviteCode' });
-        return;
-      }
-  
-      const creatorID = results[0].CreatorID;
-  
-      // Check if the creator has a row in the settings table
-      const checkSettingsQuery = 'SELECT * FROM settings WHERE CreatorID = ? LIMIT 1';
-      db.query(checkSettingsQuery, [creatorID], (error, settingsResults) => {
         if (error) {
-          console.error(error);
-          res.status(500).json({ error: 'Internal Server Error' });
-          return;
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+            return;
         }
-  
-        if (settingsResults.length === 0) {
-          // If no row exists, create a new row with default values
-          const insertSettingsQuery = 'INSERT INTO settings (CreatorID, BotEnabled, GamblingEnabled, SongRequestsEnabled) VALUES (?, 1, 1, 1)';
-          db.query(insertSettingsQuery, [creatorID], (error) => {
+
+        if (results.length === 0) {
+            res.status(404).json({ error: 'Creator not found for the given InviteCode' });
+            return;
+        }
+
+        const creatorID = results[0].CreatorID;
+
+        // Check if the creator has a row in the settings table
+        const checkSettingsQuery = 'SELECT * FROM settings WHERE CreatorID = ? LIMIT 1';
+        db.query(checkSettingsQuery, [creatorID], (error, settingsResults) => {
             if (error) {
-              console.error(error);
-              res.status(500).json({ error: 'Internal Server Error' });
-              return;
+                console.error(error);
+                res.status(500).json({ error: 'Internal Server Error' });
+                return;
             }
-  
-            // Respond with the default settings
-            res.status(200).json({ BotEnabled: 1, GamblingEnabled: 1, SongRequestsEnabled: 1 });
-          });
-        } else {
-          // If a row exists, respond with the existing settings
-          const existingSettings = {
-            BotEnabled: settingsResults[0].BotEnabled,
-            GamblingEnabled: settingsResults[0].GamblingEnabled,
-            SongRequestsEnabled: settingsResults[0].SongRequestsEnabled,
-          };
-          res.status(200).json(existingSettings);
-        }
-      });
+
+            if (settingsResults.length === 0) {
+                // If no row exists, create a new row with default values
+                const insertSettingsQuery = 'INSERT INTO settings (CreatorID, BotEnabled, GamblingEnabled, SongRequestsEnabled) VALUES (?, 1, 1, 1)';
+                db.query(insertSettingsQuery, [creatorID], (error) => {
+                    if (error) {
+                        console.error(error);
+                        res.status(500).json({ error: 'Internal Server Error' });
+                        return;
+                    }
+
+                    // Respond with the default settings
+                    res.status(200).json({ BotEnabled: 1, GamblingEnabled: 1, SongRequestsEnabled: 1 });
+                });
+            } else {
+                // If a row exists, respond with the existing settings
+                const existingSettings = {
+                    BotEnabled: settingsResults[0].BotEnabled,
+                    GamblingEnabled: settingsResults[0].GamblingEnabled,
+                    SongRequestsEnabled: settingsResults[0].SongRequestsEnabled,
+                };
+                res.status(200).json(existingSettings);
+            }
+        });
     });
-  });
+});
+
+router.post('/api/updateSettings', (req, res) => {
+    const { inviteCode, botEnabled, gamblingEnabled, songRequestsEnabled } = req.body;
+
+    // Get CreatorID from creators table based on InviteCode
+    const getCreatorIDQuery = 'SELECT CreatorID FROM creators WHERE InviteCode = ? LIMIT 1';
+
+    db.query(getCreatorIDQuery, [inviteCode], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else if (results.length === 0) {
+            res.status(404).json({ error: 'Creator not found for the given InviteCode' });
+        } else {
+            const creatorID = results[0].CreatorID;
+
+            // Update the settings table based on CreatorID
+            const updateSettingsQuery = 'UPDATE settings SET BotEnabled = ?, GamblingEnabled = ?, SongRequestsEnabled = ? WHERE CreatorID = ?';
+
+            db.query(updateSettingsQuery, [botEnabled, gamblingEnabled, songRequestsEnabled, creatorID], (error, updateResults) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).json({ error: 'Internal Server Error' });
+                } else {
+                    res.status(200).json({ message: 'Settings updated successfully' });
+                }
+            });
+        }
+    });
+});
 
 module.exports = router;

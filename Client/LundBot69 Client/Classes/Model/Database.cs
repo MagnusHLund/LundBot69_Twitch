@@ -1,5 +1,4 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using LundBot69_Client.Classes.Properties;
+﻿using LundBot69_Client.Classes.Properties;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
@@ -17,8 +16,6 @@ namespace LundBot69_Client.Classes.Model
 {
 	class Database
 	{
-		CancellationTokenSource cts = new CancellationTokenSource();
-
 		LocalSaves local = new LocalSaves();
 
 		internal async Task<bool> Login(string inviteCode)
@@ -27,6 +24,7 @@ namespace LundBot69_Client.Classes.Model
 			{
 				string apiUrl = "https://lundbotapi.magnuslund.com/api/login";
 
+				CancellationTokenSource cts = new CancellationTokenSource();
 				cts.CancelAfter(TimeSpan.FromSeconds(10));
 
 				HttpClient httpClient = new HttpClient();
@@ -58,6 +56,7 @@ namespace LundBot69_Client.Classes.Model
 		{
 			try
 			{
+				CancellationTokenSource cts = new CancellationTokenSource();
 				cts.CancelAfter(TimeSpan.FromSeconds(10));
 
 				HttpClient httpClient = new HttpClient();
@@ -119,6 +118,7 @@ namespace LundBot69_Client.Classes.Model
 			{
 				string apiUrl = "https://lundbotapi.magnuslund.com/api/updateGamblingPoints";
 
+				CancellationTokenSource cts = new CancellationTokenSource();
 				cts.CancelAfter(TimeSpan.FromSeconds(10));
 
 				HttpClient httpClient = new HttpClient();
@@ -152,6 +152,7 @@ namespace LundBot69_Client.Classes.Model
 			{
 				string apiUrl = "https://lundbotapi.magnuslund.com/api/ensureSettings";
 
+				CancellationTokenSource cts = new CancellationTokenSource();
 				cts.CancelAfter(TimeSpan.FromSeconds(10));
 
 				HttpClient httpClient = new HttpClient();
@@ -182,9 +183,39 @@ namespace LundBot69_Client.Classes.Model
 			return new Settings();
 		}
 
-		internal async void UpdateSettings(string inviteCode)
+		internal async Task UpdateSettings(string inviteCode, int botEnabled, int srEnabled, int gamblingEnabled)
 		{
+			try
+			{
+				string apiUrl = "https://lundbotapi.magnuslund.com/api/updateSettings";
 
+				CancellationTokenSource cts = new CancellationTokenSource();
+				cts.CancelAfter(TimeSpan.FromSeconds(10));
+
+				HttpClient httpClient = new HttpClient();
+				StringContent content = new StringContent($"{{\"inviteCode\":\"{inviteCode}\", \"botEnabled\":{botEnabled}, \"songRequestsEnabled\":{srEnabled}, \"gamblingEnabled\":{gamblingEnabled}}}", Encoding.UTF8, "application/json");
+				HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content, cts.Token);
+
+				Console.WriteLine($"{{\"BotEnabled\":{botEnabled}, \"SongRequestsEnabled\":{srEnabled}, \"GamblingEnabled\":{gamblingEnabled}}}");
+
+				if (response.IsSuccessStatusCode)
+				{
+					string responseContent = await response.Content.ReadAsStringAsync();
+					Console.WriteLine($"Response Content: {responseContent}");
+				}
+				else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+				{
+					// Connected by cant update data
+				}
+				else
+				{
+					// Cant connect
+				}
+
+			} catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
 		}
 	}
 }
