@@ -51,27 +51,28 @@
 
         <Grid Grid.Row="1" Margin="10" Background="Gray">
             <CheckBox Margin="10,10,227,150" Checked="UpdateSettings" Unchecked="UpdateSettings" Name="SongRequestCheckbox">Enable song request</CheckBox>
-            <MediaElement x:Name="MusicPlayer" LoadedBehavior="Play" UnloadedBehavior="Stop" />
+            <MediaElement x:Name="MusicPlayer" LoadedBehavior="Play" UnloadedBehavior="Stop" MediaOpened="MusicPlayer_MediaOpened" MediaEnded="MusicPlayer_MediaEnded" />
             <Button Margin="245,10, 10, 150" ToolTip="Add default songs, opens new window" HorizontalAlignment="Left" Click="DefaultSongsButton">Show defualt songs</Button>
-            <Label Content="Song title" Foreground="White" Margin="0,25,0,125" HorizontalAlignment="Center" FontWeight="Bold" />
-            <Slider Margin="75,55,75,105" Name="MusicLengthSlider"></Slider>
+            <Label Content="Song title" Foreground="White" Margin="0,25,0,125" HorizontalAlignment="Center" FontWeight="Bold" Name="songTitle"/>
+            <Slider Margin="75,55,75,105" Name="MusicLengthSlider" IsMoveToPointEnabled="True" ValueChanged="MusicLengthSlider_ValueChanged"></Slider>
             <Label Content="0:00" Margin="34,52,0,102" HorizontalAlignment="Left"/>
-            <Label Content="0:00" Margin="312,52,0,102" HorizontalAlignment="Left"/>
+            <Label Content="0:00" Margin="312,52,0,102" HorizontalAlignment="Left" Name="songLength"/>
             <Button Margin="0, 75, 50, 80" ToolTip="Ban this song" HorizontalAlignment="Center" Click="BanSongButton">
                 <Image Source="Images/BanSong.png" />
             </Button>
             <Button Margin="50, 75, 0, 80" ToolTip="next song" HorizontalAlignment="Center" Click="NextSongButton">
                 <Image Source="Images/NextSong.png" />
             </Button>
-            <Button Margin="0, 75, 0, 80" ToolTip="Pause/Resume song" HorizontalAlignment="Center" Click="PauseResumeButton">
+            <Button Margin="0, 75, 0, 80" ToolTip="Pause/Resume song" HorizontalAlignment="Center" Click="PauseResumeButton" Name="PauseResume">
                 <Image Source="Images/Pause.png" />
             </Button>
-            <Button Margin="40,132,0, 22" ToolTip="Ban the person that submitted the current song" HorizontalAlignment="Left" Click="BanUserButton">
+            <Button Margin="270,145,0,10" ToolTip="Ban the person that submitted the current song" HorizontalAlignment="Left" Click="BanUserButton" Width="25">
                 <Image Source="Images/BanUser.png" />
             </Button>
-            <Slider Name="MusicVolumeSlider"> </Slider>
+            <Label Margin="15, 125, 275, 10" HorizontalAlignment="Center" FontWeight="Bold">Volume</Label>
+            <Slider Name="MusicVolumeSlider" Margin="10,145,270,10" Maximum="100" Minimum="0" IsMoveToPointEnabled="True"></Slider>
             <Label Margin="0, 110, 0, 0" HorizontalAlignment="Center" FontWeight="Bold">requested by</Label>
-            <Label Margin="0, 130, 0, 20" HorizontalAlignment="Center">Username</Label>
+            <Label Margin="0, 130, 0, 20" HorizontalAlignment="Center" Name="SrUsername">Username</Label>
             <Button Margin="300,145,0,10" ToolTip="Unban songs/users, opens new window" HorizontalAlignment="Left" Click="UnbanButton">Unban</Button>
         </Grid>
 

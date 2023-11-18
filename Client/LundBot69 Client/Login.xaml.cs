@@ -48,9 +48,9 @@ namespace LundBot69_Client
 
 			try
 			{
-				Database database = new Database();
+				LoginHandler loginHandler = new LoginHandler();
 
-				if (await database.Login(inviteCode))
+				if (await loginHandler.Login(inviteCode))
 				{
 					local.SaveLogin(inviteCode);
 

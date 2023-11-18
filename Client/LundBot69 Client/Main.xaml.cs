@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using YoutubeExplode;
 
 
 namespace LundBot69_Client
@@ -21,11 +22,13 @@ namespace LundBot69_Client
 
 	public partial class Main : Window
 	{
-		Database database = new Database();
+		GamblingHandler gamblingHandler = new GamblingHandler();
+		SettingsHandler settingsHandler = new SettingsHandler();
 
 		public ObservableCollection<GamblingUser> Users { get; set; }
 
-		static string inviteCode;
+		string inviteCode;
+		bool isPlayingMusic;
 
 		public Main()
 		{
@@ -43,7 +46,7 @@ namespace LundBot69_Client
 
 		private async void GetAllGamblers()
 		{
-			GamblingUser[] gamblingUsers = await database.GambleLeaderboard("", inviteCode);
+			GamblingUser[] gamblingUsers = await gamblingHandler.GambleLeaderboard("", inviteCode);
 			Users.Clear();
 			foreach (GamblingUser user in gamblingUsers)
 			{
@@ -53,7 +56,7 @@ namespace LundBot69_Client
 
 		private async void GetAllSettings()
 		{
-			Settings settings = await database.RetrieveSettings(inviteCode);
+			Settings settings = await settingsHandler.RetrieveSettings(inviteCode);
 
 			if (settings.botEnabled == 0)
 			{
@@ -92,7 +95,7 @@ namespace LundBot69_Client
 		{
 			Users.Clear();
 
-			GamblingUser[] gamblingUsers = await database.GambleLeaderboard(GamblerSearch.Text, inviteCode);
+			GamblingUser[] gamblingUsers = await gamblingHandler.GambleLeaderboard(GamblerSearch.Text, inviteCode);
 
 			foreach (GamblingUser user in gamblingUsers)
 			{
@@ -125,7 +128,61 @@ namespace LundBot69_Client
 
 		private void PauseResumeButton(object sender, RoutedEventArgs e)
 		{
+			if(isPlayingMusic)
+			{
+				MusicPlayer.Pause();
+			} else
+			{
+				MusicPlayer.Play();
+			}
 
+			isPlayingMusic =! isPlayingMusic;
+		}
+
+		private void MusicLengthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			MusicPlayer.Position = TimeSpan.FromSeconds(MusicLengthSlider.Value);
+		}
+
+		private void MusicPlayer_MediaOpened(object sender, RoutedEventArgs e)
+		{
+			MusicLengthSlider.Maximum = MusicPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+			songLength.Content = MusicPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss");
+			songTitle.Content = "Cool song title";
+		}
+
+		private async void MusicPlayer_MediaEnded(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				var video = await YoutubeExplode.Videos.GetAsync(videoUrl);
+
+				// Get the stream manifest for the video
+				var streamManifest = await YoutubeExplode.Videos.Streams.GetManifestAsync(video.Id);
+
+				// Get the highest bitrate audio-only stream
+				var audioStreamInfo = streamManifest.GetAudioOnly().WithHighestBitrate();
+
+				if (audioStreamInfo != null)
+				{
+					// Get the actual stream
+					var stream = await YoutubeExplode.Videos.Streams.GetAsync(audioStreamInfo);
+
+					// Download the audio stream to a file
+					var fileName = $"audio_{video.Id}.{audioStreamInfo.Container}";
+					await YoutubeExplode.Videos.Streams.DownloadAsync(audioStreamInfo, fileName);
+
+					Console.WriteLine($"Audio stream downloaded: {fileName}");
+				}
+				else
+				{
+					Console.WriteLine("No audio-only streams found for this video.");
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error downloading audio stream: {ex.Message}");
+			}
 		}
 
 		private void BanUserButton(object sender, RoutedEventArgs e)
@@ -159,7 +216,7 @@ namespace LundBot69_Client
 				string username = gambler.twitchUsername;
 				int points = gambler.points;
 
-				database.UpdateGamblingPoints(username, points, inviteCode);
+				gamblingHandler.UpdateGamblingPoints(username, points, inviteCode);
 			}
 		}
 		private async void UpdateSettings(object sender, RoutedEventArgs e)
@@ -174,7 +231,7 @@ namespace LundBot69_Client
 
 			if (botEnabled != null && srEnabled != null && gamblingEnabled != null)
 			{
-				await database.UpdateSettings(inviteCode, botEnabled, srEnabled, gamblingEnabled);
+				await settingsHandler.UpdateSettings(inviteCode, botEnabled, srEnabled, gamblingEnabled);
 			}
 
 			DisableOrEnableLundBot.IsEnabled = true;
