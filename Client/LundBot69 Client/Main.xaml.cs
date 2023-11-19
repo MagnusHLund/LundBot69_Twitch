@@ -15,20 +15,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using YoutubeExplode;
+using YoutubeExplode.Videos;
+using YoutubeExplode.Videos.Streams;
 
 
 namespace LundBot69_Client
 {
-
 	public partial class Main : Window
 	{
+		string _inviteCode;
+		bool _isPlayingMusic;
+
+		int _creatorSongCounter;
+		List<string> creatorSongs;
+
 		GamblingHandler gamblingHandler = new GamblingHandler();
 		SettingsHandler settingsHandler = new SettingsHandler();
+		SongRequestHandler SongRequestHandler = new SongRequestHandler();
 
 		public ObservableCollection<GamblingUser> Users { get; set; }
-
-		string inviteCode;
-		bool isPlayingMusic;
 
 		public Main()
 		{
@@ -37,16 +42,18 @@ namespace LundBot69_Client
 			DataContext = this;
 
 			LocalSaves local = new LocalSaves();
-			inviteCode = local.ReadLogin();
+			_inviteCode = local.ReadLogin();
 
 			GetAllSettings();
 
 			GetAllGamblers();
+
+			GetAllCreatorSongs();
 		}
 
 		private async void GetAllGamblers()
 		{
-			GamblingUser[] gamblingUsers = await gamblingHandler.GambleLeaderboard("", inviteCode);
+			GamblingUser[] gamblingUsers = await gamblingHandler.GambleLeaderboard("", _inviteCode);
 			Users.Clear();
 			foreach (GamblingUser user in gamblingUsers)
 			{
@@ -56,7 +63,7 @@ namespace LundBot69_Client
 
 		private async void GetAllSettings()
 		{
-			Settings settings = await settingsHandler.RetrieveSettings(inviteCode);
+			Settings settings = await settingsHandler.RetrieveSettings(_inviteCode);
 
 			if (settings.botEnabled == 0)
 			{
@@ -71,6 +78,16 @@ namespace LundBot69_Client
 			if (settings.songRequestsEnabled == 1)
 			{
 				SongRequestCheckbox.IsChecked = true;
+			}
+		}
+
+		private async void GetAllCreatorSongs()
+		{
+			creatorSongs = await SongRequestHandler.GetCreatorSongs(_inviteCode);
+
+			foreach (var creatorSongs in creatorSongs)
+			{
+				Console.WriteLine(creatorSongs);
 			}
 		}
 
@@ -95,7 +112,7 @@ namespace LundBot69_Client
 		{
 			Users.Clear();
 
-			GamblingUser[] gamblingUsers = await gamblingHandler.GambleLeaderboard(GamblerSearch.Text, inviteCode);
+			GamblingUser[] gamblingUsers = await gamblingHandler.GambleLeaderboard(GamblerSearch.Text, _inviteCode);
 
 			foreach (GamblingUser user in gamblingUsers)
 			{
@@ -128,15 +145,21 @@ namespace LundBot69_Client
 
 		private void PauseResumeButton(object sender, RoutedEventArgs e)
 		{
-			if(isPlayingMusic)
+			if (_isPlayingMusic)
 			{
 				MusicPlayer.Pause();
-			} else
+			}
+			else
 			{
 				MusicPlayer.Play();
+
+				if (MusicPlayer.Source == null)
+				{
+					MusicPlayer_MediaEnded(sender, e);
+				}
 			}
 
-			isPlayingMusic =! isPlayingMusic;
+			_isPlayingMusic = !_isPlayingMusic;
 		}
 
 		private void MusicLengthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -153,35 +176,29 @@ namespace LundBot69_Client
 
 		private async void MusicPlayer_MediaEnded(object sender, RoutedEventArgs e)
 		{
-			try
+			RequestedSong song = await SongRequestHandler.GetSongUrl(_inviteCode);
+
+			if (song.url == null)
 			{
-				var video = await YoutubeExplode.Videos.GetAsync(videoUrl);
-
-				// Get the stream manifest for the video
-				var streamManifest = await YoutubeExplode.Videos.Streams.GetManifestAsync(video.Id);
-
-				// Get the highest bitrate audio-only stream
-				var audioStreamInfo = streamManifest.GetAudioOnly().WithHighestBitrate();
-
-				if (audioStreamInfo != null)
+				if(_creatorSongCounter > creatorSongs.Count)
 				{
-					// Get the actual stream
-					var stream = await YoutubeExplode.Videos.Streams.GetAsync(audioStreamInfo);
-
-					// Download the audio stream to a file
-					var fileName = $"audio_{video.Id}.{audioStreamInfo.Container}";
-					await YoutubeExplode.Videos.Streams.DownloadAsync(audioStreamInfo, fileName);
-
-					Console.WriteLine($"Audio stream downloaded: {fileName}");
+					_creatorSongCounter = 0;
 				}
-				else
-				{
-					Console.WriteLine("No audio-only streams found for this video.");
-				}
+
+				song.url = creatorSongs[_creatorSongCounter];
+				song.username = "Default playlist";
+
+				_creatorSongCounter++;
 			}
-			catch (Exception ex)
+
+			var youtube = new YoutubeClient();
+			var streamManifest = await youtube.Videos.Streams.GetManifestAsync(song.url);
+			var audioStreamInfo = streamManifest.GetAudioStreams().GetWithHighestBitrate();
+
+			if (audioStreamInfo != null)
 			{
-				Console.WriteLine($"Error downloading audio stream: {ex.Message}");
+				MusicPlayer.Source = new Uri(audioStreamInfo.Url);
+				MusicPlayer.Play();
 			}
 		}
 
@@ -216,9 +233,10 @@ namespace LundBot69_Client
 				string username = gambler.twitchUsername;
 				int points = gambler.points;
 
-				gamblingHandler.UpdateGamblingPoints(username, points, inviteCode);
+				gamblingHandler.UpdateGamblingPoints(username, points, _inviteCode);
 			}
 		}
+
 		private async void UpdateSettings(object sender, RoutedEventArgs e)
 		{
 			DisableOrEnableLundBot.IsEnabled = false;
@@ -231,14 +249,12 @@ namespace LundBot69_Client
 
 			if (botEnabled != null && srEnabled != null && gamblingEnabled != null)
 			{
-				await settingsHandler.UpdateSettings(inviteCode, botEnabled, srEnabled, gamblingEnabled);
+				await settingsHandler.UpdateSettings(_inviteCode, botEnabled, srEnabled, gamblingEnabled);
 			}
 
 			DisableOrEnableLundBot.IsEnabled = true;
 			SongRequestCheckbox.IsEnabled = true;
 			GamblingCheckbox.IsEnabled = true;
-
-			//GetAllSettings();
 		}
 	}
 }

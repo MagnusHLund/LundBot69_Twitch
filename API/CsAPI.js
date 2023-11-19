@@ -443,71 +443,73 @@ router.post('/api/updateSettings', (req, res) => {
     });
 });
 
-router.post('api/getRequestedSong', (req, res) => {
+router.post('/api/getRequestedSong', (req, res) => {
     const { inviteCode } = req.body
 
     // Get the creator id, based on the inviteCode 
     const getCreatorIDQuery = 'SELECT CreatorID FROM creators WHERE InviteCode = ? LIMIT 1'
 
-    db.query(getCreatorIDQuery, [inviteCode], (error, results))
-    if (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    } else if (results.length === 0) {
-        res.status(404).json({ error: 'Creator not found for the given InviteCode' });
-    } else {
-        const creatorID = results[0].CreatorID;
+    db.query(getCreatorIDQuery, [inviteCode], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else if (results.length === 0) {
+            res.status(404).json({ error: 'Creator not found for the given InviteCode' });
+        } else {
+            const creatorID = results[0].CreatorID;
 
-        const getRequestedSongQuery = 'SELECT RequestUser, SongLink FROM songrequests WHERE CreatorID = ? LIMIT 1'
+            const getRequestedSongQuery = 'SELECT RequestUser, SongLink FROM songrequests WHERE CreatorID = ? LIMIT 1'
 
-        db.query(getRequestedSongQuery, [creatorID], (error, updateResults) => {
-            if (error) {
-                console.error(error);
-                res.status(500).json({ error: 'Internal Server Error' });
-            } else if (songResults.length === 0) {
-                res.status(404).json({ error: 'No requested song found for this creator' });
-            } else {
-                const requestedSong = {
-                    requestUser: songResults[0].RequestUser,
-                    songLink: songResults[0].SongLink
-                };
-                res.status(200).json({ requestedSong });
-            }
-        })
-    }
+            db.query(getRequestedSongQuery, [creatorID], (error, songResults) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).json({ error: 'Internal Server Error' });
+                } else if (songResults.length === 0) {
+                    res.status(404).json({ error: 'No requested song found for this creator' });
+                } else {
+                    const requestedSong = {
+                        requestUser: songResults[0].RequestUser,
+                        songLink: songResults[0].SongLink
+                    };
+                    res.status(200).json({ requestedSong });
+                }
+            })
+        }
+    })
 })
 
-router.post('api/getCreatorSongs', (req, res) => {
-    const { inviteCode } = req.body
+router.post('/api/getCreatorSongs', (req, res) => {
+    const { inviteCode } = req.body;
 
     // Get the creator id, based on the inviteCode 
     const getCreatorIDQuery = 'SELECT CreatorID FROM creators WHERE InviteCode = ? LIMIT 1'
 
-    db.query(getCreatorIDQuery, [inviteCode], (error, results))
-    if (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    } else if (results.length === 0) {
-        res.status(404).json({ error: 'Creator not found for the given InviteCode' });
-    } else {
-        const creatorID = results[0].CreatorID;
+    db.query(getCreatorIDQuery, [inviteCode], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else if (results.length === 0) {
+            res.status(404).json({ error: 'Creator not found for the given InviteCode' });
+        } else {
+            const creatorID = results[0].CreatorID;
 
-        const getCreatorSongsQuery = 'SELECT SongLink FROM defaultsongs WHERE CreatorID = 1'
+            const getCreatorSongsQuery = 'SELECT SongLink FROM defaultsongs WHERE CreatorID = ?';
 
-        db.query(getCreatorSongsQuery, [creatorID], (error, updateResults) => {
-            if (error) {
-                console.error(error);
-                res.status(500).json({ error: 'Internal Server Error' });
-            } else if (songResults.length === 0) {
-                res.status(404).json({ error: 'No requested song found for this creator' });
-            } else {
-                const creatorSong = {
-                    songLink: songResults[0].SongLink
-                };
-                res.status(200).json({ creatorSong });
-            }
-        })
-    }
+            db.query(getCreatorSongsQuery, [creatorID], (error, songResults) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).json({ error: 'Internal Server Error' });
+                } else if (songResults.length === 0) {
+                    res.status(404).json({ error: 'No default songs found for this creator' });
+                } else {
+                    const creatorSongs = songResults.map(result => result.SongLink);
+                    res.status(200).json({ creatorSongs });
+                }
+            })
+        }
+    })
 })
+
+
 
 module.exports = router;

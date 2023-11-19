@@ -51,7 +51,7 @@
 
         <Grid Grid.Row="1" Margin="10" Background="Gray">
             <CheckBox Margin="10,10,227,150" Checked="UpdateSettings" Unchecked="UpdateSettings" Name="SongRequestCheckbox">Enable song request</CheckBox>
-            <MediaElement x:Name="MusicPlayer" LoadedBehavior="Play" UnloadedBehavior="Stop" MediaOpened="MusicPlayer_MediaOpened" MediaEnded="MusicPlayer_MediaEnded" />
+            <MediaElement x:Name="MusicPlayer" LoadedBehavior="Manual" UnloadedBehavior="Stop" MediaOpened="MusicPlayer_MediaOpened" MediaEnded="MusicPlayer_MediaEnded" />
             <Button Margin="245,10, 10, 150" ToolTip="Add default songs, opens new window" HorizontalAlignment="Left" Click="DefaultSongsButton">Show defualt songs</Button>
             <Label Content="Song title" Foreground="White" Margin="0,25,0,125" HorizontalAlignment="Center" FontWeight="Bold" Name="songTitle"/>
             <Slider Margin="75,55,75,105" Name="MusicLengthSlider" IsMoveToPointEnabled="True" ValueChanged="MusicLengthSlider_ValueChanged"></Slider>

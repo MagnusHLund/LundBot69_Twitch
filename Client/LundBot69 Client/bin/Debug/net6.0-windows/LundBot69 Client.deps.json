@@ -9,10 +9,22 @@
       "LundBot69 Client/1.0.0": {
         "dependencies": {
           "MySql.Data": "8.2.0",
-          "Newtonsoft.Json": "13.0.3"
+          "Newtonsoft.Json": "13.0.3",
+          "YoutubeExplode": "6.3.7"
         },
         "runtime": {
           "LundBot69 Client.dll": {}
+        }
+      },
+      "AngleSharp/1.0.5": {
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/AngleSharp.dll": {
+            "assemblyVersion": "1.0.5.0",
+            "fileVersion": "1.0.5.0"
+          }
         }
       },
       "BouncyCastle.Cryptography/2.2.1": {
@@ -78,7 +90,7 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Runtime.Loader": "4.3.0",
           "System.Security.Permissions": "4.7.0",
-          "System.Text.Encoding.CodePages": "4.4.0",
+          "System.Text.Encoding.CodePages": "6.0.0",
           "System.Text.Json": "7.0.1",
           "System.Threading.Tasks.Extensions": "4.5.4",
           "ZstdSharp.Port": "0.7.1"
@@ -216,9 +228,9 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Text.Encoding.CodePages/4.4.0": {
+      "System.Text.Encoding.CodePages/6.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
       "System.Text.Encodings.Web/7.0.0": {
@@ -265,6 +277,17 @@
           "System.Drawing.Common": "4.7.0"
         }
       },
+      "YoutubeExplode/6.3.7": {
+        "dependencies": {
+          "AngleSharp": "1.0.5"
+        },
+        "runtime": {
+          "lib/net5.0/YoutubeExplode.dll": {
+            "assemblyVersion": "6.3.7.0",
+            "fileVersion": "6.3.7.0"
+          }
+        }
+      },
       "ZstdSharp.Port/0.7.1": {
         "runtime": {
           "lib/net6.0/ZstdSharp.dll": {
@@ -280,6 +303,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AngleSharp/1.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4IeYlrwnbjLloXFigls5JkdfxfkBUp5DKI+8sUl4OUZQ3VKcsVCb99bqlxJOTIuAHy6rT6pfb2Lq87n+Tp3IqQ==",
+      "path": "anglesharp/1.0.5",
+      "hashPath": "anglesharp.1.0.5.nupkg.sha512"
     },
     "BouncyCastle.Cryptography/2.2.1": {
       "type": "package",
@@ -463,12 +493,12 @@
       "path": "system.text.encoding/4.3.0",
       "hashPath": "system.text.encoding.4.3.0.nupkg.sha512"
     },
-    "System.Text.Encoding.CodePages/4.4.0": {
+    "System.Text.Encoding.CodePages/6.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6JX7ZdaceBiLKLkYt8zJcp4xTJd1uYyXXEkPw6mnlUIjh1gZPIVKPtRXPmY5kLf6DwZmf5YLwR3QUrRonl7l0A==",
-      "path": "system.text.encoding.codepages/4.4.0",
-      "hashPath": "system.text.encoding.codepages.4.4.0.nupkg.sha512"
+      "sha512": "sha512-ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
+      "path": "system.text.encoding.codepages/6.0.0",
+      "hashPath": "system.text.encoding.codepages.6.0.0.nupkg.sha512"
     },
     "System.Text.Encodings.Web/7.0.0": {
       "type": "package",
@@ -504,6 +534,13 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "YoutubeExplode/6.3.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MWER4pgMGHdNGDINhafl7PxTnVJUT6bIpwDZIG+OdaMsYtlu30wTgkz496l16aah4R0GoJQLnOhw3ltUfhvsUQ==",
+      "path": "youtubeexplode/6.3.7",
+      "hashPath": "youtubeexplode.6.3.7.nupkg.sha512"
     },
     "ZstdSharp.Port/0.7.1": {
       "type": "package",

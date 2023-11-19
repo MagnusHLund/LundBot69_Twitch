@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,16 +14,15 @@ namespace LundBot69_Client.Classes.Model
 {
     class SongRequestHandler
 	{
-		internal async Task<RequestedSong> GetCreatorSongs(string inviteCode)
+		internal async Task<List<string>> GetCreatorSongs(string inviteCode)
 		{
 			try
 			{
-				string apiUrl = "https://lundbotapi.magnuslund.com/api/getCreatorSong";
+				string apiUrl = "https://lundbotapi.magnuslund.com/api/getCreatorSongs";
 
 				CancellationTokenSource cts = new CancellationTokenSource();
 				cts.CancelAfter(TimeSpan.FromSeconds(10));
 
-				// experimenting with DTOs
 				string json = JsonConvert.SerializeObject(new InviteCodeDto
 				{
 					inviteCode = inviteCode
@@ -36,15 +36,21 @@ namespace LundBot69_Client.Classes.Model
 
 				if (response.IsSuccessStatusCode)
 				{
+					string responseContent = await response.Content.ReadAsStringAsync();
+					var creatorSongsResponse = JsonConvert.DeserializeObject<CreatorSongs>(responseContent);
 
+					if (creatorSongsResponse != null && creatorSongsResponse.creatorSongs != null)
+					{
+						return creatorSongsResponse.creatorSongs;
+					}
 				}
 				else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 				{
-
+					// Handle unauthorized access
 				}
 				else
 				{
-
+					// Handle other errors
 				}
 			}
 			catch (Exception e)
@@ -52,7 +58,7 @@ namespace LundBot69_Client.Classes.Model
 				Console.WriteLine(e);
 			}
 
-			return new RequestedSong();
+			return new List<string>();
 		}
 
 		internal async Task<RequestedSong> GetSongUrl(string inviteCode)
@@ -67,7 +73,7 @@ namespace LundBot69_Client.Classes.Model
 				// experimenting with DTOs
 				string json = JsonConvert.SerializeObject(new InviteCodeDto
 				{
-					inviteCode = inviteCode
+					inviteCode = "gg"
 				});
 
 				HttpClient httpClient = new HttpClient();
@@ -78,7 +84,10 @@ namespace LundBot69_Client.Classes.Model
 
 				if (response.IsSuccessStatusCode)
 				{
+					string responseContent = await response.Content.ReadAsStringAsync();
+					RequestedSong gamblingUsers = JsonConvert.DeserializeObject<RequestedSong>(responseContent);
 
+					return gamblingUsers;
 				}
 				else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 				{

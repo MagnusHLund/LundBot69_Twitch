@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace LundBot69_Client.Classes.Properties
 {
     class CreatorSongs
     {
-		internal string url { get; set; }
+		public List<string> creatorSongs { get; set; }
 	}
 }
