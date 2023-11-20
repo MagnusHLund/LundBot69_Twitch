@@ -63,7 +63,7 @@ namespace LundBot69_Client.Classes.Model
 				StringContent content = new StringContent($"{{\"inviteCode\":\"{inviteCode}\", \"botEnabled\":{botEnabled}, \"songRequestsEnabled\":{srEnabled}, \"gamblingEnabled\":{gamblingEnabled}}}", Encoding.UTF8, "application/json");
 				HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content, cts.Token);
 
-				Console.WriteLine($"{{\"BotEnabled\":{botEnabled}, \"SongRequestsEnabled\":{srEnabled}, \"GamblingEnabled\":{gamblingEnabled}}}");
+				Console.WriteLine($"69{{\"BotEnabled\":{botEnabled}, \"SongRequestsEnabled\":{srEnabled}, \"GamblingEnabled\":{gamblingEnabled}}}");
 
 				if (response.IsSuccessStatusCode)
 				{

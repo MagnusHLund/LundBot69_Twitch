@@ -105,5 +105,45 @@ namespace LundBot69_Client.Classes.Model
 
 			return new RequestedSong();
 		}
+
+		internal async Task BanUser(string inviteCode, string username)
+		{
+
+		}
+
+		internal async Task UnbanUser(string inviteCode, string username)
+		{
+
+		}
+
+		internal async Task BanSong(string inviteCode, string SongUrl)
+		{
+
+		}
+
+		internal async Task UnbanSong(string inviteCode, string SongUrl)
+		{
+
+		}
+
+		internal async Task GetAllBannedUsers(string inviteCode)
+		{
+
+		}
+
+		internal async Task GetAllBannedSongs(string inviteCode)
+		{
+
+		}
+
+		internal async Task AddDefaultSong(string inviteCode)
+		{
+
+		}
+
+		internal async Task RemoveDefaultSong(string inviteCode)
+		{
+
+		}
 	}
 }

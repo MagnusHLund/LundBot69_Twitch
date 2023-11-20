@@ -5,9 +5,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -27,7 +30,11 @@ namespace LundBot69_Client
 		bool _isPlayingMusic;
 
 		int _creatorSongCounter;
-		List<string> creatorSongs;
+		List<string> _creatorSongs;
+
+		bool _isDragging;
+
+		bool _StartupSettings = true;
 
 		GamblingHandler gamblingHandler = new GamblingHandler();
 		SettingsHandler settingsHandler = new SettingsHandler();
@@ -49,6 +56,10 @@ namespace LundBot69_Client
 			GetAllGamblers();
 
 			GetAllCreatorSongs();
+
+			InitializeTimer();
+
+			_StartupSettings = false;
 		}
 
 		private async void GetAllGamblers()
@@ -83,12 +94,14 @@ namespace LundBot69_Client
 
 		private async void GetAllCreatorSongs()
 		{
-			creatorSongs = await SongRequestHandler.GetCreatorSongs(_inviteCode);
+			_creatorSongs = await SongRequestHandler.GetCreatorSongs(_inviteCode);
+		}
 
-			foreach (var creatorSongs in creatorSongs)
-			{
-				Console.WriteLine(creatorSongs);
-			}
+		private void InitializeTimer()
+		{
+			System.Timers.Timer timer = new System.Timers.Timer(1000);
+			timer.Elapsed += MusicTimeCounter;
+			timer.Enabled = true;
 		}
 
 		private void ListView_Loaded(object sender, RoutedEventArgs e)
@@ -104,7 +117,6 @@ namespace LundBot69_Client
 				gridView.Columns[0].Width = totalWidth * 0.5; // Username column
 				gridView.Columns[1].Width = totalWidth * 0.25; // Points column
 				gridView.Columns[2].Width = totalWidth * 0.25; // Apply column
-
 			}
 		}
 
@@ -148,10 +160,12 @@ namespace LundBot69_Client
 			if (_isPlayingMusic)
 			{
 				MusicPlayer.Pause();
+				SetPauseResumeImage("Images/Resume.png");
 			}
 			else
 			{
 				MusicPlayer.Play();
+				SetPauseResumeImage("Images/Pause.png");
 
 				if (MusicPlayer.Source == null)
 				{
@@ -162,16 +176,50 @@ namespace LundBot69_Client
 			_isPlayingMusic = !_isPlayingMusic;
 		}
 
-		private void MusicLengthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		private async void MusicLengthSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			if (!_isDragging)
+			{
+				UpdateMusicPosition();
+			}
+		}
+
+		private void MusicVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			MusicPlayer.Volume = MusicVolumeSlider.Value / 100;
+		}
+
+		private void MusicLengthSlider_DragStarted(object sender, DragStartedEventArgs e)
+		{
+			_isDragging = true;
+		}
+
+		private void MusicLengthSlider_DragCompleted(object sender, DragCompletedEventArgs e)
+		{
+			_isDragging = false;
+			UpdateMusicPosition();
+		}
+
+		private void UpdateMusicPosition()
 		{
 			MusicPlayer.Position = TimeSpan.FromSeconds(MusicLengthSlider.Value);
 		}
 
 		private void MusicPlayer_MediaOpened(object sender, RoutedEventArgs e)
 		{
+			MusicLengthSlider.Value = 0;
 			MusicLengthSlider.Maximum = MusicPlayer.NaturalDuration.TimeSpan.TotalSeconds;
 			songLength.Content = MusicPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss");
-			songTitle.Content = "Cool song title";
+
+			Button[] songButtons = { BanUser, NextSong, BanSong, PauseResume };
+
+			foreach (var button in songButtons)
+			{
+				button.IsEnabled = true;
+			}
+
+			_isPlayingMusic = true;
+			CurrentSongTimestamp.Content = "00:00";
 		}
 
 		private async void MusicPlayer_MediaEnded(object sender, RoutedEventArgs e)
@@ -180,24 +228,27 @@ namespace LundBot69_Client
 
 			if (song.url == null)
 			{
-				if(_creatorSongCounter > creatorSongs.Count)
+				if (_creatorSongCounter >= _creatorSongs.Count)
 				{
 					_creatorSongCounter = 0;
 				}
 
-				song.url = creatorSongs[_creatorSongCounter];
+				song.url = _creatorSongs[_creatorSongCounter];
 				song.username = "Default playlist";
 
 				_creatorSongCounter++;
 			}
 
 			var youtube = new YoutubeClient();
+			var video = await youtube.Videos.GetAsync(song.url);
 			var streamManifest = await youtube.Videos.Streams.GetManifestAsync(song.url);
 			var audioStreamInfo = streamManifest.GetAudioStreams().GetWithHighestBitrate();
 
 			if (audioStreamInfo != null)
 			{
 				MusicPlayer.Source = new Uri(audioStreamInfo.Url);
+				songTitle.Content = video.Title;
+				SrUsername.Content = song.username;
 				MusicPlayer.Play();
 			}
 		}
@@ -209,7 +260,14 @@ namespace LundBot69_Client
 
 		private void NextSongButton(object sender, RoutedEventArgs e)
 		{
+			Button[] songButtons = { BanUser, NextSong, BanSong, PauseResume };
 
+			foreach (var button in songButtons)
+			{
+				button.IsEnabled = false;
+			}
+
+			MusicPlayer_MediaEnded(sender, e);
 		}
 
 		private void DisableOrEnableLundBotButton(object sender, RoutedEventArgs e)
@@ -239,22 +297,60 @@ namespace LundBot69_Client
 
 		private async void UpdateSettings(object sender, RoutedEventArgs e)
 		{
-			DisableOrEnableLundBot.IsEnabled = false;
-			SongRequestCheckbox.IsEnabled = false;
-			GamblingCheckbox.IsEnabled = false;
-
-			int botEnabled = DisableOrEnableLundBot.Content == "Enable Lundbot69" ? 0 : 1;
-			int srEnabled = (bool)SongRequestCheckbox.IsChecked ? 1 : 0;
-			int gamblingEnabled = (bool)GamblingCheckbox.IsChecked ? 1 : 0;
-
-			if (botEnabled != null && srEnabled != null && gamblingEnabled != null)
+			if (_StartupSettings)
 			{
-				await settingsHandler.UpdateSettings(_inviteCode, botEnabled, srEnabled, gamblingEnabled);
-			}
+				DisableOrEnableLundBot.IsEnabled = false;
+				SongRequestCheckbox.IsEnabled = false;
+				GamblingCheckbox.IsEnabled = false;
 
-			DisableOrEnableLundBot.IsEnabled = true;
-			SongRequestCheckbox.IsEnabled = true;
-			GamblingCheckbox.IsEnabled = true;
+				int botEnabled = DisableOrEnableLundBot.Content == "Enable Lundbot69" ? 0 : 1;
+				int srEnabled = (bool)SongRequestCheckbox.IsChecked ? 1 : 0;
+				int gamblingEnabled = (bool)GamblingCheckbox.IsChecked ? 1 : 0;
+
+				if (botEnabled != null && srEnabled != null && gamblingEnabled != null)
+				{
+					await settingsHandler.UpdateSettings(_inviteCode, botEnabled, srEnabled, gamblingEnabled);
+				}
+
+				DisableOrEnableLundBot.IsEnabled = true;
+				SongRequestCheckbox.IsEnabled = true;
+				GamblingCheckbox.IsEnabled = true;
+			}
+		}
+
+		private void MusicTimeCounter(Object source, ElapsedEventArgs e)
+		{
+			Dispatcher.Invoke(() =>
+			{
+
+				if (_isPlayingMusic)
+				{
+					if (!_isDragging)
+					{
+						CurrentSongTimestamp.Content = MusicPlayer.Position.ToString(@"mm\:ss");
+						MusicLengthSlider.Value = MusicPlayer.Position.TotalSeconds;
+
+					}
+
+					SetPauseResumeImage("Images/Pause.png");
+				}
+				else
+				{
+					SetPauseResumeImage("Images/Resume.png");
+				}
+			});
+		}
+
+		private void SetPauseResumeImage(string path)
+		{
+			Dispatcher.Invoke(() =>
+			{
+				BitmapImage pauseResumeBitmap = new BitmapImage();
+				pauseResumeBitmap.BeginInit();
+				pauseResumeBitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+				pauseResumeBitmap.EndInit();
+				PauseResumeImage.Source = pauseResumeBitmap;
+			});
 		}
 	}
 }
