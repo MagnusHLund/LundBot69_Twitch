@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LundBot69_Client"
         mc:Ignorable="d"
-        Title="SrDefault" Height="450" Width="800">
+        Title="SrDefault" Height="600" Width="400">
     <Window.Resources>
         <SolidColorBrush x:Key="MyBlue" Color="#0390fc" />
         <SolidColorBrush x:Key="MyOrange" Color="#eb9834" />
@@ -30,5 +30,45 @@
                 <GradientStop Color="White" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
+
+        <TextBlock HorizontalAlignment="Center">Default songs</TextBlock>
+        <Grid Margin="10, 25, 10, 535">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" Margin="2" Text="Title" />
+            <TextBox Grid.Column="1" Margin="2" Text="Song URL" />
+            <Button Grid.Column="2" Margin="2" Content="Save" />
+        </Grid>
+
+        <ListView Grid.Row="0" Margin="10, 60, 10, 15" Background="Gray" ItemsSource="{Binding Users}" Name="test" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Username">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding twitchUsername}" IsReadOnly="True" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Points">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding points}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Buttons">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Apply" Tag="{Binding}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
