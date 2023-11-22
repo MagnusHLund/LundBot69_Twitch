@@ -86,7 +86,7 @@
                 <TextBox Margin="10, 30, 100, 10" Name="GamblerSearch"></TextBox>
                 <Button Margin="270, 30, 10, 10" Click="SearchButton">Search</Button>
 
-                <ListView Grid.Row="1" Margin="10" Background="Gray" ItemsSource="{Binding Users}" Name="test" Loaded="ListView_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListView Grid.Row="1" Margin="10" Background="Gray" ItemsSource="{Binding Users}" Loaded="ListView_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Username">

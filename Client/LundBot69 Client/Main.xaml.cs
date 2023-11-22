@@ -30,7 +30,7 @@ namespace LundBot69_Client
 		bool _isPlayingMusic;
 
 		int _creatorSongCounter;
-		List<string> _creatorSongs;
+		List<Song> _creatorSongs;
 
 		bool _isDragging;
 
@@ -140,7 +140,7 @@ namespace LundBot69_Client
 
 		private void DefaultSongsButton(object sender, RoutedEventArgs e)
 		{
-			SrDefault defaultSongsWindow = new SrDefault();
+			SrDefault defaultSongsWindow = new SrDefault(_creatorSongs);
 			defaultSongsWindow.Show();
 		}
 
@@ -226,6 +226,8 @@ namespace LundBot69_Client
 		{
 			RequestedSong song = await SongRequestHandler.GetSongUrl(_inviteCode);
 
+			bool defaultPlaylist = false;
+
 			if (song.url == null)
 			{
 				if (_creatorSongCounter >= _creatorSongs.Count)
@@ -233,10 +235,12 @@ namespace LundBot69_Client
 					_creatorSongCounter = 0;
 				}
 
-				song.url = _creatorSongs[_creatorSongCounter];
+				song.url = _creatorSongs[_creatorSongCounter].SongLink;
 				song.username = "Default playlist";
 
 				_creatorSongCounter++;
+
+				defaultPlaylist = true;
 			}
 
 			var youtube = new YoutubeClient();
@@ -247,7 +251,15 @@ namespace LundBot69_Client
 			if (audioStreamInfo != null)
 			{
 				MusicPlayer.Source = new Uri(audioStreamInfo.Url);
-				songTitle.Content = video.Title;
+
+				if (defaultPlaylist)
+				{
+					songTitle.Content = _creatorSongs[_creatorSongCounter-1].SongTitle;
+				} else
+				{
+					songTitle.Content = video.Title;
+				}
+
 				SrUsername.Content = song.username;
 				MusicPlayer.Play();
 			}

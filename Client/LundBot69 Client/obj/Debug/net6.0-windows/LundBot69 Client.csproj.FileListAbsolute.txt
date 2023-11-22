@@ -55,4 +55,3 @@ C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\n
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\AngleSharp.dll
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\YoutubeExplode.dll
-C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs

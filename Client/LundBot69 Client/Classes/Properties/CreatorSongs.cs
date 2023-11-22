@@ -9,6 +9,6 @@ namespace LundBot69_Client.Classes.Properties
 {
     class CreatorSongs
     {
-		public List<string> creatorSongs { get; set; }
+		public List<Song> creatorSongs { get; set; }
 	}
 }

@@ -493,7 +493,7 @@ router.post('/api/getCreatorSongs', (req, res) => {
         } else {
             const creatorID = results[0].CreatorID;
 
-            const getCreatorSongsQuery = 'SELECT SongLink FROM defaultsongs WHERE CreatorID = ?';
+            const getCreatorSongsQuery = 'SELECT SongLink, SongTitle FROM defaultsongs WHERE CreatorID = ?';
 
             db.query(getCreatorSongsQuery, [creatorID], (error, songResults) => {
                 if (error) {
@@ -502,13 +502,18 @@ router.post('/api/getCreatorSongs', (req, res) => {
                 } else if (songResults.length === 0) {
                     res.status(404).json({ error: 'No default songs found for this creator' });
                 } else {
-                    const creatorSongs = songResults.map(result => result.SongLink);
+                    // Map each song result to an object with SongLink and SongTitle properties
+                    const creatorSongs = songResults.map(result => ({
+                        SongLink: result.SongLink,
+                        SongTitle: result.SongTitle
+                    }));
                     res.status(200).json({ creatorSongs });
                 }
-            })
+            });
         }
-    })
-})
+    });
+});
+
 
 
 

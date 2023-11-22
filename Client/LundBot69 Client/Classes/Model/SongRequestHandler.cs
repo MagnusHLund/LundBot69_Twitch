@@ -14,7 +14,7 @@ namespace LundBot69_Client.Classes.Model
 {
     class SongRequestHandler
 	{
-		internal async Task<List<string>> GetCreatorSongs(string inviteCode)
+		internal async Task<List<Song>> GetCreatorSongs(string inviteCode)
 		{
 			try
 			{
@@ -23,13 +23,9 @@ namespace LundBot69_Client.Classes.Model
 				CancellationTokenSource cts = new CancellationTokenSource();
 				cts.CancelAfter(TimeSpan.FromSeconds(10));
 
-				string json = JsonConvert.SerializeObject(new InviteCodeDto
-				{
-					inviteCode = inviteCode
-				});
+				string json = JsonConvert.SerializeObject(new { inviteCode });
 
 				HttpClient httpClient = new HttpClient();
-
 				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
 				HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content, cts.Token);
@@ -58,8 +54,9 @@ namespace LundBot69_Client.Classes.Model
 				Console.WriteLine(e);
 			}
 
-			return new List<string>();
+			return new List<Song>();
 		}
+
 
 		internal async Task<RequestedSong> GetSongUrl(string inviteCode)
 		{

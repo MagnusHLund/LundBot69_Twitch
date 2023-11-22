@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LundBot69_Client"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="SrDefault" Height="600" Width="400">
     <Window.Resources>
         <SolidColorBrush x:Key="MyBlue" Color="#0390fc" />
@@ -31,39 +32,47 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <TextBlock HorizontalAlignment="Center">Default songs</TextBlock>
-        <Grid Margin="10, 25, 10, 535">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <TextBox Grid.Column="0" Margin="2" Text="Title" />
-            <TextBox Grid.Column="1" Margin="2" Text="Song URL" />
-            <Button Grid.Column="2" Margin="2" Content="Save" />
-        </Grid>
+        <Label Grid.Row="0" HorizontalAlignment="Center">Default song request songs</Label>
 
-        <ListView Grid.Row="0" Margin="10, 60, 10, 15" Background="Gray" ItemsSource="{Binding Users}" Name="test" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <TextBox Grid.Row="1" Margin="10,10,305,10" VerticalAlignment="Center"
+                 Text="Song title" Height="20" />
+
+        <TextBox Grid.Row="1" Margin="100,0,73,0" VerticalAlignment="Center" 
+                 Text="Youtube URL" Height="20" />
+        
+        <Button Grid.Row="1" Margin="332,0,10,0" VerticalAlignment="Center"
+                Content="Save" Height="20"/>
+
+        <ListView Grid.Row="2" Margin="10, 10, 10, 10" Background="Gray" ItemsSource="{Binding defaultSongsList}" Loaded="ListView_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Username">
+                    <GridViewColumn Header="Title">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="{Binding twitchUsername}" IsReadOnly="True" />
+                                <TextBox Text="{Binding SongTitle}" IsReadOnly="True" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Points">
+                    <GridViewColumn Header="URL">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="{Binding points}" />
+                                <TextBox Text="{Binding SongLink}" IsReadOnly="True" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Buttons">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Apply" Tag="{Binding}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Apply" Click="ApplyButton_Click" Tag="{Binding}" Margin="0,0,5,0"/>
+                                    <Button Content="Delete" Click="DeleteButton_Click" Tag="{Binding}" />
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
