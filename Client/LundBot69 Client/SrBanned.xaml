@@ -32,12 +32,14 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="295"></RowDefinition>
-            <RowDefinition Height="290"></RowDefinition>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="260"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="260"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock HorizontalAlignment="Center">SR Banned users</TextBlock>
-        <ListView Grid.Row="0" Margin="10" Background="Gray" ItemsSource="{Binding Users}" Name="test" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="ExtraBold">SR Banned users</TextBlock>
+        <ListView Grid.Row="1" Margin="10" Background="Gray" ItemsSource="{Binding Users}" Name="test" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Username">
@@ -65,7 +67,9 @@
             </ListView.View>
         </ListView>
 
-        <ListView Grid.Row="1" Margin="10" Background="Gray" ItemsSource="{Binding Users}" Name="testf" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center" FontWeight="ExtraBold">SR Banned songs</TextBlock>
+        
+        <ListView Grid.Row="3" Margin="10" Background="Gray" ItemsSource="{Binding Users}" Name="testf" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Username">

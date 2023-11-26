@@ -23,7 +23,10 @@ namespace LundBot69_Client.Classes.Model
 				CancellationTokenSource cts = new CancellationTokenSource();
 				cts.CancelAfter(TimeSpan.FromSeconds(10));
 
-				string json = JsonConvert.SerializeObject(new { inviteCode });
+				string json = JsonConvert.SerializeObject(new InviteCodeDto
+				{
+					inviteCode = inviteCode
+				});
 
 				HttpClient httpClient = new HttpClient();
 				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -133,12 +136,48 @@ namespace LundBot69_Client.Classes.Model
 
 		}
 
-		internal async Task AddDefaultSong(string inviteCode)
+		internal async Task AddDefaultSong(string inviteCode, string title, string link)
 		{
+			try
+			{
+				string apiUrl = "https://lundbotapi.magnuslund.com/api/addDefaultSong";
 
+				CancellationTokenSource cts = new CancellationTokenSource();
+				cts.CancelAfter(TimeSpan.FromSeconds(10));
+
+				string json = JsonConvert.SerializeObject(new
+				{
+					inviteCode,
+					title,
+					link
+				});
+
+				HttpClient httpClient = new HttpClient();
+				StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+				HttpResponseMessage response = await httpClient.PostAsync(apiUrl, content, cts.Token);
+
+				if (response.IsSuccessStatusCode)
+				{
+					// Handle success 
+
+				}
+				else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+				{
+					// Handle unauthorized access
+				}
+				else
+				{
+					// Handle other errors
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
 		}
 
-		internal async Task RemoveDefaultSong(string inviteCode)
+		internal async Task RemoveDefaultSong(string inviteCode, string link) // Remember to Limit 1 in query for API
 		{
 
 		}

@@ -514,7 +514,35 @@ router.post('/api/getCreatorSongs', (req, res) => {
     });
 });
 
+router.post('/api/addDefaultSong', (req, res) => {
+    const { inviteCode, songTitle, songLink } = req.body;
 
+    // Get CreatorID from creators table based on InviteCode
+    const getCreatorIDQuery = 'SELECT CreatorID FROM creators WHERE InviteCode = ? LIMIT 1';
+
+    db.query(getCreatorIDQuery, [inviteCode], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else if (results.length === 0) {
+            res.status(404).json({ error: 'Creator not found for the given InviteCode' });
+        } else {
+            const creatorID = results[0].CreatorID;
+
+            // Add a new row to defaultsongs table for the given CreatorID
+            const addDefaultSongQuery = 'INSERT INTO defaultsongs (CreatorID, SongLink, SongTitle) VALUES (?, ?, ?)';
+            
+            db.query(addDefaultSongQuery, [creatorID, songLink, songTitle], (error, addResults) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).json({ error: 'Internal Server Error' });
+                } else {
+                    res.status(200).json({ message: 'Default song added successfully' });
+                }
+            });
+        }
+    });
+});
 
 
 module.exports = router;

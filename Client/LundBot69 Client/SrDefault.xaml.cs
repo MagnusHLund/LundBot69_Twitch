@@ -28,6 +28,8 @@ namespace LundBot69_Client
 
 		public ObservableCollection<Song> defaultSongsList { get; set; }
 
+		SongRequestHandler SongRequestHandler = new SongRequestHandler();
+
 		public SrDefault(List<Song> creatorSongs)
         {
             InitializeComponent();
@@ -46,16 +48,6 @@ namespace LundBot69_Client
 			DataContext = this;
 		}
 
-		private void SearchDefaultSongs()
-		{
-
-		}
-
-		private void AddDefaultSong()
-		{
-
-		}
-
 		private void ListView_Loaded(object sender, RoutedEventArgs e)
 		{
 			ListView listView = (ListView)sender;
@@ -70,6 +62,16 @@ namespace LundBot69_Client
 				gridView.Columns[1].Width = totalWidth * 0.5; // Points column
 				gridView.Columns[2].Width = totalWidth * 0.25; // Apply column
 			}
+		}
+
+		private async void SearchDefaultSongs()
+		{
+		}
+
+		private async void AddDefaultSong(object sender, RoutedEventArgs e)
+		{
+			await SongRequestHandler.AddDefaultSong(_inviteCode, SongTitleInput.Text, SongLinkInput.Text);
+			await SongRequestHandler.GetCreatorSongs(_inviteCode);
 		}
 
 		private void ApplyButton_Click (object sender, RoutedEventArgs e)
