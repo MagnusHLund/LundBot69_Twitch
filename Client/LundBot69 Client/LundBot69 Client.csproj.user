@@ -7,33 +7,45 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Commands.xaml.cs">
+    <Compile Update="MVVM\View\CommandsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Main.xaml.cs">
+    <Compile Update="MVVM\View\GamblingView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SrBanned.xaml.cs">
+    <Compile Update="MVVM\View\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SrDefault.xaml.cs">
+    <Compile Update="MVVM\View\LoginView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\View\SrBansView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MVVM\View\SrView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Commands.xaml">
+    <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Main.xaml">
+    <Page Update="MVVM\View\CommandsView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Login.xaml">
+    <Page Update="MVVM\View\GamblingView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SrBanned.xaml">
+    <Page Update="MVVM\View\HomeView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SrDefault.xaml">
+    <Page Update="MVVM\View\LoginView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\View\SrBansView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\View\SrView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

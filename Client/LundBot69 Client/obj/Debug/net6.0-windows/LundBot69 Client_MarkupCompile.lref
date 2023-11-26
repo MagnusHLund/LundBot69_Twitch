@@ -1,6 +1,8 @@
 ﻿
 
-FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\Commands.xaml;;
-FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\SrBanned.xaml;;
-FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\SrDefault.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\CommandsView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\GamblingView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\HomeView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\SrBansView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\SrView.xaml;;
 
