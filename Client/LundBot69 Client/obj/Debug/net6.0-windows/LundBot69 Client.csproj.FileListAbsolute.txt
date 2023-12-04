@@ -58,3 +58,7 @@ C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\n
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MVVM\View\HomeView.baml
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MVVM\View\SrBansView.baml
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MVVM\View\SrView.baml
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MVVM\View\LoginView.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MVVM\View\LoginView.baml
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.sourcelink.json

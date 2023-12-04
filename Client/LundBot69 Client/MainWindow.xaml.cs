@@ -15,71 +15,102 @@ using System.Windows.Navigation;
 using System.IO;
 using LundBot69_Client.Classes.Model.Database;
 using LundBot69_Client.MVVM.Model.LocalSaves;
+using LundBot69_Client.MVVM.ViewModel;
+using LundBot69_Client.MVVM.Model.Local_saves;
+using System.Windows.Markup;
 
 namespace LundBot69_Client
 {
-
     public partial class MainWindow : Window
 	{
-		LocalInviteCode local = new LocalInviteCode();
-
 		public MainWindow()
 		{
 			InitializeComponent();
 
-			FileHandling();
+			InitLogin();
+			InitUIStartup();
 		}
 
-		private void FileHandling()
+		private void InitLogin()
 		{
-			local.CreateSaveFile();
-
-			string inviteCode = local.ReadLogin();
-
-			if (inviteCode.Length > 0)
-			{
-				Login(inviteCode);
-			}
+			LoginFrame.Navigate(new Uri("MVVM/View/LoginView.xaml", UriKind.Relative));
 		}
 
-		private async void Login(string inviteCode)
+		private void InitUIStartup()
 		{
-			// SignIn.IsEnabled = false;
+			VariableContentFrame.Navigate(new Uri("MVVM/View/HomeView.xaml", UriKind.Relative));
+			HomeButton.IsChecked = true;
+        }
 
-			try
+		private void ChangePageButton(object sender, RoutedEventArgs e)
+		{
+			string source = e.Source.ToString();
+			string clickedView = GetClickedView(source);
+			SetNewView(clickedView);
+			EnsureCorrectViewCheckbox(clickedView);
+
+		}
+
+		private string GetClickedView(string source)
+		{
+			ConstData data = new ConstData();
+
+			foreach (string pageName in data.pageNames)
 			{
-				LoginHandler loginHandler = new LoginHandler();
-
-				if (await loginHandler.Login(inviteCode))
+				if (source.ToLower().Contains(pageName))
 				{
-					local.SaveLogin(inviteCode);
-
-					// Main dashboard = new Main();
-					// dashboard.Show();
-
-					//Close();
-				}
-				else
-				{
-					DisplayErrorMessage("Invalid login!");
+					return pageName;
 				}
 			}
-			catch
+
+			return string.Empty;
+		}
+
+		private void SetNewView(string page)
+		{
+			ConstData data = new ConstData();
+
+			foreach (string uri in data.viewUris)
 			{
-				DisplayErrorMessage("Connection issue!");
+				if (uri.Contains(page))
+				{
+					VariableContentFrame.Navigate(new Uri(uri), UriKind.Relative);
+
+					return;
+				}
 			}
 		}
 
-		private void SignInButton(object sender, RoutedEventArgs e)
+		private void EnsureCorrectViewCheckbox(string page)
 		{
-			Login(InviteCode.Text);
+			DisableViewCheckboxes();
+
+			CheckBox[] viewCheckbox = viewCheckboxes();
+
+			foreach (CheckBox checkbox in viewCheckbox)
+			{
+				if (checkbox.Name.Contains(page))
+				{
+					checkbox.IsChecked = true;
+				}
+			}
+        }
+
+		private void DisableViewCheckboxes()
+		{
+			CheckBox[] viewCheckbox = viewCheckboxes();
+
+			foreach (CheckBox checkbox in viewCheckbox)
+			{
+				checkbox.IsChecked = false;
+			}
 		}
 
-		private void DisplayErrorMessage(string error)
+		private CheckBox[] viewCheckboxes()
 		{
-			ErrorMessage.Visibility = Visibility.Visible;
-			ErrorMessage.Text = error;
-			SignIn.IsEnabled = true;
+			CheckBox[] viewCheckbox = { HomeButton, SRButton, SRBansButton, GamblingButton, CommandsButton };
+
+			return viewCheckbox;
 		}
 	}
 }

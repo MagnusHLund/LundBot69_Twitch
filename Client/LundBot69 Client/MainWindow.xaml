@@ -1,38 +1,16 @@
 ﻿<Window x:Class="LundBot69_Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:View="clr-namespace:LundBot69_Client.MVVM.View" xmlns:ViewModel="clr-namespace:LundBot69_Client.MVVM.ViewModel"
         ResizeMode="CanMinimize"
         Title="LundBot69" Height="600" Width="1000">
 
     <Grid>
-        <Grid x:Name="LoginScreen" Visibility="Hidden">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="White" Offset="0.0" />
-                    <GradientStop Color="White" Offset="0.09" />
-                    <GradientStop Color="#0390fc" Offset="0.11" />
-                    <GradientStop Color="#0390fc" Offset="0.39" />
-                    <GradientStop Color="#eb9834" Offset="0.41" />
-                    <GradientStop Color="#eb9834" Offset="0.59" />
-                    <GradientStop Color="#0390fc" Offset="0.61" />
-                    <GradientStop Color="#0390fc" Offset="0.89" />
-                    <GradientStop Color="White" Offset="0.91" />
-                    <GradientStop Color="White" Offset="1.0" />
-                </LinearGradientBrush>
-            </Grid.Background>
-            <TextBlock Margin="0, 150, 0, 370" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Write your invite code</TextBlock>
-            <TextBox Margin="10, 230, 10, 300" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20" x:Name="InviteCode"></TextBox>
-            <Button Margin="420, 310, 420, 220" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Top" Click="SignInButton" Name="SignIn">Sign in!</Button>
-            <TextBlock Margin="0, 400, 0, 100" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Name="ErrorMessage" Foreground="Red" Visibility="Hidden"></TextBlock>
-
-        </Grid>
-        
-        <Grid Name="PostLoginScreen" Visibility="Visible" Background="Gray">
+        <Grid Name="PostLoginScreen" Background="Gray">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -92,13 +70,21 @@
                     </Style>
                 </Grid.Resources>
 
-                <CheckBox Grid.Row="0" Content="Home"/>
-                <CheckBox Grid.Row="1" Content="Song request"/>
-                <CheckBox Grid.Row="2" Content="SR bans"/>
-                <CheckBox Grid.Row="3" Content="Gambling"/>
-                <CheckBox Grid.Row="4" Content="Commands"/>
+                <CheckBox Grid.Row="0" Content="Home" Name="HomeButton" Click="ChangePageButton"/>
+                <CheckBox Grid.Row="1" Content="Song request" Name="SRButton" Click="ChangePageButton"/>
+                <CheckBox Grid.Row="2" Content="SR bans" Name="SRBansButton"/>
+                <CheckBox Grid.Row="3" Content="Gambling" Name="GamblingButton"/>
+                <CheckBox Grid.Row="4" Content="Commands" Name="CommandsButton"/>
 
             </Grid>
+
+            <Grid Grid.Row="1" Height="514" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="207,0,0,0">
+                <Frame Name="VariableContentFrame" />
+            </Grid>
+        </Grid>
+
+        <Grid>
+            <Frame Name="LoginFrame"/>
         </Grid>
     </Grid>
 </Window>
