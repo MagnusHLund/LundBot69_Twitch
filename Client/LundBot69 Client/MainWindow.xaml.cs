@@ -44,22 +44,23 @@ namespace LundBot69_Client
 
 		private void ChangePageButton(object sender, RoutedEventArgs e)
 		{
-			string source = e.Source.ToString();
-			string clickedView = GetClickedView(source);
-			SetNewView(clickedView);
-			EnsureCorrectViewCheckbox(clickedView);
-
+			if(sender is CheckBox checkbox)
+			{
+				string clickedView = GetClickedView(checkbox.Tag);
+				SetNewView(clickedView);
+				EnsureCorrectViewCheckbox(clickedView);
+			}
 		}
 
-		private string GetClickedView(string source)
+		private string GetClickedView(object tag)
 		{
 			ConstData data = new ConstData();
 
-			foreach (string pageName in data.pageNames)
+			foreach (string pageId in data.pageIdentifiers)
 			{
-				if (source.ToLower().Contains(pageName))
+				if (tag.ToString().Contains(pageId))
 				{
-					return pageName;
+					return pageId;
 				}
 			}
 
@@ -75,8 +76,7 @@ namespace LundBot69_Client
 				if (uri.Contains(page))
 				{
 					VariableContentFrame.Navigate(new Uri(uri), UriKind.Relative);
-
-					return;
+					break;
 				}
 			}
 		}
@@ -84,16 +84,19 @@ namespace LundBot69_Client
 		private void EnsureCorrectViewCheckbox(string page)
 		{
 			DisableViewCheckboxes();
+            Console.WriteLine(page);
 
-			CheckBox[] viewCheckbox = viewCheckboxes();
+            CheckBox[] viewCheckbox = viewCheckboxes();
 
 			foreach (CheckBox checkbox in viewCheckbox)
 			{
-				if (checkbox.Name.Contains(page))
+				if (checkbox.Name.ToLower().Contains(page))
 				{
-					checkbox.IsChecked = true;
+                    checkbox.IsChecked = true;
+					break;
 				}
-			}
+                Console.WriteLine(checkbox);
+            }
         }
 
 		private void DisableViewCheckboxes()

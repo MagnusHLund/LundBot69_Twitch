@@ -70,11 +70,11 @@
                     </Style>
                 </Grid.Resources>
 
-                <CheckBox Grid.Row="0" Content="Home" Name="HomeButton" Click="ChangePageButton"/>
-                <CheckBox Grid.Row="1" Content="Song request" Name="SRButton" Click="ChangePageButton"/>
-                <CheckBox Grid.Row="2" Content="SR bans" Name="SRBansButton"/>
-                <CheckBox Grid.Row="3" Content="Gambling" Name="GamblingButton"/>
-                <CheckBox Grid.Row="4" Content="Commands" Name="CommandsButton"/>
+                <CheckBox Grid.Row="0" Content="Home" Name="HomeButton" Click="ChangePageButton" Tag="home"/>
+                <CheckBox Grid.Row="1" Content="Song request" Name="SRButton" Click="ChangePageButton" Tag="sr"/>
+                <CheckBox Grid.Row="2" Content="SR bans" Name="SRBansButton" Click="ChangePageButton" Tag="srbans"/>
+                <CheckBox Grid.Row="3" Content="Gambling" Name="GamblingButton" Click="ChangePageButton" Tag="gambling"/>
+                <CheckBox Grid.Row="4" Content="Commands" Name="CommandsButton" Click="ChangePageButton" Tag="commands"/>
 
             </Grid>
 

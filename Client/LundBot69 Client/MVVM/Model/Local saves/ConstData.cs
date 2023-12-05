@@ -9,13 +9,13 @@ namespace LundBot69_Client.MVVM.Model.Local_saves
 {
 	internal class ConstData : MainWindow
 	{
-		internal readonly string[] pageNames =
+		internal readonly string[] pageIdentifiers =
 		{
 			"home",
-			"song request",
+			"sr",
 			"srbans",
 			"gambling",
-			"commandsView"
+			"commands"
 		};
 
 		internal readonly string[] viewUris = {
