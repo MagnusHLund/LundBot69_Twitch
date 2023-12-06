@@ -6,36 +6,36 @@
     <RootNamespace>LundBot69_Client</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Images\LundBot69_Icon.ico</ApplicationIcon>
+    <ApplicationIcon>MVVM\View\Images\LundBot69_Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\BanSong.png" />
-    <None Remove="Images\BanUser.png" />
-    <None Remove="Images\LundBot69_Icon.png" />
-    <None Remove="Images\NextSong.png" />
-    <None Remove="Images\Pause.png" />
-    <None Remove="Images\Resume.png" />
+    <None Remove="MVVM\View\Images\BanSong.png" />
+    <None Remove="MVVM\View\Images\BanUser.png" />
+    <None Remove="MVVM\View\Images\LundBot69_Icon.png" />
+    <None Remove="MVVM\View\Images\NextSong.png" />
+    <None Remove="MVVM\View\Images\Pause.png" />
+    <None Remove="MVVM\View\Images\Resume.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\BanSong.png">
+    <Content Include="MVVM\View\Images\BanSong.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\BanUser.png">
+    <Content Include="MVVM\View\Images\BanUser.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\LundBot69_Icon.ico" />
-    <Content Include="Images\LundBot69_Icon.png">
+    <Content Include="MVVM\View\Images\LundBot69_Icon.ico" />
+    <Content Include="MVVM\View\Images\LundBot69_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\NextSong.png">
+    <Content Include="MVVM\View\Images\NextSong.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Pause.png">
+    <Content Include="MVVM\View\Images\Pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Resume.png">
+    <Content Include="MVVM\View\Images\Resume.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

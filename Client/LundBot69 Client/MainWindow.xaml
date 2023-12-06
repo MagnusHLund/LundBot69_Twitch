@@ -71,7 +71,7 @@
                 </Grid.Resources>
 
                 <CheckBox Grid.Row="0" Content="Home" Name="HomeButton" Click="ChangePageButton" Tag="home"/>
-                <CheckBox Grid.Row="1" Content="Song request" Name="SRButton" Click="ChangePageButton" Tag="sr"/>
+                <CheckBox Grid.Row="1" Content="Song request" Name="SRButton" Click="ChangePageButton" Tag="srmain"/>
                 <CheckBox Grid.Row="2" Content="SR bans" Name="SRBansButton" Click="ChangePageButton" Tag="srbans"/>
                 <CheckBox Grid.Row="3" Content="Gambling" Name="GamblingButton" Click="ChangePageButton" Tag="gambling"/>
                 <CheckBox Grid.Row="4" Content="Commands" Name="CommandsButton" Click="ChangePageButton" Tag="commands"/>
@@ -79,12 +79,15 @@
             </Grid>
 
             <Grid Grid.Row="1" Height="514" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="207,0,0,0">
-                <Frame Name="VariableContentFrame" />
+                <Frame Name="VariableContentFrame" NavigationUIVisibility="Hidden"/>
+                
+                <!-- Another frame, so music can play, regardless of the page dispalyed.-->
+                <Frame Name="HomePage"></Frame>
             </Grid>
         </Grid>
 
         <Grid>
-            <Frame Name="LoginFrame"/>
+            <Frame Name="LoginFrame" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

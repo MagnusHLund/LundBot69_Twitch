@@ -38,7 +38,7 @@ namespace LundBot69_Client
 
 		private void InitUIStartup()
 		{
-			VariableContentFrame.Navigate(new Uri("MVVM/View/HomeView.xaml", UriKind.Relative));
+			HomePage.Navigate(new Uri("MVVM/View/HomeView.xaml", UriKind.Relative));
 			HomeButton.IsChecked = true;
         }
 
@@ -46,25 +46,10 @@ namespace LundBot69_Client
 		{
 			if(sender is CheckBox checkbox)
 			{
-				string clickedView = GetClickedView(checkbox.Tag);
-				SetNewView(clickedView);
-				EnsureCorrectViewCheckbox(clickedView);
+				string page = checkbox.Tag as string;
+				SetNewView(page);
+				EnsureCorrectViewCheckbox(page);
 			}
-		}
-
-		private string GetClickedView(object tag)
-		{
-			ConstData data = new ConstData();
-
-			foreach (string pageId in data.pageIdentifiers)
-			{
-				if (tag.ToString().Contains(pageId))
-				{
-					return pageId;
-				}
-			}
-
-			return string.Empty;
 		}
 
 		private void SetNewView(string page)
@@ -73,29 +58,33 @@ namespace LundBot69_Client
 
 			foreach (string uri in data.viewUris)
 			{
-				if (uri.Contains(page))
+				if (uri.ToLower().Contains(page))
 				{
-					VariableContentFrame.Navigate(new Uri(uri), UriKind.Relative);
-					break;
+					VariableContentFrame.Visibility = Visibility.Visible;
+					HomePage.Visibility = Visibility.Hidden;
+
+					VariableContentFrame.Navigate(new Uri(uri, UriKind.Relative));
+					return;
 				}
 			}
+
+			VariableContentFrame.Visibility = Visibility.Hidden;
+			HomePage.Visibility = Visibility.Visible;
 		}
 
 		private void EnsureCorrectViewCheckbox(string page)
 		{
 			DisableViewCheckboxes();
-            Console.WriteLine(page);
 
             CheckBox[] viewCheckbox = viewCheckboxes();
 
 			foreach (CheckBox checkbox in viewCheckbox)
 			{
-				if (checkbox.Name.ToLower().Contains(page))
+				if (checkbox.Tag as string == page)
 				{
                     checkbox.IsChecked = true;
 					break;
 				}
-                Console.WriteLine(checkbox);
             }
         }
 

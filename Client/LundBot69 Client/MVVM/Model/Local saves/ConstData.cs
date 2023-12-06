@@ -12,15 +12,14 @@ namespace LundBot69_Client.MVVM.Model.Local_saves
 		internal readonly string[] pageIdentifiers =
 		{
 			"home",
-			"sr",
+			"srmain",
 			"srbans",
 			"gambling",
 			"commands"
 		};
 
 		internal readonly string[] viewUris = {
-			"MVVM/View/HomeView.xaml",
-			"MVVM/View/SrView.xaml",
+			"MVVM/View/SrMainView.xaml",
 			"MVVM/View/SrBansView.xaml",
 			"MVVM/View/GamblingView.xaml",
 			"MVVM/View/CommandsView.xaml"

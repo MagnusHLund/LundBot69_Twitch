@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\App.xaml
-7-1089680219
-71658053325
-29-1174929174
+7-1810669726
+7-1484120515
+292099696493
 205-1318793549
-MainWindow.xaml;MVVM\View\CommandsView.xaml;MVVM\View\GamblingView.xaml;MVVM\View\HomeView.xaml;MVVM\View\LoginView.xaml;MVVM\View\SrBansView.xaml;MVVM\View\SrView.xaml;
+MainWindow.xaml;MVVM\View\CommandsView.xaml;MVVM\View\GamblingView.xaml;MVVM\View\HomeView.xaml;MVVM\View\LoginView.xaml;MVVM\View\SrBansView.xaml;MVVM\View\SrMainView.xaml;
 
 False
 

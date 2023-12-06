@@ -22,7 +22,7 @@
     <Compile Update="MVVM\View\SrBansView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\View\SrView.xaml.cs">
+    <Compile Update="MVVM\View\SrMainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -45,7 +45,7 @@
     <Page Update="MVVM\View\SrBansView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\View\SrView.xaml">
+    <Page Update="MVVM\View\SrMainView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
