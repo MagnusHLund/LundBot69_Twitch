@@ -45,29 +45,27 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border BorderBrush="Black" BorderThickness="2">
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Border BorderBrush="Black" BorderThickness="2">
-                        <Grid>
-                            <Label HorizontalAlignment="Center" FontWeight="Bold" Margin="0,0,0,92" >Volume settings</Label>
-                            <Label HorizontalAlignment="Center" FontWeight="DemiBold" Margin="0,30,0,68">Music volume</Label>
-                            <Slider Name="MusicVolumeSlider" Maximum="100" Minimum="0" Value="50" IsMoveToPointEnabled="True" ValueChanged="MusicVolumeSlider_ValueChanged" Margin="25,55,25,50"></Slider>
-                            <Label HorizontalAlignment="Center" FontWeight="DemiBold" Margin="0,72,0,26">Sound volume</Label>
-                            <Slider Margin="25,95,24,10"></Slider>
-                        </Grid>
-                    </Border>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border BorderBrush="Black" BorderThickness="2">
+                    <Grid>
+                        <Label HorizontalAlignment="Center" FontWeight="Bold" Margin="0,0,0,92" >Volume settings</Label>
+                        <Label HorizontalAlignment="Center" FontWeight="DemiBold" Margin="0,30,0,68">Music volume</Label>
+                        <Slider Name="MusicVolumeSlider" Maximum="100" Minimum="0" Value="50" IsMoveToPointEnabled="True" ValueChanged="MusicVolumeSlider_ValueChanged" Margin="25,55,25,50"></Slider>
+                        <Label HorizontalAlignment="Center" FontWeight="DemiBold" Margin="0,72,0,26">Sound volume</Label>
+                        <Slider Margin="25,95,24,10"></Slider>
+                    </Grid>
+                </Border>
 
-                    <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1">
-                        <Grid>
-                            <CheckBox Checked="UpdateSettings" Unchecked="UpdateSettings" Name="SongRequestCheckbox">Enable song request</CheckBox>
-                        </Grid>
-                    </Border>
-                </Grid>
-            </Border>
+                <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1">
+                    <Grid>
+                        <CheckBox Checked="UpdateSettings" Unchecked="UpdateSettings" Name="SongRequestCheckbox">Enable song request</CheckBox>
+                    </Grid>
+                </Border>
+            </Grid>
 
             <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1">
                 <Grid Grid.Column="1">
