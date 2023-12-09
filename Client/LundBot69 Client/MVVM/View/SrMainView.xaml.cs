@@ -23,9 +23,21 @@ namespace LundBot69_Client.MVVM.View
 		public SrView()
 		{
 			InitializeComponent();
+			RetrieveRequestedSongs();
+			RetriveDefaultSongs();
 		}
 
-		private void ListView_Loaded(object sender, RoutedEventArgs e)
+		private void RetrieveRequestedSongs()
+		{
+
+		}
+
+		private void RetriveDefaultSongs()
+		{
+
+		}
+
+		private void RequestedSongList_Loaded(object sender, RoutedEventArgs e)
 		{
 			ListView listView = (ListView)sender;
 			GridView gridView = listView.View as GridView;
@@ -34,10 +46,25 @@ namespace LundBot69_Client.MVVM.View
 			{
 				double totalWidth = listView.ActualWidth;
 
-				// Set proportional widths
 				gridView.Columns[0].Width = totalWidth * 0.25; // Username column
-				gridView.Columns[1].Width = totalWidth * 0.5; // Points column
-				gridView.Columns[2].Width = totalWidth * 0.25; // Apply column
+				gridView.Columns[1].Width = totalWidth * 0.5;  // Link column
+				gridView.Columns[2].Width = totalWidth * 0.25; // Buttons column
+			}
+		}
+
+		private void DefaultSongList_Loaded(object sender, RoutedEventArgs e)
+		{
+			ListView listView = (ListView)sender;
+			GridView gridView = listView.View as GridView;
+
+			if (gridView != null)
+			{
+				double totalWidth = listView.ActualWidth;
+
+				gridView.Columns[0].Width = 0;				   // Id column
+				gridView.Columns[1].Width = totalWidth * 0.5;  // Username column
+				gridView.Columns[2].Width = totalWidth * 0.25; // Link column
+				gridView.Columns[3].Width = totalWidth * 0.25; // Buttons column
 			}
 		}
 
@@ -57,6 +84,11 @@ namespace LundBot69_Client.MVVM.View
 		}
 
 		private void RefreshDataButton(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddDefaultSong(object sender, RoutedEventArgs e)
 		{
 
 		}

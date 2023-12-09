@@ -250,7 +250,7 @@ router.post('/api/getDefaultSongs', (req, res) => {
                 const creatorID = results[0].CreatorID;
 
                 // Get defaultSongs based on CreatorID
-                const getDefaultSongsQuery = 'SELECT SongLink FROM defaultSongs WHERE CreatorID = ?';
+                const getDefaultSongsQuery = 'SELECT SongID, SongLink, SongTitle FROM defaultSongs WHERE CreatorID = ?';
                 db.query(getDefaultSongsQuery, [creatorID], (error, songsResults) => {
                     if (error) {
                         console.error(error);
