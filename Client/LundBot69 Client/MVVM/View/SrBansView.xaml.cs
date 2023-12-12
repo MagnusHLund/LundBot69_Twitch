@@ -24,5 +24,45 @@ namespace LundBot69_Client.MVVM.View
 		{
 			InitializeComponent();
 		}
+
+		private void BanUser(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void BanSong(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void UserSearch(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void SearchSong(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void BannedUsersList_Loaded(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void BannedSongsList_Loaded(object sender, RoutedEventArgs e) 
+		{
+
+		}
+
+		private void UnbanSong(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void UnbanUser(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

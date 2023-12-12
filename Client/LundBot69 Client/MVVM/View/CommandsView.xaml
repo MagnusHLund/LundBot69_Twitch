@@ -6,7 +6,41 @@
              xmlns:local="clr-namespace:LundBot69_Client.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="514" d:DesignWidth="793">
-    <Grid>
-            
+
+    <Grid Background="Gray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border BorderBrush="Black" BorderThickness="2">
+            <Grid>
+                <Label Content="Commands" FontSize="20" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10"/>
+            </Grid>
+        </Border>
+
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="1">
+            <Grid>
+                <Label Content="Create command" FontSize="20" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10" Name="CreateEditCommand"/>
+
+                <Label Content="Permissions to use" FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,60,0,00"/>
+                <ComboBox Name="PermissionsDropdown" Height="25" Margin="130,100,130,385">
+                    <ComboBoxItem>Streamer</ComboBoxItem>
+                    <ComboBoxItem>Tester</ComboBoxItem>
+                    <ComboBoxItem>Moderators</ComboBoxItem>
+                    <ComboBoxItem>Subscriber</ComboBoxItem>
+                    <ComboBoxItem>VIPs</ComboBoxItem>
+                    <ComboBoxItem>Follower</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">Everyone</ComboBoxItem>
+                </ComboBox>
+                <Label Content="Permissions are ranked, top to bottom." FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,125,0,346"/>
+
+                <Grid Name="EditCommandGrid" Visibility="Hidden">
+                    <Button Height="40" Width="150" Content="Apply changes" Click="ApplySettingsButton"/>
+                    <Button Height="40" Width="150" Content="Discard changes" Click="DiscardChangesButton"/>
+                </Grid>
+            </Grid>
+        </Border>
+
     </Grid>
 </UserControl>

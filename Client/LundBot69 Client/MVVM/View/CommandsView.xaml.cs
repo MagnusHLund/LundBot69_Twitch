@@ -24,5 +24,15 @@ namespace LundBot69_Client.MVVM.View
 		{
 			InitializeComponent();
 		}
+
+		private void DiscardChangesButton(object sender, RoutedEventArgs e)
+		{
+			
+		}
+
+		private void ApplySettingsButton(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

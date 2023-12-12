@@ -24,5 +24,30 @@ namespace LundBot69_Client.MVVM.View
 		{
 			InitializeComponent();
 		}
+
+		private void GamblingPointsList_Loaded(object sender, RoutedEventArgs e)
+		{
+			ListView listView = (ListView)sender;
+			GridView gridView = listView.View as GridView;
+
+			if (gridView != null)
+			{
+				double totalWidth = listView.ActualWidth;
+
+				gridView.Columns[0].Width = totalWidth * 0.40; // Username column
+				gridView.Columns[1].Width = totalWidth * 0.35;  // Points column
+				gridView.Columns[2].Width = totalWidth * 0.25; // Buttons column
+			}
+		}
+
+		private void ApplyGamblingChangesButton(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void SearchLeaderboardButton(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
