@@ -13,41 +13,68 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border BorderBrush="Black" BorderThickness="2">
-            <Grid>
-                <TextBox Margin="40,60,120,430" Name="GamblerSearch"></TextBox>
-                <Button Margin="278,60,40,430" Click="SearchLeaderboardButton">Search</Button>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <Label Content="Gambling leaderboard" HorizontalAlignment="Center" Margin="10" FontWeight="ExtraBold" FontSize="20px"/>
-                <ListView Margin="10,100,10,10" Background="Gray" ItemsSource="{Binding Users}" Loaded="GamblingPointsList_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Username">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBox Text="{Binding twitchUsername}" IsReadOnly="True" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Points">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBox Text="{Binding points}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Buttons">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Apply" Click="ApplyGamblingChangesButton" Tag="{Binding}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </Grid>
-        </Border>
+            <Border BorderBrush="Black" BorderThickness="2">
+                <Grid>
+                    <TextBox Margin="40,60,120,430" Name="GamblerSearch"></TextBox>
+                    <Button Margin="278,60,40,430" Click="SearchLeaderboardButton">Search</Button>
+
+                    <Label Content="Gambling leaderboard" HorizontalAlignment="Center" Margin="10" FontWeight="ExtraBold" FontSize="20px"/>
+                    <ListView Margin="10,50,10,10" Background="Gray" ItemsSource="{Binding Users}" Loaded="GamblingPointsList_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Username">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding twitchUsername}" IsReadOnly="True" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Points">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox Text="{Binding points}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Buttons">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Apply" Click="ApplyGamblingChangesButton" Tag="{Binding}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+
+            <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1">
+                <Grid>
+                    <Label Content="Multipliers" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10"/>
+
+                    <Label Content="When" FontWeight="DemiBold" Margin="104,56,194,79" RenderTransformOrigin="0.884,1.894"/>
+                    <Label Content="they get" FontWeight="DemiBold" Margin="86,90,204,49"/>
+                    <Label Content="x" FontWeight="DemiBold" Margin="238,90,98,49"/>
+
+                    <ComboBox Name="MultiplierDropdown" Height="25" Margin="146,59,146,83">
+                        <ComboBoxItem IsSelected="True">Following</ComboBoxItem>
+                        <ComboBoxItem>Subscribing</ComboBoxItem>
+                        <ComboBoxItem>Being VIP</ComboBoxItem>
+                        <ComboBoxItem>Being moderator</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBox Text="Points" Width="100" Height="20" Margin="146,94,146,53" TextChanged="PointsMultiplierTextChanged"/>
+                    <Button Content="Apply" Width="100" Margin="146,122,146,21"/>
+                </Grid>
+            </Border>
+        </Grid>
 
         <Grid Grid.Column="1">
 
@@ -71,19 +98,31 @@
 
             <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1">
                 <Grid>
-                    <Label Content="Add points" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10" />
-                    <TextBox Text="Username" Height="20" Name="AddPointsUsername" Margin="36,86,212,61"/>
-                    <TextBox Text="Points" Height="20" Name="AddPointsValue" Margin="186,86,86,61"/>
-                    <Button Content="Add" Height="20" Margin="312,86,36,61"/>
+                    <Label Content="Add/subtract points" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10" />
+                    <TextBox Text="Username" Height="20" Name="AddPointsUsername" Margin="122,64,122,83"/>
+                    <TextBox Text="Points" Height="20" Name="AddPointsValue" Margin="122,96,122,51"/>
+                    <Button Content="Add" Height="20" Margin="122,127,202,20"/>
+                    <Button Content="Subtract" Height="20" Margin="201,127,122,20"/>
                 </Grid>
             </Border>
 
             <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2">
                 <Grid>
-                    <Label Content="Subtract points" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10" />
-                    <TextBox Text="Username" Height="20" Name="SubtractPointsUsername" Margin="36,86,212,61"/>
-                    <TextBox Text="Points" Height="20" Name="SubtractPointsValue" Margin="186,86,86,61"/>
-                    <Button Content="Add" Height="20" Margin="312,86,36,61"/>
+                    <Label Content="Earning points" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10" />
+
+                    <Label Content="When" FontWeight="DemiBold" Margin="104,56,194,79" RenderTransformOrigin="0.884,1.894"/>
+                    <Label Content="they get" FontWeight="DemiBold" Margin="86,90,204,49"/>
+                    <Label Content="Points" FontWeight="DemiBold" Margin="238,90,98,49"/>
+
+                    <ComboBox Name="EarningPointsDropdown" Height="25" Margin="146,59,146,83">
+                        <ComboBoxItem IsSelected="True">Following</ComboBoxItem>
+                        <ComboBoxItem>Subscribing</ComboBoxItem>
+                        <ComboBoxItem>Raiding</ComboBoxItem>
+                        <ComboBoxItem>Chatting</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBox Text="Points" Width="100" Height="20" Margin="146,94,146,53"/>
+                    <Button Content="Apply" Width="100" Margin="146,122,146,21"/>
                 </Grid>
             </Border>
         </Grid>

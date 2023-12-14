@@ -49,5 +49,30 @@ namespace LundBot69_Client.MVVM.View
 		{
 
 		}
+
+		private void PointsMultiplierTextChanged(object sender, RoutedEventArgs e)
+		{ 
+			// This probably works, but testing is required.
+			// Cant test because the textbox got invalid text in it, according to my Regex.
+			// Program crashes, in current state.
+
+			/*
+			string pointsMultiplierText = (sender as TextBox).Text;
+
+			if (!System.Text.RegularExpressions.Regex.IsMatch(pointsMultiplierText, @"^[0-9.]{0,5}$"))
+			{
+				byte textLength = (byte)pointsMultiplierText.Length;
+				string validStringInput = pointsMultiplierText.Remove(textLength-1);
+
+				(sender as TextBox).Text = validStringInput;
+
+				(sender as TextBox).SelectionStart = validStringInput.Length;
+			}
+
+			if(pointsMultiplierText.Length > 2 && !pointsMultiplierText.Contains("."))
+			{
+				(sender as TextBox).Text = pointsMultiplierText + ".";
+			} */
+		}
 	}
 }
