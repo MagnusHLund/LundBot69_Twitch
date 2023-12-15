@@ -54,7 +54,7 @@ namespace LundBot69_Client
 
 		private void SetNewView(string page)
 		{
-			ConstData data = new ConstData();
+			PageData data = new PageData();
 
 			foreach (string uri in data.viewUris)
 			{

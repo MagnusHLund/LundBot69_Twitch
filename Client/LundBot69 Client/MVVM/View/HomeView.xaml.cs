@@ -39,8 +39,10 @@ namespace LundBot69_Client.MVVM.View
 
 		bool _StartupSettings = true;
 
-		SettingsHandler settingsHandler = new SettingsHandler();
-		SongRequestHandler SongRequestHandler = new SongRequestHandler();
+		SettingsHandler _settingsHandler = new SettingsHandler();
+		SongRequestHandler _SongRequestHandler = new SongRequestHandler();
+
+		Settings _settings;
 
 		public HomeView()
 		{
@@ -48,6 +50,8 @@ namespace LundBot69_Client.MVVM.View
 
 			LocalInviteCode local = new LocalInviteCode();
 			_inviteCode = local.ReadLogin();
+
+			GetAllSettings();
 
 			GetAllCreatorSongs();
 
@@ -58,27 +62,23 @@ namespace LundBot69_Client.MVVM.View
 
 		private async void GetAllCreatorSongs()
 		{
-			_creatorSongs = await SongRequestHandler.GetCreatorSongs(_inviteCode);
+			_creatorSongs = await _SongRequestHandler.GetCreatorSongs(_inviteCode);
 		}
 
-		private async void GetAllSettings()
-		{ /*
-			Settings settings = await settingsHandler.RetrieveSettings(_inviteCode);
+		private async Task GetAllSettings()
+		{
+			_settings = await _settingsHandler.RetrieveSettings(_inviteCode);
 
-			if (settings.botEnabled == 0)
+			Button[] disableEnableButtons = DisableEnableButtons();
+
+			byte[] settingsArray = DisableEnableButtonProperties();
+
+			string[] buttonText = DisableEnableButtonText();
+
+			for (int i = 0; i < disableEnableButtons.Length; i++)
 			{
-				DisableOrEnableLundBot.Content = "Enable Lundbot69";
+				disableEnableButtons[i].Content = settingsArray[i] == 0 ? $"Enable {buttonText[i]}" : $"Disable {buttonText[i]}";
 			}
-
-			if (settings.gamblingEnabled == 1)
-			{
-				GamblingCheckbox.IsChecked = true;
-			}
-
-			if (settings.songRequestsEnabled == 1)
-			{
-				SongRequestCheckbox.IsChecked = true;
-			} */
 		}
 
 		private void InitializeTimer()
@@ -174,7 +174,7 @@ namespace LundBot69_Client.MVVM.View
 
 		private async void MusicPlayer_MediaEnded(object sender, RoutedEventArgs e)
 		{
-			RequestedSong song = await SongRequestHandler.GetSongUrl(_inviteCode);
+			RequestedSong song = await _SongRequestHandler.GetSongUrl(_inviteCode);
 
 			bool defaultPlaylist = false;
 
@@ -233,41 +233,51 @@ namespace LundBot69_Client.MVVM.View
 			MusicPlayer_MediaEnded(sender, e);
 		}
 
-		private void DisableOrEnableLundBotButton(object sender, RoutedEventArgs e)
-		{ /*
-			if (DisableOrEnableLundBot.Content == "Enable Lundbot69")
+		private void DisableOrEnableSettingsButton(object sender, RoutedEventArgs e)
+		{
+			Button disableEnableButtons = (sender as Button);
+			string[] buttonText = DisableEnableButtonText();
+			for (int i = 0; i < buttonText.Length; i++)
 			{
-				DisableOrEnableLundBot.Content = "Disable Lundbot69";
+				string content = disableEnableButtons.Content.ToString();
+				bool containsEnable = content.Contains("Enable");
+
+				if (content.Contains(buttonText[i]))
+				{
+					disableEnableButtons.Content = containsEnable ? $"Disable {buttonText[i]}" : $"Enable {buttonText[i]}";
+				}
 			}
-			else
-			{
-				DisableOrEnableLundBot.Content = "Enable Lundbot69";
-			}
-			*/
+
 			UpdateSettings(sender, e);
 		}
 
 		private async void UpdateSettings(object sender, RoutedEventArgs e)
-		{ /*
-			if (_StartupSettings)
+		{
+			if (!_StartupSettings)
 			{
-				DisableOrEnableLundBot.IsEnabled = false;
-				SongRequestCheckbox.IsEnabled = false;
-				GamblingCheckbox.IsEnabled = false;
+				Button[] disableEnableButtons = DisableEnableButtons();
 
-				int botEnabled = DisableOrEnableLundBot.Content == "Enable Lundbot69" ? 0 : 1;
-				int srEnabled = (bool)SongRequestCheckbox.IsChecked ? 1 : 0;
-				int gamblingEnabled = (bool)GamblingCheckbox.IsChecked ? 1 : 0;
-
-				if (botEnabled != null && srEnabled != null && gamblingEnabled != null)
+				foreach (Button button in disableEnableButtons)
 				{
-					await settingsHandler.UpdateSettings(_inviteCode, botEnabled, srEnabled, gamblingEnabled);
+					button.IsEnabled = false;
 				}
 
-				DisableOrEnableLundBot.IsEnabled = true;
-				SongRequestCheckbox.IsEnabled = true;
-				GamblingCheckbox.IsEnabled = true;
-			} */
+				int[] settingValues = new int[3];
+
+				for (int i = 0; i < disableEnableButtons.Length; i++)
+				{
+					string content = disableEnableButtons[i].Content.ToString();
+					bool containsEnable = content.Contains("Enable");
+					settingValues[i] = containsEnable ? 0 : 1;
+				}
+
+				await _settingsHandler.UpdateSettings(_inviteCode, settingValues[0], settingValues[1], settingValues[2]);
+
+				foreach (Button button in disableEnableButtons)
+				{
+					button.IsEnabled = true;
+				}
+			}
 		}
 
 		private void MusicTimeCounter(Object source, ElapsedEventArgs e)
@@ -303,6 +313,21 @@ namespace LundBot69_Client.MVVM.View
 				pauseResumeBitmap.EndInit();
 				PauseResumeImage.Source = pauseResumeBitmap;
 			});
+		}
+
+		private Button[] DisableEnableButtons()
+		{
+			return new Button[] { disableEnableLundBot, disableEnableSongRequest, disableEnableGambling }; ;
+		}
+
+		private string[] DisableEnableButtonText()
+		{
+			return new string[] { "LundBot", "song requets", "gambling" };
+		}
+
+		private byte[] DisableEnableButtonProperties()
+		{
+			return new byte[] { _settings.botEnabled, _settings.songRequestsEnabled, _settings.gamblingEnabled };
 		}
 	}
 }

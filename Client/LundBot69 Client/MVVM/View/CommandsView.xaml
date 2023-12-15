@@ -17,27 +17,37 @@
             <Grid>
                 <Label Content="Commands" FontSize="20" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10"/>
 
-                <ListView Margin="10 50 10 10" Background="Gray" ItemsSource="{Binding Users}" Loaded="ListView_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListView Margin="10 50 10 10" Background="Gray" ItemsSource="{Binding CommandsList}" Loaded="CommandsList_Loaded" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Username">
+                            <GridViewColumn Header="Command">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Text="{Binding twitchUsername}" IsReadOnly="True" />
+                                        <TextBox Text="{Binding CommandName}" IsReadOnly="True" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Points">
+                            <GridViewColumn Header="Permissions">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Text="{Binding points}" />
+                                        <TextBox Text="{Binding CommandPermissions}" IsReadOnly="True" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Cost">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding CommandCost}" IsReadOnly="True" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Buttons">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="Apply" Click="ApplyButton" Tag="{Binding}"/>
+                                        <Grid>
+                                            <Button Content="Edit" Click="EditButton" Tag="{Binding}"/>
+                                            <Button Content="Delete" Click="DeleteButton" Tag="{Binding}"/>
+                                        </Grid>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -90,7 +100,7 @@
                 <TextBox Text="General Kenobi" Margin="46,398,46,87" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                 <Grid Name="EditCommandGrid" Margin="0,438,0,19">
-                    <Button Height="25" Content="Apply changes" Click="ApplySettingsButton" Margin="20,14,200,14" />
+                    <Button Height="25" Content="Apply changes" Click="ApplyChangesButton" Margin="20,14,200,14" />
                     <Button Height="25" Content="Discard changes" Click="DiscardChangesButton" Margin="200,14,20,14" />
                 </Grid>
             </Grid>

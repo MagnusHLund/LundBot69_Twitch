@@ -57,21 +57,13 @@
 
             <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1">
                 <Grid>
-                    <Label Content="Multipliers" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10"/>
-
-                    <Label Content="When" FontWeight="DemiBold" Margin="104,56,194,79" RenderTransformOrigin="0.884,1.894"/>
-                    <Label Content="they get" FontWeight="DemiBold" Margin="86,90,204,49"/>
-                    <Label Content="x" FontWeight="DemiBold" Margin="238,90,98,49"/>
-
-                    <ComboBox Name="MultiplierDropdown" Height="25" Margin="146,59,146,83">
-                        <ComboBoxItem IsSelected="True">Following</ComboBoxItem>
-                        <ComboBoxItem>Subscribing</ComboBoxItem>
-                        <ComboBoxItem>Being VIP</ComboBoxItem>
-                        <ComboBoxItem>Being moderator</ComboBoxItem>
-                    </ComboBox>
-
-                    <TextBox Text="Points" Width="100" Height="20" Margin="146,94,146,53" TextChanged="PointsMultiplierTextChanged"/>
-                    <Button Content="Apply" Width="100" Margin="146,122,146,21"/>
+                    <Label Content="Wipe all points!" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10 10 10 110" />
+                    <Border BorderBrush="Black" BorderThickness="2" Height="75" Width="300">
+                        <Grid Background="White">
+                            <Label Content="This can NOT be undone." HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 0 40"/>
+                            <Button Content="Wipe points!" Height="20" Width="175"/>
+                        </Grid>
+                    </Border>
                 </Grid>
             </Border>
         </Grid>
@@ -86,18 +78,6 @@
 
             <Border BorderBrush="Black" BorderThickness="2">
                 <Grid>
-                    <Label Content="Wipe all points!" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10 10 10 110" />
-                    <Border BorderBrush="Black" BorderThickness="2" Height="75" Width="300">
-                        <Grid Background="White">
-                            <Label Content="This can NOT be undone." HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 0 40"/>
-                            <Button Content="Wipe points!" Height="20" Width="175"/>
-                        </Grid>
-                    </Border>
-                </Grid>
-            </Border>
-
-            <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1">
-                <Grid>
                     <Label Content="Add/subtract points" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10" />
                     <TextBox Text="Username" Height="20" Name="AddPointsUsername" Margin="122,64,122,83"/>
                     <TextBox Text="Points" Height="20" Name="AddPointsValue" Margin="122,96,122,51"/>
@@ -106,7 +86,7 @@
                 </Grid>
             </Border>
 
-            <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2">
+            <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1">
                 <Grid>
                     <Label Content="Earning points" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10" />
 
@@ -122,6 +102,26 @@
                     </ComboBox>
 
                     <TextBox Text="Points" Width="100" Height="20" Margin="146,94,146,53"/>
+                    <Button Content="Apply" Width="100" Margin="146,122,146,21"/>
+                </Grid>
+            </Border>
+
+            <Border BorderBrush="Black" BorderThickness="2" Grid.Row="2">
+                <Grid>
+                    <Label Content="Multipliers" FontSize="20px" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="10"/>
+
+                    <Label Content="When" FontWeight="DemiBold" Margin="104,56,194,79" RenderTransformOrigin="0.884,1.894"/>
+                    <Label Content="they get" FontWeight="DemiBold" Margin="86,90,204,49"/>
+                    <Label Content="x" FontWeight="DemiBold" Margin="238,90,98,49"/>
+
+                    <ComboBox Name="MultiplierDropdown" Height="25" Margin="146,59,146,83">
+                        <ComboBoxItem IsSelected="True">Following</ComboBoxItem>
+                        <ComboBoxItem>Subscribing</ComboBoxItem>
+                        <ComboBoxItem>Being VIP</ComboBoxItem>
+                        <ComboBoxItem>Being moderator</ComboBoxItem>
+                    </ComboBox>
+
+                    <TextBox Text="Points" Width="100" Height="20" Margin="146,94,146,53" TextChanged="PointsMultiplierTextChanged"/>
                     <Button Content="Apply" Width="100" Margin="146,122,146,21"/>
                 </Grid>
             </Border>
