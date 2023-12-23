@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\
 LundBot69_Client
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\App.xaml
-7-1810669726
-7-1484120515
-31306103772
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\App.xaml
+7-23265961
+71352845949
+24-105640544
 205-1318793549
-MainWindow.xaml;MVVM\View\CommandsView.xaml;MVVM\View\GamblingView.xaml;MVVM\View\HomeView.xaml;MVVM\View\LoginView.xaml;MVVM\View\SrBansView.xaml;MVVM\View\SrMainView.xaml;
+MainWindow.xaml;Views\CommandsView.xaml;Views\GamblingView.xaml;Views\HomeView.xaml;Views\LoginView.xaml;Views\SrBansView.xaml;Views\SrMainView.xaml;
 
 False
 

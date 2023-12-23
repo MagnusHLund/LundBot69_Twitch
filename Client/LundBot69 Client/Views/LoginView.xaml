@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="LundBot69_Client.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LundBot69_Client.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Name="loginGrid">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="White" Offset="0.0" />
+                <GradientStop Color="White" Offset="0.09" />
+                <GradientStop Color="#0390fc" Offset="0.11" />
+                <GradientStop Color="#0390fc" Offset="0.39" />
+                <GradientStop Color="#eb9834" Offset="0.41" />
+                <GradientStop Color="#eb9834" Offset="0.59" />
+                <GradientStop Color="#0390fc" Offset="0.61" />
+                <GradientStop Color="#0390fc" Offset="0.89" />
+                <GradientStop Color="White" Offset="0.91" />
+                <GradientStop Color="White" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBlock Margin="0,205,0,300" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Write your invite code</TextBlock>
+        <TextBox Margin="10,305,10,201" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20" x:Name="InviteCode" RenderTransformOrigin="0.5,-0.6" />
+        <Button FontWeight="Bold" FontSize="20" VerticalContentAlignment="Top" Click="SignInButton" Name="SignIn" Margin="300,434,300,80">Sign in!</Button>
+        <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Name="ErrorMessage" Foreground="Red" Margin="0,340,0,15" Width="780" Visibility="Hidden" />
+    </Grid>
+</UserControl>

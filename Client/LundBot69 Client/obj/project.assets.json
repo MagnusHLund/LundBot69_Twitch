@@ -1916,11 +1916,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\magnu\\source\\repos\\LundBot69_Twitch\\Client\\LundBot69 Client\\LundBot69 Client.csproj",
+      "projectUniqueName": "D:\\Temp folder\\LundBot69\\LundBot69_Twitch\\Client\\LundBot69 Client\\LundBot69 Client.csproj",
       "projectName": "LundBot69 Client",
-      "projectPath": "C:\\Users\\magnu\\source\\repos\\LundBot69_Twitch\\Client\\LundBot69 Client\\LundBot69 Client.csproj",
+      "projectPath": "D:\\Temp folder\\LundBot69\\LundBot69_Twitch\\Client\\LundBot69 Client\\LundBot69 Client.csproj",
       "packagesPath": "C:\\Users\\magnu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\magnu\\source\\repos\\LundBot69_Twitch\\Client\\LundBot69 Client\\obj\\",
+      "outputPath": "D:\\Temp folder\\LundBot69\\LundBot69_Twitch\\Client\\LundBot69 Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

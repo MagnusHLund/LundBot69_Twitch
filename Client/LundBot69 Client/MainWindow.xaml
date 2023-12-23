@@ -1,6 +1,6 @@
 ﻿<Window x:Class="LundBot69_Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:View="clr-namespace:LundBot69_Client.MVVM.View" xmlns:ViewModel="clr-namespace:LundBot69_Client.MVVM.ViewModel"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         ResizeMode="CanMinimize"
         Title="LundBot69" Height="600" Width="1000">
 
@@ -87,7 +87,7 @@
         </Grid>
 
         <Grid>
-            <Frame Name="LoginFrame" Visibility="Hidden"/>
+            <Frame Name="LoginFrame"/>
         </Grid>
     </Grid>
 </Window>

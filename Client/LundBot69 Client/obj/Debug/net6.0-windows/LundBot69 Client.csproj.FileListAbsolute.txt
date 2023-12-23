@@ -61,3 +61,65 @@ C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\n
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\MVVM\View\Images\NextSong.png
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\MVVM\View\Images\Pause.png
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\MVVM\View\Images\Resume.png
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.exe
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.deps.json
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.runtimeconfig.json
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.pdb
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\AngleSharp.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Google.Protobuf.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\MySql.Data.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\System.Diagnostics.DiagnosticSource.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\System.IO.Pipelines.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\System.Text.Json.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\YoutubeExplode.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\ZstdSharp.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\comerr64.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\gssapi64.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\k5sprt64.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\krb5_64.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\win-x64\native\krbcc64.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.csproj.AssemblyReference.cache
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\App.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client_Content.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client_MarkupCompile.cache
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client_MarkupCompile.lref
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\MainWindow.baml
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.g.resources
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.GeneratedMSBuildEditorConfig.editorconfig
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.AssemblyInfoInputs.cache
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.AssemblyInfo.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.csproj.CoreCompileInputs.cache
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.sourcelink.json
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.csproj.CopyComplete
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\refint\LundBot69 Client.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.pdb
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.genruntimeconfig.cache
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\ref\LundBot69 Client.dll
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\CommandsView.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\GamblingView.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\HomeView.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\LoginView.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\SrBansView.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\SrMainView.g.cs
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Views\Images\BanSong.png
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Views\Images\BanUser.png
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Views\Images\LundBot69_Icon.png
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Views\Images\NextSong.png
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Views\Images\Pause.png
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Views\Images\Resume.png
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\CommandsView.baml
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\GamblingView.baml
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\HomeView.baml
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\LoginView.baml
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\SrBansView.baml
+D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\Views\SrMainView.baml

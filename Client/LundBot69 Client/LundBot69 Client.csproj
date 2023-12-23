@@ -6,36 +6,36 @@
     <RootNamespace>LundBot69_Client</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>MVVM\View\Images\LundBot69_Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Views\Images\LundBot69_Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="MVVM\View\Images\BanSong.png" />
-    <None Remove="MVVM\View\Images\BanUser.png" />
-    <None Remove="MVVM\View\Images\LundBot69_Icon.png" />
-    <None Remove="MVVM\View\Images\NextSong.png" />
-    <None Remove="MVVM\View\Images\Pause.png" />
-    <None Remove="MVVM\View\Images\Resume.png" />
+    <None Remove="Views\Images\BanSong.png" />
+    <None Remove="Views\Images\BanUser.png" />
+    <None Remove="Views\Images\LundBot69_Icon.png" />
+    <None Remove="Views\Images\NextSong.png" />
+    <None Remove="Views\Images\Pause.png" />
+    <None Remove="Views\Images\Resume.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="MVVM\View\Images\BanSong.png">
+    <Content Include="Views\Images\BanSong.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="MVVM\View\Images\BanUser.png">
+    <Content Include="Views\Images\BanUser.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="MVVM\View\Images\LundBot69_Icon.ico" />
-    <Content Include="MVVM\View\Images\LundBot69_Icon.png">
+    <Content Include="Views\Images\LundBot69_Icon.ico" />
+    <Content Include="Views\Images\LundBot69_Icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="MVVM\View\Images\NextSong.png">
+    <Content Include="Views\Images\NextSong.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="MVVM\View\Images\Pause.png">
+    <Content Include="Views\Images\Pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="MVVM\View\Images\Resume.png">
+    <Content Include="Views\Images\Resume.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

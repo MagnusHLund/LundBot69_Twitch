@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uWXNT8n76MMpTKlrFA5JXhrczPcsdIGXFjwTVir/fmjqxZBD7KB9lZDqKZSpsTs34jE+aY5kA5IvH9kckp1GnQ==",
+  "dgSpecHash": "Mo/+O2EyWQGTHeNSnnibaHj035s+GWL15Bevc7hpT4pP3GXsN1D7peUMQryg391eWcyGTbukASm+sUYX2A6O6g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\magnu\\source\\repos\\LundBot69_Twitch\\Client\\LundBot69 Client\\LundBot69 Client.csproj",
+  "projectFilePath": "D:\\Temp folder\\LundBot69\\LundBot69_Twitch\\Client\\LundBot69 Client\\LundBot69 Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\magnu\\.nuget\\packages\\anglesharp\\1.0.5\\anglesharp.1.0.5.nupkg.sha512",
     "C:\\Users\\magnu\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",

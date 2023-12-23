@@ -13,10 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.IO;
-using LundBot69_Client.Classes.Model.Database;
-using LundBot69_Client.MVVM.Model.LocalSaves;
-using LundBot69_Client.MVVM.ViewModel;
-using LundBot69_Client.MVVM.Model.Local_saves;
+using LundBot69_Client.Model.Local_saves;
 using System.Windows.Markup;
 
 namespace LundBot69_Client
@@ -33,12 +30,12 @@ namespace LundBot69_Client
 
 		private void InitLogin()
 		{
-			LoginFrame.Navigate(new Uri("MVVM/View/LoginView.xaml", UriKind.Relative));
+			LoginFrame.Navigate(new Uri("Views/LoginView.xaml", UriKind.Relative));
 		}
 
 		private void InitUIStartup()
 		{
-			HomePage.Navigate(new Uri("MVVM/View/HomeView.xaml", UriKind.Relative));
+			HomePage.Navigate(new Uri("Views/HomeView.xaml", UriKind.Relative));
 			HomeButton.IsChecked = true;
         }
 

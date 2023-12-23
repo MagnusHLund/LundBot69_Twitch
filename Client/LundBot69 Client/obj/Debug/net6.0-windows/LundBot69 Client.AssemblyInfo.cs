@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LundBot69 Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+12168591ee90fa4e0066b5a34cdb2f65f21a39d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("LundBot69 Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LundBot69 Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -7,22 +7,22 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="MVVM\View\CommandsView.xaml.cs">
+    <Compile Update="Views\CommandsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\View\GamblingView.xaml.cs">
+    <Compile Update="Views\GamblingView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\View\HomeView.xaml.cs">
+    <Compile Update="Views\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\View\LoginView.xaml.cs">
+    <Compile Update="Views\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\View\SrBansView.xaml.cs">
+    <Compile Update="Views\SrBansView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\View\SrMainView.xaml.cs">
+    <Compile Update="Views\SrMainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -30,22 +30,22 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\View\CommandsView.xaml">
+    <Page Update="Views\CommandsView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\View\GamblingView.xaml">
+    <Page Update="Views\GamblingView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\View\HomeView.xaml">
+    <Page Update="Views\HomeView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\View\LoginView.xaml">
+    <Page Update="Views\LoginView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\View\SrBansView.xaml">
+    <Page Update="Views\SrBansView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\View\SrMainView.xaml">
+    <Page Update="Views\SrMainView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

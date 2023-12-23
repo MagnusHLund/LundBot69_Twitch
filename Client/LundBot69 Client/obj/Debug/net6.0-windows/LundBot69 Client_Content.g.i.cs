@@ -8,12 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mvvm/view/images/bansong.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mvvm/view/images/banuser.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mvvm/view/images/lundbot69_icon.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mvvm/view/images/lundbot69_icon.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mvvm/view/images/nextsong.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mvvm/view/images/pause.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mvvm/view/images/resume.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/images/bansong.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/images/banuser.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/images/lundbot69_icon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/images/lundbot69_icon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/images/nextsong.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/images/pause.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/images/resume.png")]
 
 
