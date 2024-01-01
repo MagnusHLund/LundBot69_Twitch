@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LundBot69_Client
-build_property.ProjectDir = D:\Temp folder\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\
+build_property.ProjectDir = c:\Users\magnu\source\repos\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

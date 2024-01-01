@@ -18,9 +18,9 @@ namespace LundBot69_Client.Views
 	/// <summary>
 	/// Interaction logic for SrView.xaml
 	/// </summary>
-	public partial class SrView : UserControl
+	public partial class SrMainView : UserControl
 	{
-		public SrView()
+		public SrMainView()
 		{
 			InitializeComponent();
 			RetrieveRequestedSongs();

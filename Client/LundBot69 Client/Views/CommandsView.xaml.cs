@@ -60,5 +60,10 @@ namespace LundBot69_Client.Views
 		{
 
 		}
+
+		private void TextBox_TextChanged()
+		{
+
+		}
 	}
 }

@@ -24,6 +24,8 @@ namespace LundBot69_Client.Views
 	{
 		LocalInviteCode local = new LocalInviteCode();
 
+		public event EventHandler GridVisibilityChanged;
+
 		public LoginView()
 		{
 			InitializeComponent();
@@ -76,6 +78,14 @@ namespace LundBot69_Client.Views
 			ErrorMessage.Visibility = Visibility.Visible;
 			ErrorMessage.Text = error;
 			SignIn.IsEnabled = true;
+		}
+
+		private void GridVisibilityChangedHandler(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			if (e.Property == UIElement.VisibilityProperty)
+			{
+				GridVisibilityChanged?.Invoke(this, EventArgs.Empty);
+			}
 		}
 	}
 }

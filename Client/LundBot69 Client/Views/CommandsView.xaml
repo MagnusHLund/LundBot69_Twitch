@@ -4,8 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LundBot69_Client.Views"
+             xmlns:placeholder="clr-namespace:LundBot69_Client.Resources"
              mc:Ignorable="d" 
              d:DesignHeight="514" d:DesignWidth="793">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource Self}, Path=(placeholder:Placeholder.Placeholder)}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Text.Length, RelativeSource={RelativeSource Self}}" Value="True">
+                    <Setter Property="Foreground" Value="Gray"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Text.Length, RelativeSource={RelativeSource Self}}" Value="False">
+                    <Setter Property="Foreground" Value="Black"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
 
     <Grid Background="Gray">
         <Grid.ColumnDefinitions>
@@ -80,24 +95,24 @@
                     <ComboBoxItem>Reply</ComboBoxItem>
                 </ComboBox>
 
-                <Label Content="Command cooldown (seconds)" FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Margin="0,134,0,340"/>
-                <TextBox Text="30" Margin="46,189,208,296" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label Content="Individual user" FontSize="10" FontWeight="Bold" HorizontalAlignment="Left" Margin="75,162,0,321"/>
-                <TextBox Text="5" Margin="208,190,46,295" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <Label Content="Global" FontSize="10" FontWeight="Bold" HorizontalAlignment="Left" Margin="257,162,0,320" RenderTransformOrigin="1.77,0.589"/>
+                <Label Content="Command cooldown (seconds)" FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Margin="0,215,0,259"/>
+                <TextBox Text="30" Margin="46,271,208,214" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label Content="Individual user" FontSize="10" FontWeight="Bold" HorizontalAlignment="Left" Margin="75,244,0,239"/>
+                <TextBox Text="5" Margin="209,271,46,214" Height="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label Content="Global" FontSize="10" FontWeight="Bold" HorizontalAlignment="Left" Margin="272,242,0,240" RenderTransformOrigin="1.77,0.589"/>
 
-                <Label Content="Command cost" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="46,222,0,252"/>
-                <TextBox Text="0" Margin="34,258,220,227" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label Content="Command cost" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="46,150,0,324"/>
+                <TextBox Text="0" Margin="34,184,226,301" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
-                <Label Content="Timer (minutes)" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="227,222,0,252"/>
-                <TextBox Text="0" Margin="219,258,34,227" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label Content="Timer (minutes)" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="231,150,0,324"/>
+                <TextBox Text="0" Margin="225,184,34,301" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                 <Label Content="Command name" FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Margin="0,296,0,178"/>
                 <TextBox Text="hello there" Margin="46,332,46,153" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                 <Label Content="Command output" FontWeight="Bold" FontSize="15" HorizontalAlignment="Center" Margin="0,362,0,112"/>
-                <TextBox Text="General Kenobi" Margin="46,398,46,87" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox Margin="46,398,46,87" Height="25"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" placeholder:Placeholder.Placeholder="output"/>
 
                 <Grid Name="EditCommandGrid" Margin="0,438,0,19">
                     <Button Height="25" Content="Apply changes" Click="ApplyChangesButton" Margin="20,14,200,14" />

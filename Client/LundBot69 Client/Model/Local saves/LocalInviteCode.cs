@@ -31,9 +31,15 @@ namespace LundBot69_Client.Model.Local_saves
 
         internal string ReadLogin()
         {
+            try
+            {
             using (StreamReader sr = new StreamReader(filePath))
             {
                 return sr.ReadToEnd().Trim();
+            }
+            } catch
+            {
+                return "failure";
             }
         }
     }

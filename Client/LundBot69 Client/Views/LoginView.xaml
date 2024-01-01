@@ -21,9 +21,10 @@
                 <GradientStop Color="White" Offset="1.0" />
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBlock Margin="0,205,0,300" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Write your invite code</TextBlock>
-        <TextBox Margin="10,305,10,201" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20" x:Name="InviteCode" RenderTransformOrigin="0.5,-0.6" />
-        <Button FontWeight="Bold" FontSize="20" VerticalContentAlignment="Top" Click="SignInButton" Name="SignIn" Margin="300,434,300,80">Sign in!</Button>
-        <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Name="ErrorMessage" Foreground="Red" Margin="0,340,0,15" Width="780" Visibility="Hidden" />
+
+        <TextBlock Margin="0,130,0,392" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Write your invite code</TextBlock>
+        <TextBox Margin="10,251,10,269" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="20" x:Name="InviteCode" RenderTransformOrigin="0.5,-0.6" />
+        <Button FontWeight="Bold" FontSize="20" VerticalContentAlignment="Top" Click="SignInButton" Name="SignIn" Margin="300,382,300,139">Sign in!</Button>
+        <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Name="ErrorMessage" Foreground="Red" Margin="0,490,0,51" Width="780" TextAlignment="Center"/>
     </Grid>
 </UserControl>

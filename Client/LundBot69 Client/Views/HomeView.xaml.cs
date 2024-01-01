@@ -60,7 +60,7 @@ namespace LundBot69_Client.Views
 			_StartupSettings = false;
 		}
 
-		private async void GetAllCreatorSongs()
+		public async void GetAllCreatorSongs()
 		{
 			_creatorSongs = await _SongRequestHandler.GetCreatorSongs(_inviteCode);
 		}
