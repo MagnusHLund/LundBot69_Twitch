@@ -1,1 +1,2 @@
-* ensure that the invite code is loaded in, after having logged in manually.
+Automatic shoutouts,
+check follower/sub goal. Remind updating.
