@@ -23,7 +23,7 @@ router.post('/api/login', (req, res) => {
     });
 });
 
-router.post('/api/getSongRequest', (req, res) => {
+router.post('/api/getSongRequests', (req, res) => {
     const { inviteCode } = req.body;
 
     // Initialize response parameters
@@ -42,7 +42,7 @@ router.post('/api/getSongRequest', (req, res) => {
 
             if (creatorId !== null) {
                 // Get the first matching row in songrequests based on CreatorID
-                const getSongRequestQuery = 'SELECT RequestUser, SongLink FROM songrequests WHERE CreatorID = ? LIMIT 1';
+                const getSongRequestQuery = 'SELECT RequestUser, SongLink FROM songrequests WHERE CreatorID = ?';
 
                 db.query(getSongRequestQuery, [creatorId], (error, songRequestResults) => {
                     if (error) {

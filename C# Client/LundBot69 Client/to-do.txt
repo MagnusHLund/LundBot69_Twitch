@@ -1,0 +1,6 @@
+﻿*	Edit skip icon, add wider vertical line
+*	Volume slider to SR
+*	Whole database
+*	Setup custom commands
+*	Adding automatic points solution to gambling. 10 points per message in chat?
+*	Adding commands (Points, CoinFlip, sr)
