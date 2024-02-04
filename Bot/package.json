@@ -1,0 +1,19 @@
+{
+  "name": "lundbot69_bot",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "tmi.js": "^1.8.5"
+  },
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "version": "1.0.0",
+  "description": "Node.js project, where the bot itself resides.",
+  "main": "index.js",
+  "repository": "https://github.com/MagnusHLund/LundBot69_Twitch.git",
+  "author": "Magnus Lund",
+  "license": "MIT"
+}

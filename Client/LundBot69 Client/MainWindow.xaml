@@ -1,6 +1,6 @@
 ﻿<Window x:Class="LundBot69_Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:View="clr-namespace:LundBot69_Client.MVVM.View" xmlns:ViewModel="clr-namespace:LundBot69_Client.MVVM.ViewModel"
         ResizeMode="CanMinimize"
         Title="LundBot69" Height="600" Width="1000">
 
@@ -23,7 +23,7 @@
                         <GradientStop Color="#333333" Offset="1.0" />
                     </LinearGradientBrush>
                 </Grid.Background>
-                <Image Source="Images/LundBot69_Icon.png" Height="50" Margin="10" HorizontalAlignment="Center"/>
+                <Image Source="MVVM/View/Images/LundBot69_Icon.png" Height="50" Margin="10" HorizontalAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Row="0" Grid.Column="1">
@@ -87,7 +87,7 @@
         </Grid>
 
         <Grid>
-            <Frame Name="LoginFrame"/>
+            <Frame Name="LoginFrame" Visibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

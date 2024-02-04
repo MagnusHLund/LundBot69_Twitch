@@ -1,9 +1,10 @@
 ﻿
 
-FC:\Users\magnu\source\repos\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\Views\CommandsView.xaml;;
-FC:\Users\magnu\source\repos\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\Views\GamblingView.xaml;;
-FC:\Users\magnu\source\repos\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\Views\HomeView.xaml;;
-FC:\Users\magnu\source\repos\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\Views\LoginView.xaml;;
-FC:\Users\magnu\source\repos\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\Views\SrBansView.xaml;;
-FC:\Users\magnu\source\repos\LundBot69\LundBot69_Twitch\Client\LundBot69 Client\Views\SrMainView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MainWindow.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\CommandsView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\GamblingView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\HomeView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\LoginView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\SrBansView.xaml;;
+FC:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\MVVM\View\SrMainView.xaml;;
 
