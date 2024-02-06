@@ -20,10 +20,11 @@ const RedirectToHome: React.FC = () => {
 };
 
 const data = [
-  { id: 1, name: 'John', age: 30 },
-  { id: 2, name: 'Jane', age: 25 },
-  { id: 3, name: 'Doe', age: 40 },
+  { id: { value: 1 }, name: { value: 'John', maxLength: 10 }, age: { value: 30, maxLength: 2 } },
+  { id: { value: 2 }, name: { value: 'Jane', maxLength: 15 }, age: { value: 25, maxLength: 2 } },
+  { id: { value: 3 }, name: { value: 'Doe', maxLength: 10 }, age: { value: 40, maxLength: 2 } },
 ];
+
 
 const Default: React.FC = () => {
   const navLinks = [
@@ -36,7 +37,7 @@ const Default: React.FC = () => {
   return (
     <>
       <Navbar image='/LundBot69_Icon.png' links={navLinks} />
-      <DataTable data={data} editable={true}/>
+      <DataTable data={data} editable={true} onDelete={(e) => alert(e)}/>
 
       <Routes>
         <Route path='/home' element={<Home />} />

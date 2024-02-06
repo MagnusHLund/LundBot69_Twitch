@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import './DataTable.css';
+import TextField from './Inputs/TextField';
+
+// TODO: Add editable functionality, like maxLength. Or maybe both should be changed to be based on column instead of row.
 
 interface Row {
-  [key: string]: any;
+  [key: string]: {
+    value: any;
+    maxLength?: number; 
+  };
 }
 
 interface Props {
@@ -11,7 +18,7 @@ interface Props {
   onApply?: (index: number, newData: Row) => void;
 }
 
-const GenericTable: React.FC<Props> = ({ data, editable = false, onDelete, onApply }) => {
+const DataTable: React.FC<Props> = ({ data, editable = false, onDelete, onApply }) => {
   const [editedData, setEditedData] = useState<Row[]>(new Array(data.length).fill({}));
 
   const handleInputChange = (rowIndex: number, key: string, value: any) => {
@@ -33,8 +40,14 @@ const GenericTable: React.FC<Props> = ({ data, editable = false, onDelete, onApp
     }
   };
 
+  const handleDelete = (index: number) => {
+    if (onDelete) {
+      onDelete(index);
+    }
+  };
+
   return (
-    <table>
+    <table className='DataTable'>
       <thead>
         <tr>
           {Object.keys(data[0]).map((key) => (
@@ -49,19 +62,16 @@ const GenericTable: React.FC<Props> = ({ data, editable = false, onDelete, onApp
             {Object.keys(row).map((key) => (
               <td key={key}>
                 {editable ? (
-                  <input
-                    type="text"
-                    value={editedData[index][key] !== undefined ? editedData[index][key] : row[key]}
-                    onChange={(e) => handleInputChange(index, key, e.target.value)}
-                  />
+                   <TextField value={editedData[index][key] !== undefined ? editedData[index][key] : row[key].value} onChange={(e) => handleInputChange(index, key, e.target.value)} editable={editable} maxLength={row[key].maxLength} />
                 ) : (
-                  row[key]
+                  row[key].value
                 )}
               </td>
             ))}
             {editable ? (
               <td>
                 <button onClick={() => handleApply(index)}>Apply</button>
+                <button onClick={() => handleDelete(index)}>Delete</button>
               </td>
             ) : (
               <td>
@@ -75,4 +85,4 @@ const GenericTable: React.FC<Props> = ({ data, editable = false, onDelete, onApp
   );
 };
 
-export default GenericTable;
+export default DataTable;
