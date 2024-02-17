@@ -1,34 +1,35 @@
 import react from 'react'
-import './Button.css'
+import './Slider.css'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 
-interface ButtonProps extends IStandardInputProps {
+interface CheckboxProps extends IStandardInputProps {
   children?: react.ReactNode
   width?: string
   height?: string
+  thumbCursor?: 'pointer' | 'grab'
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Slider: React.FC<CheckboxProps> = ({
   isDisabled = false,
-  children,
   onClick,
-  width = '90px',
-  height = '30px',
+  width = '180px',
+  height = '7.5px',
   cursor = 'pointer',
+  thumbCursor = 'grab',
 }) => {
   return (
-    <button
+    <input
+      type="range"
       disabled={isDisabled}
       onClick={onClick}
-      className={cn('button', {
+      className={cn('Slider', {
         isDisabled: isDisabled,
+        thumbCursor: thumbCursor,
       })}
       style={{ height: height, width: width, cursor: cursor }}
-    >
-      <div className="button__children">{children}</div>
-    </button>
+    />
   )
 }
 
-export default Button
+export default Slider

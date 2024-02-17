@@ -1,34 +1,32 @@
 import react from 'react'
-import './Button.css'
+import './CheckBox.css'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 
-interface ButtonProps extends IStandardInputProps {
+interface CheckboxProps extends IStandardInputProps {
   children?: react.ReactNode
   width?: string
   height?: string
 }
 
-const Button: React.FC<ButtonProps> = ({
+const CheckBox: React.FC<CheckboxProps> = ({
   isDisabled = false,
-  children,
   onClick,
-  width = '90px',
-  height = '30px',
+  width = '20px',
+  height = '20px',
   cursor = 'pointer',
 }) => {
   return (
-    <button
+    <input
+      type="checkbox"
       disabled={isDisabled}
       onClick={onClick}
-      className={cn('button', {
+      className={cn('CheckBox', {
         isDisabled: isDisabled,
       })}
       style={{ height: height, width: width, cursor: cursor }}
-    >
-      <div className="button__children">{children}</div>
-    </button>
+    />
   )
 }
 
-export default Button
+export default CheckBox

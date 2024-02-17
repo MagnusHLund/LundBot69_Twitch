@@ -1,0 +1,9 @@
+.button {
+  border-radius: 5px;
+  background-color: #0390fc;
+  margin: 2.5px;
+}
+
+.button__children {
+  color: white;
+}

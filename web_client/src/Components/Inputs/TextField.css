@@ -1,24 +1,25 @@
 /* Add these styles to your textField.css file */
 .text-field {
-    padding: 8px; /* Match the padding of the table cells */
-    border: 1px solid #ddd; /* Match the border of the table cells */
-    border-radius: 4px; /* Match the border-radius of the table cells */
-    width: calc(100% - 16px); /* Adjust width to match the table cell width with padding */
-  }
-  
-  .text-field.disabled {
-    background-color: #f2f2f2; /* Match the background color of disabled cells */
-    color: #888; /* Match the text color of disabled cells */
-    cursor: not-allowed; /* Match the cursor style of disabled cells */
-  }
-  
-  .text-field.placeholder {
-    color: #888; /* Match the placeholder text color */
-  }
-  
-  /* Optional: Add hover and focus styles */
-  .text-field:hover,
-  .text-field:focus {
-    border-color: #aaa; /* Match the border color on hover/focus */
-  }
-  
+  padding: 8px; /* Match the padding of the table cells */
+  border: 1px solid #ddd; /* Match the border of the table cells */
+  border-radius: 4px; /* Match the border-radius of the table cells */
+  width: calc(
+    100% - 16px
+  ); /* Adjust width to match the table cell width with padding */
+}
+
+.text-field.disabled {
+  background-color: #f2f2f2; /* Match the background color of disabled cells */
+  color: #888; /* Match the text color of disabled cells */
+  cursor: not-allowed; /* Match the cursor style of disabled cells */
+}
+
+.text-field.placeholder {
+  color: #888; /* Match the placeholder text color */
+}
+
+/* Optional: Add hover and focus styles */
+.text-field:hover,
+.text-field:focus {
+  border-color: #aaa; /* Match the border color on hover/focus */
+}

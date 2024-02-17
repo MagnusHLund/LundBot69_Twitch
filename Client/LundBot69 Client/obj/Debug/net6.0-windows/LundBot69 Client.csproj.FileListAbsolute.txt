@@ -17,7 +17,6 @@ C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\n
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client.genruntimeconfig.cache
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\ref\LundBot69 Client.dll
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\obj\Debug\net6.0-windows\LundBot69 Client_Content.g.cs
-C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\LundBot69 Client.dll.config
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\BouncyCastle.Cryptography.dll
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\Google.Protobuf.dll
 C:\Users\magnu\source\repos\LundBot69_Twitch\Client\LundBot69 Client\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll

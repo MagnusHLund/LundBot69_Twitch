@@ -1,39 +1,42 @@
-/* Add these styles to your CSS file */
+/* TODO: Fix this styling, because its all shit. BEM. */
 .DataTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .DataTable th,
-  .DataTable td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .DataTable th {
-    background-color: #f2f2f2;
-  }
-  
-  .DataTable tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .DataTable tr:hover {
-    background-color: #ddd;
-  }
-  
-  .DataTable button {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .DataTable button:hover {
-    background-color: #d32f2f;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.DataTable * {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.DataTable th,
+.DataTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.DataTable th {
+  background-color: #f2f2f2;
+}
+
+.DataTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.DataTable tr:hover {
+  background-color: #ddd;
+}
+
+.DataTable button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.DataTable button:hover {
+  background-color: #d32f2f;
+}
