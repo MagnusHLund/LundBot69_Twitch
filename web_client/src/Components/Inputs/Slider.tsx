@@ -1,5 +1,5 @@
 import react from 'react'
-import './Slider.css'
+import './Slider.scss'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 

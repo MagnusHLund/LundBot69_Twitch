@@ -1,4 +1,5 @@
 import React from 'react'
+import './Commands.scss'
 
 const Commands: React.FC = () => {
   return (

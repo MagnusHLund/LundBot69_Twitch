@@ -1,5 +1,5 @@
 import react from 'react'
-import './CheckBox.css'
+import './CheckBox.scss'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 

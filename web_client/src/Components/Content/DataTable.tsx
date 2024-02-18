@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import './DataTable.css'
-import TextField from './Inputs/TextField'
+import './DataTable.scss'
+import TextField from '../Inputs/TextField'
 
 // TODO: Add editable functionality, like maxLength. Or maybe both should be changed to be based on column instead of row.
 

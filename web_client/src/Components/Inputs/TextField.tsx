@@ -1,5 +1,5 @@
 import React from 'react'
-import './textField.css'
+import './textField.scss'
 import cn from 'classnames'
 
 // Define the props interface for the Navbar component

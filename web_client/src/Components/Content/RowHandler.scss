@@ -1,0 +1,7 @@
+.row-handler {
+  display: flex;
+  & * {
+    display: grid;
+    place-items: center;
+  }
+}

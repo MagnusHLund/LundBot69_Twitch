@@ -1,4 +1,5 @@
 import React from 'react'
+import './Gambling.scss'
 
 const Gambling: React.FC = () => {
   return (

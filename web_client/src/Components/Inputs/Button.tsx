@@ -1,5 +1,5 @@
 import react from 'react'
-import './Button.css'
+import './Button.scss'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 
@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
       })}
       style={{ height: height, width: width, cursor: cursor }}
     >
-      <div className="button__children">{children}</div>
+      {children}
     </button>
   )
 }
