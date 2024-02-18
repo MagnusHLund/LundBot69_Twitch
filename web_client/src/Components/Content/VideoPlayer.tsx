@@ -1,5 +1,6 @@
 import React from 'react'
 import YouTube, { YouTubeProps } from 'react-youtube'
+import './VideoPlayer.scss'
 
 interface VideoPlayerProps {
   width?: string
@@ -26,19 +27,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     },
   }
   return (
-    <div className="video-player-container">
-      <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onPlayerReady} />
-      {controls === 2 && (
-        <div
-          className="test"
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-          }}
-        />
-      )}
-    </div>
+    <YouTube
+      videoId="2g811Eo7K8U"
+      opts={opts}
+      onReady={onPlayerReady}
+      className="video-player"
+    />
   )
 }
 

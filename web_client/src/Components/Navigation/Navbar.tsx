@@ -12,10 +12,14 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ image, links }) => {
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
-        <img src={image} className="lund-bot-image" alt="LundBot69 icon" />
+      <div className="navbar navbar-brand">
+        <img
+          src={image}
+          className="navbar navbar-brand lund-bot-image"
+          alt="LundBot69 icon"
+        />
       </div>
-      <ul className="navbar-links">
+      <ul className="navbar navbar-links">
         {links.map((link, index) => (
           <li key={index}>
             <NavLink to={link.path}>
