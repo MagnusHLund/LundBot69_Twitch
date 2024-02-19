@@ -3,14 +3,14 @@ import './Slider.scss'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 
-interface CheckboxProps extends IStandardInputProps {
+interface ICheckboxProps extends IStandardInputProps {
   children?: react.ReactNode
   width?: string
   height?: string
   thumbCursor?: 'pointer' | 'grab'
 }
 
-const Slider: React.FC<CheckboxProps> = ({
+const Slider: React.FC<ICheckboxProps> = ({
   isDisabled = false,
   onClick,
   width = '180px',

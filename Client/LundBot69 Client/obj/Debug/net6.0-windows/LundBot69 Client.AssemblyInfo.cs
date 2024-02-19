@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LundBot69 Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ed3206ae7aeae9ddf7a795caaca62e3b12944d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59fda69e527ce878675a425070e1dda95b47f8b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("LundBot69 Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LundBot69 Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

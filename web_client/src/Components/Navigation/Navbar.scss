@@ -2,10 +2,9 @@
   background-color: chocolate;
   width: 100%;
   display: flex;
-
   & .navbar-brand {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 60px;
     & img {
       width: 100%;
@@ -20,6 +19,7 @@
   & .navbar-links {
     list-style: none;
     display: flex;
+    align-items: flex-end;
     width: 100%;
     gap: 10%;
     justify-content: center;
@@ -36,6 +36,9 @@
         border-radius: 10px;
         transition: all 0.5s ease;
         text-decoration: none;
+        display: flex;
+        flex-direction: column; /* Added to stack image and text */
+        align-items: center; /* Center align content */
         & :hover {
           background: rgba(0, 0, 0, 0.1);
           transition: all 0.5s ease;

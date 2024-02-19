@@ -1,7 +1,7 @@
 import React from 'react'
 import './ContentBox.scss'
 
-interface ContentBoxProps {
+interface IContentBoxProps {
   children?: React.ReactNode
   minWidth?: string
   minHeight?: string
@@ -9,7 +9,7 @@ interface ContentBoxProps {
   border?: string
 }
 
-const ContentBox: React.FC<ContentBoxProps> = ({
+const ContentBox: React.FC<IContentBoxProps> = ({
   children,
   minWidth = '400px',
   minHeight = '300px',

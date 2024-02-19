@@ -3,19 +3,21 @@ import './Button.scss'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 
-interface ButtonProps extends IStandardInputProps {
+interface IButtonProps extends IStandardInputProps {
   children?: react.ReactNode
   width?: string
   height?: string
+  hint?: string
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<IButtonProps> = ({
   isDisabled = false,
   children,
   onClick,
   width = '90px',
   height = '30px',
   cursor = 'pointer',
+  hint,
 }) => {
   return (
     <button
@@ -25,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
         isDisabled: isDisabled,
       })}
       style={{ height: height, width: width, cursor: cursor }}
+      title={hint}
     >
       {children}
     </button>

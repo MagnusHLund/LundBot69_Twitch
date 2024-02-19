@@ -2,13 +2,13 @@ import React from 'react'
 import YouTube, { YouTubeProps } from 'react-youtube'
 import './VideoPlayer.scss'
 
-interface VideoPlayerProps {
+interface IVideoPlayerProps {
   width?: string
   height?: string
   controls?: 0 | 1 | 2
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({
+const VideoPlayer: React.FC<IVideoPlayerProps> = ({
   width = '520px',
   height = '360px',
   controls = 2,

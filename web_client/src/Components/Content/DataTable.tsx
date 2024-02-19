@@ -3,7 +3,7 @@ import './DataTable.scss'
 import TextField from '../Inputs/TextField'
 
 // TODO: Add editable functionality, like maxLength. Or maybe both should be changed to be based on column instead of row.
-
+// TODO: Rewrite most of this
 interface Row {
   [key: string]: {
     value: any
@@ -25,7 +25,7 @@ const DataTable: React.FC<Props> = ({
   onApply,
 }) => {
   const [editedData, setEditedData] = useState<Row[]>(
-    new Array(data.length).fill({})
+    new Array(data.length).fill({}),
   )
 
   const handleInputChange = (rowIndex: number, key: string, value: any) => {

@@ -3,13 +3,13 @@ import './CheckBox.scss'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 
-interface CheckboxProps extends IStandardInputProps {
+interface ICheckboxProps extends IStandardInputProps {
   children?: react.ReactNode
   width?: string
   height?: string
 }
 
-const CheckBox: React.FC<CheckboxProps> = ({
+const CheckBox: React.FC<ICheckboxProps> = ({
   isDisabled = false,
   onClick,
   width = '20px',

@@ -2,14 +2,12 @@ import React from 'react'
 import './Navbar.scss'
 import { NavLink } from 'react-router-dom'
 
-// Define the props interface for the Navbar component
-interface NavbarProps {
+interface INavbarProps {
   image: string
   links: { title: string; path: string; image: string }[]
 }
 
-// Define the Navbar functional component
-const Navbar: React.FC<NavbarProps> = ({ image, links }) => {
+const Navbar: React.FC<INavbarProps> = ({ image, links }) => {
   return (
     <nav className="navbar">
       <div className="navbar navbar-brand">
