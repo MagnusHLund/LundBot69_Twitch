@@ -1,0 +1,12 @@
+.home-music-section__container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+
+  > * {
+    flex: 1;
+  }
+  @media screen and (max-width: 675px) {
+    display: block;
+  }
+}

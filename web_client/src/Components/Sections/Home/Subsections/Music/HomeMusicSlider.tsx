@@ -1,7 +1,7 @@
 import React from 'react'
-import './MusicSlider.scss'
-import Slider from '../../../Inputs/Slider'
-import Inline from '../../../Content/Inline'
+import './HomeMusicSlider.scss'
+import Slider from '../../../../Inputs/Slider'
+import Inline from '../../../../Content/Inline'
 
 interface IHomeMusicSlider {
   fontSize?: string

@@ -4,6 +4,7 @@ import ContentBox from '../Content/ContentBox'
 import Title from '../Content/Title'
 import VideoPlayer from '../Content/VideoPlayer'
 import HomeMusicSection from '../Sections/Home/HomeMusicSection'
+import HomeSettingsSection from '../Sections/Home/HomeSettingsSection'
 
 const Home: React.FC = () => {
   // TODO: Split different segments (ContentBoxes, into its own component)
@@ -12,7 +13,9 @@ const Home: React.FC = () => {
       <ContentBox>
         <HomeMusicSection />
       </ContentBox>
-      <ContentBox></ContentBox>
+      <ContentBox>
+        <HomeSettingsSection />
+      </ContentBox>
     </>
   )
 }

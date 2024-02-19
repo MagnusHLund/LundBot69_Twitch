@@ -2,6 +2,11 @@
   border-radius: 5px;
   background-color: #0390fc;
   margin: 2.5px;
+
+  &.white {
+    background-color: white;
+    border: red 2px solid;
+  }
 }
 
 .button__children {
