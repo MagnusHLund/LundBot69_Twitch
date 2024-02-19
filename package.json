@@ -4,7 +4,6 @@
   "workspaces": [
     "lundbot69_api",
     "lundbot69_bot",
-    "client",
     "web_client"
   ],
   "description": "Just a for fun project, playing around with the Twitch API and creating a twitch bot.",
