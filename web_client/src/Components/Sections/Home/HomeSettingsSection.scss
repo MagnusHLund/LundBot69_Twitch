@@ -1,0 +1,11 @@
+.home-settings-section {
+  .home-settings-section__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    @media screen and (max-width: 675px) {
+      display: block;
+    }
+  }
+}

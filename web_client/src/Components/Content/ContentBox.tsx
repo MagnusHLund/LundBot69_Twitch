@@ -11,8 +11,8 @@ interface IContentBoxProps {
 
 const ContentBox: React.FC<IContentBoxProps> = ({
   children,
-  minWidth = '400px',
-  minHeight = '275px',
+  minWidth = '0px',
+  minHeight = '0px',
   className = '',
   border = '1px 1px 1px 1px solid black',
 }) => {

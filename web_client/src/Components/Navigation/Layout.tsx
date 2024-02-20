@@ -9,6 +9,7 @@ import Commands from '../Routes/Commands'
 
 import Navbar from './Navbar'
 import './Layout.scss'
+import Footer from '../Content/Footer'
 
 const RedirectToHome: React.FC = () => {
   const navigate = useNavigate()
@@ -39,6 +40,7 @@ const Layout: React.FC = () => {
           <Route path="*" element={<RedirectToHome />} />
         </Routes>
       </div>
+      <Footer />
     </>
   )
 }

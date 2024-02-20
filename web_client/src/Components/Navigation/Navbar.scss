@@ -1,5 +1,7 @@
+/* TODO: Navbar too wide on smaller screens */
+
 .navbar {
-  background-color: chocolate;
+  background-color: #eb9834; /* Or use #d2691e? */
   width: 100%;
   display: flex;
   & .navbar-brand {

@@ -2,12 +2,18 @@
   flex: 1 0 auto;
   margin: 10px;
   max-width: 100%;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .content-box__children {
-  padding: 10px;
+  height: 100%;
   & * {
     display: grid;
     place-items: center;
+    align-items: stretch;
+  }
+  & button {
+    align-items: center;
   }
 }
