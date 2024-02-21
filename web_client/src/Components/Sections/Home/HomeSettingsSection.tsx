@@ -11,7 +11,7 @@ const HomeSettingsSection: React.FC = () => {
     <div className="home-settings-section">
       <Title text="Settings" />
       <div className="home-settings-section__container">
-        <RowHandler className="home-settings.section__row-handler--buttons">
+        <RowHandler className="home-settings-section__row-handler--buttons">
           <HomeSettingsButtons />
         </RowHandler>
         <RowHandler className="home-settings-section__row-handler--volume">
@@ -20,7 +20,7 @@ const HomeSettingsSection: React.FC = () => {
             className="home-settings-section__row-handler--volume--music"
           />
           <HomeSettingsSlider
-            title="Music volume"
+            title="Effects volume"
             className="home-settings-section__row-handler--volume--effects"
           />
         </RowHandler>

@@ -4,16 +4,19 @@
   max-width: 100%;
   background-color: white;
   border-radius: 10px;
-}
-
-.content-box__children {
-  height: 100%;
   & * {
-    display: grid;
-    place-items: center;
-    align-items: stretch;
-  }
-  & button {
     align-items: center;
+  }
+  & > * {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+
+    > :nth-child(2) {
+      height: 100%;
+    }
   }
 }

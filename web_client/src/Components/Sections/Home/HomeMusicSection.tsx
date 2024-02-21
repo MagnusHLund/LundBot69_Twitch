@@ -12,7 +12,7 @@ const HomeMusicSection: React.FC = () => {
     <div className="home-music-section">
       <Title text="Music" />
       <div className="home-music-section__container">
-        <RowHandler className="home-music.section__row-handler--video">
+        <RowHandler className="home-music-section__row-handler--video">
           <VideoPlayer width="auto" height="auto" />
           <HomeMusicButtons />
         </RowHandler>

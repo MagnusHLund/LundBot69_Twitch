@@ -7,5 +7,12 @@
     @media screen and (max-width: 675px) {
       display: block;
     }
+    .home-settings-section__row-handler--buttons {
+      display: flex;
+      flex-direction: column;
+      & > button {
+        flex: 1 1 auto;
+      }
+    }
   }
 }

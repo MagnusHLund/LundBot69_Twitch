@@ -12,8 +12,6 @@ const HomeSettingsButtons: React.FC = () => {
       <Button
         className="settings__button--bot"
         hint="Enables/disables LundBot69 on your twitch channel."
-        height="auto"
-        width="auto"
         onClick={() => console.log('lundbot69')}
       >
         Enable LundBot69
@@ -21,8 +19,6 @@ const HomeSettingsButtons: React.FC = () => {
       <Button
         className="settings__button--song-request"
         hint="Enables/disables song requests."
-        height="auto"
-        width="auto"
         onClick={() => console.log('song request')}
       >
         Enable song request
@@ -30,8 +26,6 @@ const HomeSettingsButtons: React.FC = () => {
       <Button
         className="settings__button--gambling"
         hint="Enables/disables gambling commands."
-        height="auto"
-        width="auto"
         onClick={() => console.log('gambling')}
       >
         Enable gambling

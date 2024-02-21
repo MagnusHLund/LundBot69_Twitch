@@ -14,7 +14,7 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({
   controls = 2,
 }) => {
   const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-    event.target.pauseVideo()
+    event.target.playVideo()
   }
 
   const opts: YouTubeProps['opts'] = {

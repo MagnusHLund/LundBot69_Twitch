@@ -39,7 +39,7 @@ const ContentBox: React.FC<IContentBoxProps> = ({
         borderColor: borderColor,
       }}
     >
-      <div className="content-box__children">{children}</div>
+      {children}
     </div>
   )
 }

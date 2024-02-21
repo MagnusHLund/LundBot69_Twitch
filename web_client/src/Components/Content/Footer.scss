@@ -3,15 +3,26 @@
   margin-top: auto;
   display: flex;
   justify-content: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 
-  &--link {
-    padding: 5px;
-    display: block;
-    width: 35px;
-  }
+  &--link,
   &--text {
     padding: 5px;
     display: block;
+  }
+  &--text {
     font-size: 30px;
   }
+  &--link {
+    width: 35px;
+    filter: brightness(0) invert(1);
+    &:hover {
+      filter: invert(41%) sepia(63%) saturate(1628%) hue-rotate(183deg)
+        brightness(93%) contrast(113%);
+    }
+  }
 }
+
+/* TODO: Mobile styling */
