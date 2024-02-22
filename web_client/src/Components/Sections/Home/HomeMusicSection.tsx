@@ -6,23 +6,26 @@ import RowHandler from '../../Content/RowHandler'
 import Title from '../../Content/Title'
 import VideoPlayer from '../../Content/VideoPlayer'
 import HomeMusicInfo from './Subsections/Music/HomeMusicInfo'
+import ContentBox from '../../Content/ContentBox'
 
 const HomeMusicSection: React.FC = () => {
   return (
-    <div className="home-music-section">
-      <Title text="Music" />
-      <div className="home-music-section__container">
-        <RowHandler className="home-music-section__row-handler--video">
-          <VideoPlayer width="auto" height="auto" />
-          <HomeMusicButtons />
-        </RowHandler>
-        <RowHandler className="home-music-section__row-handler--info">
-          <HomeMusicInfo headerText="Song title:" />
-          <HomeMusicSlider />
-          <HomeMusicInfo headerText="Requested by:" />
-        </RowHandler>
+    <ContentBox>
+      <div className="home-music-section">
+        <Title text="Music" />
+        <div className="home-music-section__container">
+          <RowHandler className="home-music-section__row-handler--video">
+            <VideoPlayer width="auto" height="auto" />
+            <HomeMusicButtons />
+          </RowHandler>
+          <RowHandler className="home-music-section__row-handler--info">
+            <HomeMusicInfo headerText="Song title:" />
+            <HomeMusicSlider />
+            <HomeMusicInfo headerText="Requested by:" />
+          </RowHandler>
+        </div>
       </div>
-    </div>
+    </ContentBox>
   )
 }
 

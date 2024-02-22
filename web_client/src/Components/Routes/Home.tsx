@@ -6,20 +6,16 @@ import VideoPlayer from '../Content/VideoPlayer'
 import HomeMusicSection from '../Sections/Home/HomeMusicSection'
 import HomeSettingsSection from '../Sections/Home/HomeSettingsSection'
 import HomeInfoSection from '../Sections/Home/HomeInfoSection'
+import HomeGoalsSection from '../Sections/Home/HomeGoalsSection'
 
 const Home: React.FC = () => {
   // TODO: Why did I not just include the content boxes into the sections? SmOl BrAiN.
   return (
     <>
-      <ContentBox minWidth="34%">
-        <HomeMusicSection />
-      </ContentBox>
-      <ContentBox minWidth="34%">
-        <HomeSettingsSection />
-      </ContentBox>
-      <ContentBox minWidth="34%">
-        <HomeInfoSection />
-      </ContentBox>
+      <HomeMusicSection />
+      <HomeSettingsSection />
+      <HomeInfoSection />
+      <HomeGoalsSection />
     </>
   )
 }

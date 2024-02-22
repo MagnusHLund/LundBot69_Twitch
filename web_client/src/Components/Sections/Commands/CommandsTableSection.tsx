@@ -1,16 +1,16 @@
 import ContentBox from '../../Content/ContentBox'
 import RowHandler from '../../Content/RowHandler'
 import Title from '../../Content/Title'
-import './HomeInfoSection.scss'
+import './CommandsTableSection.scss'
 
-const HomeInfoSection: React.FC = () => {
+const CommandsTableSection: React.FC = () => {
   return (
     <ContentBox>
       <div className="home-info-section">
-        <Title text="Info" />
+        <Title text="Commands" />
         <div className="home-info-section__container">
           <RowHandler className="home-info-section__row-handler--">
-            Most used command? What kind of info?
+            Table of commands
           </RowHandler>
         </div>
       </div>
@@ -18,4 +18,4 @@ const HomeInfoSection: React.FC = () => {
   )
 }
 
-export default HomeInfoSection
+export default CommandsTableSection

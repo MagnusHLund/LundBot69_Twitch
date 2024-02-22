@@ -6,6 +6,7 @@
   position: fixed;
   width: 100%;
   bottom: 0;
+  height: 47px;
 
   &--link,
   &--text {
@@ -25,4 +26,4 @@
   }
 }
 
-/* TODO: Mobile styling */
+/* TODO: Mobile styling, maybe scale the text with bootstrap? */

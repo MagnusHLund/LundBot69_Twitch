@@ -1,5 +1,5 @@
 .inline-music-buttons {
-  $base-url: './../../../../../public/';
+  $base-url: '/';
 
   .inline-music-buttons__button {
     &--ban-user {
@@ -9,7 +9,7 @@
       background-image: url('#{$base-url}Resume.png');
     }
     &--next-song {
-      background-image: url('#{$base-url}nextSong.png');
+      background-image: url('#{$base-url}NextSong.png');
     }
     &--ban-song {
       background-image: url('#{$base-url}BanSong.png');

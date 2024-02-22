@@ -9,9 +9,11 @@ interface IContentBoxProps {
   border?: string
 }
 
+// TODO: If content boxes had a title, then i would not need a title component as a child of each content box. What a stupid design.
+
 const ContentBox: React.FC<IContentBoxProps> = ({
   children,
-  minWidth = '0px',
+  minWidth = '34%',
   minHeight = '0px',
   className = '',
   border = '1px 1px 1px 1px solid black',
