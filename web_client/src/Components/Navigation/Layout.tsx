@@ -2,10 +2,11 @@
 import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
-import Home from '../Routes/Home'
-import SongRequest from '../Routes/SongRequest'
-import Gambling from '../Routes/Gambling'
-import Commands from '../Routes/Commands'
+import HomePage from '../Routes/HomePage'
+import SongRequestPage from '../Routes/SongRequestPage'
+import GamblingPage from '../Routes/GamblingPage'
+import CommandsPage from '../Routes/CommandsPage'
+import Login from '../Routes/LoginPage'
 
 import Navbar from './Navbar'
 import './Layout.scss'
@@ -33,10 +34,11 @@ const Layout: React.FC = () => {
       <Navbar image="/LundBot69_Icon.png" links={navLinks} />
       <div className="site">
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/sr" element={<SongRequest />} />
-          <Route path="/gambling" element={<Gambling />} />
-          <Route path="/commands" element={<Commands />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/sr" element={<SongRequestPage />} />
+          <Route path="/gambling" element={<GamblingPage />} />
+          <Route path="/commands" element={<CommandsPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<RedirectToHome />} />
         </Routes>
       </div>

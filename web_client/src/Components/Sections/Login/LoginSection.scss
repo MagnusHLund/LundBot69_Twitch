@@ -1,0 +1,23 @@
+.login-section {
+  width: 10px;
+  display: block;
+  flex: none;
+  margin: 25vh auto;
+  &--content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: auto;
+    &--error {
+      height: 100px;
+    }
+    &--form {
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &--title {
+    height: auto;
+  }
+}

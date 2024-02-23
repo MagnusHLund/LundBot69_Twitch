@@ -1,9 +1,9 @@
 import React from 'react'
-import './Gambling.scss'
+import './GamblingPage.scss'
 import GamblingLeaderBoardSection from '../Sections/Gambling/GamblingLeaderBoardSection'
 import GamblingPointsManagementSection from '../Sections/Gambling/GamblingPointsManagementSection'
 
-const Gambling: React.FC = () => {
+const GamblingPage: React.FC = () => {
   return (
     <>
       <GamblingLeaderBoardSection />
@@ -12,4 +12,4 @@ const Gambling: React.FC = () => {
   )
 }
 
-export default Gambling
+export default GamblingPage

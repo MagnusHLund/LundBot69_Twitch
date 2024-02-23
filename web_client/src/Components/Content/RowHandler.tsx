@@ -6,7 +6,7 @@ interface IRowHandler {
   className?: string
 }
 
-const RowHandler: React.FC<IRowHandler> = ({ children, className }) => {
+const RowHandler: React.FC<IRowHandler> = ({ children, className = '' }) => {
   return <div className={`row-handler ${className}`}>{children}</div>
 }
 

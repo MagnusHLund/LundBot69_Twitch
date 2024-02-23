@@ -1,9 +1,9 @@
 import React from 'react'
-import './Commands.scss'
+import './CommandsPage.scss'
 import CommandsTableSection from '../Sections/Commands/CommandsTableSection'
 import CommandsCreateSection from '../Sections/Commands/CommandsCreateSection'
 
-const Commands: React.FC = () => {
+const CommandsPage: React.FC = () => {
   return (
     <>
       <CommandsTableSection />
@@ -12,4 +12,4 @@ const Commands: React.FC = () => {
   )
 }
 
-export default Commands
+export default CommandsPage
