@@ -1,0 +1,65 @@
+.channel-goals {
+  background-color: #0390fc;
+  border-radius: 0.4rem;
+  padding: 5px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 5px;
+  border: 2px solid #eb9834;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    &--image {
+      position: relative;
+      &--sub,
+      &--follower,
+      &--hover {
+        position: absolute;
+        height: 44px;
+        width: 44px;
+        top: 0;
+        left: 0;
+      }
+      &--hover {
+        height: 70px;
+        width: 70px;
+        top: -14px;
+        left: -15px;
+      }
+    }
+    &--text {
+      // Do i even need styling here?
+    }
+  }
+  &.goal-reached {
+    animation: rainbowAnimation 5s linear infinite;
+  }
+}
+
+@keyframes rainbowAnimation {
+  0%,
+  100% {
+    background-color: red;
+  }
+  14.28% {
+    background-color: orange;
+  } /* 1/7th of the animation duration */
+  28.57% {
+    background-color: yellow;
+  } /* 2/7th of the animation duration */
+  42.85% {
+    background-color: green;
+  } /* 3/7th of the animation duration */
+  57.14% {
+    background-color: blue;
+  } /* 4/7th of the animation duration */
+  71.42% {
+    background-color: indigo;
+  } /* 5/7th of the animation duration */
+  85.71% {
+    background-color: violet;
+  } /* 6/7th of the animation duration */
+}
