@@ -6,10 +6,10 @@ import './CommandsTableSection.scss'
 const CommandsTableSection: React.FC = () => {
   return (
     <ContentBox>
-      <div className="home-info-section">
+      <div className="commands-table-section">
         <Title text="Commands" />
-        <div className="home-info-section__container">
-          <RowHandler className="home-info-section__row-handler--">
+        <div className="commands-table-section__container">
+          <RowHandler className="commands-table-section__row-handler--">
             Table of commands
           </RowHandler>
         </div>

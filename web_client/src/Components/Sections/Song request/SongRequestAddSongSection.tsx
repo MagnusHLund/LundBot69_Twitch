@@ -3,15 +3,19 @@ import './SongRequestAddSongSection.scss'
 import Title from '../../Content/Title'
 import RowHandler from '../../Content/RowHandler'
 import ContentBox from '../../Content/ContentBox'
+import SongRequestForm from './Subsections/SongRequestForm'
 
 const SongRequestAddSongSection: React.FC = () => {
   return (
     <ContentBox>
-      <div className="home-settings-section">
+      <div className="sr-add-song-section">
         <Title text="Add songs" />
-        <div className="home-settings-section__container">
-          <RowHandler className="home-settings-section__row-handler--add">
-            form to add songs
+        <div className="sr-add-song-section--content">
+          <RowHandler className="sr-add-song-section--content--add">
+            <SongRequestForm
+              type={'songs'}
+              className="sr-add-song-section--content--add-form"
+            />
           </RowHandler>
         </div>
       </div>

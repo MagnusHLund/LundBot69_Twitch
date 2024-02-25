@@ -3,17 +3,18 @@ import './SongRequestDefaultSongsSection.scss'
 import Title from '../../Content/Title'
 import RowHandler from '../../Content/RowHandler'
 import ContentBox from '../../Content/ContentBox'
+import SongRequestRefresh from './Subsections/SongRequestRefresh'
 
 const SongRequestDefaultSongsSection: React.FC = () => {
   return (
     <ContentBox>
-      <div className="home-settings-section">
+      <div className="sr-default-songs-section">
         <Title text="Default songs" />
-        <div className="home-settings-section__container">
-          <RowHandler className="home-settings-section__row-handler--buttons">
-            Refresh list manually, show time since last refresh
+        <div className="sr-default-songs-section__container">
+          <RowHandler className="sr-default-songs-section__row-handler--buttons">
+            <SongRequestRefresh />
           </RowHandler>
-          <RowHandler className="home-settings-section__row-handler--volume">
+          <RowHandler className="sr-default-songs-section__row-handler--volume">
             display default songs
           </RowHandler>
         </div>

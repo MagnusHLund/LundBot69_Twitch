@@ -1,6 +1,7 @@
 import ContentBox from '../../Content/ContentBox'
 import RowHandler from '../../Content/RowHandler'
 import Title from '../../Content/Title'
+import Button from '../../Inputs/Button'
 import './HomeGiveawaySection.scss'
 
 const HomeGiveawaySection: React.FC = () => {
@@ -14,8 +15,12 @@ const HomeGiveawaySection: React.FC = () => {
           </RowHandler>
           <div>
             <RowHandler className="home-giveaway-section__row-handler--buttons">
-              <button className="home-giveaway-section__row-handler--buttons-winner" />
-              <button className="home-giveaway-section__row-handler--buttons-reset" />
+              <Button className="home-giveaway-section__row-handler--buttons-winner">
+                Pick winner
+              </Button>
+              <Button className="home-giveaway-section__row-handler--buttons-reset">
+                Reset
+              </Button>
             </RowHandler>
             <RowHandler>
               <Title text="winnner is" />

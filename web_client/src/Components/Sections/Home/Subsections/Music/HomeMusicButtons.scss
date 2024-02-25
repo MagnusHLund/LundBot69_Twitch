@@ -1,6 +1,5 @@
 .inline-music-buttons {
   $base-url: '/';
-
   .inline-music-buttons__button {
     &--ban-user {
       background-image: url('#{$base-url}BanUser.png');

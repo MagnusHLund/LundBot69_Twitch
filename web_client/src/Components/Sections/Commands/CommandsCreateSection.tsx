@@ -6,10 +6,10 @@ import './CommandsCreateSection.scss'
 const CommandsCreateSection: React.FC = () => {
   return (
     <ContentBox>
-      <div className="home-info-section">
+      <div className="commands-create-section">
         <Title text="Create and edit commands" />
-        <div className="home-info-section__container">
-          <RowHandler className="home-info-section__row-handler--">
+        <div className="commands-create-section__container">
+          <RowHandler className="commands-create-section__row-handler--">
             Form to edit/create commands
           </RowHandler>
         </div>

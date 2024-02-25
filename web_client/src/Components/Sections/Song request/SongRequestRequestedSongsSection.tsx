@@ -3,17 +3,18 @@ import './SongRequestRequestedSongsSection.scss'
 import Title from '../../Content/Title'
 import RowHandler from '../../Content/RowHandler'
 import ContentBox from '../../Content/ContentBox'
+import SongRequestRefresh from './Subsections/SongRequestRefresh'
 
 const SongRequestRequestedSongsSection: React.FC = () => {
   return (
     <ContentBox>
-      <div className="home-settings-section">
+      <div className="sr-requested-songs-section">
         <Title text="Requested songs" />
-        <div className="home-settings-section__container">
-          <RowHandler className="home-settings-section__row-handler--buttons">
-            Refresh list manually, show time since last refresh
+        <div className="sr-requested-songs-section__container">
+          <RowHandler className="sr-requested-songs-section__row-handler--buttons">
+            <SongRequestRefresh />
           </RowHandler>
-          <RowHandler className="home-settings-section__row-handler--volume">
+          <RowHandler className="sr-requested-songs-section__row-handler--volume">
             display requested songs
           </RowHandler>
         </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import './LoginForm.scss'
 
 interface ILoginForm {
   className?: string

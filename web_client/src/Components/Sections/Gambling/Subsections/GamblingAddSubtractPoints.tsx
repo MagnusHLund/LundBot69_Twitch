@@ -1,19 +1,22 @@
 import React from 'react'
 import './GamblingAddSubtractPoints.scss'
 
-interface IGamblingAddSubtractPoints {
-  text: string
-  fontSize?: string
-}
+interface IGamblingAddSubtractPoints {}
 
-const GamblingAddSubtractPoints: React.FC<IGamblingAddSubtractPoints> = ({
-  text,
-  fontSize = '20px',
-}) => {
+const GamblingAddSubtractPoints: React.FC<
+  IGamblingAddSubtractPoints
+> = ({}) => {
+  //TODO: I keep adding the same styling to these forms. Should just use components instead.
   return (
-    <h1 style={{ fontSize: fontSize }} className="title">
-      {text}
-    </h1>
+    <form>
+      <input type="text" placeholder="Username" />
+      <select>
+        <option>subtract</option>
+        <option>add</option>
+      </select>
+      <input type="text" placeholder="Points" />
+      <input type="submit" />
+    </form>
   )
 }
 

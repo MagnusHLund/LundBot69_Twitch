@@ -3,15 +3,19 @@ import './SongRequestAddBanSection.scss'
 import Title from '../../Content/Title'
 import RowHandler from '../../Content/RowHandler'
 import ContentBox from '../../Content/ContentBox'
+import SongRequestForm from './Subsections/SongRequestForm'
 
 const SongRequestAddBanSection: React.FC = () => {
   return (
     <ContentBox>
-      <div className="home-settings-section">
+      <div className="sr-add-ban-section">
         <Title text="Add bans" />
-        <div className="home-settings-section__container">
-          <RowHandler className="home-settings-section__row-handler--add">
-            form to add ban
+        <div className="sr-add-ban-section--content">
+          <RowHandler className="sr-add-ban-section--content--add">
+            <SongRequestForm
+              type={'bans'}
+              className="sr-add-ban-section--content--add-form"
+            />
           </RowHandler>
         </div>
       </div>

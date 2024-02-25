@@ -1,0 +1,13 @@
+.refresh {
+  $base-url: '/';
+  margin-right: auto;
+  justify-content: left;
+  margin-left: 10%;
+  &--button {
+    background-image: url('#{$base-url}BanUser.png');
+    background-size: cover;
+  }
+  &--text {
+    margin-left: 10px;
+  }
+}

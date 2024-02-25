@@ -3,14 +3,18 @@ import './SongRequestBannedUsersSection.scss'
 import Title from '../../Content/Title'
 import RowHandler from '../../Content/RowHandler'
 import ContentBox from '../../Content/ContentBox'
+import SongRequestRefresh from './Subsections/SongRequestRefresh'
 
 const SongRequestBannedUsersSection: React.FC = () => {
   return (
     <ContentBox>
-      <div className="home-settings-section">
+      <div className="sr-banned-users-section">
         <Title text="Banned users" />
-        <div className="home-settings-section__container">
-          <RowHandler className="home-settings-section__row-handler--volume">
+        <div className="sr-banned-users-section__container">
+          <RowHandler>
+            <SongRequestRefresh />
+          </RowHandler>
+          <RowHandler className="sr-banned-users-section__row-handler--volume">
             display banned users
           </RowHandler>
         </div>

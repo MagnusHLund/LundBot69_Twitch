@@ -10,10 +10,10 @@ import SongRequestBannedUsersSection from '../Sections/Song request/SongRequestB
 const SongRequestPage: React.FC = () => {
   return (
     <>
-      <SongRequestDefaultSongsSection />
-      <SongRequestRequestedSongsSection />
       <SongRequestAddSongSection />
       <SongRequestAddBanSection />
+      <SongRequestDefaultSongsSection />
+      <SongRequestRequestedSongsSection />
       <SongRequestBannedSongsSection />
       <SongRequestBannedUsersSection />
     </>

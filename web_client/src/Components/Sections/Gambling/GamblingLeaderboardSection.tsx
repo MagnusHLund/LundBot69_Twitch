@@ -10,10 +10,10 @@ import ContentBox from '../../Content/ContentBox'
 const GamblingLeaderBoardSection: React.FC = () => {
   return (
     <ContentBox>
-      <div className="home-settings-section">
+      <div className="gambling-leaderboard-section">
         <Title text="Points leaderboard" />
-        <div className="home-settings-section__container">
-          <RowHandler className="home-settings-section__row-handler--manage">
+        <div className="gambling-leaderboard-section__container">
+          <RowHandler className="gambling-leaderboard-section__row-handler--manage">
             Leaderboard of peoples points
           </RowHandler>
         </div>
