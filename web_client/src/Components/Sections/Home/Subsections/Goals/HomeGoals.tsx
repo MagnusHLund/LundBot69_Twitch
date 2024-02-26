@@ -44,14 +44,14 @@ const HomeGoals: React.FC<IHomeGoals> = ({ goalType }) => {
         <div className="channel-goals__container--image">
           {goalType === 'sub' && (
             <img
-              src="https://static.twitchcdn.net/assets/subscribe-2d3225207e704bd2aa2d.svg"
+              src="/Stars.png"
               className="channel-goals__container--image--sub"
               alt="2 stars"
             />
           )}
           {goalType === 'follower' && (
             <img
-              src="https://static.twitchcdn.net/assets/follow-c7d174e9553cfc22fa72.svg"
+              src="/Hearts.png"
               className="channel-goals__container--image--follower"
               alt="2 hearts"
             />

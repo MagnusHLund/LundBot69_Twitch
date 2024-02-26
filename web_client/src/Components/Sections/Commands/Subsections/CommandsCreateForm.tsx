@@ -1,19 +1,27 @@
 import React from 'react'
 import './CommandsCreateForm.scss'
+import InputForm from '../../../Content/InputForm'
 
-interface ICommandsCreateForm {
-  text: string
-  fontSize?: string
-}
+interface ICommandsCreateForm {}
 
-const CommandsCreateForm: React.FC<ICommandsCreateForm> = ({
-  text,
-  fontSize = '20px',
-}) => {
+const CommandsCreateForm: React.FC<ICommandsCreateForm> = ({}) => {
   return (
-    <h1 style={{ fontSize: fontSize }} className="title">
-      {text}
-    </h1>
+    <InputForm
+      title="Create command"
+      initialValues={undefined}
+      submitTitle="Create"
+    >
+      <input type="text" placeholder="Command name" />
+      <p>Permission to use:</p>
+      <select>
+        <option>Everyone</option>
+        <option>Follower</option>
+        <option>Subscriber</option>
+        <option>VIP</option>
+        <option>Moderator</option>
+        <option>Creator</option>
+      </select>
+    </InputForm>
   )
 }
 

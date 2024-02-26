@@ -1,22 +1,24 @@
 import React from 'react'
 import './GamblingAddSubtractPoints.scss'
+import InputForm from '../../../Content/InputForm'
 
 interface IGamblingAddSubtractPoints {}
 
 const GamblingAddSubtractPoints: React.FC<
   IGamblingAddSubtractPoints
 > = ({}) => {
-  //TODO: I keep adding the same styling to these forms. Should just use components instead.
   return (
-    <form>
-      <input type="text" placeholder="Username" />
-      <select>
-        <option>subtract</option>
-        <option>add</option>
+    <InputForm
+      title={'Add or subtract points'}
+      initialValues={{ username: '', select: 'Subtract', points: '' }}
+    >
+      <input type="text" placeholder="Username" name="username" />
+      <select name="select">
+        <option>Subtract</option>
+        <option>Add</option>
       </select>
-      <input type="text" placeholder="Points" />
-      <input type="submit" />
-    </form>
+      <input type="text" placeholder="Points" name="points" />
+    </InputForm>
   )
 }
 

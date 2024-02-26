@@ -2,6 +2,7 @@ import ContentBox from '../../Content/ContentBox'
 import RowHandler from '../../Content/RowHandler'
 import Title from '../../Content/Title'
 import './CommandsCreateSection.scss'
+import CommandsCreateForm from './Subsections/CommandsCreateForm'
 
 const CommandsCreateSection: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const CommandsCreateSection: React.FC = () => {
         <Title text="Create and edit commands" />
         <div className="commands-create-section__container">
           <RowHandler className="commands-create-section__row-handler--">
-            Form to edit/create commands
+            <CommandsCreateForm />
           </RowHandler>
         </div>
       </div>

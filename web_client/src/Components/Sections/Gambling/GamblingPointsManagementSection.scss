@@ -1,0 +1,9 @@
+.gambling-points-management-section {
+  &__container {
+    & .underline {
+      border-bottom: 1px solid #eb9834;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+  }
+}
