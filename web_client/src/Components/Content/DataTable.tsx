@@ -87,12 +87,12 @@ const DataTable: React.FC<Props> = ({
               </td>
             ))}
             {editable ? (
-              <td>
+              <td style={{ width: '0px' }}>
                 <button onClick={() => handleApply(index)}>Apply</button>
                 <button onClick={() => handleDelete(index)}>Delete</button>
               </td>
             ) : (
-              <td>
+              <td style={{ width: '0px' }}>
                 {onDelete && (
                   <button onClick={() => onDelete(index)}>Delete</button>
                 )}

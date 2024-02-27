@@ -1,7 +1,8 @@
 /* TODO: Fix this styling, because its all shit. BEM. */
 .DataTable {
-  width: 100%;
+  min-width: 75%;
   border-collapse: collapse;
+  margin: 25px auto;
 }
 
 .DataTable * {

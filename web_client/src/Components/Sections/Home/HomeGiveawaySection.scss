@@ -1,0 +1,16 @@
+.home-giveaway-section {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+  &--buttons {
+    &-winner {
+      margin: auto;
+    }
+  }
+  &__row-handler--table {
+    width: 100%;
+  }
+}
