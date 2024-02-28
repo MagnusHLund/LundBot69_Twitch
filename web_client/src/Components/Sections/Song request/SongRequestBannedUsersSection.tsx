@@ -3,7 +3,7 @@ import './SongRequestBannedUsersSection.scss'
 import Title from '../../Content/Title'
 import RowHandler from '../../Content/RowHandler'
 import ContentBox from '../../Content/ContentBox'
-import SongRequestRefresh from './Subsections/SongRequestRefresh'
+import SongRequestRefresh from '../../Content/SongRequestRefresh'
 import DataTable from '../../Content/DataTable'
 
 const SongRequestBannedUsersSection: React.FC = () => {

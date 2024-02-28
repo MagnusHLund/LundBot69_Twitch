@@ -34,7 +34,7 @@ const GamblingLeaderBoardSection: React.FC = () => {
                 },
               ]}
               onDelete={() => {}}
-              // editable={true}
+              editable={true}
               onApply={() => {}}
             />
           </RowHandler>

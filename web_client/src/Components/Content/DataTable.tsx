@@ -60,7 +60,7 @@ const DataTable: React.FC<Props> = ({
           {Object.keys(data[0]).map((key) => (
             <th key={key}>{key}</th>
           ))}
-          {editable && <th>Action</th>}
+          {(editable || onDelete) && <th>Action</th>}
         </tr>
       </thead>
       <tbody>
@@ -86,16 +86,15 @@ const DataTable: React.FC<Props> = ({
                 )}
               </td>
             ))}
-            {editable ? (
+            {editable && ( // TODO: Needs more styling. Does not look great with 2 buttons
               <td style={{ width: '0px' }}>
                 <button onClick={() => handleApply(index)}>Apply</button>
                 <button onClick={() => handleDelete(index)}>Delete</button>
               </td>
-            ) : (
+            )}
+            {!editable && onDelete && (
               <td style={{ width: '0px' }}>
-                {onDelete && (
-                  <button onClick={() => onDelete(index)}>Delete</button>
-                )}
+                <button onClick={() => onDelete(index)}>Delete</button>
               </td>
             )}
           </tr>

@@ -4,6 +4,8 @@ import Inline from './Inline'
 
 interface IConditionsProps {}
 
+// TODO: This is a version 2 feature. Multipliers and earning points, based on conditions
+
 const Conditions: React.FC<IConditionsProps> = ({}) => {
   return (
     <form>

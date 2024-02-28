@@ -30,7 +30,7 @@ const CommandsTableSection: React.FC = () => {
                 },
               ]}
               onDelete={() => {}}
-              // editable={true}
+              editable={true}
               onApply={() => {}}
             />
           </RowHandler>

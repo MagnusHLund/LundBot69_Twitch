@@ -2,9 +2,6 @@
   background-color: #0390fc;
   border-radius: 0.4rem;
   padding: 5px;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
   position: relative;
   margin: 5px;
   border: 2px solid #eb9834;
@@ -14,20 +11,14 @@
     margin: auto;
     &--image {
       position: relative;
+      width: 30px;
       &--sub,
       &--follower,
       &--hover {
         position: absolute;
         height: 35px;
         width: 35px;
-        top: 0;
-        left: 0;
-      }
-      &--hover {
-        height: 70px;
-        width: 70px;
-        top: -14px;
-        left: -15px;
+        left: 25%;
       }
     }
     &--text {

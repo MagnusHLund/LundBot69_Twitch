@@ -1,7 +1,7 @@
 import React from 'react'
 import './SongRequestRefresh.scss'
-import Button from '../../../Inputs/Button'
-import Inline from '../../../Content/Inline'
+import Button from '../Inputs/Button'
+import Inline from './Inline'
 
 interface ISongRequestRefresh {
   type?: 'bans' | 'songs'

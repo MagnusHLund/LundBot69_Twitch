@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './HomeGoals.scss'
-import Slider from '../../../../Inputs/Slider'
 import Title from '../../../../Content/Title'
 import HomeGoalsRange from './HomeGoalsRange'
 
@@ -8,38 +7,9 @@ interface IHomeGoals {
   goalType: 'sub' | 'follower'
 }
 
-// https://static.twitchcdn.net/assets/glow-orbit-f9de7d6ec6d53b80952a.gif show this on channel-goals hover
-
 const HomeGoals: React.FC<IHomeGoals> = ({ goalType }) => {
-  const [isHovering, setIsHovering] = useState(false)
-
-  const handleMouseEnter = () => {
-    setIsHovering(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsHovering(false)
-  }
-
-  const renderHoveringElement = () => {
-    if (isHovering) {
-      return (
-        <img
-          src="https://static.twitchcdn.net/assets/glow-orbit-f9de7d6ec6d53b80952a.gif"
-          className="channel-goals__container--image--hover"
-          alt="Orbit gif"
-        />
-      )
-    }
-    return null
-  }
-
   return (
-    <div
-      className="channel-goals"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className="channel-goals">
       <div className="channel-goals__container">
         <div className="channel-goals__container--image">
           {goalType === 'sub' && (
@@ -56,7 +26,6 @@ const HomeGoals: React.FC<IHomeGoals> = ({ goalType }) => {
               alt="2 hearts"
             />
           )}
-          {renderHoveringElement()}
         </div>
         <div className="channel-goals__container--text">
           <Title text="8 followers to go!" />

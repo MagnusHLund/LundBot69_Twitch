@@ -1,7 +1,7 @@
 interface IStandardInputProps {
   isDisabled?: boolean
   onClick?: () => void
-  onChange?: () => void
+  onChange?: (e: any) => void
   cursor?: 'auto' | 'pointer' | 'grabbing' | 'help' | 'grab'
 }
 
