@@ -24,33 +24,34 @@
     &--text {
       // Do i even need styling here?
     }
+    &--input {
+      &.inline {
+        max-width: 76%;
+        width: auto;
+      }
+    }
   }
   &.goal-reached {
-    animation: rainbowAnimation 5s linear infinite;
+    background: linear-gradient(
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+      )
+      0 0/100% 200%;
+    animation: rainbowAnimation 2s linear infinite;
   }
 }
 
 @keyframes rainbowAnimation {
-  0%,
-  100% {
-    background-color: red;
+  to {
+    background-position: -100% -200%;
   }
-  14.28% {
-    background-color: orange;
-  } /* 1/7th of the animation duration */
-  28.57% {
-    background-color: yellow;
-  } /* 2/7th of the animation duration */
-  42.85% {
-    background-color: green;
-  } /* 3/7th of the animation duration */
-  57.14% {
-    background-color: blue;
-  } /* 4/7th of the animation duration */
-  71.42% {
-    background-color: indigo;
-  } /* 5/7th of the animation duration */
-  85.71% {
-    background-color: violet;
-  } /* 6/7th of the animation duration */
 }

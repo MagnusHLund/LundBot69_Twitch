@@ -13,10 +13,15 @@ const CommandsCreateForm: React.FC<ICommandsCreateForm> = ({}) => {
       title="Create command"
       initialValues={undefined}
       submitTitle="Create"
+      className="commands-form"
     >
-      <input type="text" placeholder="Command name" />
-      <p>Permission to use:</p>
-      <select>
+      <input
+        type="text"
+        placeholder="Command name"
+        className="commands-form--name"
+      />
+      <p className="commands-form--permission">Permission to use:</p>
+      <select className="commands-form--permission-select">
         <option>Everyone</option>
         <option>Follower</option>
         <option>Subscriber</option>
@@ -24,29 +29,55 @@ const CommandsCreateForm: React.FC<ICommandsCreateForm> = ({}) => {
         <option>Moderator</option>
         <option>Creator</option>
       </select>
-      <Title text="Command cooldown (seconds)" fontSize="15px" />
-      <Inline>
+      <Title
+        text="Command cooldown (seconds)"
+        fontSize="15px"
+        className="commands-form--cooldown-title"
+      />
+      <Inline className="commands-form--cooldown-inline">
         <div>
-          <p>Same user</p>
-          <input type="text" placeholder="Cooldown" />
+          <p className="commands-form--cooldown-inline-title">Same user</p>
+          <input
+            type="text"
+            placeholder="Cooldown"
+            className="commands-form--cooldown-inline-input"
+          />
         </div>
         <div>
-          <p>Global</p>
-          <input type="text" placeholder="Cooldown" />
+          <p className="commands-form--cooldown-inline-title">Global</p>
+          <input
+            type="text"
+            placeholder="Cooldown"
+            className="commands-form--cooldown-inline-input"
+          />
         </div>
       </Inline>
-      <Inline>
+      <Inline className="commands-form--mix-inline">
         <div>
-          <p>Command cost</p>
-          <input type="text" placeholder="Cost" />
+          <p className="commands-form--mix-inline-cost-title">Command cost</p>
+          <input
+            type="text"
+            placeholder="Cost"
+            className="commands-form--mix-inline-cost-input"
+          />
         </div>
         <div>
-          <p>Repeat (minutes)</p>
-          <input type="text" placeholder="repeat every..." />
+          <p className="commands-form--mix-inline-repeat-title">
+            Repeat (minutes)
+          </p>
+          <input
+            type="text"
+            placeholder="repeat every..."
+            className="commands-form--mix-inline-repeat-input"
+          />
         </div>
       </Inline>
-      <p>Command output</p>
-      <input type="text" placeholder="output" />
+      <p className="commands-form--output-title">Command output</p>
+      <input
+        type="text"
+        placeholder="output"
+        className="commands-form--output-input"
+      />
     </InputForm>
   )
 }

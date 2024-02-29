@@ -2,12 +2,15 @@ import React from 'react'
 import { Formik, Field, Form } from 'formik'
 import './InputForm.scss'
 import Title from './Title'
+import cn from 'classnames'
 
 interface IInputFormProps {
   title: string
-  children: React.ReactNode[]
+  children: React.ReactNode[] | React.ReactNode
   initialValues: any
   submitTitle?: string
+  isInline?: boolean
+  className?: string
 }
 
 const InputForm: React.FC<IInputFormProps> = ({
@@ -15,10 +18,12 @@ const InputForm: React.FC<IInputFormProps> = ({
   children,
   initialValues,
   submitTitle = 'submit',
+  isInline = false,
+  className = '',
 }) => {
   return (
-    <div className="input-form__container">
-      <Title text={title} fontSize="16px" />
+    <div className={`input-form__container ${className}`}>
+      <Title text={title} fontSize="16px" isInline={isInline} />
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
@@ -27,12 +32,12 @@ const InputForm: React.FC<IInputFormProps> = ({
           actions.setSubmitting(false)
         }}
       >
-        <Form className="input-form">
+        <Form className={cn('input-form', { isInline: isInline })}>
           {children}
           <input
             type="submit"
             value={submitTitle}
-            className="input-form--submit"
+            className={cn('input-form--submit', { isInline: isInline })}
           />
         </Form>
       </Formik>

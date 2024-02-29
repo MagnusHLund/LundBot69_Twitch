@@ -8,7 +8,7 @@ interface IInlineProps {
 }
 
 const Inline: React.FC<IInlineProps> = ({ children, className }) => {
-  return <div className={`inline ${className}`}>{children}</div>
+  return <div className={`inline--comp ${className}`}>{children}</div>
 }
 
 export default Inline

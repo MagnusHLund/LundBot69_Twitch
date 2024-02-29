@@ -1,11 +1,24 @@
 .settings__button {
   &--bot,
   &--song-request,
-  &--gambling {
+  &--gambling,
+  &--shoutout {
     padding: 5px;
     min-height: 35px;
     min-width: 180px;
     width: auto;
     height: auto;
+    font-size: 12px;
+  }
+}
+
+.settings__form {
+  display: inline-block;
+  padding: 5px;
+  min-height: 35px;
+  width: 180px;
+  &--submit,
+  &--input {
+    width: fit-content;
   }
 }

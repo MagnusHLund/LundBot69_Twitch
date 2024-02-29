@@ -3,6 +3,10 @@
   flex-direction: column;
   flex-wrap: wrap;
   height: auto;
+  &.isInline {
+    display: inline-flex;
+    flex-direction: row;
+  }
   &__container {
     height: 100%;
     display: flex;
@@ -12,6 +16,10 @@
     background-color: #eb9834;
     margin-top: 10px;
     width: 75px;
+    &.isInline {
+      min-width: 20%;
+      width: auto;
+    }
   }
   & input,
   select {

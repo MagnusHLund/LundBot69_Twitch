@@ -1,6 +1,7 @@
 import React from 'react'
 import './HomeSettingsButtons.scss'
 import Button from '../../../../Inputs/Button'
+import InputForm from '../../../../Content/InputForm'
 
 const HomeSettingsButtons: React.FC = () => {
   // TODO: Replace onClick events with something useful
@@ -29,6 +30,13 @@ const HomeSettingsButtons: React.FC = () => {
         onClick={() => console.log('gambling')}
       >
         Enable gambling
+      </Button>
+      <Button
+        className="settings__button--shoutout"
+        hint="Enables/disables automatic shoutout of raiding channels."
+        onClick={() => console.log('gambling')}
+      >
+        Enable auto shout-out
       </Button>
     </>
   )

@@ -1,4 +1,8 @@
 .title {
   text-align: center;
   margin: 10px;
+
+  &.isInline {
+    margin-bottom: 0px;
+  }
 }

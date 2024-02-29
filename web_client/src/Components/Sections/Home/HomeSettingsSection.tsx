@@ -5,6 +5,7 @@ import RowHandler from '../../Content/RowHandler'
 import HomeSettingsSlider from './Subsections/Settings/HomeSettingsSlider'
 import HomeSettingsButtons from './Subsections/Settings/HomeSettingsButtons'
 import ContentBox from '../../Content/ContentBox'
+import InputForm from '../../Content/InputForm'
 
 const HomeSettingsSection: React.FC = () => {
   return (
@@ -24,6 +25,20 @@ const HomeSettingsSection: React.FC = () => {
               title="Effects volume"
               className="home-settings-section__row-handler--volume--effects"
             />
+          </RowHandler>
+          <RowHandler>
+            <Title text="Auto pin message" />
+            <InputForm
+              title={'if empty, setting is disabled'}
+              initialValues={undefined}
+              submitTitle="save"
+            >
+              <input
+                type="text"
+                placeholder="Pin message"
+                className="settings__form--input"
+              />
+            </InputForm>
           </RowHandler>
         </div>
       </div>
