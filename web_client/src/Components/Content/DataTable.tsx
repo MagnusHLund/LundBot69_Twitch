@@ -87,7 +87,7 @@ const DataTable: React.FC<Props> = ({
               </td>
             ))}
             {editable && ( // TODO: Needs more styling. Does not look great with 2 buttons
-              <td style={{ width: '115px' }}>
+              <td style={{ width: 'auto' }}>
                 <button onClick={() => handleApply(index)}>Apply</button>
                 <button
                   onClick={() => handleDelete(index)}

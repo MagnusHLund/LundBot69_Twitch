@@ -1,5 +1,6 @@
 import React from 'react'
 import './SongRequestForm.scss'
+import InputForm from '../../../Content/InputForm'
 
 interface ISongRequestForm {
   type: 'bans' | 'songs'
@@ -8,18 +9,18 @@ interface ISongRequestForm {
 
 const SongRequestForm: React.FC<ISongRequestForm> = ({ type, className }) => {
   return (
-    <form className={className}>
+    <InputForm
+      className={className}
+      title={`add ${type}`}
+      titleFontSize="20px"
+      initialValues={undefined}
+    >
       <input
         placeholder={type == 'bans' ? 'username' : 'Youtube video URL'}
         type="text"
         className={`${className}--input`}
       />
-      <input
-        type="submit"
-        className={`${className}--submit`}
-        value={type == 'bans' ? 'ban' : 'request'}
-      />
-    </form>
+    </InputForm>
   )
 }
 

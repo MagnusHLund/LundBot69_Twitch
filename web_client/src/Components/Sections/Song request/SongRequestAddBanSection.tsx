@@ -9,7 +9,6 @@ const SongRequestAddBanSection: React.FC = () => {
   return (
     <ContentBox>
       <div className="sr-add-ban-section">
-        <Title text="Add bans" />
         <div className="sr-add-ban-section--content">
           <RowHandler className="sr-add-ban-section--content--add">
             <SongRequestForm

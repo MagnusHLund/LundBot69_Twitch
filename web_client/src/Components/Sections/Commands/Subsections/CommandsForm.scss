@@ -1,4 +1,18 @@
 .commands-form {
-  &--name {
+  &--text {
+    margin-top: 10px;
+  }
+  &--title {
+    margin-bottom: 0px;
+  }
+  &--input {
+    margin: auto 5px;
+  }
+  &--select {
+  }
+  &--inline {
+  }
+  & .overline {
+    border-top: 2px solid black;
   }
 }

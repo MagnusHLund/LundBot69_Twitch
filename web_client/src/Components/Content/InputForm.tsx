@@ -3,14 +3,16 @@ import { Formik, Field, Form } from 'formik'
 import './InputForm.scss'
 import Title from './Title'
 import cn from 'classnames'
+import IStandardInputProps from '../Inputs/IStandardInputProps'
 
-interface IInputFormProps {
+interface IInputFormProps extends IStandardInputProps {
   title: string
   children: React.ReactNode[] | React.ReactNode
   initialValues: any
   submitTitle?: string
   isInline?: boolean
   className?: string
+  titleFontSize?: string
 }
 
 const InputForm: React.FC<IInputFormProps> = ({
@@ -20,10 +22,12 @@ const InputForm: React.FC<IInputFormProps> = ({
   submitTitle = 'submit',
   isInline = false,
   className = '',
+  cursor = 'pointer',
+  titleFontSize = '16px',
 }) => {
   return (
     <div className={`input-form__container ${className}`}>
-      <Title text={title} fontSize="16px" isInline={isInline} />
+      <Title text={title} fontSize={titleFontSize} isInline={isInline} />
       <Formik
         initialValues={initialValues}
         onSubmit={(values, actions) => {
@@ -38,6 +42,10 @@ const InputForm: React.FC<IInputFormProps> = ({
             type="submit"
             value={submitTitle}
             className={cn('input-form--submit', { isInline: isInline })}
+            style={{ cursor: cursor }}
+            onSubmit={(e) => {
+              e.preventDefault()
+            }}
           />
         </Form>
       </Formik>
