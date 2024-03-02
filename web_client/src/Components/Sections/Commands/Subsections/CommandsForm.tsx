@@ -3,7 +3,6 @@ import './CommandsForm.scss'
 import InputForm from '../../../Content/InputForm'
 import Title from '../../../Content/Title'
 import Inline from '../../../Content/Inline'
-import Button from '../../../Inputs/Button'
 
 interface ICommandsCreateForm {}
 
@@ -20,7 +19,7 @@ const CommandsCreateForm: React.FC<ICommandsCreateForm> = ({}) => {
         placeholder="Command name"
         className="commands-form--input"
       />
-      <p className="commands-form--text">Permission to use:</p>
+      <p className="commands-form--text overline">Permission to use:</p>
       <select className="commands-form--select">
         <option>Everyone</option>
         <option>Follower</option>
@@ -36,7 +35,7 @@ const CommandsCreateForm: React.FC<ICommandsCreateForm> = ({}) => {
       />
       <Inline className="commands-form--inline">
         <div>
-          <p className="commands-form--text">Same user</p>
+          <p className="commands-form--sub-text">Same user</p>
           <input
             type="text"
             placeholder="Cooldown"
@@ -44,7 +43,7 @@ const CommandsCreateForm: React.FC<ICommandsCreateForm> = ({}) => {
           />
         </div>
         <div>
-          <p className="commands-form--text">Global</p>
+          <p className="commands-form--sub-text">Global</p>
           <input
             type="text"
             placeholder="Cooldown"
@@ -52,29 +51,27 @@ const CommandsCreateForm: React.FC<ICommandsCreateForm> = ({}) => {
           />
         </div>
       </Inline>
-      <Inline className="commands-form--inline overline">
-        <div>
-          <p className="commands-form--text">Command cost</p>
-          <input
-            type="text"
-            placeholder="Cost"
-            className="commands-form--input"
-          />
-        </div>
-        <div>
-          <p className="commands-form--text">Repeat (minutes)</p>
-          <input
-            type="text"
-            placeholder="repeat every..."
-            className="commands-form--input"
-          />
-        </div>
-      </Inline>
-      <p className="commands-form--text">Command output</p>
+      <div>
+        <p className="commands-form--text overline">Command cost</p>
+        <input
+          type="text"
+          placeholder="Cost"
+          className="commands-form--input"
+        />
+      </div>
+      <div>
+        <p className="commands-form--text overline">Repeat (minutes)</p>
+        <input
+          type="text"
+          placeholder="repeat every..."
+          className="commands-form--input"
+        />
+      </div>
+      <p className="commands-form--text overline">Command output</p>
       <input
         type="text"
         placeholder="output"
-        className="commands-form--input"
+        className="commands-form--input bottom-space"
       />
     </InputForm>
   )

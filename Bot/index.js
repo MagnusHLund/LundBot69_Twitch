@@ -1,13 +1,12 @@
-require('dotenv').config({ path: './Bot/.env' });
+require('dotenv').config({ path: './Bot/.env' })
 const commands = require('./CommandHandler')
 
 const tmi = require('tmi.js')
 
-// When ready, change this to call the API and get all channels in the database
+// TODO: When ready, change this to call the API and get all channels in the database
 const channels = ['Magnessdk', 'MrWuus', 'TheRealFightingLime1']
 
-console.log("Bot is starting...")
-
+console.log('Bot is starting...')
 
 const client = new tmi.Client({
   connection: {
@@ -18,15 +17,20 @@ const client = new tmi.Client({
     username: 'LundBot69',
     password: process.env.TWITCH_OAUTH_TOKEN,
   },
-  channels: channels, 
-});
+  channels: channels,
+})
 
-client.connect();
+client.connect()
 
-console.log("Bot has started!");
+console.log('Bot has started!')
+const PREFIX = '!'
 
 client.on('message', (channel, tags, message, self) => {
-  if (self) return; // Ignore messages from the bot itself
+  if (self) return // Ignore messages from the bot itself
 
-  commands.handleCommand(channel, tags, message, self, client);
-});
+  if (message.charAt(0) === '!') {
+    commands.handleCommand(channel, tags, message, self, client)
+  } else {
+    // TODO: Idea 2 in ideas.json
+  }
+})

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './DataTable.scss'
 import TextField from '../Inputs/TextField'
+import Button from '../Inputs/Button'
 
 // TODO: Add editable functionality, like maxLength. Or maybe both should be changed to be based on column instead of row.
 // TODO: Rewrite most of this
@@ -54,20 +55,22 @@ const DataTable: React.FC<Props> = ({
   }
 
   return (
-    <table className="DataTable">
+    <table className="data-table">
       <thead>
-        <tr>
+        <tr className="data-table__tr">
           {Object.keys(data[0]).map((key) => (
-            <th key={key}>{key}</th>
+            <th className="data-table__th" key={key}>
+              {key}
+            </th>
           ))}
-          {(editable || onDelete) && <th>Action</th>}
+          {(editable || onDelete) && <th className="data-table__th">Action</th>}
         </tr>
       </thead>
       <tbody>
         {data.map((row, index) => (
-          <tr key={index}>
+          <tr key={index} className="data-table__tr">
             {Object.keys(row).map((key) => (
-              <td key={key}>
+              <td key={key} className="data-table__td">
                 {editable ? (
                   <TextField
                     value={
@@ -86,25 +89,33 @@ const DataTable: React.FC<Props> = ({
                 )}
               </td>
             ))}
-            {editable && ( // TODO: Needs more styling. Does not look great with 2 buttons
-              <td style={{ width: 'auto' }}>
-                <button onClick={() => handleApply(index)}>Apply</button>
-                <button
+            {editable && (
+              <td style={{ width: 'auto' }} className="data-table__td">
+                <Button
+                  onClick={() => handleApply(index)}
+                  className="data-table__button"
+                  width="auto"
+                >
+                  Apply
+                </Button>
+                <Button
                   onClick={() => handleDelete(index)}
-                  style={{ marginRight: '0px' }}
+                  className="data-table__button"
+                  width="auto"
                 >
                   Delete
-                </button>
+                </Button>
               </td>
             )}
             {!editable && onDelete && (
-              <td style={{ width: '0px' }}>
-                <button
+              <td style={{ width: '0px' }} className="data-table__td">
+                <Button
                   onClick={() => onDelete(index)}
-                  style={{ marginRight: '0px' }}
+                  className="data-table__button"
+                  width="auto"
                 >
                   Delete
-                </button>
+                </Button>
               </td>
             )}
           </tr>

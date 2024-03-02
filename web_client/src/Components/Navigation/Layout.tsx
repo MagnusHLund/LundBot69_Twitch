@@ -1,4 +1,3 @@
-// Layout.js
 import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 

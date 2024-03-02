@@ -12,7 +12,14 @@
   }
   &--inline {
   }
+  &--sub-text {
+    margin-top: 0px;
+  }
   & .overline {
-    border-top: 2px solid black;
+    border-top: 2px solid #eb9834;
+    padding: 5px;
+  }
+  & .bottom-space {
+    margin-bottom: 5px;
   }
 }

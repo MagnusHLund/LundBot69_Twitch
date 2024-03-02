@@ -1,4 +1,39 @@
 /* TODO: Fix this styling, because its all shit. BEM. */
+.data-table {
+  min-width: 75%;
+  border-collapse: collapse;
+  margin: 25px auto;
+  & * {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  &__th {
+    background-color: #f2f2f2;
+  }
+  &__th,
+  &__td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  &__tr {
+    &:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+  &__button {
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    margin-right: 5px;
+    &:hover {
+      background-color: #eb9834;
+    }
+  }
+}
+
+/* TODO: Fix this styling, because its all shit. BEM. */
 .DataTable {
   min-width: 75%;
   border-collapse: collapse;
