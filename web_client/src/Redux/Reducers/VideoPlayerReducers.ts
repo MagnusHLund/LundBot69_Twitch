@@ -1,12 +1,17 @@
+import { setPlayer } from './../Actions/VideoPlayerActions'
 interface VideoPlayerAction {
   type: string
   payload: object
 }
 
+interface VideoPlayerState {
+  videoId: string
+  isPlaying: boolean
+}
+
 const initialState = {
   videoId: '9vMLTcftlyI',
-  isPlaying: true,
-  player: null,
+  isPlaying: false,
 }
 
 const videoPlayerReducer = (
@@ -24,11 +29,8 @@ const videoPlayerReducer = (
         ...state,
         ...action.payload,
       }
-    case 'TOGGLE_PLAY_PAUSE':
-      return {
-        ...state,
-        isPlaying: !state.isPlaying,
-      }
+    case 'IS_VIDEO_PLAYING':
+      return {}
     default:
       return state
   }

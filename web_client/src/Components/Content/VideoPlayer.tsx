@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import YouTube, { YouTubeProps } from 'react-youtube'
 import './VideoPlayer.scss'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,10 +10,13 @@ interface IVideoPlayerProps {
 
 const VideoPlayer: React.FC<IVideoPlayerProps> = ({ controls = 2 }) => {
   const dispatch = useDispatch()
+  const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const videoState = useSelector((state) => state.videoPlayer)
 
-  const onPlayerReady = (event) => {
-    dispatch(setVideoState({ player: event.target }))
+  const onPlayerStateChange = (event: { data: number }) => {
+    // Checks if the video is playing or not
+    // 1 = Playing, 2 = Paused
+    setIsPlaying(event.data === 1)
   }
 
   useEffect(() => {
@@ -37,7 +40,7 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ controls = 2 }) => {
     <YouTube
       videoId={videoState.videoId}
       opts={opts}
-      onReady={onPlayerReady}
+      onStateChange={onPlayerStateChange}
       className="video-player"
     />
   )

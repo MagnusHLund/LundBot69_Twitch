@@ -8,13 +8,7 @@ export const setVideoState = (videoState) => ({
   payload: videoState,
 })
 
-export const TOGGLE_PLAY_PAUSE = 'TOGGLE_PLAY_PAUSE'
-
-export const togglePlayPause = () => {
-  return (dispatch: any, getState: any) => {
-    const { isPlaying } = getState().videoPlayer
-    dispatch({ type: TOGGLE_PLAY_PAUSE })
-  }
-}
-
-// TODO: No work. Fix.
+export const isVideoPlaying = (state) => ({
+  type: 'IS_VIDEO_PLAYING',
+  payload: state,
+})
