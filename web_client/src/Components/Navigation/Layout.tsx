@@ -10,6 +10,7 @@ import Login from '../Routes/LoginPage'
 import Navbar from './Navbar'
 import './Layout.scss'
 import Footer from '../Content/Footer'
+import VideoPlayer from '../Content/VideoPlayer'
 
 const RedirectToHome: React.FC = () => {
   const navigate = useNavigate()
@@ -42,6 +43,7 @@ const Layout: React.FC = () => {
         </Routes>
       </div>
       <Footer />
+      <VideoPlayer />
     </>
   )
 }

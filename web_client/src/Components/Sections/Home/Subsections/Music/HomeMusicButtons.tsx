@@ -2,10 +2,17 @@ import React from 'react'
 import './HomeMusicButtons.scss'
 import Inline from '../../../../Content/Inline'
 import Button from '../../../../Inputs/Button'
+import { useDispatch } from 'react-redux'
+import { togglePlayPause } from '../../../../../Redux/Actions/VideoPlayerActions'
 
 const HomeMusicButtons: React.FC = () => {
   // TODO: Needs a pause button, interchangeable with the play button
   // TODO: Replace onClick events with something useful
+  const dispatch = useDispatch()
+
+  const handleTogglePlayPause = () => {
+    dispatch(togglePlayPause())
+  }
 
   return (
     <Inline className="inline-music-buttons">
@@ -23,7 +30,7 @@ const HomeMusicButtons: React.FC = () => {
         height="35px"
         width="35px"
         isWhite={true}
-        onClick={() => console.log('Resume')}
+        onClick={handleTogglePlayPause}
       />
       <Button
         className="inline-music-buttons__button--next-song"

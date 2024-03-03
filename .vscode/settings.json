@@ -3,7 +3,7 @@
   "codegraphy.nodeSize": "Lines",
   "codegraphy.showNodeModules": false,
   "codegraphy.showOrphans": false,
-  "codegraphy.showLabels": false,
+  "codegraphy.showLabels": true,
   "codegraphy.showOutlines": true,
   "codegraphy.showArrows": false,
   "codegraphy.doCollisions": true,
