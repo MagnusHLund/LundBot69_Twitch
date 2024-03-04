@@ -1,14 +1,7 @@
-export const setPlayer = (player) => ({
-  type: 'SET_PLAYER',
-  payload: player,
+export const setShouldVideoPlay = () => ({
+  type: 'SET_SHOULD_VIDEO_PLAY',
 })
 
-export const setVideoState = (videoState) => ({
-  type: 'SET_VIDEO_STATE',
-  payload: videoState,
-})
-
-export const isVideoPlaying = (state) => ({
+export const shouldVideoPlay = () => ({
   type: 'IS_VIDEO_PLAYING',
-  payload: state,
 })

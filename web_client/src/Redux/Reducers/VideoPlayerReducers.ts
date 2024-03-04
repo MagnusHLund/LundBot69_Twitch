@@ -1,12 +1,6 @@
-import { setPlayer } from './../Actions/VideoPlayerActions'
 interface VideoPlayerAction {
   type: string
   payload: object
-}
-
-interface VideoPlayerState {
-  videoId: string
-  isPlaying: boolean
 }
 
 const initialState = {
@@ -19,15 +13,10 @@ const videoPlayerReducer = (
   action: VideoPlayerAction,
 ) => {
   switch (action.type) {
-    case 'SET_PLAYER':
+    case 'SET_SHOULD_VIDEO_PLAY':
       return {
         ...state,
-        player: action.payload,
-      }
-    case 'SET_VIDEO_STATE':
-      return {
-        ...state,
-        ...action.payload,
+        isPlaying: !state.isPlaying,
       }
     case 'IS_VIDEO_PLAYING':
       return {}
