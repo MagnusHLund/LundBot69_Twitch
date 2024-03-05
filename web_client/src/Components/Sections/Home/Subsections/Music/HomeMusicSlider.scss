@@ -1,3 +1,8 @@
-.music-slider * {
-  margin: 5px;
+.music-slider {
+  & * {
+    margin: 5px;
+  }
+  &--text {
+    min-width: 55px;
+  }
 }

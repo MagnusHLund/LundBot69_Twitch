@@ -1,11 +1,14 @@
 interface VideoPlayerAction {
   type: string
-  payload: object
+  payload: unknown
 }
 
 const initialState = {
   videoId: '9vMLTcftlyI',
   isPlaying: false,
+  videoTitle: 'n/a',
+  videoDuration: '0',
+  videoTimeStamp: '0',
 }
 
 const videoPlayerReducer = (
@@ -13,13 +16,26 @@ const videoPlayerReducer = (
   action: VideoPlayerAction,
 ) => {
   switch (action.type) {
-    case 'SET_SHOULD_VIDEO_PLAY':
+    case 'VIDEO_PLAY_STATE':
       return {
         ...state,
         isPlaying: !state.isPlaying,
       }
-    case 'IS_VIDEO_PLAYING':
-      return {}
+    case 'VIDEO_TITLE':
+      return {
+        ...state,
+        videoTitle: action.payload,
+      }
+    case 'VIDEO_DURATION':
+      return {
+        ...state,
+        videoDuration: action.payload,
+      }
+    case 'VIDEO_TIME_STAMP':
+      return {
+        ...state,
+        videoTimeStamp: action.payload,
+      }
     default:
       return state
   }
