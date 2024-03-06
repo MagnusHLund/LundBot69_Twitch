@@ -128,5 +128,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-Client/LundBot69 Client/App.config
-API/Database.js
+
+# LundBot69 API
+API/Database.php
+API/php.ini

@@ -1,0 +1,15 @@
+{
+  "name": "magnushlund/lundbot69_api",
+  "description": "PHP API for LundBot69",
+  "type": "project",
+  "require": {
+    "php": "8.3.3",
+    "ext-pdo_mysql": "*"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Magnushlund\\Lundbot69Api\\": "src/"
+    }
+  }
+}
