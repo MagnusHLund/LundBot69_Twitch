@@ -2,8 +2,6 @@ import React from 'react'
 import './HomeGoals.scss'
 import Title from '../../../../Content/Title'
 import HomeGoalsRange from './HomeGoalsRange'
-import InputForm from '../../../../Content/InputForm'
-import Inline from '../../../../Content/Inline'
 
 interface IHomeGoals {
   goalType: 'sub' | 'follower'
@@ -37,19 +35,6 @@ const HomeGoals: React.FC<IHomeGoals> = ({ goalType }) => {
           <HomeGoalsRange width="96.7%" />
         </div>
       </div>
-      <InputForm
-        title="Change goal"
-        initialValues={undefined}
-        isInline={true}
-        submitTitle="save"
-      >
-        <input
-          type="number"
-          min={0}
-          placeholder="New goal"
-          className="channel-goals__container--input inline"
-        />
-      </InputForm>
     </div>
   )
 }

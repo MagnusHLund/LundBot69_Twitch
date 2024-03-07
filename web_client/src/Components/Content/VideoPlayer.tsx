@@ -25,7 +25,6 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ controls = 2 }) => {
   }
 
   useEffect(() => {
-    console.log(videoState.isPlaying)
     if (playerRef.current) {
       if (videoState.isPlaying) {
         playerRef.current.playVideo()

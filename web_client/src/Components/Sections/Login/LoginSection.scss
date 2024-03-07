@@ -2,38 +2,6 @@
   display: block;
   flex: none;
   margin: 15vh auto;
-  &--content {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: auto;
-    &--error {
-      height: 50px;
-      color: red;
-    }
-    &--form {
-      height: 100px;
-      display: flex;
-      flex-direction: column;
-      &--username,
-      &--password,
-      &--submit {
-        border: 2px solid black;
-        border-radius: 10px;
-        padding: 2px;
-        width: 150px;
-        margin-top: 5px;
-      }
-      &--submit {
-        background-color: #eb9834;
-        margin-top: 10px;
-        width: 75px;
-      }
-    }
-    &--no-account {
-      font-size: 10px;
-    }
-  }
   &--title {
     height: auto;
   }

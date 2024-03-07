@@ -5,9 +5,10 @@
   position: relative;
   margin: 5px;
   border: 2px solid #eb9834;
+  width: 275px;
   &__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: auto;
     &--image {
       position: relative;
@@ -15,19 +16,8 @@
       &--sub,
       &--follower,
       &--hover {
-        position: absolute;
         height: 35px;
         width: 35px;
-        left: 25%;
-      }
-    }
-    &--text {
-      // Do i even need styling here?
-    }
-    &--input {
-      &.inline {
-        max-width: 76%;
-        width: auto;
       }
     }
   }

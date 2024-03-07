@@ -35,7 +35,7 @@ const Slider: React.FC<ICheckboxProps> = ({
       })}
       min={minValue}
       max={maxValue}
-      value={value}
+      defaultValue={value}
       style={{ height: height, width: width, cursor: cursor }}
     />
   )

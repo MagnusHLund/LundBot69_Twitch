@@ -1,30 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './LoginSection.scss'
 import ContentBox from '../../Content/ContentBox'
 import Title from '../../Content/Title'
 import RowHandler from '../../Content/RowHandler'
-import LoginForm from './Subsections/LoginForm'
+import Button from '../../Inputs/Button'
+import twitchScopes from '../../../Utils/TwitchScopes'
 
 const LoginSection: React.FC = () => {
+  const handleClick = () => {
+    const scopeParam = twitchScopes().join('+')
+
+    window.location.href = `https://id.twitch.tv/oauth2/authorize?client_id=${import.meta.env.VITE_TWITCH_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_TWITCH_REDIRECT_URI}&response_type=code&scope=${scopeParam}`
+  }
+
+  const handleAuth = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const token = urlParams.get('token')
+
+    if (token) {
+      //dispatch(thunkAction(token))
+    }
+  }
+
+  useEffect(() => {
+    handleAuth()
+  }, [])
+
   // TODO: hide navbar on login page
   return (
     <ContentBox className="login-section">
       <RowHandler className="login-section--title">
         <Title text="Login" />
       </RowHandler>
-      <div className="login-section--content">
-        <RowHandler className="login-section--content--error">
-          <Title text="THIS IS AN ERROR MESSAGE" fontSize="15px" />
-        </RowHandler>
-        <RowHandler>
-          <LoginForm className="login-section--content--form" />
-        </RowHandler>
-        <RowHandler>
-          <p className="login-section--content--no-account">
-            Dont have an account? Too bad.
-          </p>
-        </RowHandler>
-      </div>
+      <RowHandler>
+        <Button onClick={handleClick}>Login</Button>
+      </RowHandler>
     </ContentBox>
   )
 }
