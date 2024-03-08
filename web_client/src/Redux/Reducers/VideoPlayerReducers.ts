@@ -1,9 +1,17 @@
-interface VideoPlayerAction {
+interface IVideoPlayerAction {
   type: string
   payload: unknown
 }
 
-const initialState = {
+interface IVideoPlayerState {
+  videoId: string
+  videoTitle: string
+  videoTimeStamp: string
+  videoDuration: string
+  isPlaying: boolean
+}
+
+const initialState: IVideoPlayerState = {
   videoId: '9vMLTcftlyI',
   isPlaying: false,
   videoTitle: 'n/a',
@@ -13,7 +21,7 @@ const initialState = {
 
 const videoPlayerReducer = (
   state = initialState,
-  action: VideoPlayerAction,
+  action: IVideoPlayerAction,
 ) => {
   switch (action.type) {
     case 'VIDEO_PLAY_STATE':
