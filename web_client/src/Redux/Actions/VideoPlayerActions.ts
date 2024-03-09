@@ -1,18 +1,30 @@
-export const setShouldVideoPlay = () => ({
-  type: 'VIDEO_PLAY_STATE',
+import { RootState } from '@reduxjs/toolkit/query'
+import { Dispatch } from 'redux'
+
+export const changeVideoPlayState = () => ({
+  type: 'CHANGE_VIDEO_PLAY_STATE',
 })
 
-export const videoTitle = (title: string) => ({
-  type: 'VIDEO_TITLE',
+export const setVideoTitle = (title: string) => ({
+  type: 'SET_VIDEO_TITLE',
   payload: title,
 })
 
-export const videoDuration = (duration: string) => ({
-  type: 'VIDEO_DURATION',
+export const setVideoDuration = (duration: string) => ({
+  type: 'SET_VIDEO_DURATION',
   payload: duration,
 })
 
-export const videoTimeStamp = (duration: string) => ({
-  type: 'VIDEO_TIME_STAMP',
-  payload: duration,
+export const videoDuration = {
+  type: 'GET_VIDEO_DURATION',
+}
+
+export const setVideoTimeStamp = (timeStamp: string) => ({
+  type: 'SET_VIDEO_TIME_STAMP',
+  payload: timeStamp,
+})
+
+export const setUserMovingVideoSlider = (moving: boolean) => ({
+  type: 'SET_USER_MOVING_VIDEO_SLIDER',
+  payload: moving,
 })

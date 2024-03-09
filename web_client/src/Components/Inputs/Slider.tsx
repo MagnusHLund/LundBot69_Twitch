@@ -1,16 +1,18 @@
-import react from 'react'
+import React from 'react'
 import './Slider.scss'
 import IStandardInputProps from './IStandardInputProps'
 import cn from 'classnames'
 
 interface ICheckboxProps extends IStandardInputProps {
-  children?: react.ReactNode
+  children?: React.ReactNode
   width?: string
   height?: string
   thumbCursor?: 'pointer' | 'grab'
   minValue?: number
   maxValue?: number
   value?: number
+  onMouseUp?: () => void
+  onSliderChange?: (value: number) => void
 }
 
 const Slider: React.FC<ICheckboxProps> = ({
@@ -22,8 +24,17 @@ const Slider: React.FC<ICheckboxProps> = ({
   thumbCursor = 'grab',
   minValue = 0,
   maxValue = 100,
-  value = 50,
+  value = 0,
+  onMouseUp,
+  onSliderChange,
 }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = parseInt(event.target.value, 10)
+    if (onSliderChange) {
+      onSliderChange(newValue)
+    }
+  }
+
   return (
     <input
       type="range"
@@ -36,6 +47,8 @@ const Slider: React.FC<ICheckboxProps> = ({
       min={minValue}
       max={maxValue}
       defaultValue={value}
+      onMouseUp={onMouseUp}
+      onChange={handleChange}
       style={{ height: height, width: width, cursor: cursor }}
     />
   )

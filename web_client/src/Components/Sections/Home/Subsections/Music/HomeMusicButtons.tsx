@@ -3,7 +3,7 @@ import './HomeMusicButtons.scss'
 import Inline from '../../../../Content/Inline'
 import Button from '../../../../Inputs/Button'
 import { useDispatch } from 'react-redux'
-import { setShouldVideoPlay } from '../../../../../Redux/Actions/VideoPlayerActions'
+import { changeVideoPlayState } from '../../../../../Redux/Actions/VideoPlayerActions'
 
 const HomeMusicButtons: React.FC = () => {
   // TODO: Needs a pause button, interchangeable with the play button
@@ -11,7 +11,7 @@ const HomeMusicButtons: React.FC = () => {
   const dispatch = useDispatch()
 
   const handleTogglePlayPause = () => {
-    dispatch(setShouldVideoPlay())
+    dispatch(changeVideoPlayState())
   }
 
   return (
