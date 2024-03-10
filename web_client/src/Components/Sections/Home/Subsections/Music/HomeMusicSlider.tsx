@@ -39,7 +39,7 @@ const HomeMusicSlider: React.FC = () => {
       <Slider
         value={videoTimeStamp}
         maxValue={videoDuration}
-        onChange={handleSliderChange}
+        onChange={handleSliderChange} // TODO: This does not work. Fix.
         onMouseUp={handleMouseUp}
       />
       <p className="music-slider--text">
