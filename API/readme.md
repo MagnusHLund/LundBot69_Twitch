@@ -5,6 +5,7 @@ The API part of the project is made with PHP version 8.3.3, as well as composer 
 As you might expect, the API is responsible for communication between the web client, database, bot and twitch.
 
 The API uses websockets in some parts of the communication to the web client.
-
-![image](https://github.com/MagnusHLund/LundBot69_Twitch/assets/124877369/3f388489-2d89-4cb5-979f-c929f7b5e571)
-![image](https://github.com/MagnusHLund/LundBot69_Twitch/assets/124877369/5e41e9cc-7a29-4e68-a6dc-7f3df338c021)
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="https://github.com/MagnusHLund/LundBot69_Twitch/assets/124877369/3f388489-2d89-4cb5-979f-c929f7b5e571" width="300px" />
+  <img src="https://github.com/MagnusHLund/LundBot69_Twitch/assets/124877369/5e41e9cc-7a29-4e68-a6dc-7f3df338c021" width="300px" /> 
+</div>
