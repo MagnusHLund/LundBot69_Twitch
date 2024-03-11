@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './HomeMusicSlider.scss'
 import Slider from '../../../../Inputs/Slider'
 import Inline from '../../../../Content/Inline'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import songDuration from '../../../../../Utils/songDuration'
 import {
   setUserMovingVideoSlider,
@@ -10,6 +10,7 @@ import {
 } from '../../../../../Redux/Actions/VideoPlayerActions'
 
 const HomeMusicSlider: React.FC = () => {
+  const dispatch = useDispatch()
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimeStamp, setvideoTimeStamp] = useState(0)
   const videoState = useSelector((state) => state.videoPlayer)
@@ -23,12 +24,12 @@ const HomeMusicSlider: React.FC = () => {
 
   const handleSliderChange = (newTimeStamp: string) => {
     console.log('test')
-    setUserMovingVideoSlider(true)
-    setVideoTimeStamp(newTimeStamp)
+    dispatch(setUserMovingVideoSlider(true))
+    dispatch(setVideoTimeStamp(newTimeStamp))
   }
 
   const handleMouseUp = () => {
-    setUserMovingVideoSlider(false)
+    dispatch(setUserMovingVideoSlider(false))
   }
 
   return (
@@ -39,7 +40,7 @@ const HomeMusicSlider: React.FC = () => {
       <Slider
         value={videoTimeStamp}
         maxValue={videoDuration}
-        onChange={handleSliderChange} // TODO: This does not work. Fix.
+        onSliderChange={handleSliderChange}
         onMouseUp={handleMouseUp}
       />
       <p className="music-slider--text">

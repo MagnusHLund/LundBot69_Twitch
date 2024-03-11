@@ -12,7 +12,7 @@ interface ICheckboxProps extends IStandardInputProps {
   maxValue?: number
   value?: number
   onMouseUp?: () => void
-  onSliderChange?: (value: number) => void
+  onSliderChange?: (value: string) => void
 }
 
 const Slider: React.FC<ICheckboxProps> = ({
@@ -31,7 +31,7 @@ const Slider: React.FC<ICheckboxProps> = ({
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(event.target.value, 10)
     if (onSliderChange) {
-      onSliderChange(newValue)
+      onSliderChange(newValue.toString())
     }
   }
 
@@ -46,7 +46,7 @@ const Slider: React.FC<ICheckboxProps> = ({
       })}
       min={minValue}
       max={maxValue}
-      defaultValue={value}
+      value={value}
       onMouseUp={onMouseUp}
       onChange={handleChange}
       style={{ height: height, width: width, cursor: cursor }}

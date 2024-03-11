@@ -28,7 +28,7 @@ const PREFIX = '!'
 client.on('message', (channel, tags, message, self) => {
   if (self) return // Ignore messages from the bot itself
 
-  if (message.charAt(0) === '!') {
+  if (message.charAt(0) === PREFIX) {
     commands.handleCommand(channel, tags, message, self, client)
   } else {
     // TODO: Idea 2 in ideas.json

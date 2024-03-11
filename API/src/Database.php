@@ -1,6 +1,7 @@
 <?php
 
 class Database {
+
     private $host = '89.150.146.79';
     private $username = 'LundBot69';
     private $password = '@6Z8HhDo29zDP2sAB9Yub';
@@ -8,6 +9,9 @@ class Database {
     private $conn;
 
     public function __construct() {
+        require_once realpath(__DIR__ . '/vendor/autoload.php');
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
         try {
             $dsn = "mysql:host={$this->host};dbname={$this->database}";
             $this->conn = new PDO($dsn, $this->username, $this->password);

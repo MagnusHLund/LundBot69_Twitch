@@ -9,7 +9,6 @@ import twitchScopes from '../../../Utils/TwitchScopes'
 const LoginSection: React.FC = () => {
   const handleClick = () => {
     const scopeParam = twitchScopes().join('+')
-
     window.location.href = `https://id.twitch.tv/oauth2/authorize?client_id=${import.meta.env.VITE_TWITCH_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_TWITCH_REDIRECT_URI}&response_type=code&scope=${scopeParam}`
   }
 
