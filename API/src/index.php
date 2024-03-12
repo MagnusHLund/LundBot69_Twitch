@@ -1,15 +1,10 @@
 <?php
 
-require_once 'Database.php';
-require_once 'Router.php';
-require_once 'LoginHandler.php';
-require_once 'SongRequestHandler.php';
+// Recreate this later
 
-$db = new Database();
-$router = new Router();
-
-$loginHandler = new LoginHandler($db);
-$songRequestHandler = new SongRequestHandler($db);
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();
 
 $router->addRoute('POST', '/api/login', [$loginHandler, 'handleLogin']);
 $router->addRoute('POST', '/api/getSongRequests', [$songRequestHandler, 'handleGetSongRequests']);
