@@ -1,33 +1,40 @@
 <?php
 
-class Database {
+namespace LundBot69Api;
 
-    private $host = '89.150.146.79';
-    private $username = 'LundBot69';
-    private $password = '@6Z8HhDo29zDP2sAB9Yub';
-    private $database = 'lundbot69';
+use PDO;
+use PDOException;
+
+define('DB_HOST', $_ENV['DB_HOST']);
+define('DB_USER', $_ENV['DB_USER']);
+define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
+define('DB_DATABASE', $_ENV['DB_DATABASE']);
+
+class Database
+{
     private $conn;
 
-    public function __construct() {
-        require_once realpath(__DIR__ . '/vendor/autoload.php');
-        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-        $dotenv->load();
+    public function __construct()
+    {
         try {
-            $dsn = "mysql:host={$this->host};dbname={$this->database}";
-            $this->conn = new PDO($dsn, $this->username, $this->password);
+            $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_DATABASE;
+            $this->conn = new PDO($dsn, DB_USER, DB_PASSWORD);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "SUCCESS";
         } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
+            echo "Connection failed: " . $e->getMessage();
         }
     }
 
-    public function query($query, $params = []) {
+    // TODO: For all queries, it would probably be best to use stored procedures instead. Sounds like version 2 stuff.
+    public function query($query, $params = [])
+    {
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->execute($params);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            die("Query failed: " . $e->getMessage());
+            echo ("Query failed: " . $e->getMessage());
         }
     }
 }

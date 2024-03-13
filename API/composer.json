@@ -12,7 +12,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Magnushlund\\Lundbot69Api\\": "src/"
+      "LundBot69Api\\": "src/"
     }
   }
 }

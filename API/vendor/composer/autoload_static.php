@@ -37,9 +37,9 @@ class ComposerStaticInitbbdb69cc24a8d1a4503dd4666b3d40ca
         array (
             'NewTwitchApi\\' => 13,
         ),
-        'M' => 
+        'L' => 
         array (
-            'Magnushlund\\Lundbot69Api\\' => 25,
+            'LundBot69Api\\' => 13,
         ),
         'G' => 
         array (
@@ -96,7 +96,7 @@ class ComposerStaticInitbbdb69cc24a8d1a4503dd4666b3d40ca
         array (
             0 => __DIR__ . '/..' . '/nicklaw5/twitch-api-php/src/NewTwitchApi',
         ),
-        'Magnushlund\\Lundbot69Api\\' => 
+        'LundBot69Api\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

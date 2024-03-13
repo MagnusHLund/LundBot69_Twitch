@@ -9,7 +9,7 @@
   "description": "Just a for fun project, playing around with the Twitch API and creating a twitch bot.",
   "version": "1.0.0",
   "scripts": {
-    "api": "cd API && php -S localhost:3420",
+    "api": "cd API/src/ && php -S localhost:3420",
     "web": "cd web_client && npm run dev",
     "bot": "cd Bot && node index.js"
   },
