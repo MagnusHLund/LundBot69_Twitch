@@ -29,9 +29,8 @@ class User
         return $twitchApi->getOauthApi()->getAuthUrl($redirectUri, 'code', $scope);
     }
 
-    public static function getUserFromAuthenticationCode($code, $redirectUri)
+    public static function getUserFromAuthenticationCode($code, $redirectUri, $twitchApi)
     {
-        global $twitchApi;
         $token = $twitchApi->getOauthApi()->getUserAccessToken($code, $redirectUri, $twitchApi);
         $data = json_decode($token->getBody()->getContents());
         $accessToken = $data->access_token ?? null;
@@ -54,7 +53,7 @@ class User
     {
         global $twitchApi;
         try {
-            $decoded = \Firebase\JWT\JWT::decode($this->accessToken, TWITCH_CLIENT_SECRET, ['HS256']);
+            $decoded = \Firebase\JWT\JWT::decode($this->accessToken, TWITCH_CLIENT_SECRET); // TODO: Add algorithm
             $expires = $decoded->exp ?? 0;
             if ($expires < time()) {
                 $token = $twitchApi->getOauthApi()->refreshToken($this->refreshToken); // TODO: 2nd argument is twitch scope. Use it later.
