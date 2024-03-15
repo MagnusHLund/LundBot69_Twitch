@@ -7,6 +7,8 @@ import HomeSettingsButtons from './Subsections/Settings/HomeSettingsButtons'
 import ContentBox from '../../Content/ContentBox'
 import InputForm from '../../Content/InputForm'
 
+// TODO: Sliders should use cookies to store the last set position. To avoid the user having to set the value each time they visit the page.
+
 const HomeSettingsSection: React.FC = () => {
   return (
     <ContentBox>
