@@ -3,6 +3,7 @@
 namespace LundBot69Api;
 
 use Dotenv;
+use LundBot69Api\Handlers\TwitchAuthHandler;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);

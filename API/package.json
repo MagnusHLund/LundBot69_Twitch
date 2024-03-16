@@ -2,11 +2,11 @@
   "name": "lundbot69_api",
   "private": true,
   "scripts": {
-    "start": "php -S localhost:42069"
+    "start": "php -S localhost:4320"
   },
   "version": "1.0.0",
   "description": "API for LundBot69",
-  "main": "index.pjp",
+  "main": "index.php",
   "repository": "https://github.com/MagnusHLund/LundBot69_Twitch.git",
   "author": "Magnus Lund",
   "license": "MIT"

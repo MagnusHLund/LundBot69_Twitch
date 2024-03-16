@@ -1,42 +1,47 @@
 <?php
 
-namespace LundBot69Api;
+namespace LundBot69Api\Models;
 
+use LundBot69Api\Utils\Constants;
 use TwitchApi\TwitchApi;
-
-define('TWITCH_CLIENT_ID', $_ENV['TWITCH_CLIENT_ID']);
-define('TWITCH_CLIENT_SECRET', $_ENV['TWITCH_CLIENT_SECRET']);
-$helixGuzzleClient = new \TwitchApi\HelixGuzzleClient(TWITCH_CLIENT_ID);
+use TwitchApi\HelixGuzzleClient;
 
 class User
 {
     private $accessToken;
     private $refreshToken;
     private $twitchApi;
+    private $constants;
 
-    public function __construct($accessToken, $refreshToken, $twitchApi)
+    public function __construct($accessToken, $refreshToken)
     {
+        $this->constants = new constants;
+
+        $helixGuzzleClient = new HelixGuzzleClient($this->constants->GetTwitchClientID());
+
+        $this->twitchApi = new TwitchApi(
+            $helixGuzzleClient,
+            $this->constants->GetTwitchClientID(),
+            $this->constants->GetTwitchClientSecret(),
+        );
+
         $this->accessToken = $accessToken;
         $this->refreshToken = $refreshToken;
-        $this->twitchApi = $twitchApi;
     }
 
-    public static function getAuthUrl($redirectUri, $scope = "", $twitchApi)
-    {/*
-        $test = $this->twitchApi->getOauthApi();
-        $test2 = $test->getAuthUrl($redirectUri, 'code', $scope);
-        return $test2; */
+    public static function getAuthUrl($redirectUri, $scope = "")
+    {
         return $twitchApi->getOauthApi()->getAuthUrl($redirectUri, 'code', $scope);
     }
 
-    public static function getUserFromAuthenticationCode($code, $redirectUri, $twitchApi)
+    public function getUserFromAuthenticationCode($code, $redirectUri)
     {
-        $token = $twitchApi->getOauthApi()->getUserAccessToken($code, $redirectUri, $twitchApi);
+        $token = $this->twitchApi->getOauthApi()->getUserAccessToken($code, $redirectUri);
         $data = json_decode($token->getBody()->getContents());
         $accessToken = $data->access_token ?? null;
         $refreshToken = $data->refresh_token ?? null;
         if ($accessToken && $refreshToken) {
-            return new User($accessToken, $refreshToken, $twitchApi);
+            return new User($accessToken, $refreshToken);
         } else {
             return null;
         }
@@ -53,7 +58,7 @@ class User
     {
         global $twitchApi;
         try {
-            $decoded = \Firebase\JWT\JWT::decode($this->accessToken, TWITCH_CLIENT_SECRET); // TODO: Add algorithm
+            $decoded = \Firebase\JWT\JWT::decode($this->accessToken, $this->constants->GetTwitchClientSecret()); // TODO: Add algorithm
             $expires = $decoded->exp ?? 0;
             if ($expires < time()) {
                 $token = $twitchApi->getOauthApi()->refreshToken($this->refreshToken); // TODO: 2nd argument is twitch scope. Use it later.

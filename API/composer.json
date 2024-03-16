@@ -12,7 +12,10 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "LundBot69Api\\": "src/"
+      "LundBot69Api\\": "src/",
+      "LundBot69Api\\Handlers\\": "src/Handlers/",
+      "LundBot69Api\\Models\\": "src/Models/",
+      "LundBot69Api\\Utils\\": "src/Utils/"
     }
   }
 }

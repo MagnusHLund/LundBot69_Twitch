@@ -1,24 +1,25 @@
 <?php
 
-namespace LundBot69Api;
+namespace LundBot69Api\Utils;
 
 use PDO;
 use PDOException;
 
-define('DB_HOST', $_ENV['DB_HOST']);
-define('DB_USER', $_ENV['DB_USER']);
-define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
-define('DB_DATABASE', $_ENV['DB_DATABASE']);
+use LundBot69Api\Utils\Constants;
 
 class Database
 {
     private $conn;
+    private $constants;
 
     public function __construct()
     {
+        $this->constants = new Constants;
+        $databaseInfo = $this->constants->GetDatabaseInfo();
+
         try {
-            $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_DATABASE;
-            $this->conn = new PDO($dsn, DB_USER, DB_PASSWORD);
+            $dsn = "mysql:host=" . $databaseInfo["DB_HOST"] . ";dbname=" . $databaseInfo["DB_DATABASE"];
+            $this->conn = new PDO($dsn, $databaseInfo["DB_USER"], $databaseInfo["DB_PASSWORD"]);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "SUCCESS";
         } catch (PDOException $e) {
