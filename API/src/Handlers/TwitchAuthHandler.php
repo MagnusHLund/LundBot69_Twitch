@@ -9,6 +9,7 @@ use LundBot69Api\Models\User;
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\Constants;
 
+// TODO: Reuse the same user in connectUser()
 class TwitchAuthHandler
 {
     private $constants;
@@ -26,7 +27,7 @@ class TwitchAuthHandler
         $test_refresh = $_SESSION['user_refresh_token'];
 
         if (isset($_SESSION['user_access_token']) && isset($_SESSION['user_refresh_token'])) {
-            $user = new User($_SESSION['user_access_token'], $_SESSION['user_refresh_token'], $twitchApi);
+            $user = new User($_SESSION['user_access_token'], $_SESSION['user_refresh_token']);
             $user->refresh();
             $accessToken = $user->getAccessToken();
             try {
@@ -60,7 +61,8 @@ class TwitchAuthHandler
                 }
             } else {
                 // There is no code parameter, redirect the user to the Twitch authorization URL
-                $authUrl = User::getAuthUrl($this->constants->GetTwitchRedirectUri(), $this->constants->GetTwitchScopes());
+                $authUrl = new User("", "");
+                $authUrl->getAuthUrl($this->constants->GetTwitchRedirectUri(), $this->constants->GetTwitchScopes());
                 header('Location: ' . $authUrl);
             }
         }

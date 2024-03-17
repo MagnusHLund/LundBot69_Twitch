@@ -29,9 +29,9 @@ class User
         $this->refreshToken = $refreshToken;
     }
 
-    public static function getAuthUrl($redirectUri, $scope = "")
+    public function getAuthUrl($redirectUri, $scope = "")
     {
-        return $twitchApi->getOauthApi()->getAuthUrl($redirectUri, 'code', $scope);
+        return $this->twitchApi->getOauthApi()->getAuthUrl($redirectUri, 'code', $scope);
     }
 
     public function getUserFromAuthenticationCode($code, $redirectUri)
@@ -56,12 +56,11 @@ class User
 
     public function refresh()
     {
-        global $twitchApi;
         try {
             $decoded = \Firebase\JWT\JWT::decode($this->accessToken, $this->constants->GetTwitchClientSecret()); // TODO: Add algorithm
             $expires = $decoded->exp ?? 0;
             if ($expires < time()) {
-                $token = $twitchApi->getOauthApi()->refreshToken($this->refreshToken); // TODO: 2nd argument is twitch scope. Use it later.
+                $token = $this->twitchApi->getOauthApi()->refreshToken($this->refreshToken); // TODO: 2nd argument is twitch scope. Use it later.
                 $data = json_decode($token->getBody()->getContents());
                 $this->accessToken = $data->access_token ?? null;
                 $this->refreshToken = $data->refresh_token ?? null;
@@ -79,10 +78,8 @@ class User
 
     public function revoke()
     {
-        global $twitchApi;
         // TODO: revokeUserAccessToken() does not exist anymore. Use validateAccessToken and remove it from session storage if invalid
-        $twitchApi->getOauthApi()->revokeUserAccessToken($this->accessToken);
-        $twitchApi->getOauthApi()->revokeUserAccessToken($this->refreshToken);
+        $this->twitchApi->getOauthApi()->validateAccessToken($this->accessToken);
 
         // TODO: Take another look at this later
         unset($_SESSION['user_access_token']);
