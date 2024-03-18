@@ -49,18 +49,19 @@ class User
 
     public function save()
     {
-        // TODO: Take another look at this later
-        $_SESSION['user_access_token'] = $this->accessToken;
+        $_SESSION['user_jwt'] = $this->generateUserJWT();
         $_SESSION['user_refresh_token'] = $this->refreshToken;
     }
 
     public function refresh()
     {
         try {
-            $decoded = \Firebase\JWT\JWT::decode($this->accessToken, $this->constants->GetTwitchClientSecret()); // TODO: Add algorithm
+
+
+            $decoded = \Firebase\JWT\JWT::decode($_SESSION['user_jwt'], array("kid" => $this->constants->getKid()));
             $expires = $decoded->exp ?? 0;
             if ($expires < time()) {
-                $token = $this->twitchApi->getOauthApi()->refreshToken($this->refreshToken); // TODO: 2nd argument is twitch scope. Use it later.
+                $token = $this->twitchApi->getOauthApi()->refreshToken($this->refreshToken, $this->constants->GetTwitchScopes());
                 $data = json_decode($token->getBody()->getContents());
                 $this->accessToken = $data->access_token ?? null;
                 $this->refreshToken = $data->refresh_token ?? null;
@@ -72,18 +73,16 @@ class User
             }
         } catch (\Exception $e) {
             // The access token is invalid, revoke the tokens and log out the user
-            $this->revoke();
+            // TODO: Remove this comment $this->revoke();
         }
     }
 
     public function revoke()
     {
-        // TODO: revokeUserAccessToken() does not exist anymore. Use validateAccessToken and remove it from session storage if invalid
-        $this->twitchApi->getOauthApi()->validateAccessToken($this->accessToken);
-
-        // TODO: Take another look at this later
-        unset($_SESSION['user_access_token']);
+        unset($_SESSION['user_jwt']);
         unset($_SESSION['user_refresh_token']);
+
+        session_destroy();
     }
 
     public function getAccessToken()
@@ -94,5 +93,16 @@ class User
     public function getRefreshToken()
     {
         return $this->refreshToken;
+    }
+
+    public function generateUserJWT()
+    {
+        $payload = [
+            'iss' => 'LundBot69',
+            'sub' => $this->accessToken,
+            'iat' => time(),
+            'exp' => time() + 86400 // 1 day
+        ];
+        return \Firebase\JWT\JWT::encode($payload, $this->constants->GetTwitchClientSecret(), 'HS256', $this->constants->getKid());
     }
 }

@@ -1,4 +1,4 @@
-<?php // Historical moment: Always fucking include php here, took me 2 hours to figure out why TwitchAuthHandler could not find Constants. Because of missing php in the <?php tag.
+<?php
 
 namespace LundBot69Api\Utils;
 
@@ -38,5 +38,10 @@ class Constants
             'channel:read:subscriptions',
             'channel:read:goals',
         ]);
+    }
+
+    public function getKid()
+    {
+        return $_ENV['KID'];
     }
 }
