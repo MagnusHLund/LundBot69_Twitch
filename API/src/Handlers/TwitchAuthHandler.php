@@ -22,23 +22,24 @@ class TwitchAuthHandler
     public function connectUser()
     {
 
-        $user = new User(($_SESSION['user_access_token']), ($_SESSION['user_refresh_token']));
+        $user = new User(($_SESSION['user_jwt']), ($_SESSION['user_refresh_token']));
 
         $test_jwt = $_SESSION['user_jwt'];
         $test_refresh = $_SESSION['user_refresh_token'];
 
         if (isset($_SESSION['user_jwt']) && isset($_SESSION['user_refresh_token'])) {
             $user->refresh();
-            $accessToken = $user->getAccessToken();
+            $username = $user->getTwitchUsername();
             try {
                 $db = new Database;
-                $data = $db->query('SELECT * FROM creators WHERE AccessToken = ? LIMIT 1', $accessToken); // This query makes no sense. Get the username of the twitch channel and query on that.
+                $data = $db->query('SELECT * FROM creators WHERE Username = ? LIMIT 1', [$username]);
                 if ($data) {
                     header('Content-Type: application/json');
-                    echo json_encode($data);
+                    echo json_encode("User exists!");
                 } else {
                     header('Content-Type: application/json');
                     echo json_encode(['error' => 'No data found for this user']);
+                    $user->revoke();
                 }
             } catch (PDOException $e) {
                 header('Content-Type: application/json');

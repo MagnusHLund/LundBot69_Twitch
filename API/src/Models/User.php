@@ -5,6 +5,7 @@ namespace LundBot69Api\Models;
 use LundBot69Api\Utils\Constants;
 use TwitchApi\TwitchApi;
 use TwitchApi\HelixGuzzleClient;
+use TwitchApi\RequestGenerator;
 
 class User
 {
@@ -12,6 +13,7 @@ class User
     private $refreshToken;
     private $twitchApi;
     private $constants;
+    private $usersApi;
 
     public function __construct($accessToken, $refreshToken)
     {
@@ -56,9 +58,7 @@ class User
     public function refresh()
     {
         try {
-
-
-            $decoded = \Firebase\JWT\JWT::decode($_SESSION['user_jwt'], array("kid" => $this->constants->getKid()));
+            $decoded = $this->decodeJwt();
             $expires = $decoded->exp ?? 0;
             if ($expires < time()) {
                 $token = $this->twitchApi->getOauthApi()->refreshToken($this->refreshToken, $this->constants->GetTwitchScopes());
@@ -72,9 +72,14 @@ class User
                 }
             }
         } catch (\Exception $e) {
-            // The access token is invalid, revoke the tokens and log out the user
-            // TODO: Remove this comment $this->revoke();
+            $this->revoke();
         }
+    }
+
+    private function decodeJwt()
+    {
+        $keyArray = new \Firebase\JWT\Key($this->constants->GetTwitchClientSecret(), 'HS256');
+        return \Firebase\JWT\JWT::decode($_SESSION['user_jwt'], $keyArray);
     }
 
     public function revoke()
@@ -87,7 +92,16 @@ class User
 
     public function getAccessToken()
     {
-        return $this->accessToken;
+        $decoded = $this->decodeJwt();
+        return $decoded->sub;
+    }
+
+    public function getTwitchUsername()
+    {
+        $accessToken = $this->getAccessToken();
+        $request = $this->twitchApi->getUsersApi()->getUserByAccessToken($accessToken);
+        $response = json_decode($request->getBody()->getContents());
+        return $response->data[0]->display_name;
     }
 
     public function getRefreshToken()
