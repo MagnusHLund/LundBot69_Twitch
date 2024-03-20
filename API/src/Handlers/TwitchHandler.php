@@ -9,13 +9,12 @@ use LundBot69Api\Models\User;
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\Constants;
 
-class TwitchAuthHandler
+class TwitchHandler
 {
     private $constants;
 
     public function __construct()
     {
-        session_start();
         $this->constants = new Constants;
     }
 
@@ -47,10 +46,10 @@ class TwitchAuthHandler
             }
         } else {
             if (isset($_GET['code'])) {
-                $user = $user->getUserFromAuthenticationCode($_GET['code'], $this->constants->GetTwitchRedirectUri());
+                $user = $user->getUserFromAuthenticationCode($_GET['code'], $this->constants->getTwitchRedirectUri());
                 if ($user) {
                     $user->save();
-                    header('Location: ' . $this->constants->GetTwitchRedirectUri());
+                    header('Location: ' . $this->constants->getTwitchRedirectUri());
                 } else {
                     // The exchange failed, return an error message
                     header('Content-Type: application/json');
@@ -58,7 +57,7 @@ class TwitchAuthHandler
                 }
             } else {
                 // There is no code parameter, redirect the user to the Twitch authorization URL
-                $authUrl = $user->getAuthUrl($this->constants->GetTwitchRedirectUri(), $this->constants->GetTwitchScopes());
+                $authUrl = $user->getAuthUrl($this->constants->GetTwitchRedirectUri(), $this->constants->getTwitchScopes());
                 header('Location: ' . $authUrl);
             }
         }

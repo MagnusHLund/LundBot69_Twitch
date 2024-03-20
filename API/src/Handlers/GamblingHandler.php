@@ -9,23 +9,23 @@ class GamblingHandler
     {
     }
 
-    public function GetGamblers()
+    public function getGamblers()
     {
     }
 
-    public function ModifyGamblerPoints()
+    public function modifyGamblerPoints()
     {
     }
 
-    public function WipeGamblerPoints()
+    public function wipeGamblerPoints()
     {
     }
 
-    public function DeleteGambler()
+    public function deleteGambler()
     {
     }
 
-    public function CreateGambler()
+    public function createGambler()
     {
     }
 }

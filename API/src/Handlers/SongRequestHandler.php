@@ -15,23 +15,23 @@ class SongRequestHandler
     }
 
     // Uses websocket
-    public function GetRequestedSongs()
+    public function getRequestedSongs()
     {
     }
 
-    public function DeleteDefaultSongs()
+    public function deleteDefaultSongs()
     {
     }
 
-    public function DeleteRequestedSongs()
+    public function deleteRequestedSongs()
     {
     }
 
-    public function AddDefaultSong()
+    public function addDefaultSong()
     {
     }
 
-    public function AddRequestedSong()
+    public function addRequestedSong()
     {
     }
 }

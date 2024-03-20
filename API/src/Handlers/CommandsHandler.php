@@ -9,23 +9,23 @@ class CommandsHandler
     {
     }
 
-    public function GetCommands()
+    public function getCommands()
     {
     }
 
-    public function CreateCommand()
+    public function createCommand()
     {
     }
 
-    public function EditCommand()
+    public function editCommand()
     {
     }
 
-    public function DeleteCommand()
+    public function deleteCommand()
     {
     }
 
-    public function ToggleCommandActivityState()
+    public function toggleCommandActivityState()
     {
     }
 }

@@ -27,7 +27,7 @@ class Database
         }
     }
 
-    // TODO: For all queries, it would probably be best to use stored procedures instead. Sounds like version 2 stuff.
+    // TODO: For all queries, it would probably be best to use an ORM. Sounds like version 2 stuff. 
     public function query($query, $params = [])
     {
         try {

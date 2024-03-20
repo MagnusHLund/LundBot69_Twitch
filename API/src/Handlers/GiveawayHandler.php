@@ -9,20 +9,20 @@ class GiveawayHandler
     {
     }
 
-    public function PickGiveawayWinner()
+    public function pickGiveawayWinner()
     {
     }
 
-    public function ResetGiveawayParticipants()
+    public function resetGiveawayParticipants()
     {
     }
 
     // Uses websocket
-    public function GetGiveawayParticipants()
+    public function getGiveawayParticipants()
     {
     }
 
-    public function AddGiveawayParticipants()
+    public function addGiveawayParticipants()
     {
     }
 }

@@ -13,18 +13,17 @@ class User
     private $refreshToken;
     private $twitchApi;
     private $constants;
-    private $usersApi;
 
     public function __construct($accessToken, $refreshToken)
     {
         $this->constants = new constants;
 
-        $helixGuzzleClient = new HelixGuzzleClient($this->constants->GetTwitchClientID());
+        $helixGuzzleClient = new HelixGuzzleClient($this->constants->getTwitchClientID());
 
         $this->twitchApi = new TwitchApi(
             $helixGuzzleClient,
-            $this->constants->GetTwitchClientID(),
-            $this->constants->GetTwitchClientSecret(),
+            $this->constants->getTwitchClientID(),
+            $this->constants->getTwitchClientSecret(),
         );
 
         $this->accessToken = $accessToken;
@@ -78,7 +77,7 @@ class User
 
     private function decodeJwt()
     {
-        $keyArray = new \Firebase\JWT\Key($this->constants->GetTwitchClientSecret(), 'HS256');
+        $keyArray = new \Firebase\JWT\Key($this->constants->getTwitchClientSecret(), 'HS256');
         return \Firebase\JWT\JWT::decode($_SESSION['user_jwt'], $keyArray);
     }
 
@@ -117,6 +116,6 @@ class User
             'iat' => time(),
             'exp' => time() + 86400 // 1 day
         ];
-        return \Firebase\JWT\JWT::encode($payload, $this->constants->GetTwitchClientSecret(), 'HS256', $this->constants->getKid());
+        return \Firebase\JWT\JWT::encode($payload, $this->constants->getTwitchClientSecret(), 'HS256', $this->constants->getKid());
     }
 }

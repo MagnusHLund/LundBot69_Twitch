@@ -9,29 +9,29 @@ class BansHandler
     {
     }
 
-    public function BanSong()
+    public function banSong()
     {
     }
 
-    public function UnbanSong()
+    public function unbanSong()
     {
     }
 
-    public function BanUser()
+    public function banUser()
     {
     }
 
-    public function UnbanUser()
-    {
-    }
-
-    // Uses websocket
-    public function GetBannedUsers()
+    public function unbanUser()
     {
     }
 
     // Uses websocket
-    public function GetBannedSongs()
+    public function getBannedUsers()
+    {
+    }
+
+    // Uses websocket
+    public function getBannedSongs()
     {
     }
 }

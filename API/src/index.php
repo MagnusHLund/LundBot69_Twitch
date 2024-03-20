@@ -3,22 +3,28 @@
 namespace LundBot69Api;
 
 use Dotenv;
-use LundBot69Api\Handlers\TwitchAuthHandler;
+use LundBot69Api\Utils\Router;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 $dotenv->load();
 
-$twitchAuthHandler = new TwitchAuthHandler();
+class ApiEntry
+{
+    public function __construct()
+    {
+        session_start();
+    }
 
-$twitchAuthHandler->connectUser();
+    public static function handleRequest()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        $path = $_SERVER['REQUEST_URI'];
+        $requestBody = json_decode(file_get_contents('php://input'), true);
 
-/*
-$router->addRoute('POST', '/api/login', [$loginHandler, 'handleLogin']);
-$router->addRoute('POST', '/api/getSongRequests', [$songRequestHandler, 'handleGetSongRequests']);
+        $router = new Router;
+        $router->handleRequest($method, $path, $requestBody);
+    }
+}
 
-$method = $_SERVER['REQUEST_METHOD'];
-$path = $_SERVER['REQUEST_URI'];
-$requestBody = json_decode(file_get_contents('php://input'), true);
-$router->handleRequest($method, $path, $requestBody);
-*/
+ApiEntry::handleRequest();

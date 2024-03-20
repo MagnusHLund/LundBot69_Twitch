@@ -9,23 +9,23 @@ class SettingsHandler
     {
     }
 
-    public function ToggleBotActivityState()
+    public function toggleBotActivityState()
     {
     }
 
-    public function ToggleSongRequestActivityState()
+    public function toggleSongRequestActivityState()
     {
     }
 
-    public function ToggleGamblingActivityState()
+    public function toggleGamblingActivityState()
     {
     }
 
-    public function ToggleShoutOutActivityState()
+    public function toggleShoutOutActivityState()
     {
     }
 
-    public function SetAutoPinnedMessage()
+    public function setAutoPinnedMessage()
     {
     }
 
