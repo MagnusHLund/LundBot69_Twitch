@@ -11,11 +11,12 @@ import Navbar from './Navbar'
 import './Layout.scss'
 import Footer from '../Content/Footer'
 import VideoPlayer from '../Content/VideoPlayer'
+import LoadingPage from '../Routes/LoadingPage'
 
-const RedirectToHome: React.FC = () => {
+const RedirectToLogin: React.FC = () => {
   const navigate = useNavigate()
   useEffect(() => {
-    navigate('/home')
+    navigate('/login')
   }, [navigate])
 
   return null
@@ -38,8 +39,9 @@ const Layout: React.FC = () => {
           <Route path="/sr" element={<SongRequestPage />} />
           <Route path="/gambling" element={<GamblingPage />} />
           <Route path="/commands" element={<CommandsPage />} />
+          <Route path="/loading" element={<LoadingPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<RedirectToHome />} />
+          <Route path="*" element={<RedirectToLogin />} />
         </Routes>
       </div>
       <Footer />

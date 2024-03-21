@@ -4,16 +4,13 @@ namespace LundBot69Api\Middleware;
 
 class AuthenticationMiddleware
 {
-
-    public function __construct()
+    public function handle($path)
     {
-    }
-
-    public function handle()
-    {
-    }
-
-    private function isAuthenticated()
-    {
+        if (!strpos($path, "twitch/connectUser"))
+            if (!isset($_SESSION['user_jwt'])) {
+                http_response_code(401);
+                echo json_encode(["error" => "Access denied. Local authorities contacted. " . ($_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER['REMOTE_ADDR'])]);
+                exit;
+            }
     }
 }

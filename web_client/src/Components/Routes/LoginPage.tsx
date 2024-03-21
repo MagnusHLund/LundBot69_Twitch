@@ -11,7 +11,6 @@ import LoginForm from '../Sections/Login/Subsections/LoginForm'
 import LoginSection from '../Sections/Login/LoginSection'
 
 const LoginPage: React.FC = () => {
-  // TODO hide navbar on login page
   return (
     <>
       <LoginSection />

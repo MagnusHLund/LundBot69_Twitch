@@ -3,6 +3,7 @@
 namespace LundBot69Api;
 
 use Dotenv;
+use LundBot69Api\Middleware\AuthenticationMiddleware;
 use LundBot69Api\Utils\Router;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -11,20 +12,31 @@ $dotenv->load();
 
 class ApiEntry
 {
+    private $router;
+
     public function __construct()
     {
         session_start();
+
+        $this->router = new Router;
     }
 
-    public static function handleRequest()
+    public function handleRequest()
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $path = $_SERVER['REQUEST_URI'];
         $requestBody = json_decode(file_get_contents('php://input'), true);
 
-        $router = new Router;
-        $router->handleRequest($method, $path, $requestBody);
+        $this->applyMiddleware($path);
+        $this->router->handleRequest($method, $path, $requestBody);
+    }
+
+    private function applyMiddleware(&$path)
+    {
+        $authenticationMiddleware = new AuthenticationMiddleware;
+        $authenticationMiddleware->handle($path);
     }
 }
 
-ApiEntry::handleRequest();
+$apiEntry = new ApiEntry;
+$apiEntry->handleRequest();

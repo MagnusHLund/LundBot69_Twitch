@@ -66,21 +66,22 @@ class Router
             ["POST", "/api/sr/addRequestedSong", [$songRequestHandler, "addRequestedSong"]],
 
             // Twitch
-            ["POST", "/api/twitch/connectUser", [$twitchHandler, "connectUser"]],
+            ["POST", "/api/twitch/connectUser", [$twitchHandler, "connectUser"], ["requestBody"]],
         ];
     }
 
     public function handleRequest($method, $path, $requestBody)
     {
         foreach ($this->routes as $route) {
-            list($routeMethod, $routePath, $handler) = $route;
+            list($routeMethod, $routePath, $handler, $params) = $route;
             if ($method === $routeMethod && $path === $routePath) {
-                $handler($requestBody);
+                call_user_func_array([$handler[0], $handler[1]], [[$requestBody], $params]);
                 return;
             }
         }
 
         http_response_code(404);
-        echo json_encode(["error" => "I might need some glasses, because I can not find this route."]);
+        echo json_encode(["error" => "I might need some glasses, because I can not find this path."]);
+        exit;
     }
 }

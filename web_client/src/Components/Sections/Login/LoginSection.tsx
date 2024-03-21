@@ -25,7 +25,6 @@ const LoginSection: React.FC = () => {
     handleAuth()
   }, [])
 
-  // TODO: hide navbar on login page
   return (
     <ContentBox className="login-section">
       <RowHandler className="login-section--title">

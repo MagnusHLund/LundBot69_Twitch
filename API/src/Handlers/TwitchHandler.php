@@ -4,9 +4,9 @@ namespace LundBot69Api\Handlers;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+use Exception;
 use PDOException;
 use LundBot69Api\Models\User;
-use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\Constants;
 
 class TwitchHandler
@@ -18,48 +18,38 @@ class TwitchHandler
         $this->constants = new Constants;
     }
 
-    public function connectUser()
+    public function connectUser($request)
     {
-
         $user = new User(($_SESSION['user_jwt']), ($_SESSION['user_refresh_token']));
 
-        $test_jwt = $_SESSION['user_jwt'];
-        $test_refresh = $_SESSION['user_refresh_token'];
-
-        if (isset($_SESSION['user_jwt']) && isset($_SESSION['user_refresh_token'])) {
-            $user->refresh();
-            $username = $user->getTwitchUsername();
+        if (isset($request[0]["code"])) {
             try {
-                $db = new Database;
-                $data = $db->query('SELECT * FROM creators WHERE Username = ? LIMIT 1', [$username]);
-                if ($data) {
-                    header('Content-Type: application/json');
-                    echo json_encode("User exists!");
-                } else {
-                    header('Content-Type: application/json');
-                    echo json_encode(['error' => 'No data found for this user']);
-                    $user->revoke();
-                }
-            } catch (PDOException $e) {
-                header('Content-Type: application/json');
-                echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
-            }
-        } else {
-            if (isset($_GET['code'])) {
-                $user = $user->getUserFromAuthenticationCode($_GET['code'], $this->constants->getTwitchRedirectUri());
+                $user = new User(null, null);
+                $user = $user->getUserFromAuthenticationCode($request[0]["code"], $this->constants->getTwitchRedirectUri());
                 if ($user) {
+
+                    // TODO: Setup an ORM for database communication. Check if the user exists in the database, if not then no access. 
+
+                    if (false /* User does not exist in database */) {
+                        http_response_code(401);
+                        echo json_encode(['error' => 'You picked the wrong user, fool!']);
+                        exit;
+                    }
+
                     $user->save();
                     header('Location: ' . $this->constants->getTwitchRedirectUri());
                 } else {
-                    // The exchange failed, return an error message
-                    header('Content-Type: application/json');
-                    echo json_encode(['error' => 'Invalid code']);
+                    throw new Exception;
                 }
-            } else {
-                // There is no code parameter, redirect the user to the Twitch authorization URL
-                $authUrl = $user->getAuthUrl($this->constants->GetTwitchRedirectUri(), $this->constants->getTwitchScopes());
-                header('Location: ' . $authUrl);
+            } catch (Exception) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Your code is bad :C']);
+                exit;
             }
+        } else {
+            // There is no code parameter, redirect the user to the Twitch authorization URL
+            $authUrl = $user->getAuthUrl($this->constants->GetTwitchRedirectUri(), $this->constants->getTwitchScopes());
+            header('Location: ' . $authUrl);
         }
     }
 }

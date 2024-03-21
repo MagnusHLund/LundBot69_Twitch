@@ -11,6 +11,10 @@ interface INavbarProps {
 const Navbar: React.FC<INavbarProps> = ({ image, links }) => {
   const [currentPage, setCurrentPage] = useState(location.href)
 
+  if (currentPage.includes('login') || currentPage.includes('loading')) {
+    return
+  }
+
   return (
     <nav className="navbar">
       <div className="navbar navbar-brand">
