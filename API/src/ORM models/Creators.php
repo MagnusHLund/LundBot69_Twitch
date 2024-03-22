@@ -2,7 +2,7 @@
 
 namespace LundBot69Api\ORM_Models;
 
-use illuminate\database\Eloquent\Model;
+use Illuminate\database\Eloquent\Model;
 
 class Creators extends Model
 {

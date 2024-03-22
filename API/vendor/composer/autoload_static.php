@@ -56,6 +56,7 @@ class ComposerStaticInitbbdb69cc24a8d1a4503dd4666b3d40ca
         'L' => 
         array (
             'LundBot69Api\\Utils\\' => 19,
+            'LundBot69Api\\ORM_Models\\' => 24,
             'LundBot69Api\\Models\\' => 20,
             'LundBot69Api\\Handlers\\' => 22,
             'LundBot69Api\\' => 13,
@@ -168,6 +169,10 @@ class ComposerStaticInitbbdb69cc24a8d1a4503dd4666b3d40ca
         array (
             0 => __DIR__ . '/../..' . '/src/Utils',
         ),
+        'LundBot69Api\\ORM_Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/ORM models',
+        ),
         'LundBot69Api\\Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Models',
@@ -182,9 +187,9 @@ class ComposerStaticInitbbdb69cc24a8d1a4503dd4666b3d40ca
         ),
         'Illuminate\\Support\\' => 
         array (
-            0 => __DIR__ . '/..' . '/illuminate/macroable',
+            0 => __DIR__ . '/..' . '/illuminate/collections',
             1 => __DIR__ . '/..' . '/illuminate/conditionable',
-            2 => __DIR__ . '/..' . '/illuminate/collections',
+            2 => __DIR__ . '/..' . '/illuminate/macroable',
             3 => __DIR__ . '/..' . '/illuminate/support',
         ),
         'Illuminate\\Database\\' => 

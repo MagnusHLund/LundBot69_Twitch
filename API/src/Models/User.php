@@ -5,7 +5,6 @@ namespace LundBot69Api\Models;
 use LundBot69Api\Utils\Constants;
 use TwitchApi\TwitchApi;
 use TwitchApi\HelixGuzzleClient;
-use TwitchApi\RequestGenerator;
 
 class User
 {
@@ -42,7 +41,9 @@ class User
         $accessToken = $data->access_token ?? null;
         $refreshToken = $data->refresh_token ?? null;
         if ($accessToken && $refreshToken) {
-            return new User($accessToken, $refreshToken);
+            $this->accessToken = $accessToken;
+            $this->refreshToken = $refreshToken;
+            $this->save();
         } else {
             return null;
         }
