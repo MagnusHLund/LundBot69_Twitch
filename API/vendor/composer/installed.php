@@ -3,7 +3,7 @@
         'name' => 'magnushlund/lundbot69_api',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9d1ab26614bb1fa3bacef623c95c307ca6ffcc60',
+        'reference' => '7bac7fad1b244e165e641022d16ef6a3195fc5f6',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -148,7 +148,7 @@
         'magnushlund/lundbot69_api' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '9d1ab26614bb1fa3bacef623c95c307ca6ffcc60',
+            'reference' => '7bac7fad1b244e165e641022d16ef6a3195fc5f6',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
