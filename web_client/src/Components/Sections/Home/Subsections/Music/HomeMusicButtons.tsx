@@ -2,13 +2,14 @@ import React from 'react'
 import './HomeMusicButtons.scss'
 import Inline from '../../../../Content/Inline'
 import Button from '../../../../Inputs/Button'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { changeVideoPlayState } from '../../../../../Redux/Actions/VideoPlayerActions'
 
 const HomeMusicButtons: React.FC = () => {
   // TODO: Needs a pause button, interchangeable with the play button
   // TODO: Replace onClick events with something useful
   const dispatch = useDispatch()
+  const videoIsPlaying = useSelector((state) => state.videoState.isplaying)
 
   const handleTogglePlayPause = () => {
     dispatch(changeVideoPlayState())
@@ -25,7 +26,7 @@ const HomeMusicButtons: React.FC = () => {
         onClick={() => console.log('Ban user')}
       />
       <Button
-        className="inline-music-buttons__button--resume"
+        /* {videoIsPlaying && (className="inline-music-buttons__button--pause")} */
         hint="Resumes the current song."
         height="35px"
         width="35px"

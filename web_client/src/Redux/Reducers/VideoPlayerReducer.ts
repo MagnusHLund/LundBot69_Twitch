@@ -1,7 +1,4 @@
-interface IVideoPlayerAction {
-  type: string
-  payload: unknown
-}
+import { IAction } from '../IAction'
 
 interface IVideoPlayerState {
   videoId: string
@@ -21,10 +18,7 @@ const initialState: IVideoPlayerState = {
   userMovingVideoSlider: false,
 }
 
-const videoPlayerReducer = (
-  state = initialState,
-  action: IVideoPlayerAction,
-) => {
+const videoPlayerReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
     case 'CHANGE_VIDEO_PLAY_STATE':
       return {

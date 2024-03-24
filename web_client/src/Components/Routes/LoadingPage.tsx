@@ -1,12 +1,9 @@
 import React from 'react'
 import './LoadingPage.scss'
+import LoadingSection from '../Sections/Loading/LoadingSection'
 
 const LoadingPage: React.FC = () => {
-  return (
-    <div className="loading">
-      <img src="LundBot69 loading.gif" className="loading__gif" />
-    </div>
-  )
+  return <LoadingSection />
 }
 
 export default LoadingPage

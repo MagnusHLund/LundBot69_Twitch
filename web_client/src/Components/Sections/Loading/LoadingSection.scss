@@ -1,0 +1,9 @@
+.loading {
+  display: grid;
+  width: 100%;
+
+  &__gif {
+    place-self: center;
+    max-width: 40%;
+  }
+}

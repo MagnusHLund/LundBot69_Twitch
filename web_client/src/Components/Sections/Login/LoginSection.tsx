@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './LoginSection.scss'
 import ContentBox from '../../Content/ContentBox'
 import Title from '../../Content/Title'
@@ -11,19 +11,6 @@ const LoginSection: React.FC = () => {
     const scopeParam = twitchScopes().join('+')
     window.location.href = `https://id.twitch.tv/oauth2/authorize?client_id=${import.meta.env.VITE_TWITCH_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_TWITCH_REDIRECT_URI}&response_type=code&scope=${scopeParam}`
   }
-
-  const handleAuth = () => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const token = urlParams.get('token')
-
-    if (token) {
-      //dispatch(thunkAction(token))
-    }
-  }
-
-  useEffect(() => {
-    handleAuth()
-  }, [])
 
   return (
     <ContentBox className="login-section">
