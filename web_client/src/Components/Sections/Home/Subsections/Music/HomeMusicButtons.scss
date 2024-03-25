@@ -1,17 +1,19 @@
 .inline-music-buttons {
-  $base-url: '/';
   .inline-music-buttons__button {
     &--ban-user {
-      background-image: url('#{$base-url}BanUser.png');
+      background-image: url('/BanUser.png');
     }
     &--resume {
-      background-image: url('#{$base-url}Resume.png');
+      background-image: url('/Resume.png');
+    }
+    &--pause {
+      background-image: url('/Pause.png');
     }
     &--next-song {
-      background-image: url('#{$base-url}NextSong.png');
+      background-image: url('/NextSong.png');
     }
     &--ban-song {
-      background-image: url('#{$base-url}BanSong.png');
+      background-image: url('/BanSong.png');
     }
   }
   * {

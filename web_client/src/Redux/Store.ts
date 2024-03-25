@@ -9,7 +9,7 @@ export interface RootState {
 const rootReducer = combineReducers({
   videoPlayer: videoPlayerReducer,
   login: loginReducer,
-  settings: settingsReducer,
+  // settings: settingsReducer,
 })
 
 const store = configureStore({

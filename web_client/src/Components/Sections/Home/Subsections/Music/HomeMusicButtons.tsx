@@ -9,10 +9,16 @@ const HomeMusicButtons: React.FC = () => {
   // TODO: Needs a pause button, interchangeable with the play button
   // TODO: Replace onClick events with something useful
   const dispatch = useDispatch()
-  const videoIsPlaying = useSelector((state) => state.videoState.isplaying)
+  const videoIsPlaying = useSelector((state) => state.videoState)
 
   const handleTogglePlayPause = () => {
     dispatch(changeVideoPlayState())
+  }
+
+  let playButtonClass: string = 'inline-music-buttons__button--resume'
+
+  if (videoIsPlaying.isPlaying) {
+    playButtonClass = 'inline-music-buttons__button--pause'
   }
 
   return (
@@ -26,7 +32,7 @@ const HomeMusicButtons: React.FC = () => {
         onClick={() => console.log('Ban user')}
       />
       <Button
-        /* {videoIsPlaying && (className="inline-music-buttons__button--pause")} */
+        className={playButtonClass}
         hint="Resumes the current song."
         height="35px"
         width="35px"
