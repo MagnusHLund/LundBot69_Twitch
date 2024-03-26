@@ -9,6 +9,7 @@ use LundBot69Api\Handlers\GiveawayHandler;
 use LundBot69Api\Handlers\SettingsHandler;
 use LundBot69Api\Handlers\SongRequestHandler;
 use LundBot69Api\Handlers\TwitchHandler;
+use LundBot69Api\Handlers\BotHandler;
 
 class Router
 {
@@ -23,6 +24,7 @@ class Router
         $settingsHandler = new SettingsHandler;
         $songRequestHandler = new SongRequestHandler;
         $twitchHandler = new TwitchHandler;
+        $botHandler = new BotHandler;
 
         $this->routes = [
             // Bans
@@ -67,6 +69,9 @@ class Router
 
             // Twitch
             ["POST", "/api/twitch/connectUser", [$twitchHandler, "connectUser"], ["requestBody"]],
+
+            // Bot
+            ["GET", "/api/bot/getChannels", [$twitchHandler, "getUsers"]]
         ];
     }
 

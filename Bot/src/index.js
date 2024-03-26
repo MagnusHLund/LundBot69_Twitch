@@ -1,11 +1,15 @@
+import axios from 'axios'
 require('dotenv').config({ path: './.env' })
 const commands = require('./CommandHandler')
+export const baseUrl = 'lundbot69api.magnuslund.com/api/'
 
 const tmi = require('tmi.js')
 
 // TODO: When ready, change this to call the API and get all channels in the database
+/**
+ * const channels = axios.get(baseUrl + "bot/getChannels")
+ */
 const channels = ['Magnessdk', 'MrWuus', 'TheRealFightingLime1']
-
 console.log('Bot is starting...')
 
 const client = new tmi.Client({
