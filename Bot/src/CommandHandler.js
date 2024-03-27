@@ -1,5 +1,3 @@
-// commands.js
-
 class CommandHandler {
   static handleCommand(channel, tags, message, self, client) {
     // Split the message into a command and arguments
