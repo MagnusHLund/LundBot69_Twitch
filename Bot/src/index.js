@@ -1,9 +1,11 @@
-import axios from 'axios'
-require('dotenv').config({ path: './.env' })
-const commands = require('./CommandHandler')
+//import axios from 'axios'
+import handleCommand from './CommandHandler.js'
+import dotenv from 'dotenv'
+import tmi from 'tmi.js'
+
 export const baseUrl = 'lundbot69api.magnuslund.com/api/'
 
-const tmi = require('tmi.js')
+dotenv.config({ path: '../.env' })
 
 // TODO: When ready, change this to call the API and get all channels in the database
 /**
@@ -33,7 +35,7 @@ client.on('message', (channel, tags, message, self) => {
   if (self) return // Ignore messages from the bot itself
 
   if (message.charAt(0) === PREFIX) {
-    commands.handleCommand(channel, tags, message, self, client)
+    handleCommand(channel, tags, message, self, client)
   } else {
     // TODO: Idea 2 in ideas.json
   }

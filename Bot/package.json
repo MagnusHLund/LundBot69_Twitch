@@ -16,5 +16,6 @@
   "main": "index.js",
   "repository": "https://github.com/MagnusHLund/LundBot69_Twitch.git",
   "author": "Magnus Lund",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module"
 }
