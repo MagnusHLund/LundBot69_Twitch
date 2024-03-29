@@ -11,7 +11,7 @@ const LoadingSection: React.FC = () => {
   if (code) {
     dispatch(setTwitchCode(code))
   } else {
-    window.location.href = window.location.host + '/login' // TODO: redirect to login page
+    window.location.href = '/login?error=invalidCode'
   }
   return (
     <div className="loading">

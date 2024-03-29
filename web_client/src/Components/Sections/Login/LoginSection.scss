@@ -5,4 +5,10 @@
   &--title {
     height: auto;
   }
+  &--error {
+    padding: 0 10px 10px 10px;
+    max-width: 400px;
+    height: auto;
+    color: red;
+  }
 }
