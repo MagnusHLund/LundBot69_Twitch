@@ -6,20 +6,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { changeVideoPlayState } from '../../../../../Redux/Actions/VideoPlayerActions'
 
 const HomeMusicButtons: React.FC = () => {
-  // TODO: Needs a pause button, interchangeable with the play button
   // TODO: Replace onClick events with something useful
   const dispatch = useDispatch()
-  const videoIsPlaying = useSelector((state) => state.videoState)
+  const videoIsPlaying = useSelector((state) => state.videoPlayer.isPlaying)
 
   const handleTogglePlayPause = () => {
     dispatch(changeVideoPlayState())
   }
 
-  let playButtonClass: string = 'inline-music-buttons__button--resume'
-
-  if (videoIsPlaying.isPlaying) {
-    playButtonClass = 'inline-music-buttons__button--pause'
-  }
+  const playButtonClass: string = videoIsPlaying
+    ? 'inline-music-buttons__button--pause'
+    : 'inline-music-buttons__button--resume'
 
   return (
     <Inline className="inline-music-buttons">

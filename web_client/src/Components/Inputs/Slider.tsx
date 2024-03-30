@@ -11,6 +11,7 @@ interface ICheckboxProps extends IStandardInputProps {
   minValue?: number
   maxValue?: number
   value?: number
+  savePositionCookieName?: string
   onMouseUp?: () => void
   onSliderChange?: (value: string) => void
 }
@@ -25,6 +26,7 @@ const Slider: React.FC<ICheckboxProps> = ({
   minValue = 0,
   maxValue = 100,
   value = 0,
+  savePositionCookieName = '',
   onMouseUp,
   onSliderChange,
 }) => {
@@ -33,6 +35,10 @@ const Slider: React.FC<ICheckboxProps> = ({
     if (onSliderChange) {
       onSliderChange(newValue.toString())
     }
+  }
+
+  // TODO: Finish setting up cookie saving
+  if (savePositionCookieName) {
   }
 
   return (

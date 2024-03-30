@@ -1,4 +1,3 @@
-/* TODO: Fix this styling, because its all shit. BEM. */
 .data-table {
   min-width: 75%;
   border-collapse: collapse;
@@ -31,47 +30,4 @@
       background-color: #eb9834;
     }
   }
-}
-
-/* TODO: Fix this styling, because its all shit. BEM. */
-.DataTable {
-  min-width: 75%;
-  border-collapse: collapse;
-  margin: 25px auto;
-}
-
-.DataTable * {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.DataTable th,
-.DataTable td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.DataTable th {
-  background-color: #f2f2f2;
-}
-
-.DataTable tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.DataTable tr:hover {
-  background-color: #ddd;
-}
-
-.DataTable button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-.DataTable button:hover {
-  background-color: #d32f2f;
 }

@@ -5,7 +5,6 @@ import RowHandler from '../../Content/RowHandler'
 import ContentBox from '../../Content/ContentBox'
 import Button from '../../Inputs/Button'
 
-// TODO: Maybe a line between each of the row handlers wouldn't look so bad
 // TODO: Fix all the wrong class names in this file and most other section file
 
 const GamblingPointsManagementSection: React.FC = () => {

@@ -23,7 +23,6 @@ const HomeMusicSlider: React.FC = () => {
   }, [videoState.videoTimeStamp])
 
   const handleSliderChange = (newTimeStamp: string) => {
-    console.log('test')
     dispatch(setUserMovingVideoSlider(true))
     dispatch(setVideoTimeStamp(newTimeStamp))
   }

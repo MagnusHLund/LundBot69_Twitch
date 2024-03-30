@@ -3,11 +3,11 @@ import './DataTable.scss'
 import TextField from '../Inputs/TextField'
 import Button from '../Inputs/Button'
 
-// TODO: Add editable functionality, like maxLength. Or maybe both should be changed to be based on column instead of row.
-// TODO: Rewrite most of this
+// TODO: Add search, forward and back buttons, max items per page
+
 interface Row {
   [key: string]: {
-    value: any
+    value: string | number
     maxLength?: number
   }
 }
@@ -75,8 +75,8 @@ const DataTable: React.FC<Props> = ({
                   <TextField
                     value={
                       editedData[index][key] !== undefined
-                        ? editedData[index][key]
-                        : row[key].value
+                        ? String(editedData[index][key])
+                        : String(row[key].value)
                     }
                     onChange={(e) =>
                       handleInputChange(index, key, e.target.value)
