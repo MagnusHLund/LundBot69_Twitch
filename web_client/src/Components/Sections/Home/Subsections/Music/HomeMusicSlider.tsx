@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './HomeMusicSlider.scss'
 import Slider from '../../../../Inputs/Slider'
 import Inline from '../../../../Content/Inline'
 import { useDispatch, useSelector } from 'react-redux'
-import songDuration from '../../../../../Utils/songDuration'
+import convertTime from '../../../../../Utils/convertTime'
 import {
   setUserMovingVideoSlider,
   setVideoTimeStamp,
@@ -11,15 +11,17 @@ import {
 
 const HomeMusicSlider: React.FC = () => {
   const dispatch = useDispatch()
-  const [videoDuration, setVideoDuration] = useState(0)
-  const [videoTimeStamp, setvideoTimeStamp] = useState(0)
   const videoState = useSelector((state) => state.videoPlayer)
+
+  let videoDuration = 0
+  let videoTimeStamp = 0
+
   useEffect(() => {
-    setVideoDuration(videoState.videoDuration)
+    videoDuration = videoState.videoDuration
   }, [videoState.videoDuration])
 
   useEffect(() => {
-    setvideoTimeStamp(videoState.videoTimeStamp)
+    videoTimeStamp = videoState.videoTimeStamp
   }, [videoState.videoTimeStamp])
 
   const handleSliderChange = (newTimeStamp: string) => {
@@ -34,7 +36,7 @@ const HomeMusicSlider: React.FC = () => {
   return (
     <Inline className="music-slider">
       <p className="music-slider--text">
-        {songDuration(videoState.videoTimeStamp)}
+        {convertTime(videoState.videoTimeStamp)}
       </p>
       <Slider
         value={videoTimeStamp}
@@ -43,7 +45,7 @@ const HomeMusicSlider: React.FC = () => {
         onMouseUp={handleMouseUp}
       />
       <p className="music-slider--text">
-        {songDuration(videoState.videoDuration)}
+        {convertTime(videoState.videoDuration)}
       </p>
     </Inline>
   )

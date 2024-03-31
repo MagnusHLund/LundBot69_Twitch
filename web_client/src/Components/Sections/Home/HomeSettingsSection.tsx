@@ -22,11 +22,14 @@ const HomeSettingsSection: React.FC = () => {
             <HomeSettingsSlider
               title="Music volume"
               className="home-settings-section__row-handler--volume--music"
+              cookieName="MusicVolume"
             />
+            {/* Having effects would be version 2
             <HomeSettingsSlider
               title="Effects volume"
               className="home-settings-section__row-handler--volume--effects"
-            />
+              cookieName="EffectsVolume" 
+            /> */}
           </RowHandler>
           <RowHandler>
             <Title text="Auto pin message" />
