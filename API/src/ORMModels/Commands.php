@@ -1,10 +1,10 @@
 <?php
 
-namespace LundBot69Api\ORM_Models;
+namespace LundBot69Api\ORMModels;
 
 use illuminate\database\Eloquent\Model;
 
-class commands extends Model
+class Commands extends Model
 {
     protected $table = 'commands';
 }

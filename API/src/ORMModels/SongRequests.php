@@ -1,8 +1,8 @@
 <?php
 
-namespace LundBot69Api\ORM_Models;
+namespace LundBot69Api\ORMModels;
 
-use illuminate\database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class SongRequests extends Model
 {

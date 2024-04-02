@@ -24,7 +24,7 @@ return array(
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
     'NewTwitchApi\\' => array($vendorDir . '/nicklaw5/twitch-api-php/src/NewTwitchApi'),
     'LundBot69Api\\Utils\\' => array($baseDir . '/src/Utils'),
-    'LundBot69Api\\ORM_Models\\' => array($baseDir . '/src/ORM models'),
+    'LundBot69Api\\ORMModels\\' => array($baseDir . '/src/ORMModels'),
     'LundBot69Api\\Models\\' => array($baseDir . '/src/Models'),
     'LundBot69Api\\Handlers\\' => array($baseDir . '/src/Handlers'),
     'LundBot69Api\\' => array($baseDir . '/src'),

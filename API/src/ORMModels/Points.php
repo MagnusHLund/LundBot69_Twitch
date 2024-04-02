@@ -1,6 +1,6 @@
 <?php
 
-namespace LundBot69Api\ORM_Models;
+namespace LundBot69Api\ORMModels;
 
 use illuminate\database\Eloquent\Model;
 

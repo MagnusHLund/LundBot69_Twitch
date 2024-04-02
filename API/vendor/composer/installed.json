@@ -908,17 +908,17 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v11.0.8",
-            "version_normalized": "11.0.8.0",
+            "version": "v11.2.0",
+            "version_normalized": "11.2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "b3b8cd87a2271fc9427006dc56710ea9dc55af1c"
+                "reference": "c7ee848e6a0bc5466c17549bdd118ca99283a65f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/b3b8cd87a2271fc9427006dc56710ea9dc55af1c",
-                "reference": "b3b8cd87a2271fc9427006dc56710ea9dc55af1c",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/c7ee848e6a0bc5466c17549bdd118ca99283a65f",
+                "reference": "c7ee848e6a0bc5466c17549bdd118ca99283a65f",
                 "shasum": ""
             },
             "require": {
@@ -940,7 +940,7 @@
                 "illuminate/pagination": "Required to paginate the result set (^11.0).",
                 "symfony/finder": "Required to use Eloquent model factories (^7.0)."
             },
-            "time": "2024-03-19T20:07:36+00:00",
+            "time": "2024-04-01T22:47:30+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {

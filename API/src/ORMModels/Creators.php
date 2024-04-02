@@ -1,8 +1,8 @@
 <?php
 
-namespace LundBot69Api\ORM_Models;
+namespace LundBot69Api\ORMModels;
 
-use Illuminate\database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Creators extends Model
 {
