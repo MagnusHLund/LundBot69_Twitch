@@ -27,11 +27,9 @@ class TwitchHandler
                 $user = new User(null, null);
                 $user->getUserFromAuthenticationCode($request[0]["code"], $this->constants->getTwitchRedirectUri());
                 if ($user) {
-                    // TODO: Setup an ORM for database communication. Check if the user exists in the database, if not then no access. 
-                    Database::read("Creators", ['Username' => $user->getTwitchUsername()]);
+                    $username = Database::read("Creators", ['Username' => $user->getTwitchUsername()], 'Username');
 
-
-                    if (false /* User does not exist in database */) {
+                    if (!isset($username)) {
                         http_response_code(401);
                         echo json_encode(['error' => 'You picked the wrong user, fool!']);
                         exit;

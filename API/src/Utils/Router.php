@@ -78,7 +78,7 @@ class Router
     public function handleRequest($method, $path, $requestBody)
     {
         foreach ($this->routes as $route) {
-            list($routeMethod, $routePath, $handler, $params) = $route;
+            list($routeMethod, $routePath, $handler, $params) = $route + [null, null, null, []];
             if ($method === $routeMethod && $path === $routePath) {
                 call_user_func_array([$handler[0], $handler[1]], [[$requestBody], $params]);
                 return;

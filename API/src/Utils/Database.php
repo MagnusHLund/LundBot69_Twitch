@@ -4,20 +4,20 @@ namespace LundBot69Api\Utils;
 
 use LundBot69Api\Utils\Constants;
 use LundBot69Api\Utils\ModelMapper;
-use illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Database
 {
-    private $constants;
+    private static $capsule;
 
-    public function __construct()
+    public static function init()
     {
-        $this->constants = new Constants;
-        $databaseInfo = $this->constants->GetDatabaseInfo();
+        $constants = new Constants();
+        $databaseInfo = $constants->GetDatabaseInfo();
 
-        $capsule = new Capsule();
+        self::$capsule = new Capsule();
 
-        $capsule->addConnection([
+        self::$capsule->addConnection([
             'driver'    => 'mysql',
             'host'      => $databaseInfo["DB_HOST"],
             'database'  => $databaseInfo["DB_DATABASE"],
@@ -28,8 +28,8 @@ class Database
             'prefix'    => '',
         ]);
 
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
+        self::$capsule->setAsGlobal();
+        self::$capsule->bootEloquent();
     }
 
     public static function create($model, $data)
@@ -38,11 +38,13 @@ class Database
         return $modelClass::create($data);
     }
 
-    public static function read($model, $conditions)
+    public static function read($model, $conditions, $column = null)
     {
-        $modelClass = Database::getModelClass($model);
-        $test = $modelClass::where($conditions)->get();
-        return $test;
+        $modelClass = ModelMapper::getModelClass($model);
+        if ($column) {
+            return $modelClass::where($conditions)->value($column);
+        }
+        return $modelClass::where($conditions)->first();
     }
 
     public static function update($model, $data, $conditions)
@@ -56,20 +58,6 @@ class Database
         $modelClass = ModelMapper::getModelClass($model);
         return $modelClass::where($conditions)->delete();
     }
-
-    const MODELS = [
-        'BannedAccounts' => \LundBot69Api\ORMModels\BannedAccounts::class,
-        'DefaultSongs' => \LundBot69Api\ORMModels\DefaultSongs::class,
-        'SongRequests' => \LundBot69Api\ORMModels\SongRequests::class,
-        'BannedSongs' => \LundBot69Api\ORMModels\BannedSongs::class,
-        'Commands' => \LundBot69Api\ORMModels\Commands::class,
-        'Creators' => \LundBot69Api\ORMModels\Creators::class,
-        'Settings' => \LundBot69Api\ORMModels\Settings::class,
-        'Points' => \LundBot69Api\ORMModels\Points::class,
-    ];
-
-    public static function getModelClass($model)
-    {
-        return self::MODELS[$model] ?? null;
-    }
 }
+
+Database::init();
