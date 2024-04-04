@@ -9,7 +9,7 @@ const LoadingSection: React.FC = () => {
   const code = urlParams.get('code')
 
   if (code) {
-    // dispatch(setTwitchCode(code))
+    dispatch(setTwitchCode(code))
   } else {
     window.location.href = '/login?error=invalidCode'
   }

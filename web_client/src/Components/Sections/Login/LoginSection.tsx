@@ -21,8 +21,8 @@ const LoginSection: React.FC = () => {
     case 'invalidCode':
       errorMessage = 'Invalid login provided!'
       break
-    case 'timeout':
-      errorMessage = 'TIMEOUT! Login took too long.'
+    case 'networkError':
+      errorMessage = 'Issue connecting to server'
       break
     case 'expired':
       errorMessage = 'Login expired! Please login again.'

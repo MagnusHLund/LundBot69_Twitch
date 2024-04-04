@@ -4,6 +4,7 @@ namespace LundBot69Api;
 
 use Dotenv;
 use LundBot69Api\Middleware\AuthenticationMiddleware;
+use LundBot69Api\Middleware\CORSMiddleware;
 use LundBot69Api\Utils\Router;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -33,6 +34,9 @@ class ApiEntry
 
     private function applyMiddleware(&$path)
     {
+        $corsMiddleware = new CORSMiddleware;
+        $corsMiddleware->handle();
+
         $authenticationMiddleware = new AuthenticationMiddleware;
         $authenticationMiddleware->handle($path);
     }

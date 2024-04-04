@@ -59,7 +59,7 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ controls = 2 }) => {
 
   const opts: YouTubeProps['opts'] = {
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
       controls: controls === 2 ? 0 : controls,
     },
   }
