@@ -44,4 +44,9 @@ class Constants
     {
         return $_ENV['KID'];
     }
+
+    public function getAllowedOrigins()
+    {
+        return $_ENV['ALLOWED_HOSTS'];
+    }
 }
