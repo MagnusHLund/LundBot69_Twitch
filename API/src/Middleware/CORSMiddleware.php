@@ -25,7 +25,7 @@ class CORSMiddleware
             header("Access-Control-Allow-Origin: {$origin}");
             header("Access-Control-Allow-Credentials: true");
             header("Access-Control-Max-Age: 86400");
-            header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
             header("Access-Control-Allow-Headers: Content-Type, Authorization");
         } else {
             http_response_code(401);
@@ -40,6 +40,8 @@ class CORSMiddleware
             if (!empty($requestHeaders)) {
                 header("Access-Control-Allow-Headers: {$requestHeaders}");
             }
+            http_response_code(200);
+            exit;
         }
     }
 }

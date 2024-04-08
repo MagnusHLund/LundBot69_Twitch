@@ -20,8 +20,6 @@ class TwitchHandler
 
     public function connectUser($request)
     {
-        $user = new User(($_SESSION['user_jwt']), ($_SESSION['user_refresh_token']));
-
         if (isset($request[0]["code"])) {
             try {
                 $user = new User(null, null);
@@ -36,13 +34,14 @@ class TwitchHandler
                     }
 
                     $user->save();
-                    header('Location: ' . $this->constants->getTwitchRedirectUri());
+                    $_SESSION['token'] = bin2hex(random_bytes(32));
+                    echo json_encode(['token' => $_SESSION['token']]);
                 } else {
                     throw new Exception;
                 }
             } catch (Exception) {
-                http_response_code(400);
                 echo json_encode(['error' => 'Your code is bad :C']);
+                http_response_code(400);
                 exit;
             }
         } else {

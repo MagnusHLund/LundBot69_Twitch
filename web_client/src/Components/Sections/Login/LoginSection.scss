@@ -1,5 +1,5 @@
 .login-section {
-  display: block;
+  display: grid;
   flex: none;
   margin: 15vh auto;
   &--title {
@@ -10,5 +10,6 @@
     max-width: 400px;
     height: auto;
     color: red;
+    place-self: center;
   }
 }

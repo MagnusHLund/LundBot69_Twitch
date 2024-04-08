@@ -9,7 +9,9 @@ import twitchScopes from '../../../Utils/TwitchScopes'
 const LoginSection: React.FC = () => {
   const handleClick = () => {
     const scopeParam = twitchScopes().join('+')
-    window.location.href = `https://id.twitch.tv/oauth2/authorize?client_id=${import.meta.env.VITE_TWITCH_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_TWITCH_REDIRECT_URI}&response_type=code&scope=${scopeParam}`
+    window.location.href =
+      `https://id.twitch.tv/oauth2/authorize?client_id=${import.meta.env.VITE_TWITCH_CLIENT_ID}` +
+      `&redirect_uri=${import.meta.env.VITE_TWITCH_REDIRECT_URI}&response_type=code&scope=${scopeParam}`
   }
 
   const urlParams = new URLSearchParams(window.location.search)
@@ -21,8 +23,8 @@ const LoginSection: React.FC = () => {
     case 'invalidCode':
       errorMessage = 'Invalid login provided!'
       break
-    case 'networkError':
-      errorMessage = 'Issue connecting to server'
+    case 'connectionError':
+      errorMessage = 'Can not connect to the server!'
       break
     case 'expired':
       errorMessage = 'Login expired! Please login again.'

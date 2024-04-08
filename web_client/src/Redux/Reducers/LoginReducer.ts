@@ -11,6 +11,7 @@ const initialState: ILoginState = {
 const loginReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
     case 'SET_SESSION_TOKEN':
+      console.log(action.payload)
       return {
         ...state,
         sessionToken: action.payload,
