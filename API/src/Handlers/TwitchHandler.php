@@ -20,9 +20,9 @@ class TwitchHandler
 
     public function connectUser($request)
     {
+        $user = new User($_SESSION["user_jwt"] ?? null, $_SESSION["user_refresh_token"] ?? null);
         if (isset($request[0]["code"])) {
             try {
-                $user = new User(null, null);
                 $user->getUserFromAuthenticationCode($request[0]["code"], $this->constants->getTwitchRedirectUri());
                 if ($user) {
                     $username = Database::read("Creators", ['Username' => $user->getTwitchUsername()], 'Username');
@@ -35,7 +35,9 @@ class TwitchHandler
 
                     $user->save();
                     $_SESSION['token'] = bin2hex(random_bytes(32));
-                    echo json_encode(['token' => $_SESSION['token']]);
+                    echo json_encode($_SESSION['token']);
+                    http_response_code(200);
+                    exit;
                 } else {
                     throw new Exception;
                 }

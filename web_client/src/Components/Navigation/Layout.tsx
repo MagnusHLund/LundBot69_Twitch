@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import HomePage from '../Routes/HomePage'
@@ -12,8 +11,9 @@ import './Layout.scss'
 import Footer from '../Content/Footer'
 import VideoPlayer from '../Content/VideoPlayer'
 import LoadingPage from '../Routes/LoadingPage'
+import { useEffect } from 'react'
 
-const RedirectToLogin: React.FC = () => {
+export function RedirectToLogin() {
   const navigate = useNavigate()
   useEffect(() => {
     navigate('/login')

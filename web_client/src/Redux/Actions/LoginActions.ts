@@ -2,9 +2,9 @@ import axios from 'axios'
 import { baseApiUrl } from '../../Utils/BaseUrl'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-export const setTwitchCode = createAsyncThunk(
+export const setTwitchCode = createAsyncThunk<string, string>(
   'session/setTwitchCode',
-  async (code: string, { dispatch }) => {
+  async (code: string) => {
     const url: string = `${baseApiUrl()}/v1/twitch/connectUser`
 
     try {
@@ -13,9 +13,7 @@ export const setTwitchCode = createAsyncThunk(
         { code },
         { withCredentials: true },
       )
-      // This does not work. Will hopefully fix tomorrow. does not get put into the state.
-      dispatch({ type: 'SET_SESSION_TOKEN', payload: response.data.token })
-      window.location.href = '/home'
+      return response.data.token
     } catch (error) {
       console.log(error)
       window.location.href = '/login?error=connectionError'
