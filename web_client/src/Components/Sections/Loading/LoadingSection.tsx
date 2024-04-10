@@ -19,11 +19,16 @@ const LoadingSection: React.FC = () => {
   } else {
     window.location.href = '/login?error=invalidCode'
   }
+
   return (
     <div className="loading">
-      <img src="LundBot69 loading.gif" className="loading__gif" />
+      <img
+        src="LundBot69 loading.gif"
+        className="loading__gif"
+        alt="loading..."
+      />
     </div>
   )
 }
 
-export default LoadingSection
+export default React.memo(LoadingSection)

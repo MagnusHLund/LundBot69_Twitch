@@ -35,7 +35,7 @@ class TwitchHandler
 
                     $user->save();
                     $_SESSION['token'] = bin2hex(random_bytes(32));
-                    echo json_encode($_SESSION['token']);
+                    echo json_encode(["token" => $_SESSION['token']]);
                     http_response_code(200);
                     exit;
                 } else {

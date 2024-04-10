@@ -5,11 +5,13 @@ namespace LundBot69Api;
 use Dotenv;
 use LundBot69Api\Middleware\AuthenticationMiddleware;
 use LundBot69Api\Middleware\CORSMiddleware;
+use LundBot69Api\Middleware\RateLimitingMiddleware;
 use LundBot69Api\Utils\Router;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 $dotenv->load();
+$rateLimiter = new RateLimitingMiddleware();
 
 class ApiEntry
 {
@@ -29,6 +31,9 @@ class ApiEntry
         $requestBody = json_decode(file_get_contents('php://input'), true);
 
         $this->applyMiddleware($path);
+
+        // TODO: Insert RateLimitingMiddleware
+
         $this->router->handleRequest($method, $path, $requestBody);
     }
 
