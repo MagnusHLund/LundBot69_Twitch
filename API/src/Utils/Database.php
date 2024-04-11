@@ -47,7 +47,7 @@ class Database
         return $modelClass::where($conditions)->first();
     }
 
-    public static function update($model, $data, $conditions)
+    public static function update($model, $conditions, $data)
     {
         $modelClass = ModelMapper::getModelClass($model);
         return $modelClass::where($conditions)->update($data);

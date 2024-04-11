@@ -31,9 +31,6 @@ class ApiEntry
         $requestBody = json_decode(file_get_contents('php://input'), true);
 
         $this->applyMiddleware($path);
-
-        // TODO: Insert RateLimitingMiddleware
-
         $this->router->handleRequest($method, $path, $requestBody);
     }
 
@@ -41,6 +38,9 @@ class ApiEntry
     {
         $corsMiddleware = new CORSMiddleware;
         $corsMiddleware->handle();
+
+        $rateLimitingMiddleware = new RateLimitingMiddleware;
+        $rateLimitingMiddleware->handle();
 
         $authenticationMiddleware = new AuthenticationMiddleware;
         $authenticationMiddleware->handle($path);

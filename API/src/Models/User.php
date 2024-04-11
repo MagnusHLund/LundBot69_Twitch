@@ -61,7 +61,10 @@ class User
             $decoded = $this->decodeJwt();
             $expires = $decoded->exp ?? 0;
             if ($expires < time()) {
-                $token = $this->twitchApi->getOauthApi()->refreshToken($this->refreshToken, $this->constants->GetTwitchScopes());
+                $token = $this->twitchApi->getOauthApi()->refreshToken(
+                    $this->refreshToken,
+                    $this->constants->GetTwitchScopes()
+                );
                 $data = json_decode($token->getBody()->getContents());
                 $this->accessToken = $data->access_token ?? null;
                 $this->refreshToken = $data->refresh_token ?? null;
@@ -117,6 +120,11 @@ class User
             'iat' => time(),
             'exp' => time() + 86400 // 1 day
         ];
-        return \Firebase\JWT\JWT::encode($payload, $this->constants->getTwitchClientSecret(), 'HS256', $this->constants->getKid());
+        return \Firebase\JWT\JWT::encode(
+            $payload,
+            $this->constants->getTwitchClientSecret(),
+            'HS256',
+            $this->constants->getKid()
+        );
     }
 }
