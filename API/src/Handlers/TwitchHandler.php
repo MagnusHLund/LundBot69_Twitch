@@ -52,4 +52,9 @@ class TwitchHandler
             header('Location: ' . $authUrl);
         }
     }
+
+    public static function getUser()
+    {
+        return new user($_SESSION["user_jwt"], $_SESSION["user_refresh_token"]);
+    }
 }

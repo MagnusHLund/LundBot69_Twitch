@@ -2,15 +2,13 @@
 
 namespace LundBot69Api\Handlers;
 
+use LundBot69Api\Handlers\TwitchHandler;
+
 class GiveawayHandler
 {
-
-    public function __construct()
-    {
-    }
-
     public function pickGiveawayWinner()
     {
+        TwitchHandler::getUser();
     }
 
     public function resetGiveawayParticipants()

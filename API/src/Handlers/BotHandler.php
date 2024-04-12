@@ -9,6 +9,6 @@ class BotHandler
 {
     public function getChannels()
     {
-        Database::read("Creators", []);
+        Database::read("Creators", [], 'Username');
     }
 }
