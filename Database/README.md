@@ -1,6 +1,7 @@
 # LundBot69 Database
 
 The database is uses MySQL with the InnoDB engine.
+
 It is using the third normal form.
 
 ## Database structure
@@ -18,6 +19,7 @@ The database consists of the following tables:
 - `settings`: Stores bot settings for creators.
 - `songrequests`: Stores song requests made by users.
 
-<div style="display: flex; justify-content: center; align-items: center;">
-<img src="https://github.com/MagnusHLund/LundBot69_Twitch/assets/124877369/18122a17-44fb-4ea0-883d-e40a4f630531" alt="MySQL icon" />
-</div>
+<p align="center">
+  <img src="https://github.com/MagnusHLund/LundBot69_Twitch/assets/124877369/18122a17-44fb-4ea0-883d-e40a4f630531" alt="MySQL icon" width="24.5%" />
+</p>
+
