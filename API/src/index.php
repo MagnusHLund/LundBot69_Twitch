@@ -11,7 +11,6 @@ use LundBot69Api\Utils\Router;
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
 $dotenv->load();
-$rateLimiter = new RateLimitingMiddleware();
 
 class ApiEntry
 {
