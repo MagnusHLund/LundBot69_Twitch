@@ -53,8 +53,17 @@ class TwitchHandler
         }
     }
 
-    public static function getUser()
+    public static function getCreatorId($creator = null)
     {
-        return new user($_SESSION["user_jwt"], $_SESSION["user_refresh_token"]);
+        if (!$creator) {
+            $user = new user($_SESSION["user_jwt"], $_SESSION["user_refresh_token"]);
+            $creator = $user->getTwitchUsername();
+        }
+
+        return Database::read(
+            "Creators",
+            ['Username' => $creator],
+            'CreatorId'
+        );
     }
 }

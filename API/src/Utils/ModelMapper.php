@@ -10,6 +10,7 @@ class ModelMapper
         'SongRequests' => \LundBot69Api\ORMModels\SongRequests::class,
         'RateLimiting' => \LundBot69Api\ORMModels\RateLimiting::class,
         'BannedSongs' => \LundBot69Api\ORMModels\BannedSongs::class,
+        'Giveaways' => \LundBot69Api\ORMModels\Giveaways::class,
         'Commands' => \LundBot69Api\ORMModels\Commands::class,
         'Creators' => \LundBot69Api\ORMModels\Creators::class,
         'Settings' => \LundBot69Api\ORMModels\Settings::class,

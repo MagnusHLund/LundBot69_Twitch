@@ -58,6 +58,12 @@ class Database
         $modelClass = ModelMapper::getModelClass($model);
         return $modelClass::where($conditions)->delete();
     }
+
+    public static function readRandomRow($model, $conditions, $column)
+    {
+        $modelClass = ModelMapper::getModelClass($model);
+        return $modelClass::where($conditions)->inRandomOrder()->first($column);
+    }
 }
 
 Database::init();

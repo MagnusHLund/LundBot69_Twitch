@@ -4,7 +4,6 @@ namespace LundBot69Api\Handlers;
 
 class CommandsHandler
 {
-
     public function __construct()
     {
     }
