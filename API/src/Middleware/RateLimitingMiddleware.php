@@ -35,12 +35,13 @@ class RateLimitingMiddleware
             'LastAttemptTime'
         );
 
+        Database::update(
+            "RateLimiting",
+            ['IpAddress' => $ipAddress],
+            ['LastAttemptTime' => $currentTime]
+        );
+
         if ($currentTime < $lastAttempt + $this::COOLDOWN_TIME) {
-            Database::update(
-                "RateLimiting",
-                ['IpAddress' => $ipAddress],
-                ['LastAttemptTime' => $currentTime]
-            );
             http_response_code(429);
             echo ["Error" => "Too many requests!"];
             exit;
