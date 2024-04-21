@@ -25,10 +25,6 @@ export const setTwitchCode = createAsyncThunk<string, string>(
 
       return token
     } catch (error) {
-      if (error.response.status === 429) {
-        return
-      }
-      console.log(error)
       window.location.href = '/login?error=connectionError'
     }
   },
