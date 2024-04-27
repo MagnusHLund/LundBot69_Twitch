@@ -11,19 +11,12 @@ use LundBot69Api\Utils\Constants;
 
 class TwitchHandler
 {
-    private $constants;
-
-    public function __construct()
-    {
-        $this->constants = new Constants;
-    }
-
     public function connectUser($request)
     {
         $user = new User($_SESSION["user_jwt"] ?? null, $_SESSION["user_refresh_token"] ?? null);
         if (isset($request[0]["code"])) {
             try {
-                $user->getUserFromAuthenticationCode($request[0]["code"], $this->constants->getTwitchRedirectUri());
+                $user->getUserFromAuthenticationCode($request[0]["code"], Constants::getTwitchRedirectUri());
                 if ($user) {
                     $username = Database::read("Creators", ['Username' => $user->getTwitchUsername()], 'Username');
 
@@ -48,7 +41,7 @@ class TwitchHandler
             }
         } else {
             // There is no code parameter, redirect the user to the Twitch authorization URL
-            $authUrl = $user->getAuthUrl($this->constants->GetTwitchRedirectUri(), $this->constants->getTwitchScopes());
+            $authUrl = $user->getAuthUrl(Constants::GetTwitchRedirectUri(), Constants::getTwitchScopes());
             header('Location: ' . $authUrl);
         }
     }
@@ -66,4 +59,6 @@ class TwitchHandler
             'CreatorId'
         );
     }
+    
+    public 
 }

@@ -12,8 +12,7 @@ class Database
 
     public static function init()
     {
-        $constants = new Constants();
-        $databaseInfo = $constants->GetDatabaseInfo();
+        $databaseInfo = Constants::GetDatabaseInfo();
 
         self::$capsule = new Capsule();
 

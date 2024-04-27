@@ -4,7 +4,7 @@ namespace LundBot69Api\Utils;
 
 class Constants
 {
-    public function getDatabaseInfo()
+    public static function getDatabaseInfo()
     {
         return array(
             "DB_HOST" => $_ENV['DB_HOST'],
@@ -14,22 +14,22 @@ class Constants
         );
     }
 
-    public function getTwitchClientID()
+    public static function getTwitchClientID()
     {
         return $_ENV['TWITCH_CLIENT_ID'];
     }
 
-    public function getTwitchClientSecret()
+    public static function getTwitchClientSecret()
     {
         return $_ENV['TWITCH_CLIENT_SECRET'];
     }
 
-    public function getTwitchRedirectUri()
+    public static function getTwitchRedirectUri()
     {
         return $_ENV['TWITCH_REDIRECT_URI'];
     }
 
-    public function getTwitchScopes()
+    public static function getTwitchScopes()
     {
         return implode(' ', [
             'moderator:read:followers',
@@ -40,12 +40,12 @@ class Constants
         ]);
     }
 
-    public function getKid()
+    public static function getKid()
     {
         return $_ENV['KID'];
     }
 
-    public function getAllowedOrigins()
+    public static function getAllowedOrigins()
     {
         return $_ENV['ALLOWED_HOSTS'];
     }

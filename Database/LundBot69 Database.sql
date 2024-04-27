@@ -21,131 +21,151 @@ USE `lundbot69`;
 
 -- Dumping structure for table lundbot69.bannedaccounts
 CREATE TABLE IF NOT EXISTS `bannedaccounts` (
-  `BannedAccountID` int(11) NOT NULL AUTO_INCREMENT,
-  `CreatorID` int(11) DEFAULT NULL,
-  `TwitchUsername` varchar(255) NOT NULL,
-  PRIMARY KEY (`BannedAccountID`),
-  KEY `CreatorID` (`CreatorID`),
-  CONSTRAINT `bannedaccounts_ibfk_1` FOREIGN KEY (`CreatorID`) REFERENCES `creators` (`CreatorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `banned_accounts_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_creator_id` int(11) unsigned NOT NULL,
+  `twitch_username` varchar(25) NOT NULL,
+  PRIMARY KEY (`banned_accounts_id`),
+  KEY `twitch_username_index` (`twitch_username`),
+  KEY `BannedAccounts_fk_1` (`fk_creator_id`),
+  CONSTRAINT `BannedAccounts_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.bannedsongs
 CREATE TABLE IF NOT EXISTS `bannedsongs` (
-  `BannedSongID` int(11) NOT NULL AUTO_INCREMENT,
-  `CreatorID` int(11) DEFAULT NULL,
-  `SongLink` varchar(255) NOT NULL,
-  PRIMARY KEY (`BannedSongID`),
-  KEY `CreatorID` (`CreatorID`),
-  CONSTRAINT `bannedsongs_ibfk_1` FOREIGN KEY (`CreatorID`) REFERENCES `creators` (`CreatorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `banned_song_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_creator_id` int(11) unsigned NOT NULL,
+  `youtube_song_id` varchar(11) NOT NULL,
+  PRIMARY KEY (`banned_song_id`),
+  KEY `BannedSongs_fk_1` (`fk_creator_id`),
+  CONSTRAINT `BannedSongs_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.commands
 CREATE TABLE IF NOT EXISTS `commands` (
-  `CommandID` int(11) NOT NULL AUTO_INCREMENT,
-  `CreatorID` int(11) DEFAULT NULL,
-  `Name` varchar(50) DEFAULT NULL,
-  `Output` varchar(512) DEFAULT NULL,
-  `Active` tinyint(1) DEFAULT NULL,
-  `Permission` tinyint(1) DEFAULT NULL,
-  `OutputType` tinyint(1) DEFAULT NULL,
-  `Cost` int(11) DEFAULT NULL,
-  `UserCooldown` int(11) DEFAULT NULL,
-  `GlobalCooldown` int(11) DEFAULT NULL,
-  `Repeat` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`CommandID`),
-  KEY `CreatorID` (`CreatorID`),
-  CONSTRAINT `commands_ibfk_1` FOREIGN KEY (`CreatorID`) REFERENCES `creators` (`CreatorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `command_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_creator_id` int(11) unsigned NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `output` varchar(450) NOT NULL,
+  `active` tinyint(1) NOT NULL CHECK (`active` between 0 and 1),
+  `permissions` varchar(10) NOT NULL,
+  `cost` int(11) unsigned NOT NULL,
+  `user_cooldown` int(11) unsigned NOT NULL,
+  `global_cooldown` int(11) unsigned NOT NULL,
+  `last_used` bigint(20) unsigned NOT NULL,
+  `repeat` float unsigned NOT NULL,
+  PRIMARY KEY (`command_id`),
+  KEY `name_index` (`name`),
+  KEY `commands_fk_1` (`fk_creator_id`),
+  CONSTRAINT `commands_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table lundbot69.commandsusercooldown
+CREATE TABLE IF NOT EXISTS `commandsusercooldown` (
+  `command_user_cooldown_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_command_id` int(11) unsigned NOT NULL,
+  `twitch_username` varchar(25) NOT NULL,
+  `last_used` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`command_user_cooldown_id`),
+  KEY `twitch_username_index` (`twitch_username`),
+  KEY `UserCommandCooldowns_fk_1` (`fk_command_id`),
+  CONSTRAINT `UserCommandCooldowns_fk_1` FOREIGN KEY (`fk_command_id`) REFERENCES `commands` (`command_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.creators
 CREATE TABLE IF NOT EXISTS `creators` (
-  `CreatorID` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(25) NOT NULL,
-  PRIMARY KEY (`CreatorID`),
-  UNIQUE KEY `Username` (`Username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `creator_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `twitch_username` varchar(25) NOT NULL,
+  PRIMARY KEY (`creator_id`),
+  UNIQUE KEY `username_unique` (`twitch_username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.defaultsongs
 CREATE TABLE IF NOT EXISTS `defaultsongs` (
-  `SongID` int(11) NOT NULL AUTO_INCREMENT,
-  `CreatorID` int(11) NOT NULL,
-  `SongLink` varchar(255) NOT NULL,
-  `SongTitle` varchar(50) NOT NULL,
-  PRIMARY KEY (`SongID`),
-  KEY `CreatorID` (`CreatorID`),
-  CONSTRAINT `defaultsongs_ibfk_1` FOREIGN KEY (`CreatorID`) REFERENCES `creators` (`CreatorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `default_song_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_creator_id` int(11) unsigned NOT NULL,
+  `youtube_song_id` varchar(11) NOT NULL,
+  `song_title` varchar(50) NOT NULL,
+  PRIMARY KEY (`default_song_id`),
+  KEY `Default_Songs_fk_1` (`fk_creator_id`),
+  CONSTRAINT `Default_Songs_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.giveaways
 CREATE TABLE IF NOT EXISTS `giveaways` (
-  `GiveawayID` int(11) NOT NULL AUTO_INCREMENT,
-  `CreatorID` int(11) DEFAULT NULL,
-  `Participants` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`GiveawayID`),
-  KEY `CreatorID` (`CreatorID`)
+  `giveaway_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_creator_id` int(11) unsigned NOT NULL,
+  `participant` varchar(25) NOT NULL,
+  PRIMARY KEY (`giveaway_id`),
+  KEY `Giveaways_fk_1` (`fk_creator_id`),
+  CONSTRAINT `Giveaways_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.points
 CREATE TABLE IF NOT EXISTS `points` (
-  `PointID` int(11) NOT NULL AUTO_INCREMENT,
-  `CreatorID` int(11) DEFAULT NULL,
-  `TwitchUsername` varchar(255) NOT NULL,
-  `Points` int(11) DEFAULT NULL,
-  PRIMARY KEY (`PointID`),
-  UNIQUE KEY `TwitchUsername` (`TwitchUsername`),
-  KEY `CreatorID` (`CreatorID`),
-  CONSTRAINT `points_ibfk_1` FOREIGN KEY (`CreatorID`) REFERENCES `creators` (`CreatorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `point_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_creator_id` int(11) unsigned NOT NULL,
+  `twitch_username` varchar(25) NOT NULL,
+  `points` int(11) unsigned DEFAULT 0,
+  PRIMARY KEY (`point_id`),
+  UNIQUE KEY `twitch_username_unique` (`twitch_username`),
+  KEY `points_index` (`points`),
+  KEY `points_fk_1` (`fk_creator_id`),
+  CONSTRAINT `points_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.ratelimiting
 CREATE TABLE IF NOT EXISTS `ratelimiting` (
-  `RateLimitingID` int(11) NOT NULL AUTO_INCREMENT,
-  `IpAddress` varchar(45) DEFAULT NULL,
-  `LastAttemptTime` bigint(20) unsigned DEFAULT 0,
-  PRIMARY KEY (`RateLimitingID`),
-  UNIQUE KEY `UNIQUE` (`IpAddress`)
+  `rate_limiting_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(39) NOT NULL,
+  `last_attempted_time` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`rate_limiting_id`),
+  UNIQUE KEY `ip_address_unique` (`ip_address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.settings
 CREATE TABLE IF NOT EXISTS `settings` (
-  `SettingsID` int(11) NOT NULL AUTO_INCREMENT,
-  `CreatorID` int(11) NOT NULL,
-  `BotEnabled` tinyint(1) DEFAULT NULL,
-  `GamblingEnabled` tinyint(1) DEFAULT NULL,
-  `SongRequestsEnabled` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`SettingsID`) USING BTREE,
-  KEY `CreatorID` (`CreatorID`),
-  CONSTRAINT `settings_ibfk_1` FOREIGN KEY (`CreatorID`) REFERENCES `creators` (`CreatorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `settings_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_creator_id` int(11) unsigned NOT NULL,
+  `bot_enabled` tinyint(1) NOT NULL CHECK (`bot_enabled` between 0 and 1),
+  `gambling_enabled` tinyint(1) NOT NULL CHECK (`gambling_enabled` between 0 and 1),
+  `song_request_enabled` tinyint(1) NOT NULL CHECK (`song_request_enabled` between 0 and 1),
+  PRIMARY KEY (`settings_id`),
+  KEY `settings_fk_1` (`fk_creator_id`),
+  CONSTRAINT `settings_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 
 -- Dumping structure for table lundbot69.songrequests
 CREATE TABLE IF NOT EXISTS `songrequests` (
-  `RequestID` int(11) NOT NULL AUTO_INCREMENT,
-  `CreatorID` int(11) DEFAULT NULL,
-  `RequestUser` varchar(25) NOT NULL,
-  `SongLink` varchar(255) NOT NULL,
-  PRIMARY KEY (`RequestID`),
-  KEY `CreatorID` (`CreatorID`),
-  CONSTRAINT `songrequests_ibfk_1` FOREIGN KEY (`CreatorID`) REFERENCES `creators` (`CreatorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `song_request_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fk_creator_id` int(11) unsigned NOT NULL,
+  `requested_by` varchar(25) NOT NULL,
+  `youtube_song_id` varchar(11) NOT NULL,
+  `requested_at` bigint(20) NOT NULL,
+  PRIMARY KEY (`song_request_id`),
+  KEY `requested_at_index` (`requested_at`),
+  KEY `SongRequests_fk_1` (`fk_creator_id`),
+  CONSTRAINT `SongRequests_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data exporting was unselected.
 

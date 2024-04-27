@@ -2,26 +2,17 @@
 
 namespace LundBot69Api\Middleware;
 
-use GuzzleHttp\Psr7\Header;
 use LundBot69Api\Utils\Constants;
 
 class CORSMiddleware
 {
-    private $allowedOrigins;
-
-    public function __construct()
-    {
-        $constants = new Constants;
-        $this->allowedOrigins = explode(", ", $constants->getAllowedOrigins());
-    }
-
     public function handle()
     {
         $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
         $requestMethod = $_SERVER['REQUEST_METHOD'] ?? '';
         $requestHeaders = $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'] ?? '';
 
-        if (!empty($origin) && in_array($origin, $this->allowedOrigins)) {
+        if (!empty($origin) && in_array($origin, Constants::getAllowedOrigins())) {
             header("Access-Control-Allow-Origin: {$origin}");
             header("Access-Control-Allow-Credentials: true");
             header("Access-Control-Max-Age: 86400");
