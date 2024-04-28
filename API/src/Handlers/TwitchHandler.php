@@ -22,7 +22,7 @@ class TwitchHandler
 
                     if (!isset($username)) {
                         http_response_code(401);
-                        echo json_encode(['error' => 'You picked the wrong user, fool!']);
+                        echo json_encode(['error' => 'Username is not registered']);
                         exit;
                     }
 
@@ -60,5 +60,5 @@ class TwitchHandler
         );
     }
     
-    public 
+    public static function 
 }
