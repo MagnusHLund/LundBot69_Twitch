@@ -3,11 +3,14 @@
 namespace LundBot69Api\Models;
 
 use LundBot69Api\Utils\Constants;
-use TwitchApi\TwitchApi;
 use TwitchApi\HelixGuzzleClient;
+use LundBot69Api\Utils\Database;
+use TwitchApi\TwitchApi;
 
 class User
 {
+    const CREATOR_MODEL = "Creators";
+
     private $accessToken;
     private $refreshToken;
     private $twitchApi;
@@ -102,11 +105,6 @@ class User
         $request = $this->twitchApi->getUsersApi()->getUserByAccessToken($accessToken);
         $response = json_decode($request->getBody()->getContents());
         return $response->data[0]->display_name;
-    }
-
-    public function getRefreshToken()
-    {
-        return $this->refreshToken;
     }
 
     public function generateUserJWT()

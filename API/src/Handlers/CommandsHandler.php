@@ -4,6 +4,8 @@ namespace LundBot69Api\Handlers;
 
 class CommandsHandler
 {
+    const COMMANDS_MODEL = "Commands";
+
     public function __construct()
     {
     }

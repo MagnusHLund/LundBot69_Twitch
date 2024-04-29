@@ -29,20 +29,15 @@ class ApiEntry
         $path = $_SERVER['REQUEST_URI'];
         $requestBody = json_decode(file_get_contents('php://input'), true);
 
-        $this->applyMiddleware($path);
+        //$this->applyMiddleware($path);
         $this->router->handleRequest($method, $path, $requestBody);
     }
 
     private function applyMiddleware(&$path)
     {
-        $corsMiddleware = new CORSMiddleware;
-        $corsMiddleware->handle();
-
-        $rateLimitingMiddleware = new RateLimitingMiddleware;
-        $rateLimitingMiddleware->handle();
-
-        $authenticationMiddleware = new AuthenticationMiddleware;
-        $authenticationMiddleware->handle($path);
+        CORSMiddleware::handle();
+        RateLimitingMiddleware::handle();
+        AuthenticationMiddleware::handle($path);
     }
 }
 

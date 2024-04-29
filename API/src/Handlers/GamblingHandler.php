@@ -4,6 +4,7 @@ namespace LundBot69Api\Handlers;
 
 class GamblingHandler
 {
+    const GAMBLING_MODEL = "Points";
 
     public function __construct()
     {

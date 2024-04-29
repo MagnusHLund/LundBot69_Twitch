@@ -2,8 +2,8 @@
 
 namespace LundBot69Api\Handlers;
 
-use LundBot69Api\Handlers\TwitchHandler;
 use LundBot69Api\Utils\Database;
+use LundBot69Api\Utils\UserUtils;
 
 class GiveawayHandler
 {
@@ -11,18 +11,18 @@ class GiveawayHandler
 
     public function pickGiveawayWinner()
     {
-        $creatorId = TwitchHandler::getCreatorId();
+        $creatorId = UserUtils::getCreatorId();
 
         Database::read(
             $this::GIVEAWAY_MODEL,
-            ['CreatorID' => $creatorId],
-            "Participants"
+            ['fk_creator_id' => $creatorId],
+            "participant"
         );
 
         echo ["winner" => Database::readRandomRow(
             $this::GIVEAWAY_MODEL,
-            ['CreatorID' => $creatorId],
-            "Participants"
+            ['fk_creator_id' => $creatorId],
+            "participant"
         )];
     }
 

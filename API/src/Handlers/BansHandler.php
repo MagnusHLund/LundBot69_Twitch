@@ -3,7 +3,7 @@
 namespace LundBot69Api\Handlers;
 
 use LundBot69Api\Utils\Database;
-use LundBot69Api\Handlers\TwitchHandler;
+use LundBot69Api\Utils\UserUtils;
 
 class BansHandler
 {
@@ -12,52 +12,52 @@ class BansHandler
 
     public function banSong($videoId, $creator)
     {
-        $creatorId = TwitchHandler::getCreatorId($creator);
+        $creatorId = UserUtils::getCreatorId($creator);
 
         Database::create(
             $this::BAN_SONG_MODEL,
             [
-                'CreatorID' => $creatorId,
-                'SongLink' => $videoId // TODO: change column name
+                'fk_creator_id'   => $creatorId,
+                'youtube_video_id' => $videoId
             ]
         );
     }
 
     public function unbanSong($videoId, $creator)
     {
-        $creatorId = TwitchHandler::getCreatorId($creator);
+        $creatorId = UserUtils::getCreatorId($creator);
 
         Database::delete(
             $this::BAN_SONG_MODEL,
             [
-                'CreatorID' => $creatorId,
-                'SongLink' => $videoId // TODO: change column name
+                'fk_creator_id'   => $creatorId,
+                'youtube_video_id' => $videoId
             ]
         );
     }
 
     public function banUser($username, $creator)
     {
-        $creatorId = TwitchHandler::getCreatorId($creator);
+        $creatorId = UserUtils::getCreatorId($creator);
 
         Database::create(
             $this::BAN_USER_MODEL,
             [
-                'CreatorID' => $creatorId,
-                'TwitchUsername' => $username // TODO: change column name
+                'fk_creator_id'   => $creatorId,
+                'twitch_username' => $username
             ]
         );
     }
 
     public function unbanUser($username, $creator)
     {
-        $creatorId = TwitchHandler::getCreatorId($creator);
+        $creatorId = UserUtils::getCreatorId($creator);
 
         Database::delete(
             $this::BAN_USER_MODEL,
             [
-                'CreatorID' => $creatorId,
-                'TwitchUsername' => $username // TODO: change column name
+                'fk_creator_id' => $creatorId,
+                'twitch_username' => $username
             ]
         );
     }

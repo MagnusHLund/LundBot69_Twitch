@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class SongRequests extends Model
 {
-    protected $table = 'songrequests';
-    protected $primaryKey = 'RequestID';
-    protected $fillable = ["CreatorID", "RequestUser", "SongLink"];
+    protected $table = 'SongRequest';
+    protected $primaryKey = 'song_request_id';
+    protected $fillable = ["fk_creator_id", "requested_by", "youtube_video_id", "requested_at"];
     protected $casts = [
-        'CreatorID'   => "integer",
-        "RequestUser" => "string",
-        "SongLink"    => "string",
+        'fk_creator_id'    => "integer",
+        "requested_by"     => "string",
+        "youtube_video_id" => "string",
+        "requested_at"     => "integer"
     ];
 }

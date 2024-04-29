@@ -6,11 +6,11 @@ use illuminate\database\Eloquent\Model;
 
 class Giveaways extends Model
 {
-    protected $table = 'giveaways';
-    protected $primaryKey = 'GiveawayID';
-    protected $fillable = ["CreatorID", "Participant"];
+    protected $table = 'Giveaways';
+    protected $primaryKey = 'giveaway_id';
+    protected $fillable = ["fk_creator_id", "participant"];
     protected $casts = [
-        'CreatorID'   => "integer",
-        "Participant" => "string",
+        'fk_creator_id'  => "integer",
+        "participant" => "string",
     ];
 }

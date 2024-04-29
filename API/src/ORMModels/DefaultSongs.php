@@ -6,12 +6,12 @@ use illuminate\database\Eloquent\Model;
 
 class DefaultSongs extends Model
 {
-    protected $table = 'defaultsongs';
-    protected $primaryKey = 'SongID';
-    protected $fillable = ["CreatorID", "SongLink", "SongTitle"];
+    protected $table = 'DefaultSongs';
+    protected $primaryKey = 'song_id';
+    protected $fillable = ["fk_creator_id", "youtube_video_id", "play_order"];
     protected $casts = [
-        'CreatorID'  => "integer",
-        "SongLink"   => "string",
-        "SongTitle"  => "string"
+        "fk_creator_id"   => "integer",
+        "youtube_video_id" => "string",
+        "play_order"      => "string"
     ];
 }

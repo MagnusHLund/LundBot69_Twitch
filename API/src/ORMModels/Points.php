@@ -6,12 +6,12 @@ use illuminate\database\Eloquent\Model;
 
 class Points extends Model
 {
-    protected $table = 'points';
-    protected $primaryKey = 'PointID';
-    protected $fillable = ["CreatorID", "TwitchUsername", "Points"];
+    protected $table = 'Points';
+    protected $primaryKey = 'points_id';
+    protected $fillable = ["fk_creator_id", "twitch_username", "points"];
     protected $casts = [
-        'CreatorID'      => "integer",
-        "TwitchUsername" => "string",
-        "Points"         => "integer",
+        'fk_creator_id'      => "integer",
+        "twitch_username" => "string",
+        "points"          => "integer",
     ];
 }

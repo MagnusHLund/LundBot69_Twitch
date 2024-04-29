@@ -8,22 +8,22 @@ class RateLimitingMiddleware
 {
     const COOLDOWN_TIME = 10; // Seconds
 
-    public function handle()
+    public static function handle()
     {
         $ipAddress = $_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER['REMOTE_ADDR'];
 
         $ipExists = Database::read(
             "RateLimiting",
-            ['IpAddress' => $ipAddress],
-            'IpAddress'
+            ['ip_address' => $ipAddress],
+            'ip_address'
         );
         $currentTime = time();
         if ($ipExists === null) {
             Database::create(
                 "RateLimiting",
                 [
-                    'IpAddress' => $ipAddress,
-                    'LastAttemptTime' => $currentTime
+                    'ip_address' => $ipAddress,
+                    'last_attempted_time' => $currentTime
                 ]
             );
             return;
@@ -37,11 +37,11 @@ class RateLimitingMiddleware
 
         Database::update(
             "RateLimiting",
-            ['IpAddress' => $ipAddress],
-            ['LastAttemptTime' => $currentTime]
+            ['ip_address' => $ipAddress],
+            ['last_attempted_time' => $currentTime]
         );
 
-        if ($currentTime < $lastAttempt + $this::COOLDOWN_TIME) {
+        if ($currentTime < $lastAttempt + self::COOLDOWN_TIME) {
             http_response_code(429);
             echo ["Error" => "Too many requests!"];
             exit;

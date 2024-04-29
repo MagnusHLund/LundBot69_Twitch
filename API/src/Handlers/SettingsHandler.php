@@ -5,6 +5,8 @@ namespace LundBot69Api\Handlers;
 class SettingsHandler
 {
 
+    const SETTINGS_MODEL = "Settings";
+
     public function __construct()
     {
     }

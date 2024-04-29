@@ -6,7 +6,7 @@ use LundBot69Api\Utils\Constants;
 
 class CORSMiddleware
 {
-    public function handle()
+    public static function handle()
     {
         $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
         $requestMethod = $_SERVER['REQUEST_METHOD'] ?? '';

@@ -14,7 +14,8 @@ class ModelMapper
         'Commands' => \LundBot69Api\ORMModels\Commands::class,
         'Creators' => \LundBot69Api\ORMModels\Creators::class,
         'Settings' => \LundBot69Api\ORMModels\Settings::class,
-        'Points' => \LundBot69Api\ORMModels\Points::class,
+        'Messages' => \LundBot69Api\ORMModels\Messages::class,
+        'Points' => \LundBot69Api\ORMModels\Points::class
     ];
 
     public static function getModelClass($model)

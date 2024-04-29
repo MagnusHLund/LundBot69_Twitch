@@ -6,11 +6,11 @@ use illuminate\database\Eloquent\Model;
 
 class BannedAccounts extends Model
 {
-    protected $table = 'bannedaccounts';
-    protected $primaryKey = 'BannedAccountID';
-    protected $fillable = ["CreatorID", "TwitchUsername"];
+    protected $table = 'SongRequestBannedAccounts';
+    protected $primaryKey = 'song_request_banned_accounts_id';
+    protected $fillable = ["fk_creator_id", "twitch_username"];
     protected $casts = [
-        'CreatorID'      => "integer",
-        "TwitchUsername" => "string"
+        "fk_creator_id"   => "integer",
+        "twitch_username" => "string"
     ];
 }

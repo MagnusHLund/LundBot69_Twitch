@@ -7,30 +7,28 @@ use illuminate\database\Eloquent\Model;
 class Commands extends Model
 {
     // Do I even use OutputType anymore?
-    protected $table = 'commands';
-    protected $primaryKey = 'CommandID';
+    protected $table = 'Commands';
+    protected $primaryKey = 'command_id';
     protected $fillable = [
-        "CreatorID",
-        "Name",
-        "Output",
-        "Active",
-        "Permission",
-        "OutputType",
-        "Cost",
-        "UserCooldown",
-        "GlobalCooldown",
-        "Repeat"
+        "fk_creator_id",
+        "name",
+        "output",
+        "active",
+        "permissions",
+        "cost",
+        "user_cooldown_duration",
+        "global_cooldown_duration",
+        "global_last_used"
     ];
     protected $casts = [
-        'CreatorID'      => "int",
-        "Name"           => "string",
-        "Output"         => "string",
-        "Active"         => "boolean",
-        "Permission"     => "integer",
-        "OutputType"     => "integer",
-        "Cost"           => "integer",
-        "UserCooldown"   => "integer",
-        "GlobalCooldown" => "integer",
-        "Repeat"         => "integer",
+        "fk_creator_id"            => "int",
+        "name"                     => "string",
+        "output"                   => "string",
+        "active"                   => "boolean",
+        "permission"               => "integer",
+        "cost"                     => "integer",
+        "user_cooldown_duration"   => "integer",
+        "global_cooldown_duration" => "integer",
+        "global_last_used"         => "integer",
     ];
 }

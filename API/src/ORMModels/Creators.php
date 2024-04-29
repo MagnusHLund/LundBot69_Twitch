@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Creators extends Model
 {
-    protected $table = 'creators';
-    protected $primaryKey = 'CreatorID';
-    protected $fillable = ["Username"];
-    protected $casts = ["Username"  => "string"];
+    protected $table = 'Creators';
+    protected $primaryKey = 'creator_id';
+    protected $fillable = ["twitch_username"];
+    protected $casts = ["twitch_username"  => "string"];
 }

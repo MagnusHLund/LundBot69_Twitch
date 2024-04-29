@@ -11,14 +11,16 @@ use LundBot69Api\Utils\Constants;
 
 class TwitchHandler
 {
-    public function connectUser($request)
+    const CREATOR_MODEL = "Creators";
+
+    public static function connectUser($request)
     {
         $user = new User($_SESSION["user_jwt"] ?? null, $_SESSION["user_refresh_token"] ?? null);
         if (isset($request[0]["code"])) {
             try {
                 $user->getUserFromAuthenticationCode($request[0]["code"], Constants::getTwitchRedirectUri());
                 if ($user) {
-                    $username = Database::read("Creators", ['Username' => $user->getTwitchUsername()], 'Username');
+                    $username = Database::read(self::CREATOR_MODEL, ['twitch_username' => $user->getTwitchUsername()], 'twitch_username');
 
                     if (!isset($username)) {
                         http_response_code(401);
@@ -35,7 +37,7 @@ class TwitchHandler
                     throw new Exception;
                 }
             } catch (Exception) {
-                echo json_encode(['error' => 'Your code is bad :C']);
+                echo json_encode(['error' => 'The twitch authentication code is invalid']);
                 http_response_code(400);
                 exit;
             }
@@ -45,20 +47,4 @@ class TwitchHandler
             header('Location: ' . $authUrl);
         }
     }
-
-    public static function getCreatorId($creator = null)
-    {
-        if (!$creator) {
-            $user = new user($_SESSION["user_jwt"], $_SESSION["user_refresh_token"]);
-            $creator = $user->getTwitchUsername();
-        }
-
-        return Database::read(
-            "Creators",
-            ['Username' => $creator],
-            'CreatorId'
-        );
-    }
-    
-    public static function 
 }

@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `lundbot69` ;
 USE `lundbot69`;
 
-CREATE TABLE IF NOT EXISTS `commands` (
+CREATE TABLE IF NOT EXISTS `Commands` (
   `command_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `commands` (
   CONSTRAINT `commands_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `commandusercooldowns` (
+CREATE TABLE IF NOT EXISTS `CommandUserCooldowns` (
   `command_user_cooldown_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_command_id` int(11) unsigned NOT NULL,
   `used_by` varchar(25) NOT NULL,
@@ -29,17 +29,17 @@ CREATE TABLE IF NOT EXISTS `commandusercooldowns` (
   CONSTRAINT `command_user_cooldowns_fk_1` FOREIGN KEY (`fk_command_id`) REFERENCES `commands` (`command_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `creators` (
+CREATE TABLE IF NOT EXISTS `Creators` (
   `creator_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `twitch_username` varchar(25) NOT NULL,
   PRIMARY KEY (`creator_id`),
   UNIQUE KEY `username_unique` (`twitch_username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `defaultsongs` (
+CREATE TABLE IF NOT EXISTS `DefaultSongs` (
   `default_song_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
-  `youtube_song_id` varchar(11) NOT NULL,
+  `youtube_video_id` varchar(11) NOT NULL,
   `play_order` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`default_song_id`),
   UNIQUE KEY `play_order_unique` (`fk_creator_id`,`play_order`),
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `defaultsongs` (
   CONSTRAINT `Default_Songs_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `giveaways` (
+CREATE TABLE IF NOT EXISTS `Giveaways` (
   `giveaway_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
   `participant` varchar(25) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `giveaways` (
   CONSTRAINT `Giveaways_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `messages` (
+CREATE TABLE IF NOT EXISTS `Messages` (
   `message_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   CONSTRAINT `Messages_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `points` (
+CREATE TABLE IF NOT EXISTS `Points` (
   `points_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
   `twitch_username` varchar(25) NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `points` (
   CONSTRAINT `points_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `ratelimiting` (
+CREATE TABLE IF NOT EXISTS `RateLimiting` (
   `rate_limiting_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ip_address` varchar(39) NOT NULL,
   `last_attempted_time` bigint(20) unsigned NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `ratelimiting` (
   UNIQUE KEY `ip_address_unique` (`ip_address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `settings` (
+CREATE TABLE IF NOT EXISTS `Settings` (
   `settings_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
   `bot_enabled` tinyint(1) NOT NULL CHECK (`bot_enabled` between 0 and 1),
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
   CONSTRAINT `settings_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `songrequestbannedaccounts` (
+CREATE TABLE IF NOT EXISTS `SongRequestBannedAccounts` (
   `song_request_banned_account_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
   `twitch_username` varchar(25) NOT NULL,
@@ -110,21 +110,21 @@ CREATE TABLE IF NOT EXISTS `songrequestbannedaccounts` (
   CONSTRAINT `song_request_banned_accounts_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `songrequestbannedsongs` (
+CREATE TABLE IF NOT EXISTS `SongRequestBannedSongs` (
   `song_request_banned_song_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
-  `youtube_song_id` varchar(11) NOT NULL,
+  `youtube_video_id` varchar(11) NOT NULL,
   PRIMARY KEY (`song_request_banned_song_id`),
-  UNIQUE KEY `youtube_song_id_unique` (`youtube_song_id`,`fk_creator_id`),
+  UNIQUE KEY `youtube_video_id_unique` (`youtube_video_id`,`fk_creator_id`),
   KEY `song_request_banned_songs_fk_1` (`fk_creator_id`),
   CONSTRAINT `song_request_banned_songs_fk_1` FOREIGN KEY (`fk_creator_id`) REFERENCES `creators` (`creator_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `songrequests` (
+CREATE TABLE IF NOT EXISTS `SongRequests` (
   `song_request_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fk_creator_id` int(11) unsigned NOT NULL,
   `requested_by` varchar(25) NOT NULL,
-  `youtube_song_id` varchar(11) NOT NULL,
+  `youtube_video_id` varchar(11) NOT NULL,
   `requested_at` bigint(20) NOT NULL,
   PRIMARY KEY (`song_request_id`),
   KEY `requested_at_index` (`requested_at`),
