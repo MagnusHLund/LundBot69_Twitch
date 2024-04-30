@@ -10,6 +10,7 @@ use LundBot69Api\Handlers\SettingsHandler;
 use LundBot69Api\Handlers\SongRequestHandler;
 use LundBot69Api\Handlers\TwitchHandler;
 use LundBot69Api\Handlers\BotHandler;
+use LundBot69Api\Handlers\WebSocketHandler;
 
 class Router
 {
@@ -25,6 +26,8 @@ class Router
         $songRequestHandler = new SongRequestHandler;
         $twitchHandler = new TwitchHandler;
         $botHandler = new BotHandler;
+        $websocketHandler = new WebSocketHandler;
+
 
         $this->routes = [
             // Bans
@@ -71,7 +74,10 @@ class Router
             ["POST", "/api/v1/twitch/connectUser", [$twitchHandler, "connectUser"], ["requestBody"]],
 
             // Bot
-            ["GET", "/api/v1/bot/getChannels", [$botHandler, "getAllRegisteredChannels"]]
+            ["GET", "/api/v1/bot/getChannels", [$botHandler, "getAllRegisteredChannels"]],
+
+            // Websocket
+            ["POST", "/api/v1/start-websocket", [$websocketHandler, "startWebSocket"]]
         ];
     }
 

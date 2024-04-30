@@ -8,13 +8,16 @@
     "nicklaw5/twitch-api-php": "^7.2",
     "firebase/php-jwt": "^6.10",
     "illuminate/database": "^11.2",
-    "ext-pdo_mysql": "*"
+    "ext-pdo_mysql": "*",
+    "cboden/ratchet": "^0.4.4"
   },
   "license": "MIT",
   "autoload": {
     "psr-4": {
       "LundBot69Api\\": "src/",
       "LundBot69Api\\ORMModels\\": "src/ORMModels/",
+      "LundBot69Api\\WebSocket\\": "src/WebSocket/",
+      "LundBot69Api\\Factories\\": "src/Factories",
       "LundBot69Api\\Handlers\\": "src/Handlers/",
       "LundBot69Api\\Models\\": "src/Models/",
       "LundBot69Api\\Utils\\": "src/Utils/"

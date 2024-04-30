@@ -29,7 +29,7 @@ class ApiEntry
         $path = $_SERVER['REQUEST_URI'];
         $requestBody = json_decode(file_get_contents('php://input'), true);
 
-        //$this->applyMiddleware($path);
+        $this->applyMiddleware($path);
         $this->router->handleRequest($method, $path, $requestBody);
     }
 

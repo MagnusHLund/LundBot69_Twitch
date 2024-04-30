@@ -13,12 +13,6 @@ class GiveawayHandler
     {
         $creatorId = UserUtils::getCreatorId();
 
-        Database::read(
-            $this::GIVEAWAY_MODEL,
-            ['fk_creator_id' => $creatorId],
-            "participant"
-        );
-
         echo ["winner" => Database::readRandomRow(
             $this::GIVEAWAY_MODEL,
             ['fk_creator_id' => $creatorId],
@@ -33,6 +27,13 @@ class GiveawayHandler
     // Uses websocket
     public function getGiveawayParticipants()
     {
+        $creatorId = UserUtils::getCreatorId();
+
+        return Database::read(
+            $this::GIVEAWAY_MODEL,
+            ['fk_creator_id' => $creatorId],
+            "participant"
+        );
     }
 
     public function addGiveawayParticipants()

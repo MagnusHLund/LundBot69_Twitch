@@ -1,5 +1,4 @@
 export default function handleCommand(channel, tags, message, self, client) {
-  // Split the message into a command and arguments
   const [command, ...args] = message.toLowerCase().split(' ')
 
   switch (command) {
