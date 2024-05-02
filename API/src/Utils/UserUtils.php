@@ -20,6 +20,6 @@ class UserUtils
             self::CREATOR_MODEL,
             ['twitch_username' => $creator],
             'creator_id'
-        );
+        )['creator_id'];
     }
 }

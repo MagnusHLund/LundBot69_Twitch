@@ -37,14 +37,29 @@ class Database
         return $modelClass::create($data);
     }
 
-    public static function read($model, $conditions, $column = null)
+    // Todo: This function is shit. Fix it.
+    public static function read($model, $conditions, $columns = null)
     {
         $modelClass = ModelMapper::getModelClass($model);
-        if ($column) {
-            return $modelClass::where($conditions)->value($column);
+        $query = $modelClass::where($conditions);
+
+        if ($columns) {
+            if (is_array($columns)) {
+                $query = $query->select($columns);
+            } else {
+                $query = $query->select([$columns]);
+            }
         }
-        return $modelClass::where($conditions)->first();
+
+        $result = $query->first();
+
+        if ($result) {
+            return $result->toArray();
+        }
+
+        return null;
     }
+
 
     public static function update($model, $conditions, $data)
     {

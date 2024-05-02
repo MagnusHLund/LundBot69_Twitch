@@ -1,14 +1,13 @@
 <?php
 
-namespace LundBot69Api\WebSocket;
+namespace LundBot69Api\Utils;
 
 use LundBot69Api\Factories\HandlersFactory;
 use Ratchet\ComponentInterface;
 use Ratchet\ConnectionInterface;
-use LundBot69Api\Utils\Database;
 
 
-class DatabaseUpdateListener extends ComponentInterface
+class WebSocketRouter extends ComponentInterface
 {
     private $handlers;
 
@@ -23,14 +22,16 @@ class DatabaseUpdateListener extends ComponentInterface
 
         switch ($data->type) {
             case 'giveawayParticipants':
-                $variableNameThatIWillFigureOutInTheFuture = $this->handlers->getGiveawayHandler()->getGiveawayParticipants();
+                $this->handlers->getGiveawayHandler()->getGiveawayParticipants($from);
+                break;
+            case 'pointsLeaderboard':
+                $this->handlers->getGamblingHandler()->getGamblers($from);
+                break;
+            case 'requestedSongs':
+                $this->handlers->getSongRequestHandler()->getRequestedSongs($from);
                 break;
             default:
-                http_response_code(404); // There might be a better response code for this. Can i even use http response codes for a websocket connection?
                 json_encode(['error' => 'Can not find the websocket message type!']);
-                exit;
         }
-
-        $from->send(json_encode(['type' => 'giveawayParticipants', 'data' => $variableNameThatIWillFigureOutInTheFuture]));
     }
 }

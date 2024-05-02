@@ -17,7 +17,9 @@ class RateLimitingMiddleware
             ['ip_address' => $ipAddress],
             'ip_address'
         );
+
         $currentTime = time();
+
         if ($ipExists === null) {
             Database::create(
                 "RateLimiting",
@@ -31,9 +33,9 @@ class RateLimitingMiddleware
 
         $lastAttempt = Database::read(
             "RateLimiting",
-            ['IpAddress' => $ipAddress],
-            'LastAttemptTime'
-        );
+            ['ip_address' => $ipAddress],
+            'last_attempted_time'
+        )['last_attempted_time'];
 
         Database::update(
             "RateLimiting",

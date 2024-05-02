@@ -11,7 +11,7 @@
   "scripts": {
     "api": "cd API/src/ && php -S localhost:3420",
     "web": "cd web_client && npm run dev",
-    "bot": "cd Bot && node index.js"
+    "bot": "cd Bot/src/ && node index.js"
   },
   "author": "",
   "license": "ISC",

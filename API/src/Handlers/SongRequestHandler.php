@@ -2,6 +2,9 @@
 
 namespace LundBot69Api\Handlers;
 
+use LundBot69Api\Utils\Database;
+use LundBot69Api\Utils\UserUtils;
+
 class SongRequestHandler
 {
 
@@ -11,14 +14,22 @@ class SongRequestHandler
     {
     }
 
-    // Uses websocket??? Could be useful to add a default song from twitch chat
     public function getDefaultSongs()
     {
     }
 
     // Uses websocket
-    public function getRequestedSongs()
+    public function getRequestedSongs($from)
     {
+        $creatorId = UserUtils::getCreatorId();
+
+        $requestedSongs = Database::read(
+            $this::SONG_REQUEST_MODEL,
+            ['creator_id' => $creatorId],
+            ["requested_by", "youtube_video_id", "requested_at"]
+        );
+
+        $from->send(json_encode(['type' => 'requestedSongs', 'data' => $requestedSongs]));
     }
 
     public function deleteDefaultSongs()

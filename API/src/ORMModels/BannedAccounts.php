@@ -8,9 +8,9 @@ class BannedAccounts extends Model
 {
     protected $table = 'SongRequestBannedAccounts';
     protected $primaryKey = 'song_request_banned_accounts_id';
-    protected $fillable = ["fk_creator_id", "twitch_username"];
+    protected $fillable = ["creator_id", "twitch_username"];
     protected $casts = [
-        "fk_creator_id"   => "integer",
+        "creator_id"   => "integer",
         "twitch_username" => "string"
     ];
 }

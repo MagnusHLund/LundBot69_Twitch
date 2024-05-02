@@ -2,10 +2,10 @@
 
 namespace LundBot69Api\Handlers;
 
-use LundBot69Api\WebSocket\DatabaseUpdateListener;
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
+use LundBot69Api\Utils\WebSocketRouter;
 
 class WebSocketHandler
 {
@@ -14,7 +14,7 @@ class WebSocketHandler
         $server = IoServer::factory(
             new HttpServer(
                 new WsServer(
-                    new DatabaseUpdateListener()
+                    new WebSocketRouter()
                 )
             ),
             8080

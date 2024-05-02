@@ -11,6 +11,6 @@ class BotHandler
 
     public function getAllRegisteredChannels()
     {
-        Database::read(self::CREATOR_MODEL, [], 'twitch_username');
+        Database::read(self::CREATOR_MODEL, [], 'twitch_username')['twitch_username'];
     }
 }

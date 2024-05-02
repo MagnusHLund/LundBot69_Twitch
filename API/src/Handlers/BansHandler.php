@@ -17,7 +17,7 @@ class BansHandler
         Database::create(
             $this::BAN_SONG_MODEL,
             [
-                'fk_creator_id'   => $creatorId,
+                'creator_id'       => $creatorId,
                 'youtube_video_id' => $videoId
             ]
         );
@@ -30,7 +30,7 @@ class BansHandler
         Database::delete(
             $this::BAN_SONG_MODEL,
             [
-                'fk_creator_id'   => $creatorId,
+                'creator_id'       => $creatorId,
                 'youtube_video_id' => $videoId
             ]
         );
@@ -43,7 +43,7 @@ class BansHandler
         Database::create(
             $this::BAN_USER_MODEL,
             [
-                'fk_creator_id'   => $creatorId,
+                'creator_id'      => $creatorId,
                 'twitch_username' => $username
             ]
         );
@@ -56,18 +56,16 @@ class BansHandler
         Database::delete(
             $this::BAN_USER_MODEL,
             [
-                'fk_creator_id' => $creatorId,
+                'creator_id'      => $creatorId,
                 'twitch_username' => $username
             ]
         );
     }
 
-    // Uses websocket
     public function getBannedUsers()
     {
     }
 
-    // Uses websocket
     public function getBannedSongs()
     {
     }

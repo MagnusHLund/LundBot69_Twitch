@@ -12,7 +12,7 @@ use LundBot69Api\Handlers\TwitchHandler;
 use LundBot69Api\Handlers\BotHandler;
 use LundBot69Api\Handlers\WebSocketHandler;
 
-class Router
+class HttpRouter
 {
     private $routes = [];
 

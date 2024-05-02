@@ -8,9 +8,9 @@ class Giveaways extends Model
 {
     protected $table = 'Giveaways';
     protected $primaryKey = 'giveaway_id';
-    protected $fillable = ["fk_creator_id", "participant"];
+    protected $fillable = ["creator_id", "participant"];
     protected $casts = [
-        'fk_creator_id'  => "integer",
+        'creator_id'  => "integer",
         "participant" => "string",
     ];
 }

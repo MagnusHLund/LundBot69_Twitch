@@ -15,9 +15,9 @@ class GiveawayHandler
 
         echo ["winner" => Database::readRandomRow(
             $this::GIVEAWAY_MODEL,
-            ['fk_creator_id' => $creatorId],
+            ['creator_id' => $creatorId],
             "participant"
-        )];
+        )['participant']];
     }
 
     public function resetGiveawayParticipants()
@@ -25,15 +25,17 @@ class GiveawayHandler
     }
 
     // Uses websocket
-    public function getGiveawayParticipants()
+    public function getGiveawayParticipants($from)
     {
         $creatorId = UserUtils::getCreatorId();
 
-        return Database::read(
+        $participants = Database::read(
             $this::GIVEAWAY_MODEL,
-            ['fk_creator_id' => $creatorId],
+            ['creator_id' => $creatorId],
             "participant"
-        );
+        )['participant'];
+
+        $from->send(json_encode(['type' => 'giveawayParticipants', 'data' => $participants]));
     }
 
     public function addGiveawayParticipants()

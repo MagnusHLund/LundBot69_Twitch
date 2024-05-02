@@ -6,7 +6,7 @@ use Dotenv;
 use LundBot69Api\Middleware\AuthenticationMiddleware;
 use LundBot69Api\Middleware\CORSMiddleware;
 use LundBot69Api\Middleware\RateLimitingMiddleware;
-use LundBot69Api\Utils\Router;
+use LundBot69Api\Utils\HttpRouter;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
@@ -20,7 +20,7 @@ class ApiEntry
     {
         session_start();
 
-        $this->router = new Router;
+        $this->router = new HttpRouter;
     }
 
     public function handleRequest()

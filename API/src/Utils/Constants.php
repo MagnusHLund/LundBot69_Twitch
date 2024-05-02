@@ -47,6 +47,6 @@ class Constants
 
     public static function getAllowedOrigins()
     {
-        return $_ENV['ALLOWED_HOSTS'];
+        return explode(', ', $_ENV['ALLOWED_HOSTS']);
     }
 }
