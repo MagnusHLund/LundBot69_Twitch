@@ -45,7 +45,7 @@ class RateLimitingMiddleware
 
         if ($currentTime < $lastAttempt + self::COOLDOWN_TIME) {
             http_response_code(429);
-            echo ["Error" => "Too many requests!"];
+            echo json_encode(["Error" => "Too many requests!"]);
             exit;
         }
     }

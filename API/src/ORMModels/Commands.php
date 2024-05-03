@@ -6,7 +6,6 @@ use illuminate\database\Eloquent\Model;
 
 class Commands extends Model
 {
-    // Do I even use OutputType anymore?
     protected $table = 'Commands';
     protected $primaryKey = 'command_id';
     protected $fillable = [
@@ -21,7 +20,7 @@ class Commands extends Model
         "global_last_used"
     ];
     protected $casts = [
-        "creator_id"            => "int",
+        "creator_id"               => "int",
         "name"                     => "string",
         "output"                   => "string",
         "active"                   => "boolean",
@@ -31,4 +30,5 @@ class Commands extends Model
         "global_cooldown_duration" => "integer",
         "global_last_used"         => "integer",
     ];
+    public $timestamps = false;
 }

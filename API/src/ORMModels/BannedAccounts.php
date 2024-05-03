@@ -10,7 +10,8 @@ class BannedAccounts extends Model
     protected $primaryKey = 'song_request_banned_accounts_id';
     protected $fillable = ["creator_id", "twitch_username"];
     protected $casts = [
-        "creator_id"   => "integer",
+        "creator_id"      => "integer",
         "twitch_username" => "string"
     ];
+    public $timestamps = false;
 }

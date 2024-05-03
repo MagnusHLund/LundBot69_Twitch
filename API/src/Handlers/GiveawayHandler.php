@@ -17,7 +17,7 @@ class GiveawayHandler
             $this::GIVEAWAY_MODEL,
             ['creator_id' => $creatorId],
             "participant"
-        )['participant']];
+        )];
     }
 
     public function resetGiveawayParticipants()

@@ -13,4 +13,5 @@ class Giveaways extends Model
         'creator_id'  => "integer",
         "participant" => "string",
     ];
+    public $timestamps = false;
 }

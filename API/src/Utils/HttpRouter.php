@@ -31,53 +31,53 @@ class HttpRouter
 
         $this->routes = [
             // Bans
-            ["POST", "/api/v1/bans/banSong", [$bansHandler, "banSong"]],
-            ["POST", "/api/v1/bans/unbanSong", [$bansHandler, "unbanSong"]],
-            ["POST", "/api/v1/bans/banUser", [$bansHandler, "banUser"]],
-            ["POST", "/api/v1/bans/unbanUser", [$bansHandler, "unbanUser"]],
+            ["POST", "/api/bans/banSong", [$bansHandler, "banSong"]],
+            ["POST", "/api/bans/unbanSong", [$bansHandler, "unbanSong"]],
+            ["POST", "/api/bans/banUser", [$bansHandler, "banUser"]],
+            ["POST", "/api/bans/unbanUser", [$bansHandler, "unbanUser"]],
 
             // Commands
-            ["POST", "/api/v1/commands/getCommands", [$commandsHandler, "getCommands"]],
-            ["POST", "/api/v1/commands/createCommand", [$commandsHandler, "createCommand"]],
-            ["POST", "/api/v1/commands/editCommand", [$commandsHandler, "editCommand"]],
-            ["POST", "/api/v1/commands/deleteCommand", [$commandsHandler, "deleteCommand"]],
-            ["POST", "/api/v1/commands/toggleCommandActivityState", [$commandsHandler, "toggleCommandActivityState"]],
+            ["POST", "/api/commands/getCommands", [$commandsHandler, "getCommands"]],
+            ["POST", "/api/commands/createCommand", [$commandsHandler, "createCommand"]],
+            ["POST", "/api/commands/editCommand", [$commandsHandler, "editCommand"]],
+            ["POST", "/api/commands/deleteCommand", [$commandsHandler, "deleteCommand"]],
+            ["POST", "/api/commands/toggleCommandActivityState", [$commandsHandler, "toggleCommandActivityState"]],
 
             // Gambling
-            ["POST", "/api/v1/gambling/getGamblers", [$gamblingHandler, "getGamblers"]],
-            ["POST", "/api/v1/gambling/modifyGamblerPoints", [$gamblingHandler, "modifyGamblerPoints"]],
-            ["POST", "/api/v1/gambling/wipeGamblerPoints", [$gamblingHandler, "wipeGamblerPoints"]],
-            ["POST", "/api/v1/gambling/deleteGambler", [$gamblingHandler, "deleteGambler"]],
-            ["POST", "/api/v1/gambling/createGambler", [$gamblingHandler, "createGambler"]],
+            ["POST", "/api/gambling/getGamblers", [$gamblingHandler, "getGamblers"]],
+            ["POST", "/api/gambling/modifyGamblerPoints", [$gamblingHandler, "modifyGamblerPoints"]],
+            ["POST", "/api/gambling/wipeGamblerPoints", [$gamblingHandler, "wipeGamblerPoints"]],
+            ["POST", "/api/gambling/deleteGambler", [$gamblingHandler, "deleteGambler"]],
+            ["POST", "/api/gambling/createGambler", [$gamblingHandler, "createGambler"]],
 
             // Giveaway
-            ["POST", "/api/v1/giveaway/pickGiveawayWinner", [$giveawayHandler, "pickGiveawayWinner"]],
-            ["POST", "/api/v1/giveaway/resetGiveawayParticipants", [$giveawayHandler, "resetGiveawayParticipants"]],
-            ["POST", "/api/v1/giveaway/addGiveawayParticipants", [$giveawayHandler, "addGiveawayParticipants"]],
+            ["POST", "/api/giveaway/pickGiveawayWinner", [$giveawayHandler, "pickGiveawayWinner"]],
+            ["POST", "/api/giveaway/resetGiveawayParticipants", [$giveawayHandler, "resetGiveawayParticipants"]],
+            ["POST", "/api/giveaway/addGiveawayParticipants", [$giveawayHandler, "addGiveawayParticipants"]],
 
             // Settings
-            ["POST", "/api/v1/settings/toggleBotActivityState", [$settingsHandler, "toggleBotActivityState"]],
-            ["POST", "/api/v1/settings/toggleSongRequestActivityState", [$settingsHandler, "toggleSongRequestActivityState"]],
-            ["POST", "/api/v1/settings/toggleGamblingActivityState", [$settingsHandler, "toggleGamblingActivityState"]],
-            ["POST", "/api/v1/settings/toggleShoutOutActivityState", [$settingsHandler, "toggleShoutOutActivityState"]],
-            ["POST", "/api/v1/settings/setAutoPinnedMessage", [$settingsHandler, "setAutoPinnedMessage"]],
-            ["POST", "/api/v1/settings/getAutoPinnedMessage", [$settingsHandler, "getAutoPinnedMessage"]],
-            ["POST", "/api/v1/settings/getSettingsActivityStates", [$settingsHandler, "getSettingsActivityStates"]],
+            ["POST", "/api/settings/toggleBotActivityState", [$settingsHandler, "toggleBotActivityState"]],
+            ["POST", "/api/settings/toggleSongRequestActivityState", [$settingsHandler, "toggleSongRequestActivityState"]],
+            ["POST", "/api/settings/toggleGamblingActivityState", [$settingsHandler, "toggleGamblingActivityState"]],
+            ["POST", "/api/settings/toggleShoutOutActivityState", [$settingsHandler, "toggleShoutOutActivityState"]],
+            ["POST", "/api/settings/setAutoPinnedMessage", [$settingsHandler, "setAutoPinnedMessage"]],
+            ["POST", "/api/settings/getAutoPinnedMessage", [$settingsHandler, "getAutoPinnedMessage"]],
+            ["POST", "/api/settings/getSettingsActivityStates", [$settingsHandler, "getSettingsActivityStates"]],
 
             // Song request
-            ["POST", "/api/v1/sr/deleteDefaultSongs", [$songRequestHandler, "deleteDefaultSongs"]],
-            ["POST", "/api/v1/sr/deleteRequestedSongs", [$songRequestHandler, "deleteRequestedSongs"]],
-            ["POST", "/api/v1/sr/addDefaultSong", [$songRequestHandler, "addDefaultSong"]],
-            ["POST", "/api/v1/sr/addRequestedSong", [$songRequestHandler, "addRequestedSong"]],
+            ["POST", "/api/sr/deleteDefaultSongs", [$songRequestHandler, "deleteDefaultSongs"]],
+            ["POST", "/api/sr/deleteRequestedSongs", [$songRequestHandler, "deleteRequestedSongs"]],
+            ["POST", "/api/sr/addDefaultSong", [$songRequestHandler, "addDefaultSong"]],
+            ["POST", "/api/sr/addRequestedSong", [$songRequestHandler, "addRequestedSong"]],
 
             // Twitch
-            ["POST", "/api/v1/twitch/connectUser", [$twitchHandler, "connectUser"], ["requestBody"]],
+            ["POST", "/api/twitch/connectUser", [$twitchHandler, "connectUser"], ["requestBody"]],
 
             // Bot
-            ["GET", "/api/v1/bot/getChannels", [$botHandler, "getAllRegisteredChannels"]],
+            ["GET", "/api/bot/getChannels", [$botHandler, "getAllRegisteredChannels"]],
 
             // Websocket
-            ["POST", "/api/v1/start-websocket", [$websocketHandler, "startWebSocket"]]
+            ["POST", "/api/start-websocket", [$websocketHandler, "startWebSocket"]]
         ];
     }
 

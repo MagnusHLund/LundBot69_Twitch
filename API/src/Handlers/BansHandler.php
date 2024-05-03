@@ -10,9 +10,10 @@ class BansHandler
     private const BAN_SONG_MODEL = "BannedSongs";
     private const BAN_USER_MODEL = "BannedAccounts";
 
-    public function banSong($videoId, $creator)
+    public function banSong($data)
     {
-        $creatorId = UserUtils::getCreatorId($creator);
+        $videoId = $data[0]['videoId'];
+        $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
         Database::create(
             $this::BAN_SONG_MODEL,
@@ -23,9 +24,10 @@ class BansHandler
         );
     }
 
-    public function unbanSong($videoId, $creator)
+    public function unbanSong($data)
     {
-        $creatorId = UserUtils::getCreatorId($creator);
+        $videoId = $data[0]['videoId'];
+        $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
         Database::delete(
             $this::BAN_SONG_MODEL,

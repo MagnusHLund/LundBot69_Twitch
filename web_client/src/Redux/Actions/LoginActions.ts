@@ -5,7 +5,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 export const setTwitchCode = createAsyncThunk<string, string>(
   'session/setTwitchCode',
   async (code: string, { dispatch }) => {
-    const url: string = `${baseApiUrl()}/v1/twitch/connectUser`
+    const url: string = `${baseApiUrl()}/twitch/connectUser`
 
     try {
       const response = await axios.post(

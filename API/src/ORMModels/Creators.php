@@ -9,5 +9,6 @@ class Creators extends Model
     protected $table = 'Creators';
     protected $primaryKey = 'creator_id';
     protected $fillable = ["twitch_username"];
-    protected $casts = ["twitch_username"  => "string"];
+    protected $casts = ["twitch_username" => "string"];
+    public $timestamps = false;
 }

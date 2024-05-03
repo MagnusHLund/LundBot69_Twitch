@@ -14,4 +14,5 @@ class Points extends Model
         "twitch_username" => "string",
         "points"          => "integer",
     ];
+    public $timestamps = false;
 }

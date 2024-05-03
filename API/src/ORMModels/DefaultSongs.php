@@ -10,8 +10,9 @@ class DefaultSongs extends Model
     protected $primaryKey = 'song_id';
     protected $fillable = ["creator_id", "youtube_video_id", "play_order"];
     protected $casts = [
-        "creator_id"   => "integer",
+        "creator_id"       => "integer",
         "youtube_video_id" => "string",
-        "play_order"      => "string"
+        "play_order"       => "string"
     ];
+    public $timestamps = false;
 }

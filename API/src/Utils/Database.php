@@ -33,50 +33,117 @@ class Database
 
     public static function create($model, $data)
     {
-        $modelClass = ModelMapper::getModelClass($model);
-        return $modelClass::create($data);
+        try {
+            $modelClass = ModelMapper::getModelClass($model);
+            return $modelClass::create($data);
+        } catch (\PDOException $e) {
+            $stringifiedData = json_encode($data);
+            $attemptedOperation = "Table: $model, Data: $stringifiedData";
+
+            self::handlePdoException($e, $attemptedOperation);
+        }
     }
 
-    // Todo: This function is shit. Fix it.
     public static function read($model, $conditions, $columns = null)
     {
-        $modelClass = ModelMapper::getModelClass($model);
-        $query = $modelClass::where($conditions);
+        try {
+            $modelClass = ModelMapper::getModelClass($model);
+            $query = $modelClass::where($conditions);
 
-        if ($columns) {
-            if (is_array($columns)) {
-                $query = $query->select($columns);
-            } else {
-                $query = $query->select([$columns]);
+            if ($columns) {
+                if (is_array($columns)) {
+                    $query = $query->select($columns);
+                } else {
+                    return $query->select([$columns])->first();
+                }
             }
+
+            $result = $query->first();
+
+            if ($result) {
+                return $result->toArray();
+            }
+
+            return null;
+        } catch (\PDOException $e) {
+            $stringifiedColumns = json_encode($columns);
+            $stringifiedConditions = json_encode($conditions);
+            $attemptedOperation = "Table: $model, Columns: $stringifiedColumns, Conditions: $stringifiedConditions";
+
+            self::handlePdoException($e, $attemptedOperation);
         }
-
-        $result = $query->first();
-
-        if ($result) {
-            return $result->toArray();
-        }
-
-        return null;
     }
-
 
     public static function update($model, $conditions, $data)
     {
-        $modelClass = ModelMapper::getModelClass($model);
-        return $modelClass::where($conditions)->update($data);
+        try {
+            $modelClass = ModelMapper::getModelClass($model);
+            return $modelClass::where($conditions)->update($data);
+        } catch (\PDOException $e) {
+            $stringifiedData = json_encode($data);
+            $stringifiedConditions = json_encode($conditions);
+            $attemptedOperation = "Table: $model, Data: $stringifiedData, Conditions: $stringifiedConditions";
+
+            self::handlePdoException($e, $attemptedOperation);
+        }
     }
 
     public static function delete($model, $conditions)
     {
-        $modelClass = ModelMapper::getModelClass($model);
-        return $modelClass::where($conditions)->delete();
+        try {
+            $modelClass = ModelMapper::getModelClass($model);
+            $deletedRows = $modelClass::where($conditions)->delete();
+
+            if ($deletedRows === 0) {
+                throw new \PDOException("Attempted delete on non-existent row", 45001);
+            }
+
+            return $deletedRows;
+        } catch (\PDOException $e) {
+            $stringifiedConditions = json_encode($conditions);
+            $attemptedOperation = "Table: $model, Conditions: $stringifiedConditions";
+
+            self::handlePdoException($e, $attemptedOperation);
+        }
     }
 
     public static function readRandomRow($model, $conditions, $column)
     {
-        $modelClass = ModelMapper::getModelClass($model);
-        return $modelClass::where($conditions)->inRandomOrder()->first($column);
+        try {
+            $modelClass = ModelMapper::getModelClass($model);
+            return $modelClass::where($conditions)->inRandomOrder()->first($column);
+        } catch (\PDOException $e) {
+            $stringifiedConditions = json_encode($conditions);
+            $attemptedOperation = "Table: $model, Columns: $column, Conditions: $stringifiedConditions";
+
+            self::handlePdoException($e, $attemptedOperation);
+        }
+    }
+
+    private static function handlePdoException($e, $attemptedOperation)
+    {
+        http_response_code(400);
+
+        switch ($e->getCode()) {
+            case '22001':
+                echo json_encode(['error' => 'The data is too long for one of the columns. ' . $attemptedOperation]);
+                break;
+            case '23000':
+                echo json_encode(['error' => 'The data is either a duplicate or would fail due to foreign key constraints. ' . $attemptedOperation]);
+                break;
+            case '42S22':
+                echo json_encode(['error' => 'Column not found. ' . $attemptedOperation]);
+                break;
+            case '45001':
+                echo json_encode(['error' => 'Can not delete non-existent row. ' . $attemptedOperation]);
+                break;
+            default:
+                http_response_code(500);
+                echo json_encode(['error' => 'The insert failed due to an unknown reason. ' . $attemptedOperation]);
+                break;
+        }
+
+        exit;
     }
 }
 
