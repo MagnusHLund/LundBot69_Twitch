@@ -5,11 +5,11 @@ namespace LundBot69Api\Utils;
 class ModelMapper
 {
     const MODELS = [
-        'BannedAccounts' => \LundBot69Api\ORMModels\BannedAccounts::class,
-        'DefaultSongs' => \LundBot69Api\ORMModels\DefaultSongs::class,
+        'SongRequestBannedAccounts' => \LundBot69Api\ORMModels\BannedAccounts::class,
+        'SongRequestBannedSongs' => \LundBot69Api\ORMModels\BannedSongs::class,
         'SongRequests' => \LundBot69Api\ORMModels\SongRequests::class,
+        'DefaultSongs' => \LundBot69Api\ORMModels\DefaultSongs::class,
         'RateLimiting' => \LundBot69Api\ORMModels\RateLimiting::class,
-        'BannedSongs' => \LundBot69Api\ORMModels\BannedSongs::class,
         'Giveaways' => \LundBot69Api\ORMModels\Giveaways::class,
         'Commands' => \LundBot69Api\ORMModels\Commands::class,
         'Creators' => \LundBot69Api\ORMModels\Creators::class,

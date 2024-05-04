@@ -2,7 +2,7 @@
 
 namespace LundBot69Api\Handlers;
 
-use lundbot69api\Utils\Database;
+use LundBot69Api\Utils\Database;
 
 // The BotHandler is responsible for handing bot-only commands.
 class BotHandler
@@ -11,6 +11,8 @@ class BotHandler
 
     public function getAllRegisteredChannels()
     {
-        Database::read(self::CREATOR_MODEL, [], 'twitch_username')['twitch_username'];
+        $result = Database::read(self::CREATOR_MODEL, [], 'twitch_username');
+
+        echo json_encode(['error' => $result]);
     }
 }

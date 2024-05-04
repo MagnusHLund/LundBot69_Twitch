@@ -7,8 +7,8 @@ use LundBot69Api\Utils\UserUtils;
 
 class BansHandler
 {
-    private const BAN_SONG_MODEL = "BannedSongs";
-    private const BAN_USER_MODEL = "BannedAccounts";
+    private const BAN_SONG_MODEL = "SongRequestBannedSongs";
+    private const BAN_USER_MODEL = "SongRequestBannedAccounts";
 
     public function banSong($data)
     {
@@ -38,37 +38,59 @@ class BansHandler
         );
     }
 
-    public function banUser($username, $creator)
+    public function getBannedSongs($data)
     {
-        $creatorId = UserUtils::getCreatorId($creator);
+        $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
+
+        $result = Database::read(
+            $this::BAN_SONG_MODEL,
+            ['creator_id' => $creatorId,],
+            'youtube_video_id',
+            10
+        );
+
+        echo json_encode(['bannedSongs' => $result]);
+    }
+
+    public function banUser($data)
+    {
+        $twitchUsername = $data[0]['twitchUsername'];
+        $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
         Database::create(
             $this::BAN_USER_MODEL,
             [
-                'creator_id'      => $creatorId,
-                'twitch_username' => $username
+                'creator_id'       => $creatorId,
+                'twitch_username' => $twitchUsername
             ]
         );
     }
 
-    public function unbanUser($username, $creator)
+    public function unbanUser($data)
     {
-        $creatorId = UserUtils::getCreatorId($creator);
+        $twitchUsername = $data[0]['twitchUsername'];
+        $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
         Database::delete(
             $this::BAN_USER_MODEL,
             [
-                'creator_id'      => $creatorId,
-                'twitch_username' => $username
+                'creator_id'       => $creatorId,
+                'twitch_username' => $twitchUsername
             ]
         );
     }
 
-    public function getBannedUsers()
+    public function getBannedUsers($data)
     {
-    }
+        $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-    public function getBannedSongs()
-    {
+        $result = Database::read(
+            $this::BAN_USER_MODEL,
+            ['creator_id' => $creatorId,],
+            'twitch_username',
+            10
+        );
+
+        echo json_encode(['bannedUsers' => $result]);
     }
 }

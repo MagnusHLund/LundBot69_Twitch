@@ -8,8 +8,12 @@ class RateLimitingMiddleware
 {
     const COOLDOWN_TIME = 10; // Seconds
 
-    public static function handle()
+    public static function handle($path)
     {
+        if (!strpos($path, "twitch/connectUser")) {
+            return;
+        }
+
         $ipAddress = $_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER['REMOTE_ADDR'];
 
         $ipExists = Database::read(

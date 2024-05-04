@@ -35,6 +35,8 @@ class HttpRouter
             ["POST", "/api/bans/unbanSong", [$bansHandler, "unbanSong"]],
             ["POST", "/api/bans/banUser", [$bansHandler, "banUser"]],
             ["POST", "/api/bans/unbanUser", [$bansHandler, "unbanUser"]],
+            ["GET", "/api/bans/getBannedSongs", [$bansHandler, "getBannedSongs"]],
+            ["GET", "/api/bans/getBannedUsers", [$bansHandler, "getBannedUsers"]],
 
             // Commands
             ["POST", "/api/commands/getCommands", [$commandsHandler, "getCommands"]],

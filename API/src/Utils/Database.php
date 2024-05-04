@@ -44,27 +44,33 @@ class Database
         }
     }
 
-    public static function read($model, $conditions, $columns = null)
+    public static function read($model, $conditions, $columns = null, $limit = null, $random = false)
     {
         try {
             $modelClass = ModelMapper::getModelClass($model);
             $query = $modelClass::where($conditions);
 
             if ($columns) {
-                if (is_array($columns)) {
-                    $query = $query->select($columns);
-                } else {
-                    return $query->select([$columns])->first();
-                }
+                $query->select(is_array($columns) ? $columns : [$columns]);
             }
 
-            $result = $query->first();
+            if ($random) {
+                $query = $query->inRandomOrder();
+            }
+
+            if ($limit) {
+                $query = $query->take($limit);
+            }
+
+            $result = $query->get();
+
+            if ($result->isEmpty()) {
+                throw new \PDOException("No data matching conditions.", 22002);
+            }
 
             if ($result) {
                 return $result->toArray();
             }
-
-            return null;
         } catch (\PDOException $e) {
             $stringifiedColumns = json_encode($columns);
             $stringifiedConditions = json_encode($conditions);
@@ -107,19 +113,6 @@ class Database
         }
     }
 
-    public static function readRandomRow($model, $conditions, $column)
-    {
-        try {
-            $modelClass = ModelMapper::getModelClass($model);
-            return $modelClass::where($conditions)->inRandomOrder()->first($column);
-        } catch (\PDOException $e) {
-            $stringifiedConditions = json_encode($conditions);
-            $attemptedOperation = "Table: $model, Columns: $column, Conditions: $stringifiedConditions";
-
-            self::handlePdoException($e, $attemptedOperation);
-        }
-    }
-
     private static function handlePdoException($e, $attemptedOperation)
     {
         http_response_code(400);
@@ -127,6 +120,9 @@ class Database
         switch ($e->getCode()) {
             case '22001':
                 echo json_encode(['error' => 'The data is too long for one of the columns. ' . $attemptedOperation]);
+                break;
+            case '22002':
+                echo json_encode(['error' => 'Read query returned empty.' . $attemptedOperation]);
                 break;
             case '23000':
                 echo json_encode(['error' => 'The data is either a duplicate or would fail due to foreign key constraints. ' . $attemptedOperation]);

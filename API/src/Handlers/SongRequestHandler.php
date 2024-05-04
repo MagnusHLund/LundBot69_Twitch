@@ -26,7 +26,8 @@ class SongRequestHandler
         $requestedSongs = Database::read(
             $this::SONG_REQUEST_MODEL,
             ['creator_id' => $creatorId],
-            ["requested_by", "youtube_video_id", "requested_at"]
+            ["requested_by", "youtube_video_id", "requested_at"],
+            10
         );
 
         $from->send(json_encode(['type' => 'requestedSongs', 'data' => $requestedSongs]));
