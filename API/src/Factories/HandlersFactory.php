@@ -6,7 +6,7 @@ use LundBot69Api\Handlers\BotHandler;
 use LundBot69Api\Handlers\BansHandler;
 use LundBot69Api\Handlers\TwitchHandler;
 use LundBot69Api\Handlers\CommandsHandler;
-use LundBot69Api\Handlers\GamblingHandler;
+use LundBot69Api\Handlers\PointsHandler;
 use LundBot69Api\Handlers\GiveawayHandler;
 use LundBot69Api\Handlers\SettingsHandler;
 use LundBot69Api\Handlers\WebSocketHandler;
@@ -19,7 +19,7 @@ class HandlersFactory
     private $twitchHandler;
     private $giveawayHandler;
     private $commandsHandler;
-    private $gamblingHandler;
+    private $pointsHandler;
     private $settingsHandler;
     private $webSocketHandler;
     private $songRequestHandler;
@@ -29,9 +29,9 @@ class HandlersFactory
         $this->botHandler = new BotHandler;
         $this->bansHandler = new BansHandler;
         $this->twitchHandler = new TwitchHandler;
+        $this->pointsHandler = new PointsHandler;
         $this->giveawayHandler = new GiveawayHandler;
         $this->commandsHandler = new CommandsHandler;
-        $this->gamblingHandler = new GamblingHandler;
         $this->settingsHandler = new SettingsHandler;
         $this->webSocketHandler = new WebSocketHandler;
         $this->songRequestHandler = new SongRequestHandler;
@@ -52,6 +52,11 @@ class HandlersFactory
         return $this->twitchHandler;
     }
 
+    public function getPointsHandler(): PointsHandler
+    {
+        return $this->pointsHandler;
+    }
+
     public function getGiveawayHandler(): GiveawayHandler
     {
         return $this->giveawayHandler;
@@ -60,11 +65,6 @@ class HandlersFactory
     public function getCommandsHandler(): CommandsHandler
     {
         return $this->commandsHandler;
-    }
-
-    public function getGamblingHandler(): GamblingHandler
-    {
-        return $this->gamblingHandler;
     }
 
     public function getSettingsHandler(): SettingsHandler

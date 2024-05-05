@@ -2,8 +2,6 @@
 
 namespace LundBot69Api\Handlers;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use Exception;
 use LundBot69Api\Models\User;
 use LundBot69Api\Utils\Database;
@@ -20,11 +18,11 @@ class TwitchHandler
             try {
                 $user->getUserFromAuthenticationCode($request[0]["code"], Constants::getTwitchRedirectUri());
                 if ($user) {
-                    $username = Database::read(self::CREATOR_MODEL, ['twitch_username' => $user->getTwitchUsername()], 'twitch_username')['twitch_username'];
+                    $username = Database::read(self::CREATOR_MODEL, ['twitch_username' => $user->getTwitchUsername()], 'twitch_username');
 
                     if (!isset($username)) {
                         http_response_code(401);
-                        echo json_encode(['error' => 'Username is not registered in the database']);
+                        echo json_encode(['error' => 'Username is not registered in the database. ' . $username]);
                         exit;
                     }
 

@@ -25,7 +25,7 @@ class WebSocketRouter extends ComponentInterface
                 $this->handlers->getGiveawayHandler()->getGiveawayParticipants($from);
                 break;
             case 'pointsLeaderboard':
-                $this->handlers->getGamblingHandler()->getGamblers($from);
+                $this->handlers->getPointsHandler()->getPointsLeaderboard($from);
                 break;
             case 'requestedSongs':
                 $this->handlers->getSongRequestHandler()->getRequestedSongs($from);

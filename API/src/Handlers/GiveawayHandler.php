@@ -13,10 +13,13 @@ class GiveawayHandler
     {
         $creatorId = UserUtils::getCreatorId();
 
-        echo ["winner" => Database::readRandomRow(
+        echo ["winner" => Database::read(
             $this::GIVEAWAY_MODEL,
             ['creator_id' => $creatorId],
-            "participant"
+            "participant",
+            1,
+            null,
+            true
         )];
     }
 

@@ -10,10 +10,6 @@ class SongRequestHandler
 
     const SONG_REQUEST_MODEL = "SongRequests";
 
-    public function __construct()
-    {
-    }
-
     public function getDefaultSongs()
     {
     }

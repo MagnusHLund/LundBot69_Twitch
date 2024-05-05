@@ -44,7 +44,18 @@ class Database
         }
     }
 
-    public static function read($model, $conditions, $columns = null, $limit = null, $random = false)
+    /**
+     * @param string $model is the ORM model that is being used to read from the database.
+     * @param array $conditions is responsible for returning only rows that match all conditions in the array.
+     *              Example: ['first_column' => 1, 'second_column' => 'string']
+     * @param string|array|null $columns handles which columns should be returned. Set to null to return all columns in the table.
+     *              Example 1: 'first_column'.
+     *              Example 2: ['first_column', 'second_column']
+     * @param int $limit is the maximum rows to return.
+     * @param int $rowsToSkip filters out the first X amount of rows and returns those not filtered out.
+     * @param boolean $random returns the rows in a random order.
+     */
+    public static function read($model, $conditions, $columns = null, $limit = null, $rowsToSkip = null, $random = false)
     {
         try {
             $modelClass = ModelMapper::getModelClass($model);
@@ -56,6 +67,10 @@ class Database
 
             if ($random) {
                 $query = $query->inRandomOrder();
+            }
+
+            if ($rowsToSkip) {
+                $query = $query->skip($rowsToSkip);
             }
 
             if ($limit) {
@@ -122,7 +137,7 @@ class Database
                 echo json_encode(['error' => 'The data is too long for one of the columns. ' . $attemptedOperation]);
                 break;
             case '22002':
-                echo json_encode(['error' => 'Read query returned empty.' . $attemptedOperation]);
+                echo json_encode(['error' => 'Read query returned empty. ' . $attemptedOperation]);
                 break;
             case '23000':
                 echo json_encode(['error' => 'The data is either a duplicate or would fail due to foreign key constraints. ' . $attemptedOperation]);

@@ -5,6 +5,7 @@ namespace LundBot69Api\Utils;
 class ModelMapper
 {
     const MODELS = [
+        'CommandUserCooldowns' => \LundBot69Api\ORMModels\CommandUserCooldowns::class,
         'SongRequestBannedAccounts' => \LundBot69Api\ORMModels\BannedAccounts::class,
         'SongRequestBannedSongs' => \LundBot69Api\ORMModels\BannedSongs::class,
         'SongRequests' => \LundBot69Api\ORMModels\SongRequests::class,

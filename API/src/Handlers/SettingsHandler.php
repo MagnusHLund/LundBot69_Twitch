@@ -7,10 +7,6 @@ class SettingsHandler
 
     const SETTINGS_MODEL = "Settings";
 
-    public function __construct()
-    {
-    }
-
     public function toggleBotActivityState()
     {
     }

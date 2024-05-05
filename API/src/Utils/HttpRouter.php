@@ -4,7 +4,7 @@ namespace LundBot69Api\Utils;
 
 use LundBot69Api\Handlers\BansHandler;
 use LundBot69Api\Handlers\CommandsHandler;
-use LundBot69Api\Handlers\GamblingHandler;
+use LundBot69Api\Handlers\PointsHandler;
 use LundBot69Api\Handlers\GiveawayHandler;
 use LundBot69Api\Handlers\SettingsHandler;
 use LundBot69Api\Handlers\SongRequestHandler;
@@ -20,7 +20,8 @@ class HttpRouter
     {
         $bansHandler = new BansHandler;
         $commandsHandler = new CommandsHandler;
-        $gamblingHandler = new GamblingHandler;
+        $        $pointsHandler = new PointsHandler;
+        = new PointsHandler;
         $giveawayHandler = new GiveawayHandler;
         $settingsHandler = new SettingsHandler;
         $songRequestHandler = new SongRequestHandler;
@@ -39,18 +40,19 @@ class HttpRouter
             ["GET", "/api/bans/getBannedUsers", [$bansHandler, "getBannedUsers"]],
 
             // Commands
-            ["POST", "/api/commands/getCommands", [$commandsHandler, "getCommands"]],
+            ["GET", "/api/commands/getCommands", [$commandsHandler, "getCommands"]],
             ["POST", "/api/commands/createCommand", [$commandsHandler, "createCommand"]],
             ["POST", "/api/commands/editCommand", [$commandsHandler, "editCommand"]],
             ["POST", "/api/commands/deleteCommand", [$commandsHandler, "deleteCommand"]],
-            ["POST", "/api/commands/toggleCommandActivityState", [$commandsHandler, "toggleCommandActivityState"]],
+            ["POST", "/api/commands/updateCommandActivity", [$commandsHandler, "updateCommandActivity"]],
+            ["GET", "/api/commands/getCommandByName", [$commandsHandler, "getCommandByName"]],
 
-            // Gambling
-            ["POST", "/api/gambling/getGamblers", [$gamblingHandler, "getGamblers"]],
-            ["POST", "/api/gambling/modifyGamblerPoints", [$gamblingHandler, "modifyGamblerPoints"]],
-            ["POST", "/api/gambling/wipeGamblerPoints", [$gamblingHandler, "wipeGamblerPoints"]],
-            ["POST", "/api/gambling/deleteGambler", [$gamblingHandler, "deleteGambler"]],
-            ["POST", "/api/gambling/createGambler", [$gamblingHandler, "createGambler"]],
+            // points
+            ["POST", "/api/points/pointsLeaderboard", [$pointsHandler, "getPointsLeaderboard"]],
+            ["POST", "/api/points/modifyUsersPoints", [$pointsHandler, "modifyUsersPoints"]],
+            ["POST", "/api/points/wipeAllPoints", [$pointsHandler, "wipeAllPoints"]],
+            ["POST", "/api/points/removeUser", [$pointsHandler, "removeUser"]],
+            ["POST", "/api/points/addPoints", [$pointsHandler, "addPoints"]],
 
             // Giveaway
             ["POST", "/api/giveaway/pickGiveawayWinner", [$giveawayHandler, "pickGiveawayWinner"]],
