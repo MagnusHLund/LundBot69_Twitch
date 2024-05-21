@@ -1,4 +1,5 @@
 import './App.scss'
+import navLinks from './Assets/NavbarData.json'
 import { Routes, Route } from 'react-router-dom'
 import Footer from './Components/Content/Footer'
 import Navbar from './Components/Navigation/Navbar'
@@ -11,13 +12,6 @@ import GamblingPage from './Components/Routes/GamblingPage'
 import SongRequestPage from './Components/Routes/SongRequestPage'
 
 const App: React.FC = () => {
-  const navLinks = [
-    { title: 'Home', path: '/home', image: '/Home.png' },
-    { title: 'Song request', path: '/sr', image: '/SongRequest.png' },
-    { title: 'gambling', path: '/gambling', image: '/Gambling.png' },
-    { title: 'Commands', path: '/commands', image: '/Commands.png' },
-  ]
-
   return (
     <>
       <Navbar image="/LundBot69_Icon.png" links={navLinks} />

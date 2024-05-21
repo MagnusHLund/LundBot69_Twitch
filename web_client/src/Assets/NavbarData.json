@@ -1,0 +1,6 @@
+[
+  { "title": "Home", "path": "/home", "image": "/Home.png" },
+  { "title": "Song request", "path": "/sr", "image": "/SongRequest.png" },
+  { "title": "gambling", "path": "/gambling", "image": "/Gambling.png" },
+  { "title": "Commands", "path": "/commands", "image": "/Commands.png" }
+]

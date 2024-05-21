@@ -14,8 +14,5 @@
   "codegraphy.selectedNodeColor": "#fff",
   "codegraphy.favoriteNodeColor": "#ffd700",
   "codegraphy.outlineColor": "#ffd700",
-  "cSpell.words": ["COOLDOWN", "Cooldowns", "leaderboard", "lundbot", "unban"],
-  "prettier.documentSelectors": [
-    "**/*.{js,jsx,ts,tsx,vue,html,css,scss,less,json,md,mdx,graphql,yaml,yml,php}"
-  ]
+  "cSpell.words": ["COOLDOWN", "Cooldowns", "leaderboard", "lundbot", "unban"]
 }
