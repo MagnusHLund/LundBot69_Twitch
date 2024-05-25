@@ -10,6 +10,7 @@ use LundBot69Api\Handlers\SettingsHandler;
 use LundBot69Api\Handlers\SongRequestHandler;
 use LundBot69Api\Handlers\TwitchHandler;
 use LundBot69Api\Handlers\BotHandler;
+use LundBot69Api\Handlers\MessageHandler;
 use LundBot69Api\Handlers\WebSocketHandler;
 
 class HttpRouter
@@ -20,8 +21,8 @@ class HttpRouter
     {
         $bansHandler = new BansHandler;
         $commandsHandler = new CommandsHandler;
-        $        $pointsHandler = new PointsHandler;
-        = new PointsHandler;
+        $messageHandler = new MessageHandler;
+        $pointsHandler = new PointsHandler;
         $giveawayHandler = new GiveawayHandler;
         $settingsHandler = new SettingsHandler;
         $songRequestHandler = new SongRequestHandler;

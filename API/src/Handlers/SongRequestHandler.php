@@ -10,6 +10,7 @@ class SongRequestHandler
 
     const SONG_REQUEST_MODEL = "SongRequests";
 
+    // Uses websocket
     public function getDefaultSongs()
     {
     }

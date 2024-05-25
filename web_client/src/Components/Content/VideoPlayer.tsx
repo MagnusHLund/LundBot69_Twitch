@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import YouTube, { YouTubeProps } from 'react-youtube'
-import PlayerState from 'react-youtube'
-import './VideoPlayer.scss'
+import YouTube from 'react-youtube'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   setVideoDuration,
@@ -10,6 +8,7 @@ import {
   setUserMovingVideoSlider,
 } from '../../Redux/Actions/VideoPlayerActions'
 import { RootState } from '../../Redux/Store'
+import './VideoPlayer.scss'
 
 interface IVideoPlayerProps {
   controls?: 0 | 1 | 2
@@ -20,44 +19,50 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ controls = 2 }) => {
   const playerRef = useRef<YouTube>(null)
   const videoState = useSelector((state: RootState) => state.videoPlayer)
 
-  const onPlayerReady = (event: { target: YouTube }) => {
-    if (playerRef.current) {
-      dispatch(setVideoTitle(event.target.getVideoData().title))
-      dispatch(setVideoDuration(event.target.getDuration()))
-    }
-  }
-
   useEffect(() => {
-    if (playerRef.current) {
-      if (videoState.isPlaying) {
-        playerRef.current.internalPlayer.playVideo()
-      } else {
-        playerRef.current.internalPlayer.pauseVideo()
-      }
+    const player = playerRef.current?.internalPlayer
+
+    if (player) {
+      videoState.isPlaying ? player.playVideo() : player.pauseVideo()
     }
   }, [videoState.isPlaying])
 
   useEffect(() => {
-    if (playerRef.current && videoState.userMovingVideoSlider) {
-      playerRef.current.internalPlayer.seekTo(videoState.videoTimeStamp, true)
+    const player = playerRef.current?.internalPlayer
+
+    if (player && videoState.userMovingVideoSlider) {
+      player.seekTo(videoState.videoTimeStamp, true)
       dispatch(setUserMovingVideoSlider(false))
     }
   }, [videoState.videoTimeStamp, videoState.userMovingVideoSlider, dispatch])
 
-  const onStateChange = (event: { target: YouTube; data: PlayerState }) => {
+  useEffect(() => {
+    onPlayerEnd()
+  }, [])
+
+  const onPlayerReady = (event: { target: YouTube }) => {
+    const player = event.target
+    console.log('player ready') // TODO: Remove console.log
+    dispatch(setVideoTitle(player.getVideoData().title))
+    dispatch(setVideoDuration(player.getDuration()))
+  }
+
+  const onStateChange = (event: { target: YouTube; data: number }) => {
     if (event.data === YouTube.PlayerState.PLAYING) {
       const intervalId = setInterval(() => {
-        const currentTime: number = event.target.getCurrentTime()
-        const roundedNumber: string = Math.round(currentTime).toString()
-        dispatch(setVideoTimeStamp(roundedNumber))
+        const currentTime = event.target.getCurrentTime()
+        dispatch(setVideoTimeStamp(Math.round(currentTime).toString()))
       }, 1000)
 
-      // Clear the interval when the player is not playing
       return () => clearInterval(intervalId)
     }
   }
 
-  const opts: YouTubeProps['opts'] = {
+  const onPlayerEnd = () => {
+    console.log('player done') // TODO: Remove console.log
+  }
+
+  const opts: YouTube.Options = {
     playerVars: {
       autoplay: 0,
       controls: controls === 2 ? 0 : controls,
@@ -72,6 +77,7 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ controls = 2 }) => {
       onReady={onPlayerReady}
       onStateChange={onStateChange}
       ref={playerRef}
+      onEnd={onPlayerEnd}
     />
   )
 }

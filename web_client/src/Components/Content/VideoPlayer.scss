@@ -1,4 +1,6 @@
-.video-player * {
-  pointer-events: none;
-  display: none;
+.video-player {
+  & * {
+    pointer-events: none;
+    display: none;
+  }
 }
