@@ -4,8 +4,8 @@ namespace LundBot69Api\Models;
 
 use LundBot69Api\Utils\Constants;
 use TwitchApi\HelixGuzzleClient;
-use LundBot69Api\Utils\Database;
 use TwitchApi\TwitchApi;
+use LundBot69Api\Utils\Authentication;
 
 class User
 {
@@ -51,14 +51,14 @@ class User
 
     public function save()
     {
-        $_SESSION['user_jwt'] = $this->generateUserJWT();
+        $_SESSION['user_jwt'] = Authentication::generateUserJWT($this->accessToken);
         $_SESSION['user_refresh_token'] = $this->refreshToken;
     }
 
     public function refresh()
     {
         try {
-            $decoded = $this->decodeJwt();
+            $decoded = Authentication::decodeJwt();
             $expires = $decoded->exp ?? 0;
             if ($expires < time()) {
                 $token = $this->twitchApi->getOauthApi()->refreshToken(
@@ -79,12 +79,6 @@ class User
         }
     }
 
-    private function decodeJwt()
-    {
-        $keyArray = new \Firebase\JWT\Key(Constants::getTwitchClientSecret(), 'HS256');
-        return \Firebase\JWT\JWT::decode($_SESSION['user_jwt'], $keyArray);
-    }
-
     public function revoke()
     {
         unset($_SESSION['user_jwt']);
@@ -95,7 +89,7 @@ class User
 
     public function getAccessToken()
     {
-        $decoded = $this->decodeJwt();
+        $decoded = Authentication::decodeJwt();
         return $decoded->sub;
     }
 
@@ -105,21 +99,5 @@ class User
         $request = $this->twitchApi->getUsersApi()->getUserByAccessToken($accessToken);
         $response = json_decode($request->getBody()->getContents());
         return $response->data[0]->display_name;
-    }
-
-    public function generateUserJWT()
-    {
-        $payload = [
-            'iss' => 'LundBot69',
-            'sub' => $this->accessToken,
-            'iat' => time(),
-            'exp' => time() + 86400 // 1 day
-        ];
-        return \Firebase\JWT\JWT::encode(
-            $payload,
-            Constants::getTwitchClientSecret(),
-            'HS256',
-            Constants::getKid()
-        );
     }
 }

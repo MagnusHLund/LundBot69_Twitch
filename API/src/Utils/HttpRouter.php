@@ -28,7 +28,6 @@ class HttpRouter
         $songRequestHandler = new SongRequestHandler;
         $twitchHandler = new TwitchHandler;
         $botHandler = new BotHandler;
-        $websocketHandler = new WebSocketHandler;
 
 
         $this->routes = [
@@ -80,9 +79,6 @@ class HttpRouter
 
             // Bot
             ["GET", "/api/bot/getChannels", [$botHandler, "getAllRegisteredChannels"]],
-
-            // Websocket
-            ["POST", "/api/start-websocket", [$websocketHandler, "startWebSocket"]]
         ];
     }
 

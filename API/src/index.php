@@ -7,6 +7,7 @@ use LundBot69Api\Middleware\AuthenticationMiddleware;
 use LundBot69Api\Middleware\CORSMiddleware;
 use LundBot69Api\Middleware\RateLimitingMiddleware;
 use LundBot69Api\Utils\HttpRouter;
+use LundBot69Api\Handlers\WebSocketHandler;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
@@ -40,6 +41,9 @@ class ApiEntry
         AuthenticationMiddleware::handle($path);
     }
 }
+
+$websocketHandler = new WebSocketHandler;
+$websocketHandler->startWebSocket();
 
 $apiEntry = new ApiEntry;
 $apiEntry->handleRequest();
