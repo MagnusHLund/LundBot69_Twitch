@@ -27,7 +27,6 @@ class GiveawayHandler
     {
     }
 
-    // Uses websocket
     public function getGiveawayParticipants($from)
     {
         $creatorId = UserUtils::getCreatorId();
@@ -38,7 +37,7 @@ class GiveawayHandler
             "participant"
         )['participant'];
 
-        $from->send(json_encode(['type' => 'giveawayParticipants', 'data' => $participants]));
+        $from->send(json_encode(['participants' => $participants]));
     }
 
     public function addGiveawayParticipants()

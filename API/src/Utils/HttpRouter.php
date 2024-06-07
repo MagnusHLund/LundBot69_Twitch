@@ -11,7 +11,6 @@ use LundBot69Api\Handlers\SongRequestHandler;
 use LundBot69Api\Handlers\TwitchHandler;
 use LundBot69Api\Handlers\BotHandler;
 use LundBot69Api\Handlers\MessageHandler;
-use LundBot69Api\Handlers\WebSocketHandler;
 
 class HttpRouter
 {

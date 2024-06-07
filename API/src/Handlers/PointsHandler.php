@@ -9,7 +9,6 @@ class PointsHandler
 {
     const POINTS_MODEL = "Points";
 
-    // Uses websocket
     public function getPointsLeaderboard($from)
     {
         $creatorId = UserUtils::getCreatorId();
@@ -20,7 +19,7 @@ class PointsHandler
             ['twitch_username', 'points']
         );
 
-        $from->send(json_encode(['type' => 'pointsLeaderboard', 'data' => $leaderboard]));
+        $from->send(json_encode(['leaderboard' => $leaderboard]));
     }
 
     public function modifyUsersPoints()

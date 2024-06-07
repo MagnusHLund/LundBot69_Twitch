@@ -10,12 +10,10 @@ class SongRequestHandler
 
     const SONG_REQUEST_MODEL = "SongRequests";
 
-    // Uses websocket
     public function getDefaultSongs()
     {
     }
 
-    // Uses websocket
     public function getRequestedSongs($from)
     {
         $creatorId = UserUtils::getCreatorId();

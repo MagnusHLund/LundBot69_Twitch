@@ -11,21 +11,7 @@ import CommandsPage from './Components/Routes/CommandsPage'
 import GamblingPage from './Components/Routes/GamblingPage'
 import SongRequestPage from './Components/Routes/SongRequestPage'
 
-import useWebSocket from './Utils/WebSocketConnection'
-import { useEffect } from 'react'
-
 const App: React.FC = () => {
-  const { message, sendMessage } = useWebSocket('ws://localhost:8080')
-  useEffect(() => {
-    if (message) {
-      console.log(message)
-    }
-  }, [message])
-
-  const handleClick = () => {
-    sendMessage({ type: 'giveawayParticipants' })
-  }
-
   return (
     <>
       <Navbar image="/LundBot69_Icon.png" links={navLinks} />
@@ -40,7 +26,6 @@ const App: React.FC = () => {
           <Route path="*" element={<LoginPage />} />
         </Routes>
       </div>
-      <button onClick={handleClick}>fffffff</button>
       <Footer />
       <VideoPlayer />
     </>

@@ -9,7 +9,6 @@ use LundBot69Api\Handlers\CommandsHandler;
 use LundBot69Api\Handlers\PointsHandler;
 use LundBot69Api\Handlers\GiveawayHandler;
 use LundBot69Api\Handlers\SettingsHandler;
-use LundBot69Api\Handlers\WebSocketHandler;
 use LundBot69Api\Handlers\SongRequestHandler;
 
 class HandlersFactory
@@ -21,7 +20,6 @@ class HandlersFactory
     private $commandsHandler;
     private $pointsHandler;
     private $settingsHandler;
-    private $webSocketHandler;
     private $songRequestHandler;
 
     public function __construct()
@@ -33,7 +31,6 @@ class HandlersFactory
         $this->giveawayHandler = new GiveawayHandler;
         $this->commandsHandler = new CommandsHandler;
         $this->settingsHandler = new SettingsHandler;
-        $this->webSocketHandler = new WebSocketHandler;
         $this->songRequestHandler = new SongRequestHandler;
     }
 
@@ -70,11 +67,6 @@ class HandlersFactory
     public function getSettingsHandler(): SettingsHandler
     {
         return $this->settingsHandler;
-    }
-
-    public function getWebSocketHandler(): WebSocketHandler
-    {
-        return $this->webSocketHandler;
     }
 
     public function getSongRequestHandler(): SongRequestHandler
