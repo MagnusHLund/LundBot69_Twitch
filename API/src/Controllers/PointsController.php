@@ -1,11 +1,11 @@
 <?php
 
-namespace LundBot69Api\Handlers;
+namespace LundBot69Api\Controllers;
 
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\UserUtils;
 
-class PointsHandler
+class PointsController
 {
     const POINTS_MODEL = "Points";
 

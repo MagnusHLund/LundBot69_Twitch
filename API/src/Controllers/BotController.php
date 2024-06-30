@@ -1,11 +1,11 @@
 <?php
 
-namespace LundBot69Api\Handlers;
+namespace LundBot69Api\Controllers;
 
 use LundBot69Api\Utils\Database;
 
-// The BotHandler is responsible for handing bot-only commands.
-class BotHandler
+// The BotController is responsible for handing bot-only commands.
+class BotController
 {
     const CREATOR_MODEL = "Creators";
 

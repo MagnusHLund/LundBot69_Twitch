@@ -2,7 +2,7 @@
   "name": "lundbot69_api",
   "private": true,
   "scripts": {
-    "start": "php -S localhost:4320"
+    "api": "php -S localhost:3420"
   },
   "version": "1.0.0",
   "description": "API for LundBot69",

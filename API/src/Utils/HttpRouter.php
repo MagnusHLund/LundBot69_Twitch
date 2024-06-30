@@ -2,15 +2,15 @@
 
 namespace LundBot69Api\Utils;
 
-use LundBot69Api\Handlers\BansHandler;
-use LundBot69Api\Handlers\CommandsHandler;
-use LundBot69Api\Handlers\PointsHandler;
-use LundBot69Api\Handlers\GiveawayHandler;
-use LundBot69Api\Handlers\SettingsHandler;
-use LundBot69Api\Handlers\SongRequestHandler;
-use LundBot69Api\Handlers\TwitchHandler;
-use LundBot69Api\Handlers\BotHandler;
-use LundBot69Api\Handlers\MessageHandler;
+use LundBot69Api\Controllers\BansController;
+use LundBot69Api\Controllers\CommandsController;
+use LundBot69Api\Controllers\PointsController;
+use LundBot69Api\Controllers\GiveawayController;
+use LundBot69Api\Controllers\SettingsController;
+use LundBot69Api\Controllers\SongRequestController;
+use LundBot69Api\Controllers\TwitchController;
+use LundBot69Api\Controllers\BotController;
+use LundBot69Api\Controllers\MessageController;
 
 class HttpRouter
 {
@@ -18,66 +18,66 @@ class HttpRouter
 
     public function __construct()
     {
-        $bansHandler = new BansHandler;
-        $commandsHandler = new CommandsHandler;
-        $messageHandler = new MessageHandler;
-        $pointsHandler = new PointsHandler;
-        $giveawayHandler = new GiveawayHandler;
-        $settingsHandler = new SettingsHandler;
-        $songRequestHandler = new SongRequestHandler;
-        $twitchHandler = new TwitchHandler;
-        $botHandler = new BotHandler;
+        $bansController = new BansController;
+        $commandsController = new CommandsController;
+        $messageController = new MessageController;
+        $pointsController = new PointsController;
+        $giveawayController = new GiveawayController;
+        $settingsController = new SettingsController;
+        $songRequestController = new SongRequestController;
+        $twitchController = new TwitchController;
+        $botController = new BotController;
 
 
         $this->routes = [
-            // Bans
-            ["POST", "/api/bans/banSong", [$bansHandler, "banSong"]],
-            ["POST", "/api/bans/unbanSong", [$bansHandler, "unbanSong"]],
-            ["POST", "/api/bans/banUser", [$bansHandler, "banUser"]],
-            ["POST", "/api/bans/unbanUser", [$bansHandler, "unbanUser"]],
-            ["GET", "/api/bans/getBannedSongs", [$bansHandler, "getBannedSongs"]],
-            ["GET", "/api/bans/getBannedUsers", [$bansHandler, "getBannedUsers"]],
+            // Bans 
+            ["POST", "/api/bans/banSong", [$bansController, "banSong"]],
+            ["POST", "/api/bans/unbanSong", [$bansController, "unbanSong"]],
+            ["POST", "/api/bans/banUser", [$bansController, "banUser"]],
+            ["POST", "/api/bans/unbanUser", [$bansController, "unbanUser"]],
+            ["GET", "/api/bans/getBannedSongs", [$bansController, "getBannedSongs"]],
+            ["GET", "/api/bans/getBannedUsers", [$bansController, "getBannedUsers"]],
 
             // Commands
-            ["GET", "/api/commands/getCommands", [$commandsHandler, "getCommands"]],
-            ["POST", "/api/commands/createCommand", [$commandsHandler, "createCommand"]],
-            ["POST", "/api/commands/editCommand", [$commandsHandler, "editCommand"]],
-            ["POST", "/api/commands/deleteCommand", [$commandsHandler, "deleteCommand"]],
-            ["POST", "/api/commands/updateCommandActivity", [$commandsHandler, "updateCommandActivity"]],
-            ["GET", "/api/commands/getCommandByName", [$commandsHandler, "getCommandByName"]],
+            ["GET", "/api/commands/getCommands", [$commandsController, "getCommands"]],
+            ["POST", "/api/commands/createCommand", [$commandsController, "createCommand"]],
+            ["POST", "/api/commands/editCommand", [$commandsController, "editCommand"]],
+            ["POST", "/api/commands/deleteCommand", [$commandsController, "deleteCommand"]],
+            ["POST", "/api/commands/updateCommandActivity", [$commandsController, "updateCommandActivity"]],
+            ["GET", "/api/commands/getCommandByName", [$commandsController, "getCommandByName"]],
 
             // points
-            ["POST", "/api/points/pointsLeaderboard", [$pointsHandler, "getPointsLeaderboard"]],
-            ["POST", "/api/points/modifyUsersPoints", [$pointsHandler, "modifyUsersPoints"]],
-            ["POST", "/api/points/wipeAllPoints", [$pointsHandler, "wipeAllPoints"]],
-            ["POST", "/api/points/removeUser", [$pointsHandler, "removeUser"]],
-            ["POST", "/api/points/addPoints", [$pointsHandler, "addPoints"]],
+            ["POST", "/api/points/pointsLeaderboard", [$pointsController, "getPointsLeaderboard"]],
+            ["POST", "/api/points/modifyUsersPoints", [$pointsController, "modifyUsersPoints"]],
+            ["POST", "/api/points/wipeAllPoints", [$pointsController, "wipeAllPoints"]],
+            ["POST", "/api/points/removeUser", [$pointsController, "removeUser"]],
+            ["POST", "/api/points/addPoints", [$pointsController, "addPoints"]],
 
             // Giveaway
-            ["POST", "/api/giveaway/pickGiveawayWinner", [$giveawayHandler, "pickGiveawayWinner"]],
-            ["POST", "/api/giveaway/resetGiveawayParticipants", [$giveawayHandler, "resetGiveawayParticipants"]],
-            ["POST", "/api/giveaway/addGiveawayParticipants", [$giveawayHandler, "addGiveawayParticipants"]],
+            ["POST", "/api/giveaway/pickGiveawayWinner", [$giveawayController, "pickGiveawayWinner"]],
+            ["POST", "/api/giveaway/resetGiveawayParticipants", [$giveawayController, "resetGiveawayParticipants"]],
+            ["POST", "/api/giveaway/addGiveawayParticipants", [$giveawayController, "addGiveawayParticipants"]],
 
             // Settings
-            ["POST", "/api/settings/toggleBotActivityState", [$settingsHandler, "toggleBotActivityState"]],
-            ["POST", "/api/settings/toggleSongRequestActivityState", [$settingsHandler, "toggleSongRequestActivityState"]],
-            ["POST", "/api/settings/toggleGamblingActivityState", [$settingsHandler, "toggleGamblingActivityState"]],
-            ["POST", "/api/settings/toggleShoutOutActivityState", [$settingsHandler, "toggleShoutOutActivityState"]],
-            ["POST", "/api/settings/setAutoPinnedMessage", [$settingsHandler, "setAutoPinnedMessage"]],
-            ["POST", "/api/settings/getAutoPinnedMessage", [$settingsHandler, "getAutoPinnedMessage"]],
-            ["POST", "/api/settings/getSettingsActivityStates", [$settingsHandler, "getSettingsActivityStates"]],
+            ["POST", "/api/settings/toggleBotActivityState", [$settingsController, "toggleBotActivityState"]],
+            ["POST", "/api/settings/toggleSongRequestActivityState", [$settingsController, "toggleSongRequestActivityState"]],
+            ["POST", "/api/settings/toggleGamblingActivityState", [$settingsController, "toggleGamblingActivityState"]],
+            ["POST", "/api/settings/toggleShoutOutActivityState", [$settingsController, "toggleShoutOutActivityState"]],
+            ["POST", "/api/settings/setAutoPinnedMessage", [$settingsController, "setAutoPinnedMessage"]],
+            ["POST", "/api/settings/getAutoPinnedMessage", [$settingsController, "getAutoPinnedMessage"]],
+            ["POST", "/api/settings/getSettingsActivityStates", [$settingsController, "getSettingsActivityStates"]],
 
             // Song request
-            ["POST", "/api/sr/deleteDefaultSongs", [$songRequestHandler, "deleteDefaultSongs"]],
-            ["POST", "/api/sr/deleteRequestedSongs", [$songRequestHandler, "deleteRequestedSongs"]],
-            ["POST", "/api/sr/addDefaultSong", [$songRequestHandler, "addDefaultSong"]],
-            ["POST", "/api/sr/addRequestedSong", [$songRequestHandler, "addRequestedSong"]],
+            ["POST", "/api/sr/deleteDefaultSongs", [$songRequestController, "deleteDefaultSongs"]],
+            ["POST", "/api/sr/deleteRequestedSongs", [$songRequestController, "deleteRequestedSongs"]],
+            ["POST", "/api/sr/addDefaultSong", [$songRequestController, "addDefaultSong"]],
+            ["POST", "/api/sr/addRequestedSong", [$songRequestController, "addRequestedSong"]],
 
             // Twitch
-            ["POST", "/api/twitch/connectUser", [$twitchHandler, "connectUser"], ["requestBody"]],
+            ["POST", "/api/twitch/connectUser", [$twitchController, "connectUser"], ["requestBody"]],
 
             // Bot
-            ["GET", "/api/bot/getChannels", [$botHandler, "getAllRegisteredChannels"]],
+            ["GET", "/api/bot/getChannels", [$botController, "getAllRegisteredChannels"]],
         ];
     }
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace LundBot69Api\Handlers;
+namespace LundBot69Api\Controllers;
 
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\UserUtils;
 
-class BansHandler
+class BansController
 {
     private const BAN_SONG_MODEL = "SongRequestBannedSongs";
     private const BAN_USER_MODEL = "SongRequestBannedAccounts";

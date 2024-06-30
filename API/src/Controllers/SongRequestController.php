@@ -1,11 +1,11 @@
 <?php
 
-namespace LundBot69Api\Handlers;
+namespace LundBot69Api\Controllers;
 
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\UserUtils;
 
-class SongRequestHandler
+class SongRequestController
 {
 
     const SONG_REQUEST_MODEL = "SongRequests";

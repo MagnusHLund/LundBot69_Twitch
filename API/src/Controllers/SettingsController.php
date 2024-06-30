@@ -1,8 +1,8 @@
 <?php
 
-namespace LundBot69Api\Handlers;
+namespace LundBot69Api\Controllers;
 
-class SettingsHandler
+class SettingsController
 {
 
     const SETTINGS_MODEL = "Settings";

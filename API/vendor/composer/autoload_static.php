@@ -59,8 +59,8 @@ class ComposerStaticInitbbdb69cc24a8d1a4503dd4666b3d40ca
             'LundBot69Api\\Utils\\' => 19,
             'LundBot69Api\\ORMModels\\' => 23,
             'LundBot69Api\\Models\\' => 20,
-            'LundBot69Api\\Handlers\\' => 22,
             'LundBot69Api\\Factories\\' => 23,
+            'LundBot69Api\\Controllers\\' => 25,
             'LundBot69Api\\' => 13,
         ),
         'I' => 
@@ -183,13 +183,13 @@ class ComposerStaticInitbbdb69cc24a8d1a4503dd4666b3d40ca
         array (
             0 => __DIR__ . '/../..' . '/src/Models',
         ),
-        'LundBot69Api\\Handlers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/Handlers',
-        ),
         'LundBot69Api\\Factories\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Factories',
+        ),
+        'LundBot69Api\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Controllers',
         ),
         'LundBot69Api\\' => 
         array (

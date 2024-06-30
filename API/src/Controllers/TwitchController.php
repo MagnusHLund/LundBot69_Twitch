@@ -1,13 +1,13 @@
 <?php
 
-namespace LundBot69Api\Handlers;
+namespace LundBot69Api\Controllers;
 
 use Exception;
 use LundBot69Api\Models\User;
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\Constants;
 
-class TwitchHandler
+class TwitchController
 {
     const CREATOR_MODEL = "Creators";
 
