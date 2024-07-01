@@ -51,8 +51,18 @@ class User
 
     public function save()
     {
-        $_SESSION['user_jwt'] = Authentication::generateUserJWT($this->accessToken);
+        $this->setJwtCookie();
         $_SESSION['user_refresh_token'] = $this->refreshToken;
+    }
+
+    private function setJwtCookie()
+    {
+        $cookieName = "jwt";
+        $oneDay = 86400;
+        $expirationDate = time() + $oneDay;
+        $jwt = Authentication::generateUserJWT($this->accessToken);
+
+        setcookie($cookieName, $jwt, $expirationDate, "/", null, null, true);
     }
 
     public function refresh()
@@ -81,7 +91,7 @@ class User
 
     public function revoke()
     {
-        unset($_SESSION['user_jwt']);
+        unset($_COOKIE['jwt']);
         unset($_SESSION['user_refresh_token']);
 
         session_destroy();

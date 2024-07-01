@@ -13,7 +13,7 @@ class TwitchController
 
     public static function connectUser($request)
     {
-        $user = new User($_SESSION["user_jwt"] ?? null, $_SESSION["user_refresh_token"] ?? null);
+        $user = new User($_COOKIE['jwt'] ?? null, $_SESSION["user_refresh_token"] ?? null);
         if (isset($request[0]["code"])) {
             try {
                 $user->getUserFromAuthenticationCode($request[0]["code"], Constants::getTwitchRedirectUri());
@@ -27,7 +27,6 @@ class TwitchController
                     }
 
                     $user->save();
-                    echo json_encode(["token" => $_SESSION['user_jwt']]);
                     http_response_code(200);
                     exit;
                 } else {

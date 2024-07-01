@@ -9,11 +9,13 @@ class Authentication
 {
     public static function generateUserJWT($accessToken)
     {
+        $oneDay = time() + 86400;
+
         $payload = [
             'iss' => 'LundBot69',
             'sub' => $accessToken,
             'iat' => time(),
-            'exp' => time() + 86400 // 1 day
+            'exp' => $oneDay
         ];
         return JWT::encode(
             $payload,
@@ -26,6 +28,6 @@ class Authentication
     public static function decodeJwt()
     {
         $keyArray = new Key(Constants::getTwitchClientSecret(), 'HS256');
-        return JWT::decode($_SESSION['user_jwt'], $keyArray);
+        return JWT::decode($_COOKIE['jwt'], $keyArray);
     }
 }

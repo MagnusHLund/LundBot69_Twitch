@@ -12,7 +12,7 @@ class UserUtils
     public static function getCreatorId($creator = null)
     {
         if (!$creator) {
-            $user = new user($_SESSION["user_jwt"], $_SESSION["user_refresh_token"]);
+            $user = new user($_COOKIE["jwt"], $_SESSION["user_refresh_token"]);
             $creator = $user->getTwitchUsername();
         }
 
