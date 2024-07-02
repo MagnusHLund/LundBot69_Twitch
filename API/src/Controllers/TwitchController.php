@@ -32,9 +32,9 @@ class TwitchController
                 } else {
                     throw new Exception;
                 }
-            } catch (Exception) {
-                echo json_encode(['error' => 'The twitch authentication code is invalid']);
+            } catch (Exception $e) {
                 http_response_code(400);
+                echo json_encode(['error' => 'The twitch authentication code is invalid. ' . $e]);
                 exit;
             }
         } else {

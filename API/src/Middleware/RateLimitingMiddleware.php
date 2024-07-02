@@ -10,7 +10,7 @@ class RateLimitingMiddleware
 
     public static function handle($path)
     {
-        if (!strpos($path, "twitch/connectUser")) {
+        if (!strpos($path, "/api/twitch/connectUser")) {
             return;
         }
 
@@ -39,7 +39,7 @@ class RateLimitingMiddleware
             "RateLimiting",
             ['ip_address' => $ipAddress],
             'last_attempted_time'
-        )['last_attempted_time'];
+        )['last_attempted_time'] ?? 0;
 
         Database::update(
             "RateLimiting",
