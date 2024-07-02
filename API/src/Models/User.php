@@ -62,7 +62,7 @@ class User
         $expirationDate = time() + $oneDay;
         $jwt = Authentication::generateUserJWT($this->accessToken);
 
-        setcookie($cookieName, $jwt, $expirationDate, "/", null, null, true);
+        setcookie($cookieName, $jwt, $expirationDate, "/", "", false, true);
     }
 
     public function refresh()
