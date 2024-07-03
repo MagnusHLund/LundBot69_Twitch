@@ -26,11 +26,11 @@ class PointsController
     {
     }
 
-    public function wipeAllPoints()
+    public function wipeEveryonesPoints()
     {
     }
 
-    public function removeUser()
+    public function wipeUserPoints()
     {
     }
 

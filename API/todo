@@ -1,0 +1,10 @@
+# todo
+
+- Singleton architecture for at least the utils classes.
+- Better HTTP error codes for database errors
+- Start using PUT and DELETE instead of only GET and POST, for network requests
+- Perform checks to make sure that an input isn't too long for the database column.
+- Implement a utility class, which is responsible for sending out json encoded messages. To have more consistency in the API call responses.
+- Add content-type header for api responses, which makes it default to json.
+- Add encryption to database?
+- Implement code within MessageController.php

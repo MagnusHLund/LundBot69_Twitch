@@ -94,6 +94,7 @@ class CommandsController
         );
     }
 
+    // TODO: New name? ToggleCommandActivityState?
     public function updateCommandActivity($data)
     {
         $creatorId = UserUtils::getCreatorId($data['creatorName']  ?? null);

@@ -17,7 +17,7 @@ class User
 
     public function __construct($accessToken, $refreshToken)
     {
-        $helixGuzzleClient = new HelixGuzzleClient(Constants::getTwitchClientID(), ['verify' => false]);
+        $helixGuzzleClient = new HelixGuzzleClient(Constants::getTwitchClientID());
 
         $this->twitchApi = new TwitchApi(
             $helixGuzzleClient,

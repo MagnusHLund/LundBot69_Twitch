@@ -13,6 +13,6 @@ class BotController
     {
         $result = Database::read(self::CREATOR_MODEL, [], 'twitch_username');
 
-        echo json_encode(['error' => $result]);
+        echo json_encode(['result' => $result]);
     }
 }

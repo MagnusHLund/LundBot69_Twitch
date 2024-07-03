@@ -79,10 +79,6 @@ class Database
 
             $result = $query->get();
 
-            if ($result->isEmpty()) {
-                throw new \PDOException("No data matching conditions.", 22002);
-            }
-
             if ($result) {
                 return $result->toArray();
             }
@@ -135,9 +131,6 @@ class Database
         switch ($e->getCode()) {
             case '22001':
                 echo json_encode(['error' => 'The data is too long for one of the columns. ' . $attemptedOperation]);
-                break;
-            case '22002':
-                echo json_encode(['error' => 'Read query returned empty. ' . $attemptedOperation]);
                 break;
             case '23000':
                 echo json_encode(['error' => 'The data is either a duplicate or would fail due to foreign key constraints. ' . $attemptedOperation]);

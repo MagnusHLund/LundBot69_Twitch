@@ -12,14 +12,18 @@ class UserUtils
     public static function getCreatorId($creator = null)
     {
         if (!$creator) {
-            $user = new user($_COOKIE["jwt"], $_SESSION["user_refresh_token"]);
+            $decodedJwt = Authentication::decodeJwt();
+            $twitchAccessToken = $decodedJwt->sub;
+            $user = new user($twitchAccessToken, $_SESSION["user_refresh_token"] ?? null);
             $creator = $user->getTwitchUsername();
         }
 
-        return Database::read(
+        $userIdArray = Database::read(
             self::CREATOR_MODEL,
             ['twitch_username' => $creator],
             'creator_id'
         );
+
+        return $userIdArray[0]['creator_id'];
     }
 }

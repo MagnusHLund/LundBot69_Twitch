@@ -47,10 +47,10 @@ class HttpRouter
             ["GET", "/api/commands/getCommandByName", [$commandsController, "getCommandByName"]],
 
             // points
-            ["POST", "/api/points/pointsLeaderboard", [$pointsController, "getPointsLeaderboard"]],
+            ["GET", "/api/points/getPointsLeaderboard", [$pointsController, "getPointsLeaderboard"]],
             ["POST", "/api/points/modifyUsersPoints", [$pointsController, "modifyUsersPoints"]],
-            ["POST", "/api/points/wipeAllPoints", [$pointsController, "wipeAllPoints"]],
-            ["POST", "/api/points/removeUser", [$pointsController, "removeUser"]],
+            ["POST", "/api/points/wipeEveryonesPoints", [$pointsController, "wipeAllPoints"]],
+            ["POST", "/api/points/wipeUserPoints", [$pointsController, "removeUser"]],
             ["POST", "/api/points/addPoints", [$pointsController, "addPoints"]],
 
             // Giveaway
