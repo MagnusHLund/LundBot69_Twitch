@@ -30,54 +30,58 @@ class HttpRouter
 
 
         $this->routes = [
-            // Bans 
+            // Bans
             ["POST", "/api/bans/banSong", [$bansController, "banSong"]],
-            ["POST", "/api/bans/unbanSong", [$bansController, "unbanSong"]],
             ["POST", "/api/bans/banUser", [$bansController, "banUser"]],
-            ["POST", "/api/bans/unbanUser", [$bansController, "unbanUser"]],
             ["GET", "/api/bans/getBannedSongs", [$bansController, "getBannedSongs"]],
             ["GET", "/api/bans/getBannedUsers", [$bansController, "getBannedUsers"]],
-
-            // Commands
-            ["GET", "/api/commands/getCommands", [$commandsController, "getCommands"]],
-            ["POST", "/api/commands/createCommand", [$commandsController, "createCommand"]],
-            ["POST", "/api/commands/editCommand", [$commandsController, "editCommand"]],
-            ["POST", "/api/commands/deleteCommand", [$commandsController, "deleteCommand"]],
-            ["POST", "/api/commands/updateCommandActivity", [$commandsController, "updateCommandActivity"]],
-            ["GET", "/api/commands/getCommandByName", [$commandsController, "getCommandByName"]],
-
-            // points
-            ["GET", "/api/points/getPointsLeaderboard", [$pointsController, "getPointsLeaderboard"]],
-            ["POST", "/api/points/modifyUsersPoints", [$pointsController, "modifyUsersPoints"]],
-            ["POST", "/api/points/wipeEveryonesPoints", [$pointsController, "wipeAllPoints"]],
-            ["POST", "/api/points/wipeUserPoints", [$pointsController, "removeUser"]],
-            ["POST", "/api/points/addPoints", [$pointsController, "addPoints"]],
-
-            // Giveaway
-            ["POST", "/api/giveaway/pickGiveawayWinner", [$giveawayController, "pickGiveawayWinner"]],
-            ["POST", "/api/giveaway/resetGiveawayParticipants", [$giveawayController, "resetGiveawayParticipants"]],
-            ["POST", "/api/giveaway/addGiveawayParticipants", [$giveawayController, "addGiveawayParticipants"]],
-
-            // Settings
-            ["POST", "/api/settings/toggleBotActivityState", [$settingsController, "toggleBotActivityState"]],
-            ["POST", "/api/settings/toggleSongRequestActivityState", [$settingsController, "toggleSongRequestActivityState"]],
-            ["POST", "/api/settings/toggleGamblingActivityState", [$settingsController, "toggleGamblingActivityState"]],
-            ["POST", "/api/settings/toggleShoutOutActivityState", [$settingsController, "toggleShoutOutActivityState"]],
-            ["POST", "/api/settings/setAutoPinnedMessage", [$settingsController, "setAutoPinnedMessage"]],
-            ["POST", "/api/settings/getAutoPinnedMessage", [$settingsController, "getAutoPinnedMessage"]],
-            ["POST", "/api/settings/getSettingsActivityStates", [$settingsController, "getSettingsActivityStates"]],
-
-            // Song request
-            ["POST", "/api/sr/deleteDefaultSongs", [$songRequestController, "deleteDefaultSongs"]],
-            ["POST", "/api/sr/deleteRequestedSongs", [$songRequestController, "deleteRequestedSongs"]],
-            ["POST", "/api/sr/addDefaultSong", [$songRequestController, "addDefaultSong"]],
-            ["POST", "/api/sr/addRequestedSong", [$songRequestController, "addRequestedSong"]],
-
-            // Twitch
-            ["POST", "/api/twitch/connectUser", [$twitchController, "connectUser"], ["requestBody"]],
+            ["DELETE", "/api/bans/unbanSong", [$bansController, "unbanSong"]],
+            ["DELETE", "/api/bans/unbanUser", [$bansController, "unbanUser"]],
 
             // Bot
             ["GET", "/api/bot/getChannels", [$botController, "getAllRegisteredChannels"]],
+
+            // Commands
+            ["POST", "/api/commands/createCommand", [$commandsController, "createCommand"]],
+            ["GET", "/api/commands/getCommandByName", [$commandsController, "getCommandByName"]],
+            ["GET", "/api/commands/getAllCommands", [$commandsController, "getCommands"]],
+            ["PUT", "/api/commands/editCommand", [$commandsController, "editCommand"]],
+            ["PUT", "/api/commands/updateCommandActivity", [$commandsController, "updateCommandActivity"]],
+            ["DELETE", "/api/commands/deleteCommand", [$commandsController, "deleteCommand"]],
+
+            // Giveaway
+            ["POST", "/api/giveaway/addGiveawayParticipants", [$giveawayController, "addGiveawayParticipants"]],
+            ["GET", "/api/giveaway/getGiveawayWinner", [$giveawayController, "getGiveawayWinner"]],
+            ["GET", "/api/giveaway/getGiveawayParticipants", [$giveawayController, "getGiveawayParticipants"]],
+            ["DELETE", "/api/giveaway/resetGiveawayParticipants", [$giveawayController, "resetGiveawayParticipants"]],
+
+            // Message
+            ["POST", "/api/messages/addMessage", [$messageController, "addMessage"]],
+            ["GET", "/api/messages/getMessageByName", [$messageController, "getMessageByName"]],
+            ["PUT", "/api/messages/editMessage", [$messageController, "editMessage"]],
+            ["DELETE", "/api/messages/deleteMessage", [$messageController, "deleteMessage"]],
+
+            // Points
+            ["GET", "/api/points/getPointsLeaderboard", [$pointsController, "getPointsLeaderboard"]],
+            ["PUT", "/api/points/modifyUsersPoints", [$pointsController, "modifyUsersPoints"]],
+            ["DELETE", "/api/points/wipeEveryonesPoints", [$pointsController, "wipeAllPoints"]],
+            ["DELETE", "/api/points/wipeUserPoints", [$pointsController, "removeUser"]],
+
+            // Settings
+            ["GET", "/api/settings/getSettingActivityState", [$settingsController, "getSettingActivityState"]],
+            ["PUT", "/api/settings/setBotActivityState", [$settingsController, "setBotActivityState"]],
+            ["PUT", "/api/settings/setShoutOutActivityState", [$settingsController, "setShoutOutActivityState"]],
+            ["PUT", "/api/settings/setAutoPinnedMessage", [$settingsController, "setAutoPinnedMessage"]],
+
+            // Song request
+            ["POST", "/api/sr/addDefaultSong", [$songRequestController, "addDefaultSong"]],
+            ["POST", "/api/sr/addRequestedSong", [$songRequestController, "addRequestedSong"]],
+            ["PUT", "/api/sr/changeSongPlayOrder", [$songRequestController, "changeSongPlayOrder"]],
+            ["DELETE", "/api/sr/deleteDefaultSong", [$songRequestController, "deleteDefaultSong"]],
+            ["DELETE", "/api/sr/deleteRequestedSong", [$songRequestController, "deleteRequestedSong"]],
+
+            // Twitch
+            ["POST", "/api/twitch/connectUser", [$twitchController, "connectUser"], ["requestBody"]],
         ];
     }
 

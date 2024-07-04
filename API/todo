@@ -8,3 +8,5 @@
 - Add content-type header for api responses, which makes it default to json.
 - Add encryption to database?
 - Implement code within MessageController.php
+- People that login for the first time, gets all required rows in the database
+- Whitelist twitch usernames to use the service

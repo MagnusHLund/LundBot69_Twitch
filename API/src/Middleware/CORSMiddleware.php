@@ -26,7 +26,7 @@ class CORSMiddleware
 
         if ($requestMethod == 'OPTIONS') {
             if (!empty($requestMethod)) {
-                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+                header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
             }
             if (!empty($requestHeaders)) {
                 header("Access-Control-Allow-Headers: {$requestHeaders}");

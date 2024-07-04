@@ -1,0 +1,8 @@
+POST /api/twitch/connectUser HTTP/1.1
+Host: localhost:3420
+Content-Type: application/json
+Origin: https://localhost:5173
+
+{
+    "code": "2y655s2561q0o9khubtc0gom9iw2wp"
+}

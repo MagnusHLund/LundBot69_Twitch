@@ -1,0 +1,8 @@
+DELETE /api/bans/unbanSong HTTP/1.1
+Host: localhost:3420
+Origin: https://localhost:5173
+Content-Type: application/json
+
+{
+    "videoId": "01234567894"
+}

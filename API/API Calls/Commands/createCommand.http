@@ -1,0 +1,13 @@
+POST /api/commands/createCommand HTTP/1.1
+Host: localhost:3420
+Content-Type: application/json
+Origin: https://localhost:5173
+
+{
+    "name": "PostmanCommand",
+    "output": "Hello from Postman",
+    "permissions": "moderator",
+    "cost": 0,
+    "userCooldownDuration": 60,
+    "globalCooldownDuration": 30
+}

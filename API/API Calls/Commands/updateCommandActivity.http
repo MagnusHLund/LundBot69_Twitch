@@ -1,0 +1,9 @@
+PUT /api/commands/updateCommandActivity HTTP/1.1
+Host: localhost:3420
+Content-Type: application/json
+Origin: https://localhost:5173
+
+{
+    "name": "PostmanCommand",
+    "active": 1
+}
