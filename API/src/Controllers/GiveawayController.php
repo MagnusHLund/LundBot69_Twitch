@@ -9,7 +9,7 @@ class GiveawayController
 {
     private const GIVEAWAY_MODEL = "Giveaways";
 
-    public function pickGiveawayWinner()
+    public function getGiveawayWinner()
     {
         $creatorId = UserUtils::getCreatorId();
 

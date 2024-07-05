@@ -63,7 +63,7 @@ class HttpRouter
 
             // Points
             ["GET", "/api/points/getPointsLeaderboard", [$pointsController, "getPointsLeaderboard"]],
-            ["PUT", "/api/points/modifyUsersPoints", [$pointsController, "modifyUsersPoints"]],
+            ["PUT", "/api/points/modifyUserPoints", [$pointsController, "modifyUsersPoints"]],
             ["DELETE", "/api/points/wipeEveryonesPoints", [$pointsController, "wipeAllPoints"]],
             ["DELETE", "/api/points/wipeUserPoints", [$pointsController, "removeUser"]],
 

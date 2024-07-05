@@ -11,14 +11,17 @@ class TwitchController
 {
     const CREATOR_MODEL = "Creators";
 
-    public static function connectUser($request)
+    public function connectUser($request)
     {
+        setcookie("jwt", "", time() - 3600);
+
         $user = new User($_COOKIE['jwt'] ?? null, $_SESSION["user_refresh_token"] ?? null);
         if (isset($request[0]["code"])) {
             try {
                 $user->getUserFromAuthenticationCode($request[0]["code"], Constants::getTwitchRedirectUri());
                 if ($user) {
-                    $username = Database::read(self::CREATOR_MODEL, ['twitch_username' => $user->getTwitchUsername()], 'twitch_username');
+                    $response = Database::read(self::CREATOR_MODEL, ['twitch_username' => $user->getTwitchUsername()], 'twitch_username');
+                    $username = $response[0]['creator'];
 
                     if (!isset($username)) {
                         http_response_code(401);
