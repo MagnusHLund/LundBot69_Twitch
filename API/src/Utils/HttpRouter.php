@@ -39,7 +39,7 @@ class HttpRouter
             ["DELETE", "/api/bans/unbanUser", [$bansController, "unbanUser"]],
 
             // Bot
-            ["GET", "/api/bot/getChannels", [$botController, "getAllRegisteredChannels"]],
+            ["GET", "/api/bot/getChannels", [$botController, "getChannels"]],
 
             // Commands
             ["POST", "/api/commands/createCommand", [$commandsController, "createCommand"]],
@@ -64,8 +64,8 @@ class HttpRouter
             // Points
             ["GET", "/api/points/getPointsLeaderboard", [$pointsController, "getPointsLeaderboard"]],
             ["PUT", "/api/points/modifyUserPoints", [$pointsController, "modifyUsersPoints"]],
-            ["DELETE", "/api/points/wipeEveryonesPoints", [$pointsController, "wipeAllPoints"]],
-            ["DELETE", "/api/points/wipeUserPoints", [$pointsController, "removeUser"]],
+            ["DELETE", "/api/points/wipeEveryonesPoints", [$pointsController, "wipeEveryonesPoints"]],
+            ["DELETE", "/api/points/wipeUserPoints", [$pointsController, "wipeUserPoints"]],
 
             // Settings
             ["GET", "/api/settings/getSettingActivityState", [$settingsController, "getSettingActivityState"]],
@@ -76,6 +76,7 @@ class HttpRouter
             // Song request
             ["POST", "/api/sr/addDefaultSong", [$songRequestController, "addDefaultSong"]],
             ["POST", "/api/sr/addRequestedSong", [$songRequestController, "addRequestedSong"]],
+            ["GET", "/api/sr/getSongToPlay", [$songRequestController, "getSongToPlay"]],
             ["PUT", "/api/sr/changeSongPlayOrder", [$songRequestController, "changeSongPlayOrder"]],
             ["DELETE", "/api/sr/deleteDefaultSong", [$songRequestController, "deleteDefaultSong"]],
             ["DELETE", "/api/sr/deleteRequestedSong", [$songRequestController, "deleteRequestedSong"]],

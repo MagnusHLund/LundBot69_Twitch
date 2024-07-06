@@ -9,7 +9,7 @@ class BotController
 {
     const CREATOR_MODEL = "Creators";
 
-    public function getAllRegisteredChannels()
+    public function getChannels()
     {
         $result = Database::read(self::CREATOR_MODEL, [], 'twitch_username');
 

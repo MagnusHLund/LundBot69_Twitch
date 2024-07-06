@@ -28,6 +28,14 @@ class SongRequestController
         $from->send(json_encode(['type' => 'requestedSongs', 'data' => $requestedSongs]));
     }
 
+    public function getSongToPlay()
+    {
+    }
+
+    public function changeSongPlayOrder()
+    {
+    }
+
     public function deleteDefaultSongs()
     {
     }

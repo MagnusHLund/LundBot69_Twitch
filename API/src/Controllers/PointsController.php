@@ -33,8 +33,4 @@ class PointsController
     public function wipeUserPoints()
     {
     }
-
-    public function addPoints()
-    {
-    }
 }

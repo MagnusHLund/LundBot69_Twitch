@@ -7,31 +7,19 @@ class SettingsController
 
     const SETTINGS_MODEL = "Settings";
 
-    public function toggleBotActivityState()
+    public function getSettingActivityState()
     {
     }
 
-    public function toggleSongRequestActivityState()
+    public function setBotActivityState()
     {
     }
 
-    public function toggleGamblingActivityState()
-    {
-    }
-
-    public function toggleShoutOutActivityState()
+    public function setShoutOutActivityState()
     {
     }
 
     public function setAutoPinnedMessage()
-    {
-    }
-
-    public function getAutoPinnedMessage()
-    {
-    }
-
-    public function getSettingsActivityStates()
     {
     }
 }
