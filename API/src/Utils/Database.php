@@ -10,6 +10,7 @@ class Database
 {
     private static $capsule;
 
+    // change to constructor, now that i use singleton?
     public static function init()
     {
         $databaseInfo = Constants::GetDatabaseInfo();
@@ -30,6 +31,17 @@ class Database
         self::$capsule->setAsGlobal();
         self::$capsule->bootEloquent();
     }
+
+    private static $instance = null;
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
+    }
+
 
     public static function create($model, $data)
     {

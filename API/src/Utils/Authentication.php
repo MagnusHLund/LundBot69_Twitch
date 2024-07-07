@@ -7,6 +7,16 @@ use Firebase\JWT\JWT;
 
 class Authentication
 {
+    private static $instance = null;
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new Authentication();
+        }
+        return self::$instance;
+    }
+
     public static function generateUserJWT($accessToken)
     {
         $oneDay = time() + 86400;
