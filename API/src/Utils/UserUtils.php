@@ -9,6 +9,17 @@ class UserUtils
 {
     const CREATOR_MODEL = "Creators";
 
+    private static $instance = null;
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new UserUtils();
+        }
+        return self::$instance;
+    }
+
+
     public static function getCreatorId($creator = null)
     {
         if (!$creator) {

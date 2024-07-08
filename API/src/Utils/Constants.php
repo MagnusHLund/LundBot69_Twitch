@@ -4,6 +4,17 @@ namespace LundBot69Api\Utils;
 
 class Constants
 {
+    private static $instance = null;
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new Constants();
+        }
+        return self::$instance;
+    }
+
+
     public static function getDatabaseInfo()
     {
         return array(
