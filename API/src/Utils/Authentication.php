@@ -8,6 +8,12 @@ use Firebase\JWT\JWT;
 class Authentication
 {
     private static $instance = null;
+    private $constants;
+
+    public function __construct()
+    {
+        $this->constants = Constants::getInstance();
+    }
 
     public static function getInstance()
     {
@@ -17,7 +23,7 @@ class Authentication
         return self::$instance;
     }
 
-    public static function generateUserJWT($accessToken)
+    public function generateUserJwt($accessToken)
     {
         $oneDay = time() + 86400;
 
@@ -27,17 +33,23 @@ class Authentication
             'iat' => time(),
             'exp' => $oneDay
         ];
+
+        $twitchClientSecret = $this->constants->getTwitchClientSecret();
+        $kid =  $this->constants->getKid();
+
         return JWT::encode(
             $payload,
-            Constants::getTwitchClientSecret(),
+            $twitchClientSecret,
             'HS256',
-            Constants::getKid()
+            $kid
         );
     }
 
-    public static function decodeJwt()
+    public function decodeJwt()
     {
-        $keyArray = new Key(Constants::getTwitchClientSecret(), 'HS256');
+        $twitchClientSecret = $this->constants->getTwitchClientSecret();
+
+        $keyArray = new Key($twitchClientSecret, 'HS256');
         return JWT::decode($_COOKIE['jwt'], $keyArray);
     }
 }

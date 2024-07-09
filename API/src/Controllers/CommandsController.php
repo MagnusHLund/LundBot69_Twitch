@@ -4,18 +4,28 @@ namespace LundBot69Api\Controllers;
 
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\UserUtils;
+use LundBot69Api\Utils\MessageManager;
 
 class CommandsController
 {
     const COMMANDS_MODEL = "Commands";
     const COMMAND_USER_COOLDOWNS_MODEL = 'CommandUserCooldowns';
 
+    private $database;
+    private $messageManager;
+
+    public function __construct()
+    {
+        $this->database = Database::getInstance();
+        $this->messageManager = MessageManager::getInstance();
+    }
+
     public function getCommands($data)
     {
         $rowsToSkip = $data[0]['rowsToSkip'] ?? null;
         $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-        $result = Database::read(
+        $result = $this->database->read(
             $this::COMMANDS_MODEL,
             ['creator_id' => $creatorId],
             ['name', 'output', 'active', 'permissions', 'cost', 'user_cooldown_duration', 'global_cooldown_duration'],
@@ -23,14 +33,14 @@ class CommandsController
             $rowsToSkip
         );
 
-        echo json_encode(['commands' => $result]);
+        $this->messageManager->sendSuccess($result);
     }
 
     public function getCommandByName($data)
     {
         $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-        $result = Database::read(
+        $result = $this->database->read(
             $this::COMMANDS_MODEL,
             [
                 'creator_id' => $creatorId,
@@ -39,14 +49,14 @@ class CommandsController
             ['name', 'output', 'active', 'permissions', 'cost', 'user_cooldown_duration', 'global_cooldown_duration'],
         );
 
-        echo json_encode(['command' => $result]);
+        $this->messageManager->sendSuccess($result);
     }
 
     public function createCommand($data)
     {
         $creatorId = UserUtils::getCreatorId($data['creatorName']  ?? null);
 
-        Database::create(
+        $this->database->create(
             $this::COMMANDS_MODEL,
             [
                 'creator_id'               => $creatorId,
@@ -59,13 +69,16 @@ class CommandsController
                 'global_cooldown_duration' => $data[0]['globalCooldownDuration']
             ]
         );
+
+        $responseMessage = "The command has been successfully created!";
+        $this->messageManager->sendSuccess($responseMessage);
     }
 
     public function editCommand($data)
     {
         $creatorId = UserUtils::getCreatorId($data['creatorName'] ?? null);
 
-        Database::update(
+        $this->database->update(
             $this::COMMANDS_MODEL,
             [
                 'creator_id' => $creatorId,
@@ -79,26 +92,32 @@ class CommandsController
                 'global_cooldown_duration' => $data[0]['globalCooldownDuration']
             ]
         );
+
+        $responseMessage = "The command has been successfully updated!";
+        $this->messageManager->sendSuccess($responseMessage);
     }
 
     public function deleteCommand($data)
     {
         $creatorId = UserUtils::getCreatorId($data['creatorName']  ?? null);
 
-        Database::delete(
+        $this->database->delete(
             $this::COMMANDS_MODEL,
             [
                 'creator_id' => $creatorId,
                 'name'       => $data[0]['name']
             ]
         );
+
+        $responseMessage = "The command has been successfully deleted!";
+        $this->messageManager->sendSuccess($responseMessage);
     }
 
     public function updateCommandActivity($data)
     {
         $creatorId = UserUtils::getCreatorId($data['creatorName']  ?? null);
 
-        Database::update(
+        $this->database->update(
             $this::COMMANDS_MODEL,
             [
                 'creator_id' => $creatorId,
@@ -106,13 +125,16 @@ class CommandsController
             ],
             ['active' => $data[0]['active']]
         );
+
+        $responseMessage = "The command has been successfully updated!";
+        $this->messageManager->sendSuccess($responseMessage);
     }
 
     public function useCommand($data)
     {
         $creatorId = UserUtils::getCreatorId($data['creatorName']  ?? null);
 
-        $command = Database::read(
+        $command = $this->database->read(
             $this::COMMANDS_MODEL,
             [
                 'creator_id' => $creatorId,

@@ -6,44 +6,53 @@ use Exception;
 use LundBot69Api\Models\User;
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\Constants;
+use LundBot69Api\Utils\MessageManager;
 
 class TwitchController
 {
     const CREATOR_MODEL = "Creators";
 
+    private $constants;
+    private $database;
+    private $messageManager;
+
+    public function __construct()
+    {
+        $this->constants = Constants::getInstance();
+        $this->database = Database::getInstance();
+        $this->messageManager = MessageManager::getInstance();
+
+        user::removeUserJwt();
+    }
+
     public function connectUser($request)
     {
-        setcookie("jwt", "", time() - 3600);
+        $user = new User(null, $_SESSION["user_refresh_token"] ?? null);
 
-        $user = new User($_COOKIE['jwt'] ?? null, $_SESSION["user_refresh_token"] ?? null);
-        if (isset($request[0]["code"])) {
-            try {
-                $user->getUserFromAuthenticationCode($request[0]["code"], Constants::getTwitchRedirectUri());
-                if ($user) {
-                    $response = Database::read(self::CREATOR_MODEL, ['twitch_username' => $user->getTwitchUsername()], 'twitch_username');
-                    $username = $response[0]['creator'];
+        try {
+            $twitchRedirectUrl = $this->constants->getTwitchRedirectUri();
+            $user->getUserFromAuthenticationCode($request[0]["code"], $twitchRedirectUrl);
 
-                    if (!isset($username)) {
-                        http_response_code(401);
-                        echo json_encode(['error' => 'Username is not registered in the database. ' . $username]);
-                        exit;
-                    }
+            if ($user) {
+                $response = $this->database->read(self::CREATOR_MODEL, ['twitch_username' => $user->getTwitchUsername()], 'twitch_username');
+                $username = $response[0]['twitch_username'];
 
-                    $user->save();
-                    http_response_code(200);
-                    exit;
-                } else {
-                    throw new Exception;
+                if (!isset($username)) {
+                    $responseMessage = "Twitch username is not registered in the database.";
+                    $logMessage = "$responseMessage. Username: $username";
+
+                    $this->messageManager->sendError($responseMessage, 401, $logMessage);
                 }
-            } catch (Exception $e) {
-                http_response_code(400);
-                echo json_encode(['error' => 'The twitch authentication code is invalid. ' . $e]);
-                exit;
+
+                $this->messageManager->sendSuccess("", 204);
+            } else {
+                throw new Exception;
             }
-        } else {
-            // There is no code parameter, redirect the user to the Twitch authorization URL
-            $authUrl = $user->getAuthUrl(Constants::GetTwitchRedirectUri(), Constants::getTwitchScopes());
-            header('Location: ' . $authUrl);
+        } catch (Exception $e) {
+            $responseMessage = "An error occurred while signing in.";
+            $logMessage = "$responseMessage. $e";
+
+            $this->messageManager->sendError($responseMessage, 400, $logMessage);
         }
     }
 }

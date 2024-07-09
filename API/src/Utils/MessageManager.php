@@ -2,31 +2,52 @@
 
 namespace LundBot69Api\Utils;
 
+use LundBot69Api\Models\HttpMessage;
+
 class MessageManager
 {
-    public static function sendSuccess($responseMessage)
+    private static $instance = null;
+
+    private function __construct()
     {
-        http_response_code(200);
-        echo json_encode(["Success" => true, "result" => $responseMessage], JSON_UNESCAPED_UNICODE);
     }
 
-    public static function sendError($responseMessage, $responseCode, $logMessage = null)
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new MessageManager();
+        }
+        return self::$instance;
+    }
+
+    public function sendSuccess($responseMessage, $statusCode = 200)
+    {
+        $success = true;
+
+        $httpMessage = new HttpMessage($responseMessage, $success, $statusCode);
+        $httpMessage->sendMessage();
+    }
+
+    public function sendError($responseMessage, $statusCode, $logMessage = null)
     {
         if ($logMessage) {
-            self::createLog($logMessage);
+            //    $this->createLog($logMessage);
         }
 
-        http_response_code($responseCode);
-        echo json_encode(["Success" => false, "result" => $responseMessage]);
+        $success = false;
+
+        $httpMessage = new HttpMessage($responseMessage, $success, $statusCode);
+        $httpMessage->sendMessage();
         exit;
     }
 
-    public static function missingParameters()
+    public function missingParameters()
     {
-        self::sendError("Missing parameters, when calling the API.", 422);
+        $this->sendError("Missing parameters, when calling the API.", 422);
     }
 
-    public static function createLog($logMessage)
+    // TODO: Finish implementation
+    public function createLog($logMessage)
     {
         $logFolder = __DIR__ . "../../logs/";
 

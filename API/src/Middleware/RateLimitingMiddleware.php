@@ -10,13 +10,15 @@ class RateLimitingMiddleware
 
     public static function handle($path)
     {
+        $database = Database::getInstance();
+
         if (!strpos($path, "/api/twitch/connectUser")) {
             return;
         }
 
         $ipAddress = $_SERVER["HTTP_X_FORWARDED_FOR"] ?? $_SERVER['REMOTE_ADDR'];
 
-        $ipExists = Database::read(
+        $ipExists = $database->read(
             "RateLimiting",
             ['ip_address' => $ipAddress],
             'ip_address'
@@ -25,7 +27,7 @@ class RateLimitingMiddleware
         $currentTime = time();
 
         if ($ipExists === null) {
-            Database::create(
+            $database->create(
                 "RateLimiting",
                 [
                     'ip_address' => $ipAddress,
@@ -35,13 +37,13 @@ class RateLimitingMiddleware
             return;
         }
 
-        $lastAttempt = Database::read(
+        $lastAttempt = $database->read(
             "RateLimiting",
             ['ip_address' => $ipAddress],
             'last_attempted_time'
         )['last_attempted_time'] ?? 0;
 
-        Database::update(
+        $database->update(
             "RateLimiting",
             ['ip_address' => $ipAddress],
             ['last_attempted_time' => $currentTime]

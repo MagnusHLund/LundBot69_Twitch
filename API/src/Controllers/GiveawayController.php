@@ -4,40 +4,52 @@ namespace LundBot69Api\Controllers;
 
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\UserUtils;
+use LundBot69Api\Utils\MessageManager;
 
 class GiveawayController
 {
     private const GIVEAWAY_MODEL = "Giveaways";
 
+    private $database;
+    private $messageManager;
+
+    public function __construct()
+    {
+        $this->database = Database::getInstance();
+        $this->messageManager = MessageManager::getInstance();
+    }
+
     public function getGiveawayWinner()
     {
         $creatorId = UserUtils::getCreatorId();
 
-        echo ["winner" => Database::read(
+        $result = $this->database->read(
             $this::GIVEAWAY_MODEL,
             ['creator_id' => $creatorId],
             "participant",
             1,
             null,
             true
-        )];
+        );
+
+        $this->messageManager->sendSuccess($result);
     }
 
     public function resetGiveawayParticipants()
     {
     }
 
-    public function getGiveawayParticipants($from)
+    public function getGiveawayParticipants()
     {
         $creatorId = UserUtils::getCreatorId();
 
-        $participants = Database::read(
+        $participants = $this->database->read(
             $this::GIVEAWAY_MODEL,
             ['creator_id' => $creatorId],
             "participant"
         )['participant'];
 
-        $from->send(json_encode(['participants' => $participants]));
+        $this->messageManager->sendSuccess($participants);
     }
 
     public function addGiveawayParticipants()

@@ -1,13 +1,12 @@
 # todo
 
-- Singleton architecture for at least the utils classes.
 - Better HTTP error codes for database errors
-- Start using PUT and DELETE instead of only GET and POST, for network requests
 - Perform checks to make sure that an input isn't too long for the database column.
-- Implement a utility class, which is responsible for sending out json encoded messages. To have more consistency in the API call responses.
-- Add content-type header for api responses, which makes it default to json.
 - Add encryption to database?
 - Implement code within MessageController.php
 - People that login for the first time, gets all required rows in the database
 - Whitelist twitch usernames to use the service
 - Authentication for Bot commands
+- Refactor user.php (get rid of userUtils.php)
+- Within the controllers, update "result" to something more readable
+- Rewrite middleware to not be static

@@ -6,6 +6,11 @@ class Constants
 {
     private static $instance = null;
 
+    private function __construct()
+    {
+        // Private constructor, due to using singleton pattern. Prevents creating new instances of the class.
+    }
+
     public static function getInstance()
     {
         if (self::$instance == null) {
@@ -14,8 +19,7 @@ class Constants
         return self::$instance;
     }
 
-
-    public static function getDatabaseInfo()
+    public function getDatabaseInfo()
     {
         return array(
             "DB_HOST" => $_ENV['DB_HOST'],
@@ -25,22 +29,22 @@ class Constants
         );
     }
 
-    public static function getTwitchClientID()
+    public function getTwitchClientID()
     {
         return $_ENV['TWITCH_CLIENT_ID'];
     }
 
-    public static function getTwitchClientSecret()
+    public function getTwitchClientSecret()
     {
         return $_ENV['TWITCH_CLIENT_SECRET'];
     }
 
-    public static function getTwitchRedirectUri()
+    public function getTwitchRedirectUri()
     {
         return $_ENV['TWITCH_REDIRECT_URI'];
     }
 
-    public static function getTwitchScopes()
+    public function getTwitchScopes()
     {
         return implode(' ', [
             'moderator:read:followers',
@@ -51,12 +55,12 @@ class Constants
         ]);
     }
 
-    public static function getKid()
+    public function getKid()
     {
         return $_ENV['KID'];
     }
 
-    public static function getAllowedOrigins()
+    public function getAllowedOrigins()
     {
         return explode(', ', $_ENV['ALLOWED_HOSTS']);
     }

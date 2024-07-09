@@ -13,25 +13,29 @@ class User
 
     private $accessToken;
     private $refreshToken;
+
     private $twitchApi;
+    private $constants;
+    private $authentication;
 
     public function __construct($accessToken, $refreshToken)
     {
-        $helixGuzzleClient = new HelixGuzzleClient(Constants::getTwitchClientID());
+        $this->constants = Constants::getInstance();
+        $this->authentication = Authentication::getInstance();
+
+        $twitchClientId = $this->constants->getTwitchClientID();
+        $helixGuzzleClient = new HelixGuzzleClient($twitchClientId);
+
+        $twitchClientSecret = $this->constants->getTwitchClientSecret();
 
         $this->twitchApi = new TwitchApi(
             $helixGuzzleClient,
-            Constants::getTwitchClientID(),
-            Constants::getTwitchClientSecret(),
+            $twitchClientId,
+            $twitchClientSecret,
         );
 
         $this->accessToken = $accessToken;
         $this->refreshToken = $refreshToken;
-    }
-
-    public function getAuthUrl($redirectUri, $scope = "")
-    {
-        return $this->twitchApi->getOauthApi()->getAuthUrl($redirectUri, 'code', $scope);
     }
 
     public function getUserFromAuthenticationCode($code, $redirectUri)
@@ -58,9 +62,11 @@ class User
     private function setJwtCookie()
     {
         $cookieName = "jwt";
+
         $oneDay = 86400;
         $expirationDate = time() + $oneDay;
-        $jwt = Authentication::generateUserJWT($this->accessToken);
+
+        $jwt = $this->authentication->generateUserJwt($this->accessToken);
 
         setcookie($cookieName, $jwt, $expirationDate, "/", "", false, true);
     }
@@ -68,38 +74,53 @@ class User
     public function refresh()
     {
         try {
-            $decoded = Authentication::decodeJwt();
+            $twitchScopes = $this->constants->getTwitchScopes();
+
+            $decoded = $this->authentication->decodeJwt();
             $expires = $decoded->exp ?? 0;
             if ($expires < time()) {
+
                 $token = $this->twitchApi->getOauthApi()->refreshToken(
                     $this->refreshToken,
-                    Constants::GetTwitchScopes()
+                    $twitchScopes
                 );
+
                 $data = json_decode($token->getBody()->getContents());
                 $this->accessToken = $data->access_token ?? null;
                 $this->refreshToken = $data->refresh_token ?? null;
+
                 if ($this->accessToken && $this->refreshToken) {
                     $this->save();
                 } else {
-                    $this->revoke();
+                    self::revoke();
                 }
             }
         } catch (\Exception $e) {
-            $this->revoke();
+            self::revoke();
         }
     }
 
-    public function revoke()
+    public static function revoke()
     {
-        unset($_COOKIE['jwt']);
+        self::removeUserJwt();
         unset($_SESSION['user_refresh_token']);
 
         session_destroy();
     }
 
+    public static function removeUserJwt()
+    {
+        $cookieName = "jwt";
+
+        $oneDay = 86400;
+        $expirationDate = time() - $oneDay;
+
+        setcookie($cookieName, "", $expirationDate);
+    }
+
     public function getAccessToken()
     {
-        $decoded = Authentication::decodeJwt();
+        $decoded = $this->authentication->decodeJwt();
         return $decoded->sub;
     }
 

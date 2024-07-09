@@ -5,18 +5,18 @@ namespace LundBot69Api\Utils;
 class ModelMapper
 {
     const MODELS = [
-        'CommandUserCooldowns' => \LundBot69Api\ORMModels\CommandUserCooldowns::class,
-        'SongRequestBannedAccounts' => \LundBot69Api\ORMModels\BannedAccounts::class,
-        'SongRequestBannedSongs' => \LundBot69Api\ORMModels\BannedSongs::class,
-        'SongRequests' => \LundBot69Api\ORMModels\SongRequests::class,
-        'DefaultSongs' => \LundBot69Api\ORMModels\DefaultSongs::class,
-        'RateLimiting' => \LundBot69Api\ORMModels\RateLimiting::class,
-        'Giveaways' => \LundBot69Api\ORMModels\Giveaways::class,
-        'Commands' => \LundBot69Api\ORMModels\Commands::class,
-        'Creators' => \LundBot69Api\ORMModels\Creators::class,
-        'Settings' => \LundBot69Api\ORMModels\Settings::class,
-        'Messages' => \LundBot69Api\ORMModels\Messages::class,
-        'Points' => \LundBot69Api\ORMModels\Points::class
+        'CommandUserCooldowns' => \LundBot69Api\Models\ORM\CommandUserCooldowns::class,
+        'SongRequestBannedAccounts' => \LundBot69Api\Models\ORM\BannedAccounts::class,
+        'SongRequestBannedSongs' => \LundBot69Api\Models\ORM\BannedSongs::class,
+        'SongRequests' => \LundBot69Api\Models\ORM\SongRequests::class,
+        'DefaultSongs' => \LundBot69Api\Models\ORM\DefaultSongs::class,
+        'RateLimiting' => \LundBot69Api\Models\ORM\RateLimiting::class,
+        'Giveaways' => \LundBot69Api\Models\ORM\Giveaways::class,
+        'Commands' => \LundBot69Api\Models\ORM\Commands::class,
+        'Creators' => \LundBot69Api\Models\ORM\Creators::class,
+        'Settings' => \LundBot69Api\Models\ORM\Settings::class,
+        'Messages' => \LundBot69Api\Models\ORM\Messages::class,
+        'Points' => \LundBot69Api\Models\ORM\Points::class
     ];
 
     public static function getModelClass($model)

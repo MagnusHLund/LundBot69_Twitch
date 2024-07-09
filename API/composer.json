@@ -15,6 +15,7 @@
     "psr-4": {
       "LundBot69Api\\": "src/",
       "LundBot69Api\\Controllers\\": "src/Controllers/",
+      "LundBot69Api\\Models\\ORM\\": "src/Models/ORM/",
       "LundBot69Api\\ORMModels\\": "src/ORMModels/",
       "LundBot69Api\\WebSocket\\": "src/WebSocket/",
       "LundBot69Api\\Factories\\": "src/Factories",

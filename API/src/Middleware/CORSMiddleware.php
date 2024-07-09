@@ -8,11 +8,13 @@ class CORSMiddleware
 {
     public static function handle()
     {
+        $constants = Constants::getInstance();
+
         $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
         $requestMethod = $_SERVER['REQUEST_METHOD'] ?? '';
         $requestHeaders = $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'] ?? '';
 
-        if (!empty($origin) && in_array($origin, Constants::getAllowedOrigins())) {
+        if (!empty($origin) && in_array($origin, $constants->getAllowedOrigins())) {
             header("Access-Control-Allow-Origin: {$origin}");
             header("Access-Control-Allow-Credentials: true");
             header("Access-Control-Max-Age: 86400");

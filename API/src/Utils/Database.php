@@ -8,16 +8,17 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Database
 {
-    private static $capsule;
+    private static $instance = null;
+    private $capsule;
 
-    // change to constructor, now that i use singleton?
-    public static function init()
+    private function __construct()
     {
-        $databaseInfo = Constants::GetDatabaseInfo();
+        $constants = Constants::getInstance();
+        $databaseInfo = $constants->GetDatabaseInfo();
 
-        self::$capsule = new Capsule();
+        $this->capsule = new Capsule();
 
-        self::$capsule->addConnection([
+        $this->capsule->addConnection([
             'driver'    => 'mysql',
             'host'      => $databaseInfo["DB_HOST"],
             'database'  => $databaseInfo["DB_DATABASE"],
@@ -28,11 +29,9 @@ class Database
             'prefix'    => '',
         ]);
 
-        self::$capsule->setAsGlobal();
-        self::$capsule->bootEloquent();
+        $this->capsule->setAsGlobal();
+        $this->capsule->bootEloquent();
     }
-
-    private static $instance = null;
 
     public static function getInstance()
     {
@@ -43,7 +42,7 @@ class Database
     }
 
 
-    public static function create($model, $data)
+    public function create($model, $data)
     {
         try {
             $modelClass = ModelMapper::getModelClass($model);
@@ -52,7 +51,7 @@ class Database
             $stringifiedData = json_encode($data);
             $attemptedOperation = "Table: $model, Data: $stringifiedData";
 
-            self::handlePdoException($e, $attemptedOperation);
+            $this->handlePdoException($e, $attemptedOperation);
         }
     }
 
@@ -67,7 +66,7 @@ class Database
      * @param int $rowsToSkip filters out the first X amount of rows and returns those not filtered out.
      * @param boolean $random returns the rows in a random order.
      */
-    public static function read($model, $conditions, $columns = null, $limit = null, $rowsToSkip = null, $random = false)
+    public function read($model, $conditions, $columns = null, $limit = null, $rowsToSkip = null, $random = false)
     {
         try {
             $modelClass = ModelMapper::getModelClass($model);
@@ -99,11 +98,11 @@ class Database
             $stringifiedConditions = json_encode($conditions);
             $attemptedOperation = "Table: $model, Columns: $stringifiedColumns, Conditions: $stringifiedConditions";
 
-            self::handlePdoException($e, $attemptedOperation);
+            $this->handlePdoException($e, $attemptedOperation);
         }
     }
 
-    public static function update($model, $conditions, $data)
+    public function update($model, $conditions, $data)
     {
         try {
             $modelClass = ModelMapper::getModelClass($model);
@@ -113,11 +112,11 @@ class Database
             $stringifiedConditions = json_encode($conditions);
             $attemptedOperation = "Table: $model, Data: $stringifiedData, Conditions: $stringifiedConditions";
 
-            self::handlePdoException($e, $attemptedOperation);
+            $this->handlePdoException($e, $attemptedOperation);
         }
     }
 
-    public static function delete($model, $conditions)
+    public function delete($model, $conditions)
     {
         try {
             $modelClass = ModelMapper::getModelClass($model);
@@ -132,11 +131,11 @@ class Database
             $stringifiedConditions = json_encode($conditions);
             $attemptedOperation = "Table: $model, Conditions: $stringifiedConditions";
 
-            self::handlePdoException($e, $attemptedOperation);
+            $this->handlePdoException($e, $attemptedOperation);
         }
     }
 
-    private static function handlePdoException($e, $attemptedOperation)
+    private function handlePdoException($e, $attemptedOperation)
     {
         http_response_code(400);
 
@@ -162,5 +161,3 @@ class Database
         exit;
     }
 }
-
-Database::init();

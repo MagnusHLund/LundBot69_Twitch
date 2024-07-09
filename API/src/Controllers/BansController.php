@@ -3,6 +3,7 @@
 namespace LundBot69Api\Controllers;
 
 use LundBot69Api\Utils\Database;
+use LundBot69Api\Utils\MessageManager;
 use LundBot69Api\Utils\UserUtils;
 
 class BansController
@@ -10,18 +11,30 @@ class BansController
     private const BAN_SONG_MODEL = "SongRequestBannedSongs";
     private const BAN_USER_MODEL = "SongRequestBannedAccounts";
 
+    private $database;
+    private $messageManager;
+
+    public function __construct()
+    {
+        $this->database = Database::getInstance();
+        $this->messageManager = MessageManager::getInstance();
+    }
+
     public function banSong($data)
     {
         $videoId = $data[0]['videoId'];
         $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-        Database::create(
+        $this->database->create(
             $this::BAN_SONG_MODEL,
             [
                 'creator_id'       => $creatorId,
                 'youtube_video_id' => $videoId
             ]
         );
+
+        $responseMessage = "The song has been banned!";
+        $this->messageManager->sendSuccess($responseMessage);
     }
 
     public function unbanSong($data)
@@ -29,27 +42,30 @@ class BansController
         $videoId = $data[0]['videoId'];
         $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-        Database::delete(
+        $this->database->delete(
             $this::BAN_SONG_MODEL,
             [
                 'creator_id'       => $creatorId,
                 'youtube_video_id' => $videoId
             ]
         );
+
+        $responseMessage = "The song has been unbanned!";
+        $this->messageManager->sendSuccess($responseMessage);
     }
 
     public function getBannedSongs($data)
     {
         $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-        $result = Database::read(
+        $result = $this->database->read(
             $this::BAN_SONG_MODEL,
             ['creator_id' => $creatorId,],
             'youtube_video_id',
             10
         );
 
-        echo json_encode(['bannedSongs' => $result]);
+        $this->messageManager->sendSuccess($result);
     }
 
     public function banUser($data)
@@ -57,13 +73,16 @@ class BansController
         $twitchUsername = $data[0]['twitchUsername'];
         $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-        Database::create(
+        $this->database->create(
             $this::BAN_USER_MODEL,
             [
                 'creator_id'       => $creatorId,
                 'twitch_username' => $twitchUsername
             ]
         );
+
+        $responseMessage = "The user has been banned!";
+        $this->messageManager->sendSuccess($responseMessage);
     }
 
     public function unbanUser($data)
@@ -71,26 +90,29 @@ class BansController
         $twitchUsername = $data[0]['twitchUsername'];
         $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-        Database::delete(
+        $this->database->delete(
             $this::BAN_USER_MODEL,
             [
                 'creator_id'       => $creatorId,
                 'twitch_username' => $twitchUsername
             ]
         );
+
+        $responseMessage = "The user has been unbanned!";
+        $this->messageManager->sendSuccess($responseMessage);
     }
 
     public function getBannedUsers($data)
     {
         $creatorId = UserUtils::getCreatorId($data[0]['creatorName'] ?? null);
 
-        $result = Database::read(
+        $result = $this->database->read(
             $this::BAN_USER_MODEL,
             ['creator_id' => $creatorId,],
             'twitch_username',
             10
         );
 
-        echo json_encode(['bannedUsers' => $result]);
+        $this->messageManager->sendSuccess($result);
     }
 }
