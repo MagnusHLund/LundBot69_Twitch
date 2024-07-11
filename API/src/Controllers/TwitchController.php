@@ -41,10 +41,11 @@ class TwitchController
                     $responseMessage = "Twitch username is not registered in the database.";
                     $logMessage = "$responseMessage. Username: $username";
 
-                    $this->messageManager->sendError($responseMessage, 401, $logMessage);
+                    $this->messageManager->sendMessage($responseMessage, 401, $logMessage);
                 }
 
-                $this->messageManager->sendSuccess("", 204);
+                $this->messageManager->sendMessage("s", 204);
+                exit;
             } else {
                 throw new Exception;
             }
@@ -52,7 +53,7 @@ class TwitchController
             $responseMessage = "An error occurred while signing in.";
             $logMessage = "$responseMessage. $e";
 
-            $this->messageManager->sendError($responseMessage, 400, $logMessage);
+            $this->messageManager->sendMessage($responseMessage, 400, $logMessage);
         }
     }
 }

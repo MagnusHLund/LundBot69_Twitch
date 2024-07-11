@@ -34,7 +34,7 @@ class BansController
         );
 
         $responseMessage = "The song has been banned!";
-        $this->messageManager->sendSuccess($responseMessage);
+        $this->messageManager->sendMessage($responseMessage);
     }
 
     public function unbanSong($data)
@@ -51,7 +51,7 @@ class BansController
         );
 
         $responseMessage = "The song has been unbanned!";
-        $this->messageManager->sendSuccess($responseMessage);
+        $this->messageManager->sendMessage($responseMessage);
     }
 
     public function getBannedSongs($data)
@@ -65,7 +65,7 @@ class BansController
             10
         );
 
-        $this->messageManager->sendSuccess($result);
+        $this->messageManager->sendMessage($result);
     }
 
     public function banUser($data)
@@ -82,7 +82,7 @@ class BansController
         );
 
         $responseMessage = "The user has been banned!";
-        $this->messageManager->sendSuccess($responseMessage);
+        $this->messageManager->sendMessage($responseMessage);
     }
 
     public function unbanUser($data)
@@ -99,7 +99,7 @@ class BansController
         );
 
         $responseMessage = "The user has been unbanned!";
-        $this->messageManager->sendSuccess($responseMessage);
+        $this->messageManager->sendMessage($responseMessage);
     }
 
     public function getBannedUsers($data)
@@ -113,6 +113,6 @@ class BansController
             10
         );
 
-        $this->messageManager->sendSuccess($result);
+        $this->messageManager->sendMessage($result);
     }
 }

@@ -29,7 +29,7 @@ class PointsController
             ['twitch_username', 'points']
         );
 
-        $this->messageManager->sendSuccess($leaderboard);
+        $this->messageManager->sendMessage($leaderboard);
     }
 
     public function modifyUsersPoints()

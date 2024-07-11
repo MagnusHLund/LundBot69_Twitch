@@ -33,7 +33,7 @@ class CommandsController
             $rowsToSkip
         );
 
-        $this->messageManager->sendSuccess($result);
+        $this->messageManager->sendMessage($result);
     }
 
     public function getCommandByName($data)
@@ -49,7 +49,7 @@ class CommandsController
             ['name', 'output', 'active', 'permissions', 'cost', 'user_cooldown_duration', 'global_cooldown_duration'],
         );
 
-        $this->messageManager->sendSuccess($result);
+        $this->messageManager->sendMessage($result);
     }
 
     public function createCommand($data)
@@ -71,7 +71,7 @@ class CommandsController
         );
 
         $responseMessage = "The command has been successfully created!";
-        $this->messageManager->sendSuccess($responseMessage);
+        $this->messageManager->sendMessage($responseMessage);
     }
 
     public function editCommand($data)
@@ -94,7 +94,7 @@ class CommandsController
         );
 
         $responseMessage = "The command has been successfully updated!";
-        $this->messageManager->sendSuccess($responseMessage);
+        $this->messageManager->sendMessage($responseMessage);
     }
 
     public function deleteCommand($data)
@@ -110,7 +110,7 @@ class CommandsController
         );
 
         $responseMessage = "The command has been successfully deleted!";
-        $this->messageManager->sendSuccess($responseMessage);
+        $this->messageManager->sendMessage($responseMessage);
     }
 
     public function updateCommandActivity($data)
@@ -127,7 +127,7 @@ class CommandsController
         );
 
         $responseMessage = "The command has been successfully updated!";
-        $this->messageManager->sendSuccess($responseMessage);
+        $this->messageManager->sendMessage($responseMessage);
     }
 
     public function useCommand($data)

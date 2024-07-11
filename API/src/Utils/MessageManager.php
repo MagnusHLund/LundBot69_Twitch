@@ -20,30 +20,21 @@ class MessageManager
         return self::$instance;
     }
 
-    public function sendSuccess($responseMessage, $statusCode = 200)
+    public function sendMessage($responseMessage, $statusCode = 200, $logMessage = null)
     {
-        $success = true;
+        $success = $statusCode <= 300 ? true : false;
 
-        $httpMessage = new HttpMessage($responseMessage, $success, $statusCode);
-        $httpMessage->sendMessage();
-    }
-
-    public function sendError($responseMessage, $statusCode, $logMessage = null)
-    {
         if ($logMessage) {
             //    $this->createLog($logMessage);
         }
 
-        $success = false;
-
         $httpMessage = new HttpMessage($responseMessage, $success, $statusCode);
         $httpMessage->sendMessage();
-        exit;
     }
 
     public function missingParameters()
     {
-        $this->sendError("Missing parameters, when calling the API.", 422);
+        $this->sendMessage("Missing parameters, when calling the API.", 422);
     }
 
     // TODO: Finish implementation

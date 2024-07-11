@@ -23,7 +23,6 @@ class HttpMessage
     public function sendMessage()
     {
         http_response_code($this->statusCode);
-        header('Content-Type', 'application/json');
         echo json_encode(['success' => $this->success, 'result' => $this->content]);
     }
 }

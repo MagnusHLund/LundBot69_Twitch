@@ -32,7 +32,7 @@ class GiveawayController
             true
         );
 
-        $this->messageManager->sendSuccess($result);
+        $this->messageManager->sendMessage($result);
     }
 
     public function resetGiveawayParticipants()
@@ -49,7 +49,7 @@ class GiveawayController
             "participant"
         )['participant'];
 
-        $this->messageManager->sendSuccess($participants);
+        $this->messageManager->sendMessage($participants);
     }
 
     public function addGiveawayParticipants()

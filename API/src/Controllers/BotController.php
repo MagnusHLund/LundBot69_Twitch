@@ -23,6 +23,6 @@ class BotController
     {
         $result = $this->database->read(self::CREATOR_MODEL, [], 'twitch_username');
 
-        $this->messageManager->sendSuccess($result);
+        $this->messageManager->sendMessage($result);
     }
 }

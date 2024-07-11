@@ -35,9 +35,9 @@ class ApiEntry
 
     private function applyMiddleware(&$path)
     {
-        CORSMiddleware::handle();
-        RateLimitingMiddleware::handle($path);
-        AuthenticationMiddleware::handle($path);
+        CORSMiddleware::getInstance()->validateCors();
+        RateLimitingMiddleware::getInstance()->validateRateLimiting($path);
+        AuthenticationMiddleware::getInstance()->validateAuthentication($path);
     }
 }
 

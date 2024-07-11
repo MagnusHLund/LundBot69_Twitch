@@ -34,7 +34,7 @@ class SongRequestController
             10
         );
 
-        $this->messageManager->sendSuccess($requestedSongs);
+        $this->messageManager->sendMessage($requestedSongs);
     }
 
     public function getSongToPlay()
