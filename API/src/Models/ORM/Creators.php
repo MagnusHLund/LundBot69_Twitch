@@ -8,7 +8,7 @@ class Creators extends Model
 {
     protected $table = 'Creators';
     protected $primaryKey = 'creator_id';
-    protected $fillable = ["twitch_username"];
-    protected $casts = ["twitch_username" => "string"];
+    protected $fillable = ["twitch_username", "refresh_token"];
+    protected $casts = ["twitch_username" => "string", "refresh_token" => "string"];
     public $timestamps = false;
 }

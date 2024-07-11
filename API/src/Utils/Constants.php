@@ -64,4 +64,9 @@ class Constants
     {
         return explode(', ', $_ENV['ALLOWED_HOSTS']);
     }
+
+    public function getEncryptionKey()
+    {
+        return $_ENV['ENCRYPTION_KEY'];
+    }
 }

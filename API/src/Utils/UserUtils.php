@@ -23,7 +23,7 @@ class UserUtils
     public static function getCreatorId($creator = null)
     {
         if (!$creator) {
-            $decodedJwt = Authentication::decodeJwt();
+            $decodedJwt = Authentication::decodeJwt($_COOKIE['jwt']);
             $twitchAccessToken = $decodedJwt->sub;
             $user = new user($twitchAccessToken, $_SESSION["user_refresh_token"] ?? null);
             $creator = $user->getTwitchUsername();

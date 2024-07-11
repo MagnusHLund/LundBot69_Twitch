@@ -3,7 +3,7 @@
 namespace LundBot69Api\Controllers;
 
 use Exception;
-use LundBot69Api\Models\User;
+use LundBot69Api\Models\Creator;
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\Constants;
 use LundBot69Api\Utils\MessageManager;
@@ -22,12 +22,12 @@ class TwitchController
         $this->database = Database::getInstance();
         $this->messageManager = MessageManager::getInstance();
 
-        user::removeUserJwt();
+        Creator::removeUserJwt();
     }
 
     public function connectUser($request)
     {
-        $user = new User(null, $_SESSION["user_refresh_token"] ?? null);
+        $user = new Creator(null, $_SESSION["user_refresh_token"] ?? null);
 
         try {
             $twitchRedirectUrl = $this->constants->getTwitchRedirectUri();

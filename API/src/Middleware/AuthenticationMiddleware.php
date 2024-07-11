@@ -3,19 +3,19 @@
 namespace LundBot69Api\Middleware;
 
 use Exception;
-use LundBot69Api\Utils\Authentication;
+use LundBot69Api\Utils\securityManager;
 use LundBot69Api\Utils\MessageManager;
 
 class AuthenticationMiddleware
 {
     private static $instance = null;
 
-    private $authentication;
+    private $securityManager;
     private $messageManager;
 
     private function __construct()
     {
-        $this->authentication = Authentication::getInstance();
+        $this->securityManager = securityManager::getInstance();
         $this->messageManager = MessageManager::getInstance();
     }
 
@@ -35,7 +35,7 @@ class AuthenticationMiddleware
                     throw new Exception("User is not logged in!");
                 }
 
-                if (!(bool) $this->authentication->decodeJwt()) {
+                if (!(bool) $this->securityManager->decodeJwt($_COOKIE['jwt'])) {
                     throw new Exception("User is not real");
                 }
             }

@@ -4,6 +4,7 @@ USE `lundbot69`;
 CREATE TABLE IF NOT EXISTS `Creators` (
   `creator_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `twitch_username` varchar(25) NOT NULL,
+  `refresh_token` varchar(255), 
   PRIMARY KEY (`creator_id`),
   UNIQUE KEY `username_unique` (`twitch_username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
