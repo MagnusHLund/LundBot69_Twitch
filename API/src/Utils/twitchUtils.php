@@ -66,27 +66,26 @@ class TwitchUtils
         try {
             $twitchScopes = $this->constants->getTwitchScopes();
 
-            $decoded = $this->securityManager->decodeJwt($_COOKIE['jwt']);
-            $expires = $decoded->exp ?? 0;
+            $expires = $decodedJwt->exp ?? 0;
             if ($expires < time()) {
 
                 $token = $this->twitchApi->getOauthApi()->refreshToken(
-                    $this->refreshToken,
+                    $refreshToken,
                     $twitchScopes
                 );
 
                 $data = json_decode($token->getBody()->getContents());
-                $this->accessToken = $data->access_token ?? null;
-                $this->refreshToken = $data->refresh_token ?? null;
+                $accessToken = $data->access_token ?? null;
+                $refreshToken = $data->refresh_token ?? null;
 
-                if ($this->accessToken && $this->refreshToken) {
-                    $this->save();
+                if ($accessToken && $refreshToken) {
+                    return array("accessToken" => $accessToken, "refreshToken" => $refreshToken);
                 } else {
-                    self::revoke();
+                    return null;
                 }
             }
         } catch (\Exception $e) {
-            self::revoke();
+            return null;
         }
     }
 }
