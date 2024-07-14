@@ -7,44 +7,46 @@ use LundBot69Api\Models\Creator;
 use LundBot69Api\Utils\Database;
 use LundBot69Api\Utils\Constants;
 use LundBot69Api\Utils\MessageManager;
+use LundBot69Api\Utils\TwitchUtils;
 
 class TwitchController
 {
     const CREATOR_MODEL = "Creators";
 
-    private $constants;
     private $database;
+    private $twitchUtils;
     private $messageManager;
 
     public function __construct()
     {
-        $this->constants = Constants::getInstance();
         $this->database = Database::getInstance();
+        $this->twitchUtils = TwitchUtils::getInstance();
         $this->messageManager = MessageManager::getInstance();
-
-        Creator::removeUserJwt();
     }
 
     public function connectUser($request)
     {
-        $user = new Creator(null, $_SESSION["user_refresh_token"] ?? null);
+        $user = new Creator(null, null);
 
         try {
-            $twitchRedirectUrl = $this->constants->getTwitchRedirectUri();
-            $user->getUserFromAuthenticationCode($request[0]["code"], $twitchRedirectUrl);
+            $authenticationToken = $request[0]['code'];
+            $twitchTokens = $user->loginCreator($authenticationToken);
+
+            $accessToken = $twitchTokens['accessToken'];
+            $twitchUsername = $this->twitchUtils->getUsernameFromAccessToken($accessToken);
 
             if ($user) {
-                $response = $this->database->read(self::CREATOR_MODEL, ['twitch_username' => $user->getTwitchUsername()], 'twitch_username');
-                $username = $response[0]['twitch_username'];
+                $response = $this->database->read(self::CREATOR_MODEL, ['twitch_username' => $twitchUsername], 'twitch_username');
+                $databaseUsername = $response[0]['twitch_username'];
 
-                if (!isset($username)) {
+                if (!isset($databaseUsername)) {
                     $responseMessage = "Twitch username is not registered in the database.";
-                    $logMessage = "$responseMessage. Username: $username";
+                    $logMessage = "$responseMessage. Username: $twitchUsername";
 
                     $this->messageManager->sendMessage($responseMessage, 401, $logMessage);
                 }
 
-                $this->messageManager->sendMessage("s", 204);
+                $this->messageManager->sendMessage("", 204);
                 exit;
             } else {
                 throw new Exception;

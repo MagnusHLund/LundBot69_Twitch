@@ -29,9 +29,9 @@ class Creator
         $this->securityManager = securityManager::getInstance();
     }
 
-    public function loginCreator($securityManagerToken)
+    public function loginCreator($authenticationToken)
     {
-        $twitchTokens = $this->twitchUtils->getUserFromAuthenticationCode($securityManagerToken);
+        $twitchTokens = $this->twitchUtils->getUserFromAuthenticationCode($authenticationToken);
 
         if (!empty($twitchTokens)) {
             $username = $this->twitchUtils->getUsernameFromAccessToken($twitchTokens['accessToken']);
@@ -44,6 +44,7 @@ class Creator
             $jwt = $this->securityManager->encodeJwt($twitchTokens['accessToken']);
 
             $this->saveTwitchTokens($jwt, $twitchTokens['refreshToken']);
+            return $twitchTokens;
         }
     }
 
