@@ -10,7 +10,7 @@ class RateLimiting extends Model
     protected $primaryKey = 'rate_limiting_id';
     protected $fillable = ["ip_address", "last_attempted_time"];
     protected $casts = [
-        'ip_address'          => "string",
+        'ip_address'          => "string|max:39",
         "last_attempted_time" => "integer",
     ];
     public $timestamps = false;

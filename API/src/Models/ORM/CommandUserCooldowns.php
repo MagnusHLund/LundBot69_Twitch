@@ -14,9 +14,9 @@ class CommandUserCooldowns extends Model
         "last_used",
     ];
     protected $casts = [
-        "command_id" => "int",
-        "used_by"    => "string",
-        "last_used"  => "string",
+        "command_id" => "integer",
+        "used_by"    => "string|max:25",
+        "last_used"  => "integer",
     ];
     public $timestamps = false;
 }

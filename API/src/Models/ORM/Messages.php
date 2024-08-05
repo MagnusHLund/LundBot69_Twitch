@@ -11,8 +11,8 @@ class Messages extends Model
     protected $fillable = ["creator_id", "name", "output", "repeat_message"];
     protected $casts = [
         'creator_id'     => "integer",
-        "name"           => "string",
-        "output"         => "string",
+        "name"           => "string|max:50",
+        "output"         => "string|max:500",
         "repeat_message" => "integer"
     ];
     public $timestamps = false;

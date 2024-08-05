@@ -11,8 +11,8 @@ class SongRequests extends Model
     protected $fillable = ["creator_id", "requested_by", "youtube_video_id", "requested_at"];
     protected $casts = [
         'creator_id'       => "integer",
-        "requested_by"     => "string",
-        "youtube_video_id" => "string",
+        "requested_by"     => "string|max:25",
+        "youtube_video_id" => "string|max:11",
         "requested_at"     => "integer"
     ];
     public $timestamps = false;

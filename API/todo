@@ -9,6 +9,5 @@
 - Authentication for Bot commands
 - Refactor user.php (get rid of userUtils.php)
 - Within the controllers, update "result" to something more readable
-- Rewrite middleware to not be static
 - Log more to the error log
 - Finish implementing error log

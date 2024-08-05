@@ -11,7 +11,7 @@ class Points extends Model
     protected $fillable = ["creator_id", "twitch_username", "points"];
     protected $casts = [
         'creator_id'      => "integer",
-        "twitch_username" => "string",
+        "twitch_username" => "string|max:25",
         "points"          => "integer",
     ];
     public $timestamps = false;

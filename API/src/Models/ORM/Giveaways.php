@@ -11,7 +11,7 @@ class Giveaways extends Model
     protected $fillable = ["creator_id", "participant"];
     protected $casts = [
         'creator_id'  => "integer",
-        "participant" => "string",
+        "participant" => "string|max:25",
     ];
     public $timestamps = false;
 }

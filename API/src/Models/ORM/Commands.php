@@ -20,9 +20,9 @@ class Commands extends Model
         "global_last_used"
     ];
     protected $casts = [
-        "creator_id"               => "int",
-        "name"                     => "string",
-        "output"                   => "string",
+        "creator_id"               => "integer",
+        "name"                     => "string|max:50",
+        "output"                   => "string|max:500",
         "active"                   => "boolean",
         "permission"               => "integer",
         "cost"                     => "integer",
