@@ -8,7 +8,12 @@ class Messages extends Model
 {
     protected $table = 'Messages';
     protected $primaryKey = 'message_id';
-    protected $fillable = ["creator_id", "name", "output", "repeat_message"];
+    protected $fillable = [
+        "creator_id",
+        "name",
+        "output",
+        "repeat_message"
+    ];
     protected $casts = [
         'creator_id'     => "integer",
         "name"           => "string|max:50",
