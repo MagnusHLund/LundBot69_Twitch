@@ -6,9 +6,7 @@ class CookieManager
 {
     private static $instance = null;
 
-    private function __construct()
-    {
-    }
+    private function __construct() {}
 
     public static function getInstance()
     {
@@ -34,5 +32,10 @@ class CookieManager
         $expirationTime = time() - $oneHour;
 
         setcookie($cookieName, "", $expirationTime);
+    }
+
+    public function readCookie($cookieName)
+    {
+        return $_COOKIE[$cookieName];
     }
 }

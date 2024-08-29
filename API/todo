@@ -11,3 +11,4 @@
 - Within the controllers, update "result" to something more readable
 - Log more to the error log
 - Finish implementing error log
+- Set max lengths for columns, through the ORM.

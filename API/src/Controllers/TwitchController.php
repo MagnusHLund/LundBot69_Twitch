@@ -4,8 +4,8 @@ namespace LundBot69Api\Controllers;
 
 use Exception;
 use LundBot69Api\Models\Creator;
+use LundBot69Api\Utils\CookieManager;
 use LundBot69Api\Utils\Database;
-use LundBot69Api\Utils\Constants;
 use LundBot69Api\Utils\MessageManager;
 use LundBot69Api\Utils\TwitchUtils;
 
@@ -15,17 +15,24 @@ class TwitchController
 
     private $database;
     private $twitchUtils;
+    private $cookieManager;
     private $messageManager;
 
     public function __construct()
     {
         $this->database = Database::getInstance();
         $this->twitchUtils = TwitchUtils::getInstance();
+        $this->cookieManager = CookieManager::getInstance();
         $this->messageManager = MessageManager::getInstance();
     }
 
     public function connectUser($request)
     {
+        if ($this->isLoggedIn()) {
+            $responseMessage = "User already logged in!";
+            $this->messageManager->sendMessage($responseMessage);
+        }
+
         $user = new Creator(null, null);
 
         try {
@@ -57,5 +64,10 @@ class TwitchController
 
             $this->messageManager->sendMessage($responseMessage, 400, $logMessage);
         }
+    }
+
+    public function isLoggedIn()
+    {
+        return !(bool)empty($this->cookieManager->readCookie("jwt"));
     }
 }
